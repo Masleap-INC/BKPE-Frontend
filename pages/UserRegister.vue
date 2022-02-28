@@ -23,5 +23,3 @@ import UserRegisterForm from "../components/UserRegisterPage/UserRegisterForm.vu
 }
 
 </script>
-<!-- this is comment -->
-<!-- this is comment 22 -->
