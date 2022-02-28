@@ -28,7 +28,7 @@
 
                             <label for="name" class="block text-xl text-white mb-5">Full Name</label>
 
-                            <input type="text" name="name" placeholder="Type your full name here" class="block w-full h-10 rounded-md px-5">
+                            <input type="text" name="name" placeholder="Type your full name here" class="block w-full h-10 rounded-md px-5" required>
 
                         </div>
 
@@ -38,7 +38,7 @@
 
                             <label for="email" class="block text-xl text-white mb-5">Email</label>
 
-                            <input type="email" name="email" placeholder="example@example.com" class="block w-full h-10 rounded-md px-5">
+                            <input type="email" name="email" placeholder="example@example.com" class="block w-full h-10 rounded-md px-5" required>
 
                         </div>
 
@@ -48,7 +48,7 @@
 
                             <label for="password" class="block text-xl text-white mb-5">Password</label>
 
-                            <input type="password" name="password" placeholder="Type your password here" class="block w-full h-10 rounded-md px-5">
+                            <input type="password" name="password" placeholder="Type your password here" class="block w-full h-10 rounded-md px-5" required>
 
                         </div>
 
@@ -58,7 +58,7 @@
 
                             <label for="confirm-password" class="block text-xl text-white mb-5">Confirm Password</label>
 
-                            <input type="password" name="confirm-password" placeholder="Confirm your password" class="block w-full h-10 rounded-md px-5">
+                            <input type="password" name="confirm-password" placeholder="Confirm your password" class="block w-full h-10 rounded-md px-5" required>
 
                         </div>
 
