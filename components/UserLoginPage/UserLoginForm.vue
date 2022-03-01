@@ -54,7 +54,7 @@
                     <div class="text-white text-xl my-10">
 
                         <h2 class=" inline-block">Don't have an account?</h2>
-                        <a href="" class=" inline-block font-bold underline ml-3 hover:-translate-y-2 duration-300">Register</a>
+                        <a href="/UserRegister" class=" inline-block font-bold underline ml-3 hover:-translate-y-2 duration-300">Register</a>
 
                     </div>
 
