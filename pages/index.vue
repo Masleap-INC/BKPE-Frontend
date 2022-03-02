@@ -1,10 +1,10 @@
 <template>
   
-  <div>
+  <div class="bg-[url('~/assets/page-background.png')] h-screen w-full">
 
     <!-- page-background -->
 
-    <img src="../assets/page-background.png" alt="" class=" object-cover fixed w-full h-full top-0 bottom-0 z-0 ">
+    <!-- <img src="../assets/page-background.png" alt="" class=" object-cover fixed w-full h-full top-0 bottom-0 z-0 "> -->
 
     <!-- Hero Section -->
 
