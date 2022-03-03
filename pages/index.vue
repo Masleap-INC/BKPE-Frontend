@@ -1,6 +1,6 @@
 <template>
   
-  <div class="bg-[url('~/assets/page-background.png')] h-screen w-full">
+  <div class="bg-[url('~/assets/page-background.png')] h-full w-full">
 
     <!-- page-background -->
 
@@ -18,6 +18,12 @@
       <SearchBar />
     </div>
 
+    <!-- Categories Section -->
+
+    <div>
+      <CategoriesSection />
+    </div>
+
   </div>
 
 </template>
@@ -25,8 +31,9 @@
 <script>
 import HeroSection from "../components/HomePage/HeroSection.vue";
 import SearchBar from "../components/HomePage/SearchBar.vue";
+import CategoriesSection from "../components/HomePage/CategoriesSection.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar }
+    components: { HeroSection, SearchBar, CategoriesSection }
 }
 </script>
