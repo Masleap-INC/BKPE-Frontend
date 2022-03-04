@@ -68,127 +68,127 @@
                     <span class="grid grid-flow-row-dense grid-cols-2 grid-rows-4 gap-10 place-items-start text-left ">
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">TURN-KEY MUSCLE CARS</h2>
+                            <h2 class="text-md antialiased hover:underline">TURN-KEY MUSCLE CARS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">D.I.Y. MUSCLE CAR KIT</h2>
+                            <h2 class="text-md antialiased hover:underline">D.I.Y. MUSCLE CAR KIT</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">BODY COMPONENTS</h2>
+                            <h2 class="text-md antialiased hover:underline">BODY COMPONENTS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">BODY SHELLS</h2>
+                            <h2 class="text-md antialiased hover:underline">BODY SHELLS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">BRAKES</h2>
+                            <h2 class="text-md antialiased hover:underline">BRAKES</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">CHASSIS & SUSPENSION</h2>
+                            <h2 class="text-md antialiased hover:underline">CHASSIS & SUSPENSION</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">CHEMICALS</h2>
+                            <h2 class="text-md antialiased hover:underline">CHEMICALS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">CONVERTIBLE COMPONENTS</h2>
+                            <h2 class="text-md antialiased hover:underline">CONVERTIBLE COMPONENTS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">COOLING SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">COOLING SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">DRIVESHAFTS AND U-JOINTS</h2>
+                            <h2 class="text-md antialiased hover:underline">DRIVESHAFTS AND U-JOINTS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">ELECTRICAL SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">ELECTRICAL SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">ENGINES</h2>
+                            <h2 class="text-md antialiased hover:underline">ENGINES</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">ENGINE COMPARTMENT</h2>
+                            <h2 class="text-md antialiased hover:underline">ENGINE COMPARTMENT</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">ENTERTAINMENT SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">ENTERTAINMENT SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">EXHAUST SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">EXHAUST SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">EXTERIOR</h2>
+                            <h2 class="text-md antialiased hover:underline">EXTERIOR</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">FUEL SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">FUEL SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">HVAC SYSTEM</h2>
+                            <h2 class="text-md antialiased hover:underline">HVAC SYSTEM</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">INTERIOR</h2>
+                            <h2 class="text-md antialiased hover:underline">INTERIOR</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">LIGHTS</h2>
+                            <h2 class="text-md antialiased hover:underline">LIGHTS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">LITERATURE</h2>
+                            <h2 class="text-md antialiased hover:underline">LITERATURE</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">MARCATIONS</h2>
+                            <h2 class="text-md antialiased hover:underline">MARCATIONS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">OPTIONS</h2>
+                            <h2 class="text-md antialiased hover:underline">OPTIONS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">RALLY SPORT COMPONENTS</h2>
+                            <h2 class="text-md antialiased hover:underline">RALLY SPORT COMPONENTS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">REAR ENDS</h2>
+                            <h2 class="text-md antialiased hover:underline">REAR ENDS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">DIFFERENTIALS</h2>
+                            <h2 class="text-md antialiased hover:underline">DIFFERENTIALS</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">STEERING</h2>
+                            <h2 class="text-md antialiased hover:underline">STEERING</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">TRANSMISSIONS-AUTOMATIC</h2>
+                            <h2 class="text-md antialiased hover:underline">TRANSMISSIONS-AUTOMATIC</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">TRANSMISSIONS-MANUAL</h2>
+                            <h2 class="text-md antialiased hover:underline">TRANSMISSIONS-MANUAL</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">TRUNK</h2>
+                            <h2 class="text-md antialiased hover:underline">TRUNK</h2>
                         </NuxtLink>
 
                         <NuxtLink to="/">
-                            <h2 class="text-md antialiased">WHEELS & TIRES</h2>
+                            <h2 class="text-md antialiased hover:underline">WHEELS & TIRES</h2>
                         </NuxtLink>
 
                                                                                               
