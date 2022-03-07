@@ -1,8 +1,8 @@
 <template>
 
-    <div class="my-10  h-full w-full">
+    <div class="my-10 min-h-min h-auto w-full bg-black bg-opacity-80">
 
-        <div class="lg:grid lg:grid-cols-2 w-full bg-black bg-opacity-80 py-10">
+        <div class="lg:grid lg:grid-cols-2 w-full  py-10">
 
              <!-- Column 2 -->
 
