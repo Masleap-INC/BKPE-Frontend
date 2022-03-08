@@ -2,9 +2,9 @@
 
     <div class="bg-[url('~/assets/about-bg.jpg')] bg-fixed bg-cover bg-right w-full">
 
-        <div class="bg-black bg-opacity-50">
+        <div class="bg-black bg-opacity-50 py-20 h-full">
 
-            <h2 class="py-20 text-white mx-auto lg:w-2/3 md:w-2/3 sm:w-5/6 ">
+            <h2 class=" text-white mx-auto lg:w-2/3 md:w-2/3 sm:w-5/6 ">
 
                 <span class="block text-5xl font-bold text-center mb-10">About Camaro Parts Guru</span>
 

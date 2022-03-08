@@ -42,6 +42,12 @@
       <AboutSection />
     </div>
 
+    <!-- Why Buy From Us Section -->
+
+    <div>
+      <WhyBuyFromUsSection />
+    </div>
+
   </div>
 
 </template>
@@ -53,8 +59,9 @@ import CategoriesSection from "../components/HomePage/CategoriesSection.vue";
 import SalePartsSection from "../components/HomePage/SalePartsSection.vue";
 import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
 import AboutSection from "../components/HomePage/AboutSection.vue";
+import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection }
 }
 </script>
