@@ -2,12 +2,12 @@
 
     <div class="mt-20 bg-transparent">
 
-        <div class="lg:w-2/3 md:w-2/3 sm:w-5/6 mx-auto py-20">
+        <div class="lg:w-2/3 md:w-2/3 sm:w-5/6 mx-auto py-10">
 
             <!-- Headline -->
 
-            <div>
-                <h2 class="text-3xl text-white text-left font-semibold underline underline-offset-8">CAMARO CONNECTIONS</h2>
+            <div class="border-white border-b-2">
+                <h2 class="text-3xl text-white text-left font-semibold py-5">CAMARO CONNECTIONS</h2>
             </div>
 
             <!-- Cards -->
