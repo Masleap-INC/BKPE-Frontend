@@ -54,6 +54,12 @@
       <AssociatedCompaniesSection />
     </div>
 
+    <!-- Camaro Connections Section -->
+
+    <div>
+      <CamaroConnectionsSection />
+    </div>
+
   </div>
 
 </template>
@@ -67,8 +73,9 @@ import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
 import AboutSection from "../components/HomePage/AboutSection.vue";
 import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
 import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
+import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection }
 }
 </script>
