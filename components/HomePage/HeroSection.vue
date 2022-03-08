@@ -1,6 +1,6 @@
 <template>
 
-    <div class=" h-5/6 w-full bg-[url('~/assets/hero.jpg')] bg-cover bg-scroll ">
+    <div class=" h-5/6 w-full bg-[url('~/assets/hero.jpg')] bg-cover bg-fixed ">
         
         <!-- <img src="../../assets/hero.jpg" alt="" class="w-full h-2/3 fixed object-cover z-0"> -->
 
