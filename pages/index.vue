@@ -1,6 +1,6 @@
 <template>
   
-  <div class="bg-[url('~/assets/page-background.png')] h-full w-full">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
 
     <!-- page-background -->
 
@@ -48,6 +48,12 @@
       <WhyBuyFromUsSection />
     </div>
 
+    <!-- Associated Companies Section -->
+
+    <div>
+      <AssociatedCompaniesSection />
+    </div>
+
   </div>
 
 </template>
@@ -60,8 +66,9 @@ import SalePartsSection from "../components/HomePage/SalePartsSection.vue";
 import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
 import AboutSection from "../components/HomePage/AboutSection.vue";
 import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
+import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection }
 }
 </script>
