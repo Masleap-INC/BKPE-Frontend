@@ -34,6 +34,14 @@
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
 
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
+
                     <!-- Product Price -->
 
                     <h2 class="block my-3 text-xl line-through text-gray-500 font-light"><b>Regular Price:</b> $100</h2>
@@ -56,6 +64,14 @@
                     <!-- Product Title -->
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
 
                     <!-- Product Price -->
 
@@ -80,6 +96,14 @@
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
 
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
+
                     <!-- Product Price -->
 
                     <h2 class="block my-3 text-xl line-through text-gray-500 font-light"><b>Regular Price:</b> $100</h2>
@@ -102,6 +126,14 @@
                     <!-- Product Title -->
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
 
                     <!-- Product Price -->
 
@@ -126,6 +158,14 @@
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
 
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
+
                     <!-- Product Price -->
 
                     <h2 class="block my-3 text-xl line-through text-gray-500 font-light"><b>Regular Price:</b> $100</h2>
@@ -148,6 +188,14 @@
                     <!-- Product Title -->
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
 
                     <!-- Product Price -->
 
@@ -172,6 +220,14 @@
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
 
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
+
                     <!-- Product Price -->
 
                     <h2 class="block my-3 text-xl line-through text-gray-500 font-light"><b>Regular Price:</b> $100</h2>
@@ -194,6 +250,14 @@
                     <!-- Product Title -->
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
 
                     <!-- Product Price -->
 
@@ -218,6 +282,14 @@
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
 
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
+
                     <!-- Product Price -->
 
                     <h2 class="block my-3 text-xl line-through text-gray-500 font-light"><b>Regular Price:</b> $100</h2>
@@ -240,6 +312,14 @@
                     <!-- Product Title -->
 
                     <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+
+                    <!-- Product Brand -->
+
+                    <h2 class="block text-xl font-normal my-3">Brand</h2>
+
+                    <!-- Product Model -->
+
+                    <h2 class="block text-xl font-normal my-3">Model</h2>
 
                     <!-- Product Price -->
 
