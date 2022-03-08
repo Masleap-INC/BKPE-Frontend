@@ -1,6 +1,6 @@
 <template>
 
-    <div class="py-20 bg-black bg-opacity-50 bg-fixed border-4 border-white mt-20">
+    <div class="py-20 bg-black bg-opacity-50 bg-fixed border-4 border-white mt-20 mx-10">
 
         <!-- Heading -->
 
