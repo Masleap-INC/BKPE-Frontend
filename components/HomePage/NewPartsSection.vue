@@ -38,7 +38,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -66,7 +66,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -94,7 +94,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -122,7 +122,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -150,7 +150,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -178,7 +178,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -206,7 +206,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -234,7 +234,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -262,7 +262,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
@@ -290,7 +290,7 @@
 
                     <h2 class="block text-xl font-normal my-3">Brand</h2>
 
-                    <!-- Product Brand -->
+                    <!-- Product Model -->
 
                     <h2 class="block text-xl font-normal my-3">Model</h2>
 
