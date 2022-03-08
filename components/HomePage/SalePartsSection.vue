@@ -18,7 +18,7 @@
 
         <!-- Sale Parts Cards  -->
 
-        <div class="my-20 px-10 w-full">
+        <div class="my-20 px-20 w-full">
 
             <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-5 place-items-center">
 
