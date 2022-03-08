@@ -30,6 +30,12 @@
       <SalePartsSection />
     </div>
 
+    <!-- New Parts Section -->
+
+    <div>
+      <NewPartsSection />
+    </div>
+
   </div>
 
 </template>
@@ -39,8 +45,9 @@ import HeroSection from "../components/HomePage/HeroSection.vue";
 import SearchBar from "../components/HomePage/SearchBar.vue";
 import CategoriesSection from "../components/HomePage/CategoriesSection.vue";
 import SalePartsSection from "../components/HomePage/SalePartsSection.vue";
+import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection }
 }
 </script>
