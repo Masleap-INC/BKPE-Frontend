@@ -300,95 +300,141 @@
 
             <!-- Grid Container -->
 
-            <div class="lg:grid lg-grid-cols-2 h-full">
-
+            <div class="mx-20 pb-20 lg:grid lg:grid-cols-2">
                 <!-- Reviews Column -->
 
-                <div class="w-full">
+                <div class="block mt-10 lg:border-r-2 md:border-b-2 sm:border-b-2 border-white p-10 pt-5 overflow-y-scroll h-screen">
+                    <!-- Review -->
 
-                    <h2 class="reviews will appear here text-4xl text-white text center"></h2>
+                    <h2 v-for="review in reviews" :key="review" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
 
+                        <!-- Name & Rating block -->
+
+                        <span class="block mb-5">
+
+                            <span class="flex text-xl h-auto justify-between">
+                                <!-- Name -->
+
+                                <span class="inline-block text-xl font-bold align-top mr-5">{{review.name}}</span>
+
+                                <!-- Rating -->
+
+                                <span class="inline-block">
+                                    <!-- Rating value -->
+
+                                    <span
+                                        class="inline-block text-xl font-light align-top"
+                                    >Rating: {{review.rating}}</span>
+
+                                    <!-- Star icon -->
+
+                                    <span
+                                        class="inline-block h-7 w-7 justify-center items-center self-center"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="stroke-yellow-500 fill-yellow-500"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                            />
+                                        </svg>
+                                    </span>
+                                </span>
+                            </span>
+
+                        </span>
+
+
+                        <!-- Description -->
+
+                            <span class="block">
+                                <p>{{review.description}}</p>
+                            </span>
+
+                    </h2>
                 </div>
 
                 <!-- Write a Review Column -->
 
-                <div
-                    class="mx-20 p-5 bg-transparent border-4 border-white lg:w-1/2 md:w-2/3 sm:w-auto"
-                >
-                    <!-- Heading -->
+                <div class="block w-full">
+                    <div
+                        class="block mx-auto mt-10 p-5 bg-transparent border-4 border-white lg:w-5/6 md:w-2/3 sm:w-auto"
+                    >
+                        <!-- Heading -->
 
-                    <div class="w-full">
-                        <h2
-                            class="text-xl text-white text-center font-bold mx-auto py-5"
-                        >Write your Review</h2>
+                        <div class="w-full block">
+                            <h2
+                                class="text-xl text-white text-center font-bold mx-auto py-5"
+                            >Write your Review</h2>
+                        </div>
+
+                        <!-- Form -->
+
+                        <form action>
+                            <!-- Name label and input -->
+
+                            <div class="my-5">
+                                <label
+                                    for="name"
+                                    class="block text-lg text-white font-semibold mb-3"
+                                >Name</label>
+
+                                <input
+                                    id
+                                    type="text"
+                                    name="name"
+                                    placeholder="Type Your Name"
+                                    class="py-2 px-3 w-full rounded-md"
+                                    required
+                                />
+                            </div>
+
+                            <!-- Rating label and input -->
+
+                            <div class="my-5">
+                                <label
+                                    for="rating"
+                                    class="block text-lg text-white font-semibold mb-3"
+                                >Rate Product</label>
+
+                                <select id name="rating" class="p-2">
+                                    <option value="1">Poor</option>
+
+                                    <option value="2">Average</option>
+
+                                    <option value="3">Good</option>
+
+                                    <option value="4">Very Good</option>
+
+                                    <option value="5">Excellent</option>
+                                </select>
+                            </div>
+
+                            <!-- Description label and input -->
+
+                            <div class="my-5">
+                                <label
+                                    for="description"
+                                    class="block text-lg text-white font-semibold mb-3"
+                                >Description</label>
+
+                                <textarea
+                                    id
+                                    name="description"
+                                    cols="30"
+                                    rows="5"
+                                    class="py-2 px-3 w-full rounded-md"
+                                ></textarea>
+
+                                <!-- <input id="" type="text" name="name" placeholder="Type Your Name" class="py-2 px-3 w-full rounded-md" required> -->
+                            </div>
+                        </form>
                     </div>
-
-                    <!-- Form -->
-
-                    <form action>
-                        <!-- Name label and input -->
-
-                        <div class="my-5">
-                            <label
-                                for="name"
-                                class="block text-lg text-white font-semibold mb-3"
-                            >Name</label>
-
-                            <input
-                                id
-                                type="text"
-                                name="name"
-                                placeholder="Type Your Name"
-                                class="py-2 px-3 w-full rounded-md"
-                                required
-                            />
-                        </div>
-
-                        <!-- Rating label and input -->
-
-                        <div class="my-5">
-                            <label
-                                for="rating"
-                                class="block text-lg text-white font-semibold mb-3"
-                            >Rate Product</label>
-
-                            <select id name="rating" class="p-2">
-                                <option value="1">Poor</option>
-
-                                <option value="2">Average</option>
-
-                                <option value="3">Good</option>
-
-                                <option value="4">Very Good</option>
-
-                                <option value="5">Excellent</option>
-                            </select>
-                        </div>
-
-                        <!-- Description label and input -->
-
-                        <div class="my-5">
-                            <label
-                                for="description"
-                                class="block text-lg text-white font-semibold mb-3"
-                            >Description</label>
-
-                            <textarea
-                                id
-                                name="description"
-                                cols="30"
-                                rows="5"
-                                class="py-2 px-3 w-full rounded-md"
-                            ></textarea>
-
-                            <!-- <input id="" type="text" name="name" placeholder="Type Your Name" class="py-2 px-3 w-full rounded-md" required> -->
-                        </div>
-                    </form>
                 </div>
-                
             </div>
-
-
         </section>
     </div>
 </template>
@@ -413,6 +459,15 @@ export default {
                 { src: require('../assets/camaro-nation.jpg') },
                 { src: require('../assets/camaropedia.jpg') },
                 { src: require('../assets/demo-product-image.jpg') }
+            ],
+
+
+            reviews: [
+                {name: 'Alvi', rating: 5, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar'},
+                {name: 'Imam', rating: 4, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                {name: 'Oaphy', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet'},
+                {name: 'Sid', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum '},
+                {name: 'Omi', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum, ullamcorper mattis, pulvinar dapibus leo.Lorem '},
             ]
 
         }
