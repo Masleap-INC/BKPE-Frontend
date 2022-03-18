@@ -146,7 +146,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -172,7 +172,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -198,7 +198,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -224,7 +224,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -250,7 +250,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -452,13 +452,13 @@ export default {
             currentIndex: 0,
 
             images: [
-                { src: require('../assets/about-bg.jpg') },
-                { src: require('../assets/BLACK-KNIGHT-CUSTOMS.jpg') },
-                { src: require('../assets/BLACK-KNIGHT-PERFORMANCE-ENGINEERING.jpg') },
-                { src: require('../assets/camaro-matrix.jpg') },
-                { src: require('../assets/camaro-nation.jpg') },
-                { src: require('../assets/camaropedia.jpg') },
-                { src: require('../assets/demo-product-image.jpg') }
+                { src: require('../../assets/about-bg.jpg') },
+                { src: require('../../assets/BLACK-KNIGHT-CUSTOMS.jpg') },
+                { src: require('../../assets/BLACK-KNIGHT-PERFORMANCE-ENGINEERING.jpg') },
+                { src: require('../../assets/camaro-matrix.jpg') },
+                { src: require('../../assets/camaro-nation.jpg') },
+                { src: require('../../assets/camaropedia.jpg') },
+                { src: require('../../assets/demo-product-image.jpg') }
             ],
 
 
@@ -472,7 +472,11 @@ export default {
 
         }
 
-    }
+    },
+    created() {
+        console.log(this.$route.params.id)
+        
+    },
 
 
 

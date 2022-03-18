@@ -27,13 +27,13 @@
     <!-- Sale Parts Section  -->
 
     <div>
-      <ProductGrid types="sale"/>
+      <HomePageSalePartsSection />  
     </div>
 
     <!-- New Parts Section -->
 
     <div>
-      <ProductGrid />
+      <HomePageNewPartsSection />
     </div>
 
     <!-- About Section -->
