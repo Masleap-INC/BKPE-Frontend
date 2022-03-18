@@ -14,7 +14,7 @@
                     <div class="mx-auto">
                         <button
                             v-for="(image, index) in images"
-                            :key="image"
+                            :key="index"
                             @click="currentIndex = index"
                         >
                             <img :src="image.src" alt class="h-14 w-auto my-5 mx-2 inline-block" />
@@ -28,7 +28,7 @@
                     <h2 class="text-white">
                         <!-- Product Name -->
 
-                        <span class="block text-4xl font-bold mb-3">Product Name</span>
+                        <span class="block text-4xl font-bold mb-3">{{product.title}}</span>
 
                         <!-- Product Brand -->
 
@@ -46,12 +46,12 @@
 
                         <span class="block w-5/6 text-lg font-light mb-10">
                             <b class="text-xl font-bold">Description:</b>
-                            <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <br />{{product.description}}
                         </span>
 
                         <!-- Product Price -->
 
-                        <span class="block text-3xl font-bold mb-5">Price: $100</span>
+                        <span class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
 
                         <!-- Product Variant Type 1 -->
 
@@ -306,7 +306,7 @@
                 <div class="block mt-10 lg:border-r-2 md:border-b-2 sm:border-b-2 border-white p-10 pt-5 overflow-y-scroll h-screen">
                     <!-- Review -->
 
-                    <h2 v-for="review in reviews" :key="review" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
+                    <h2 v-for="(review,index) in reviews" :key="index" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
 
                         <!-- Name & Rating block -->
 
@@ -449,6 +449,8 @@ export default {
 
         return {
 
+            product:{},
+
             currentIndex: 0,
 
             images: [
@@ -473,9 +475,18 @@ export default {
         }
 
     },
-    created() {
-        console.log(this.$route.params.id)
+    async fetch() {
+        await this.getSingleProduct()
+    },
+    
+    methods: {
+        async getSingleProduct() {
+        const data = await this.$axios.$get(
+            `https://fakestoreapi.com/products/${this.$route.params.id}`
+        )
+        this.product = {...data}
         
+        },
     },
 
 
