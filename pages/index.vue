@@ -1,10 +1,12 @@
 <template>
   
-  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full pt-20">
 
-    <!-- page-background -->
+    <!-- Nav Bar -->
 
-    <!-- <img src="../assets/page-background.png" alt="" class=" object-cover fixed w-full h-full top-0 bottom-0 z-0 "> -->
+    <div>
+      <NavBar />
+    </div>
 
     <!-- Hero Section -->
 
@@ -74,8 +76,9 @@ import AboutSection from "../components/HomePage/AboutSection.vue";
 import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
 import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
 import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
+import NavBar from "../components/Misc/NavBar.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar }
 }
 </script>
