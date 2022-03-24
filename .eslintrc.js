@@ -17,5 +17,6 @@ module.exports = {
     }],
     'no-console': 'off',
     "no-new": 0,
+    "object-shorthand": 0,
   },
 }

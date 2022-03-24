@@ -112,6 +112,9 @@
                         <span class="block mt-10">
                             <button
                                 class="bg-white rounded-lg border-2 border-white px-3 py-2 text-2xl text-blue-700 text-center font-semibold hover:text-white hover:bg-transparent hover:ease-in duration-300"
+                                :disabled="getCart.find(el=>el.product.id == product.id)"
+                                @click="addToCart(product)"
+                            
                             >Add to Cart</button>
                         </span>
                     </h2>
@@ -440,9 +443,10 @@
 </template>
 
 <script>
-
+import { mapActions,mapGetters } from 'vuex'
 
 export default {
+    
 
     data() {
 
@@ -478,8 +482,13 @@ export default {
     async fetch() {
         await this.getSingleProduct()
     },
-    
+    computed:{
+        ...mapGetters({getCart:'cart/getCart'})
+    },
     methods: {
+         ...mapActions({
+            addToCartStore:'cart/addToCart'
+        }),
         async getSingleProduct() {
         const data = await this.$axios.$get(
             `https://fakestoreapi.com/products/${this.$route.params.id}`
@@ -487,6 +496,13 @@ export default {
         this.product = {...data}
         
         },
+
+        addToCart(product){
+            this.addToCartStore({
+                product:product,
+                quantity:1
+            })
+        }
     },
 
 
