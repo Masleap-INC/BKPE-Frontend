@@ -62,6 +62,12 @@
       <CamaroConnectionsSection />
     </div>
 
+    <!-- Footer -->
+
+    <div>
+      <Footer />
+    </div>
+
   </div>
 
 </template>
@@ -77,8 +83,9 @@ import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue"
 import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
 import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
 import NavBar from "../components/Misc/NavBar.vue";
+import Footer from "../components/Misc/Footer.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar }
+    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer }
 }
 </script>

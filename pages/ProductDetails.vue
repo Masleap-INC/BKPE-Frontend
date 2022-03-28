@@ -444,16 +444,24 @@
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+
+        <div>
+            <Footer />
+        </div>
+        
     </div>
 </template>
 
 <script>
 import NavBar from '../components/Misc/NavBar.vue'
+import Footer from '../components/Misc/Footer.vue';
 
 
 export default {
 
-    components: { NavBar },
+    components: { NavBar, Footer },
 
     data() {
         return {
