@@ -150,7 +150,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -176,7 +176,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -202,7 +202,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -228,7 +228,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -254,7 +254,7 @@
                         <div class="bg-white rounded-xl p-2">
                             <!-- Product Image  -->
 
-                            <img src="../assets/demo-product-image.jpg" alt />
+                            <img src="../../assets/demo-product-image.jpg" alt />
 
                             <!-- Product Title -->
 
@@ -456,13 +456,13 @@ export default {
         return {
             currentIndex: 0,
             images: [
-                { src: require("../assets/about-bg.jpg") },
-                { src: require("../assets/BLACK-KNIGHT-CUSTOMS.jpg") },
-                { src: require("../assets/BLACK-KNIGHT-PERFORMANCE-ENGINEERING.jpg") },
-                { src: require("../assets/camaro-matrix.jpg") },
-                { src: require("../assets/camaro-nation.jpg") },
-                { src: require("../assets/camaropedia.jpg") },
-                { src: require("../assets/demo-product-image.jpg") }
+                { src: require("../../assets/about-bg.jpg") },
+                { src: require("../../assets/BLACK-KNIGHT-CUSTOMS.jpg") },
+                { src: require("../../assets/BLACK-KNIGHT-PERFORMANCE-ENGINEERING.jpg") },
+                { src: require("../../assets/camaro-matrix.jpg") },
+                { src: require("../../assets/camaro-nation.jpg") },
+                { src: require("../../assets/camaropedia.jpg") },
+                { src: require("../../assets/demo-product-image.jpg") }
             ],
             reviews: [
                 { name: "Alvi", rating: 5, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar" },
