@@ -116,7 +116,7 @@
                         @click="ProfileDropDownToggle()"
                     >
                         <img
-                            src="../../assets/about-bg.jpg"
+                            src="../assets/about-bg.jpg"
                             alt
                             class="h-10 w-10 mt-5 rounded-full place-items-start"
                         />
@@ -280,7 +280,7 @@
 
                         <div class="px-3">
                             <img
-                                src="../../assets/about-bg.jpg"
+                                src="../assets/about-bg.jpg"
                                 alt
                                 class="h-28 w-28 rounded-full mx-auto self-center"
                             />

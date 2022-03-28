@@ -6,9 +6,7 @@
 
         <!-- Nav Bar -->
 
-        <div>
-            <NavBar />
-        </div>
+       
 
         <!-- Form -->
 
@@ -18,9 +16,6 @@
 
         <!-- Footer -->
 
-        <div>
-            <Footer />
-        </div>
 
     </div>
 
@@ -29,11 +24,9 @@
 
 <script>
 import UserRegisterForm from "../components/UserRegisterPage/UserRegisterForm.vue";
-import NavBar from "../components/Misc/NavBar.vue";
-import Footer from "../components/Misc/Footer.vue";
 
     export default {
-    components: { UserRegisterForm, NavBar, Footer }
+    components: { UserRegisterForm }
 }
 
 </script>

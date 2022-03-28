@@ -2,90 +2,83 @@
   
   <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full pt-20">
 
-    <!-- Nav Bar -->
-
-    <div>
-      <NavBar />
-    </div>
+  
 
     <!-- Hero Section -->
 
     <div>
-      <HeroSection />
+      <HomePageHeroSection />
     </div>
 
     <!-- Search bar -->
 
     <div>
-      <SearchBar />
+      <HomePageSearchBar />
     </div>
 
     <!-- Categories Section -->
 
     <div>
-      <CategoriesSection />
+      <HomePageCategoriesSection />
     </div>
 
     <!-- Sale Parts Section  -->
 
     <div>
-      <SalePartsSection />
+      <HomePageSalePartsSection />
     </div>
 
     <!-- New Parts Section -->
 
     <div>
-      <NewPartsSection />
+      <HomePageNewPartsSection />
     </div>
 
     <!-- About Section -->
 
     <div>
-      <AboutSection />
+      <HomePageAboutSection />
     </div>
 
     <!-- Why Buy From Us Section -->
 
     <div>
-      <WhyBuyFromUsSection />
+      <HomePageWhyBuyFromUsSection />
     </div>
 
     <!-- Associated Companies Section -->
 
     <div>
-      <AssociatedCompaniesSection />
+      <HomePageAssociatedCompaniesSection />
     </div>
 
     <!-- Camaro Connections Section -->
 
     <div>
-      <CamaroConnectionsSection />
+      <HomePageCamaroConnectionsSection />
     </div>
 
-    <!-- Footer -->
-
-    <div>
-      <Footer />
-    </div>
+  
+   
 
   </div>
 
 </template>
 
 <script>
-import HeroSection from "../components/HomePage/HeroSection.vue";
-import SearchBar from "../components/HomePage/SearchBar.vue";
-import CategoriesSection from "../components/HomePage/CategoriesSection.vue";
-import SalePartsSection from "../components/HomePage/SalePartsSection.vue";
-import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
-import AboutSection from "../components/HomePage/AboutSection.vue";
-import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
-import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
-import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
-import NavBar from "../components/Misc/NavBar.vue";
-import Footer from "../components/Misc/Footer.vue";
-export default {
-    name: "IndexPage",
-    components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer }
-}
+// import HeroSection from "../components/HomePage/HeroSection.vue";
+// import SearchBar from "../components/HomePage/SearchBar.vue";
+// import CategoriesSection from "../components/HomePage/CategoriesSection.vue";
+// import SalePartsSection from "../components/HomePage/SalePartsSection.vue";
+// import NewPartsSection from "../components/HomePage/NewPartsSection.vue";
+// import AboutSection from "../components/HomePage/AboutSection.vue";
+// import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
+// import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
+// import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
+// import NavBar from "../components/Misc/NavBar.vue";
+// import Footer from "../components/Misc/Footer.vue";
+// export default {
+//     name: "IndexPage",
+//     components: { HeroSection, SearchBar, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer }
+// }
 </script>

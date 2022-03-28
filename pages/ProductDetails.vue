@@ -3,10 +3,6 @@
 
         <!-- Nav Bar -->
 
-        <div>
-            <NavBar />
-        </div>
-
 
         <!-- Product Details Section -->
 
@@ -445,23 +441,16 @@
             </div>
         </section>
 
-        <!-- Footer -->
-
-        <div>
-            <Footer />
-        </div>
+        
         
     </div>
 </template>
 
 <script>
-import NavBar from '../components/Misc/NavBar.vue'
-import Footer from '../components/Misc/Footer.vue';
+
 
 
 export default {
-
-    components: { NavBar, Footer },
 
     data() {
         return {
