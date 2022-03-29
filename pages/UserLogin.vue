@@ -78,8 +78,9 @@
 </template>
 
 <script>
- 
+    
     export default {
+        layout: 'center',
         name:"UserLoginPage",
         // middleware:"authenticated",
         data() {

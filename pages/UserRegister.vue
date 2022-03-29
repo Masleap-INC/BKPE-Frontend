@@ -95,6 +95,7 @@
 
 <script>
  export default {
+   layout: 'center',
    name: "UserRegisterPage",
 //    middleware:'authenticated',
   data() {
