@@ -15,10 +15,12 @@
 </template>
 
 <script>
+
 import UserLoginForm from "../components/UserLoginPage/UserLoginForm.vue";
 
 
 export default {
+    layout:'center',
     components: { UserLoginForm  }
 }
 
