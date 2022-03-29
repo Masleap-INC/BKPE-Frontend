@@ -26,6 +26,7 @@
 import UserRegisterForm from "../components/UserRegisterPage/UserRegisterForm.vue";
 
     export default {
+        
     components: { UserRegisterForm }
 }
 
