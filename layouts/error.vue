@@ -35,9 +35,7 @@
 </template>
 
 <script>
-    export default {
-        layout:'center',
-    }
+   
 </script>
 
 <style scoped>
