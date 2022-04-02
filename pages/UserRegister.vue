@@ -95,8 +95,9 @@
 
 <script>
  export default {
-   layout: 'center',
    name: "UserRegisterPage",
+   layout: 'center',
+   
 //    middleware:'authenticated',
   data() {
     return {
@@ -116,7 +117,7 @@
       
       if(this.password === this.confirmPassword){
           
-        const data = await this.$axios.$post('http://localhost:4000/api/v1/register',
+        const data = await this.$axios.$post('http://127.0.0.1:8000/api/users/register/',
         { 
             name: this.name,
             email: this.email,
@@ -124,8 +125,8 @@
         });
         
         
-        if(data.success){
-            this.$auth.loginWith('local', { data: {email:this.email,password:this.password} })
+        if(data){
+            localStorage.setItem("token",data.token)
             await this.$router.push('/');
         }else{
             console.log(data.message)

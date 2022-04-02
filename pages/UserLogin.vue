@@ -34,7 +34,7 @@
 
                                     <label for="email" class="block text-xl text-white mb-5">Email</label>
 
-                                    <input v-model="login.email" type="email" name="email" placeholder="example@example.com" class="block w-full h-10 rounded-md px-5" required>
+                                    <input v-model="email" type="email" name="email" placeholder="example@example.com" class="block w-full h-10 rounded-md px-5" required>
 
                                 </div>
 
@@ -44,7 +44,7 @@
 
                                     <label for="password" class="block text-xl text-white mb-5">Password</label>
 
-                                    <input v-model="login.password" type="password" name="password" placeholder="Type your password here" class="block w-full h-10 rounded-md px-5" required>
+                                    <input v-model="password" type="password" name="password" placeholder="Type your password here" class="block w-full h-10 rounded-md px-5" required>
 
                                 </div>
 
@@ -78,31 +78,30 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
     
-    export default {
-        layout: 'center',
-        name:"UserLoginPage",
-        // middleware:"authenticated",
-        data() {
-            return {
-            login:{
-                email: '',
-                password: '',
-            }
-            }
-        },
-        methods: {
-            
-        async submit() {
-            try {
-                
-            const response = await this.$auth.loginWith('local', { data: this.login })
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
-            }
+export default {
+    name:"UserLoginPage",
+    layout: 'center',
+    
+    // middleware:"authenticated",
+    data() {
+        return {
+        email: '',
+        password: '',
+        }
+    },
+    methods: {
+        ...mapActions({
+        signIn:'auth/signIn'
+        }),
+        submit() {
+        const email = this.email
+        const password = this.password
+        const credential = {email,password}
+        this.signIn(credential)
         }
     }
+}
 
 </script>

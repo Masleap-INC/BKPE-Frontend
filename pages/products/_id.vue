@@ -28,18 +28,18 @@
                     <h2 class="text-white">
                         <!-- Product Name -->
 
-                        <span class="block text-4xl font-bold mb-3">{{product.title}}</span>
+                        <span class="block text-4xl font-bold mb-3">{{product.name}}</span>
 
                         <!-- Product Brand -->
 
                         <span class="block text-xl font-medium mb-2">
-                            <b>Brand:</b> Product Brand
+                            <b>Brand:</b> {{product.brand}}
                         </span>
 
                         <!-- Product Model -->
 
                         <span class="block text-xl font-normal mb-10">
-                            <b>Model:</b>Product Model
+                            <b>Model:</b> Product Model
                         </span>
 
                         <!-- Product Description -->
@@ -491,7 +491,7 @@ export default {
         }),
         async getSingleProduct() {
         const data = await this.$axios.$get(
-            `https://fakestoreapi.com/products/${this.$route.params.id}`
+            `http://127.0.0.1:8000/api/products/${this.$route.params.id}`
         )
         this.product = {...data}
         

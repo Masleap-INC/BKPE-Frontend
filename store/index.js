@@ -1,5 +1,6 @@
 import {Store} from 'vuex'
 import cart from './cart'
+import auth from './auth'
 
 
 new Store({
@@ -11,7 +12,8 @@ new Store({
      
     },
     modules: {
-     cart
+     cart,
+     auth
     },
     
 })
