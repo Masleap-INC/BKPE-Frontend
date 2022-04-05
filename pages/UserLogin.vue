@@ -96,9 +96,9 @@ export default {
         signIn:'auth/signIn'
         }),
         submit() {
-        const email = this.email
+        const username = this.email
         const password = this.password
-        const credential = {email,password}
+        const credential = {username,password}
         this.signIn(credential)
         }
     }

@@ -94,6 +94,8 @@
 
 
 <script>
+import { mapActions } from 'vuex'
+
  export default {
    name: "UserRegisterPage",
    layout: 'center',
@@ -112,7 +114,9 @@
   
   methods: {
    
-     
+    ...mapActions({
+        signIn:'auth/signIn'
+        }),
     async submit() {
       
       if(this.password === this.confirmPassword){
@@ -126,7 +130,8 @@
         
         
         if(data){
-            localStorage.setItem("token",data.token)
+            
+            this.signIn({username:this.email,password:this.password})
             await this.$router.push('/');
         }else{
             console.log(data.message)

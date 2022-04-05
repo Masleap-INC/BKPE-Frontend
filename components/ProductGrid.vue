@@ -31,8 +31,7 @@
             </NuxtLink>
         </div>
     </div>
-
-
+    
 </template>
 
 <script>
@@ -57,7 +56,7 @@ export default {
     methods: {
         async getProducts(){
             const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/')
-            console.log(data)
+        
             data.forEach(element => {
                 this.products.push(element)
             });

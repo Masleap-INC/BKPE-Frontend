@@ -1,8 +1,12 @@
 <template>
-    <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
-        <!-- Product Details Section -->
+    <div>
 
-        <section>
+    
+    
+    <div  class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
+        <!-- Product Details Section -->
+        <LoadingData v-if="$fetchState.pending" />
+        <section v-else>
             <div class="grid lg:grid-cols-2 py-10">
                 <!-- Column for Product Images -->
 
@@ -309,7 +313,7 @@
                 <div class="block mt-10 lg:border-r-2 md:border-b-2 sm:border-b-2 border-white p-10 pt-5 overflow-y-scroll h-screen">
                     <!-- Review -->
 
-                    <h2 v-for="(review,index) in reviews" :key="index" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
+                    <h2 v-for="(review,index) in product.reviews" :key="index" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
 
                         <!-- Name & Rating block -->
 
@@ -354,7 +358,7 @@
                         <!-- Description -->
 
                             <span class="block">
-                                <p>{{review.description}}</p>
+                                <p>{{review.comment}}</p>
                             </span>
 
                     </h2>
@@ -439,6 +443,7 @@
                 </div>
             </div>
         </section>
+    </div>
     </div>
 </template>
 

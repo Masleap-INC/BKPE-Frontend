@@ -53,6 +53,13 @@
                         <li class="inline-block p-2">
                             <NuxtLink to="/">Contact</NuxtLink>
                         </li>
+                         <li v-if="authenticated" class="inline-block p-2">
+                            <button @click="logout">Logout</button>
+                        </li>
+                        <li v-else  class="inline-block p-2">
+                            <NuxtLink to="/UserLogin">Login</NuxtLink>
+                        </li>
+                       
                     </ul>
 
                     <!-- Product Dropdown menu -->
@@ -107,9 +114,9 @@
 
                 <!-- User Account Panel -->
 
-                <div class="lg:inline-block md:hidden sm:hidden px-5 w-48">
+                <div  class="lg:inline-block md:hidden sm:hidden px-5 w-48">
                     <!-- Profile Image -->
-
+                    <div v-if="authenticated">
                     <button
                         class="inline-block mr-3"
                         type="button"
@@ -140,6 +147,7 @@
                     <!-- Profile Dropdown menu -->
 
                     <div
+                        
                         id="profile-dropdown"
                         :class="ProfileDropDownOpen ? 'block' : 'hidden'"
                         class="absolute p-3 z-10 bg-white text-black text-xl rounded-md"
@@ -147,7 +155,7 @@
                         <ul class>
                             <li
                                 class="text-2xl pt-1 pb-2 my-2 font-bold border-b-2 border-gray-400"
-                            >User Name</li>
+                            >{{user.name}}</li>
 
                             <li class="hover:bg-gray-200 my-2">
                                 <NuxtLink to="/">Account Settings</NuxtLink>
@@ -162,6 +170,14 @@
                             </li>
                         </ul>
                     </div>
+
+                    </div>
+                    <div   
+                        v-else
+                        class="h-10 w-10 mt-5 rounded-full place-items-start"
+                    >
+                    </div>
+                    
                 </div>
 
                 <!-- Hamburger Menu Button -->
@@ -196,7 +212,7 @@
                 >
                     <!-- User Profile -->
 
-                    <div class="grid grid-cols-2 col-span-2 py-5 border-b-2 border-white">
+                    <div v-if="authenticated" class="grid grid-cols-2 col-span-2 py-5 border-b-2 border-white">
                         <!-- user name column -->
 
                         <div>
@@ -372,12 +388,28 @@ export default {
     computed:{
     
         ...mapGetters({
-        getCart:'cart/getCart',
-        
+         getCart:'cart/getCart',
+         authenticated:'auth/authenticated',
+         user:'auth/user'
         }),
+
+        // ...mapActions({
+        //     fetchCartFromLocalstorage:'cart/fetchCartLocalstorage'
+        // }),
+      
     },
 
+    mounted(){
+        this.$store.dispatch("cart/fetchCartLocalstorage")
+    },
+ 
     methods: {
+
+        logout(){
+            localStorage.removeItem("accessToken")
+            this.$store.dispatch("auth/logout")
+           // this.$nuxt.refresh()
+        },
 
         ProductsDropDownToggle() {
             this.ProductsDropDownOpen = !this.ProductsDropDownOpen;
