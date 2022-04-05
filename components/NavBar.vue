@@ -88,7 +88,7 @@
                 <!-- Cart  -->
 
                 <div class="inline-block">
-                    <NuxtLink to="/UserLogin">
+                    <NuxtLink to="/MyCart">
                         <!-- Icon -->
 
                         <svg
