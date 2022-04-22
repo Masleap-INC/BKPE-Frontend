@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         async search(){
-            const data = await this.$axios.$get(`https://api.themoviedb.org/3/search/movie?api_key=deb2c54fcbf66ccc26589e6e460d474b&language=en-US&page=1&query=${this.searchKey}`)
+            const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/?keyword=${this.searchKey}`)
             console.log(data)
         }
         

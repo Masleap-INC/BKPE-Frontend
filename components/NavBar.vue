@@ -53,12 +53,10 @@
                         <li class="inline-block p-2">
                             <NuxtLink to="/">Contact</NuxtLink>
                         </li>
-                         <li v-if="authenticated" class="inline-block p-2">
+                         <!-- <li v-if="authenticated" class="inline-block p-2">
                             <button @click="logout">Logout</button>
-                        </li>
-                        <li v-else  class="inline-block p-2">
-                            <NuxtLink to="/UserLogin">Login</NuxtLink>
-                        </li>
+                        </li> -->
+                        
                        
                     </ul>
 
@@ -114,9 +112,12 @@
 
                 <!-- User Account Panel -->
 
-                <div  class="lg:inline-block md:hidden sm:hidden px-5 w-48">
+                
+
+                <div v-if="authenticated"  class="lg:inline-block md:hidden sm:hidden px-2 w-48">
+                  
                     <!-- Profile Image -->
-                    <div v-if="authenticated">
+                    <div >
                     <button
                         class="inline-block mr-3"
                         type="button"
@@ -168,16 +169,27 @@
                             <li class="hover:bg-gray-200 my-2">
                                 <NuxtLink to="/">Dream List</NuxtLink>
                             </li>
+                            <li  class="hover:bg-gray-200 my-2">
+                                <button @click="logout">Logout</button>
+                            </li>
                         </ul>
                     </div>
 
                     </div>
-                    <div   
-                        v-else
+                    <!-- <div   
+                        
                         class="h-10 w-10 mt-5 rounded-full place-items-start"
                     >
-                    </div>
+                    </div> -->
                     
+                </div>
+
+                <div v-else  :class="authenticated ? 'hidden':'' " class="lg:inline-block text-xl md:hidden sm:hidden  p-2">
+
+                    <NuxtLink to="/UserLogin">Login</NuxtLink>
+                    /
+                    <NuxtLink to="/UserRegister">Register</NuxtLink>
+
                 </div>
 
                 <!-- Hamburger Menu Button -->
@@ -210,6 +222,16 @@
                     :class="MobileMenuOpen ? '-translate-x duration-300' : ' translate-x-96 duration-300'"
                     class="absolute lg:hidden w-96 h-screen top-16 right-0 bg-gradient-to-r from-black to-blue-900 bg-opacity-90 float-right"
                 >
+
+
+                <div v-if="!authenticated"  class="block text-center text-xl  p-2 pt-5 ">
+
+                    <NuxtLink to="/UserLogin">Login</NuxtLink>
+                    /
+                    <NuxtLink to="/UserRegister">Register</NuxtLink>
+
+                </div>
+
                     <!-- User Profile -->
 
                     <div v-if="authenticated" class="grid grid-cols-2 col-span-2 py-5 border-b-2 border-white">
@@ -365,6 +387,12 @@
                                 <NuxtLink to="/">Contact</NuxtLink>
                             </li>
                         </ul>
+                    </div>
+
+                    <!-- Logout button -->
+
+                    <div v-if="authenticated"  class="w-fit mx-auto">
+                        <button  class="text-xl text-center text-white border-2 border-white py-3 px-5 hover:text-blue-600 hover:bg-white rounded-lg" @click="logout">Logout</button>
                     </div>
                 </div>
             </div>
