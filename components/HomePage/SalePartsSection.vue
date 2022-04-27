@@ -1,6 +1,6 @@
 <template>
 
-    <div class="py-20">
+    <div class="pt-20">
 
         <!-- Sale Parts Heading -->
 

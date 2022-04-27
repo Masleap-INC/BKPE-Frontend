@@ -1,6 +1,6 @@
 <template>
 
-    <div class="mt-20 bg-transparent">
+    <div class="mt-10 bg-transparent">
 
         <div class="lg:w-2/3 md:w-2/3 sm:w-5/6 mx-auto py-10">
 
