@@ -32,7 +32,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -60,7 +60,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -88,7 +88,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -116,7 +116,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -144,7 +144,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -172,7 +172,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -200,7 +200,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -228,7 +228,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -256,7 +256,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -284,7 +284,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
