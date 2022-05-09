@@ -8,11 +8,29 @@
             <NavBar />
         </div>
 
+        <!-- Search Bar -->
+
+        <div class="mt-20">
+            <SearchBar />
+        </div>
+
 
         <!-- Categories Section -->
 
-        <div class="mt-20">
+        <div class="">
             <CategoriesSection />
+        </div>
+
+        <!-- All Products Section -->
+
+        <div>
+            <AllProductsSection />
+        </div>
+
+        <!-- Footer -->
+
+        <div>
+            <Footer />
         </div>
 
     </div>
@@ -23,13 +41,13 @@
 
 import NavBar from "../components/Misc/NavBar.vue";
 import CategoriesSection from "../components/Misc/CategoriesSection.vue";
+import AllProductsSection from "../components/AllProductsPage/AllProductsSection.vue";
+import SearchBar from "../components/Misc/SearchBar.vue";
+import Footer from "../components/Misc/Footer.vue";
 
     export default {
 
-        components: {
-            NavBar,
-            CategoriesSection,
-        }
+        components: {NavBar, CategoriesSection, AllProductsSection, SearchBar, Footer}
     }
 
 </script>

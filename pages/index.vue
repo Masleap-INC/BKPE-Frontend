@@ -17,7 +17,7 @@
     <!-- Search bar -->
 
     <div>
-      <SearchBarNew />
+      <SearchBar />
     </div>
 
     <!-- Categories Section -->
@@ -83,9 +83,9 @@ import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompani
 import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
 import NavBar from "../components/Misc/NavBar.vue";
 import Footer from "../components/Misc/Footer.vue";
-import SearchBarNew from "../components/HomePage/SearchBarNew.vue";
+import SearchBar from "../components/Misc/SearchBar.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer, SearchBarNew }
+    components: { HeroSection, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer, SearchBar }
 }
 </script>
