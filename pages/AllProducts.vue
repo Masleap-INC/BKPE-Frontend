@@ -29,9 +29,7 @@
 
         <!-- Footer -->
 
-        <div>
-            <Footer />
-        </div>
+        
 
     </div>
 
@@ -39,11 +37,6 @@
 
 <script>
 
-// import NavBar from "../components/Misc/NavBar.vue";
-// import CategoriesSection from "../components/Misc/CategoriesSection.vue";
-// import AllProductsSection from "../components/AllProductsPage/AllProductsSection.vue";
-// import SearchBar from "../components/Misc/SearchBar.vue";
-// import Footer from "../components/Misc/Footer.vue";
 
   
 </script>
