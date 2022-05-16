@@ -1,6 +1,6 @@
 <template>
 
-    <div class="mt-20 bg-transparent">
+    <div class="my-10 bg-transparent">
 
         <div class="lg:w-2/3 md:w-2/3 sm:w-5/6 mx-auto py-10">
 
@@ -58,7 +58,7 @@
 
                 <div class="bg-white bg-cover rounded-xl">
 
-                    <img src="../../assets/camaro-nation.jpg" alt="" class="">
+                    <img src="../../assets/D.I.Y-MUSCLE-CAR-KITS.jpg" alt="" class="">
 
                     <div class="bg-white px-3 py-10 rounded-xl">
 

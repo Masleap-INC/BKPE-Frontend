@@ -4,7 +4,7 @@
 
         <div>
             <div
-                class="grid grid-cols-2 w-full  bg-black border-white border-y-2 mx-auto p-3"
+                class="grid grid-cols-2 w-full  bg-black border-white border-b-2 mx-auto p-3"
             >
                 <!-- Heading text  -->
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="py-20">
+    <div class="pt-20">
 
         <!-- Sale Parts Heading -->
 
@@ -24,7 +24,7 @@
 
                 <!-- Product 1 -->
 
-                <div class=" bg-white rounded-xl p-2 ">
+                <div class=" bg-white rounded-xl p-2">
 
                     <!-- Product Image  -->
 
@@ -32,7 +32,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">This is a way too bigger name</h2>
 
                     <!-- Product Brand -->
 
@@ -63,7 +63,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -94,7 +94,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -125,7 +125,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -156,7 +156,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -187,7 +187,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -218,7 +218,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -249,7 +249,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -280,7 +280,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
@@ -311,7 +311,7 @@
 
                     <!-- Product Title -->
 
-                    <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                    <h2 class="block text-blue-700 text-2xl font-bold my-3 text-ellipsis overflow-hidden w-fit h-8">Product Name</h2>
 
                     <!-- Product Brand -->
 
