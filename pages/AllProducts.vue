@@ -28,7 +28,7 @@
         </div>
 
         <!-- Footer -->
-
+        <Footer />
         
 
     </div>
@@ -37,6 +37,9 @@
 
 <script>
 
-
+export default {
+    layout:'center',
+  
+}
   
 </script>
