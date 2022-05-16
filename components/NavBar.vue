@@ -69,7 +69,7 @@
                     >
                         <ul class>
                             <li class="hover:bg-gray-200 my-2">
-                                <NuxtLink to="/">All Products</NuxtLink>
+                                <NuxtLink to="/AllProducts">All Products</NuxtLink>
                             </li>
 
                             <li class="hover:bg-gray-200 my-2">
