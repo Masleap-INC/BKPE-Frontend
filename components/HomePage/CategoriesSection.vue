@@ -4,7 +4,7 @@
 
         <div>
             <div
-                class="grid grid-cols-2 w-full  bg-black border-white border-y-2 mx-auto p-3"
+                class="grid grid-cols-2 w-full  bg-black border-white border-b-2 mx-auto p-3"
             >
                 <!-- Heading text  -->
 
@@ -52,37 +52,37 @@
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="block min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >1968 Parts</button>
                                 </NuxtLink>
 
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >1969 Parts</button>
                                 </NuxtLink>
 
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >Resto Parts</button>
                                 </NuxtLink>
 
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >NOS Parts</button>
                                 </NuxtLink>
 
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >Mod Parts</button>
                                 </NuxtLink>
 
                                 <NuxtLink to="/UserLogin">
                                     <button
                                         class="min-w-max border-2 border-white rounded-full text-white text-xl antialiased px-3 py-3 hover:bg-white hover:text-blue-700 hover:ease-in duration-300"
-                                    >1967 Parts</button>
+                                    >Used Parts</button>
                                 </NuxtLink>
                             </span>
                         </span>
@@ -257,28 +257,16 @@
 
 
 <script>
-
     export default {
-
         data () {
-
             return {
-
                 isOpen: false,
-
             }
-
         },
-
         methods: {
-
             toggle () {
                     this.isOpen = !this.isOpen
                 }
-
         }
-
-
     }
-
 </script>
