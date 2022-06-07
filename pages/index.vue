@@ -1,16 +1,16 @@
 <template>
   
-  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full pt-20 md:pt-14 sm:pt-14">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full">
 
     <!-- Nav Bar -->
 
-    <div>
-      <NavBar />
+    <div class="block">
+      <TopBar />
     </div>
 
     <!-- Hero Section -->
 
-    <div>
+    <div class="block">
       <HeroSection />
     </div>
 
@@ -22,21 +22,39 @@
 
     <!-- Categories Section -->
 
-    <div>
+    <!-- <div>
       <CategoriesSection />
-    </div>
+    </div> -->
 
     <!-- Sale Parts Section  -->
 
-    <div>
-      <SalePartsSection />
+    <div class="mt-10">
+
+      <div class="lg:grid lg:grid-cols-6 md:grid md-grid-cols-3 gap-5 w-full">
+
+        <div class="lg:col-span-2 md:col-span-6">
+          <CategoriesSection />
+        </div>
+
+
+        <div class="lg:col-span-4 md:col-span-6 w-full">
+
+          <SalePartsSection />
+
+          <NewPartsSection />
+
+        </div>
+
+      </div>
+
+      
     </div>
 
     <!-- New Parts Section -->
 
-    <div>
-      <NewPartsSection />
-    </div>
+    <!-- <div>
+      
+    </div> -->
 
     <!-- About Section -->
 
@@ -81,11 +99,11 @@ import AboutSection from "../components/HomePage/AboutSection.vue";
 import WhyBuyFromUsSection from "../components/HomePage/WhyBuyFromUsSection.vue";
 import AssociatedCompaniesSection from "../components/HomePage/AssociatedCompaniesSection.vue";
 import CamaroConnectionsSection from "../components/HomePage/CamaroConnectionsSection.vue";
-import NavBar from "../components/Misc/NavBar.vue";
 import Footer from "../components/Misc/Footer.vue";
 import SearchBar from "../components/Misc/SearchBar.vue";
+import TopBar from "../components/Misc/TopBar.vue";
 export default {
     name: "IndexPage",
-    components: { HeroSection, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, NavBar, Footer, SearchBar }
+    components: { HeroSection, CategoriesSection, SalePartsSection, NewPartsSection, AboutSection, WhyBuyFromUsSection, AssociatedCompaniesSection, CamaroConnectionsSection, Footer, SearchBar, TopBar }
 }
 </script>
