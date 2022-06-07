@@ -154,7 +154,7 @@
 
             <!-- Copyright -->
 
-            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">© 2007-2014 BLACK KNIGHT PERFORMANCE ENGINEERING, INC., ALL RIGHTS RESERVED</div>
+            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">COPYRIGHT © 2009-2012 BLACK KNIGHT PERFORMANCE PARTS, INC., ALL RIGHTS RESERVED.</div>
 
         </div>
 
