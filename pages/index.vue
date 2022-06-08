@@ -1,6 +1,6 @@
 <template>
   
-  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full pt-20 md:pt-14 sm:pt-14">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full">
 
   
 
@@ -18,21 +18,39 @@
 
     <!-- Categories Section -->
 
-    <div>
+    <!-- <div>
       <CategoriesSection />
-    </div>
+    </div> -->
 
     <!-- Sale Parts Section  -->
 
-    <div>
-      <HomePageSalePartsSection />
+    <div class="mt-10">
+
+      <div class="lg:grid lg:grid-cols-6 md:grid md-grid-cols-3 gap-5 w-full">
+
+        <div class="lg:col-span-2 md:col-span-6">
+          <CategoriesSection />
+        </div>
+
+
+        <div class="lg:col-span-4 md:col-span-6 w-full">
+
+          <HomePageSalePartsSection />
+
+          <HomePageNewPartsSection />
+
+        </div>
+
+      </div>
+
+      
     </div>
 
     <!-- New Parts Section -->
 
-    <div>
-      <HomePageNewPartsSection />
-    </div>
+    <!-- <div>
+      
+    </div> -->
 
     <!-- About Section -->
 

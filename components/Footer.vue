@@ -61,7 +61,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED CUSTOMER SERVICE?</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED A PARTS?</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED A PART?</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">REPORT A PROBLEM</NuxtLink></span>
 
@@ -136,11 +136,11 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT PERFORMANCE ENGINEERING, INC.</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT D.I.Y. MUSCLE CAR KITS,INC.</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BKPP: D.I.Y. MUSCLE CAR KITS</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT CUSTOMS, INC.</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO MATRIC</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO MATRIX</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO NATION</NuxtLink></span>
 
@@ -154,7 +154,7 @@
 
             <!-- Copyright -->
 
-            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">© 2007-2014 BLACK KNIGHT PERFORMANCE ENGINEERING, INC., ALL RIGHTS RESERVED</div>
+            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">COPYRIGHT © 2009-2012 BLACK KNIGHT PERFORMANCE PARTS, INC., ALL RIGHTS RESERVED.</div>
 
         </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full pt-20">
+    <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full pt-20">
         <!-- Nav Bar -->
 
         <div>
