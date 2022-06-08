@@ -15,7 +15,6 @@
     </div>
 
     <!-- Search bar -->
-    <!-- Search bar -->
 
     <div>
       <SearchBar />
