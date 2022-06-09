@@ -53,7 +53,7 @@
 
         <!-- Company Links Section -->
 
-        <div class="bg-black bg-opacity-80 backdrop-blur w-full mx-auto sm:px-10 py-5">
+        <div class="bg-black bg-opacity-90 backdrop-blur w-full mx-auto sm:px-10 py-5">
 
             <span class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-3 sm:grid-cols-1 gap-3  lg:w-2/3 md:w-5/6 sm:w-2/3  text-xl text-white mx-auto">
 

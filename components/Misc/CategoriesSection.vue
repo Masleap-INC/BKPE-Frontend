@@ -518,7 +518,7 @@
             <div class="">
 
                 <div
-                    :class="isOpen ? 'transform overflow-y-scroll top-0 left-0 translate-x-0 duration-300 fixed h-full bg-black bg-opacity-70 backdrop-blur' : ' transform top-0 left-0 overflow-y-scroll -translate-x-full duration-300 fixed h-full bg-black bg-opacity-70 backdrop-blur'">
+                    :class="isOpen ? 'transform overflow-y-scroll top-0 left-0 translate-x-0 duration-300 fixed h-full bg-black bg-opacity-90 backdrop-blur' : ' transform top-0 left-0 overflow-y-scroll -translate-x-full duration-300 fixed h-full bg-black bg-opacity-90 backdrop-blur'">
                     <div class="mb-10 py-10 min-h-min h-full w-full ">
 
                         <div class="text-white px-10 min-w-max max-w-min mx-auto">
