@@ -163,4 +163,9 @@
 
 
 </template>
+<script>
+export default {
+    name:"MiscFooter"
+}
+</script>
 

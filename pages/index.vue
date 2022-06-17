@@ -8,9 +8,10 @@
 
 
     
-    <!-- <div>
-      <NavBar />
-    </div> -->
+    <div>
+      <MiscTopBar />
+    </div>
+
     <!-- Hero Section -->
 
     <div>
@@ -23,22 +24,25 @@
       <HomePageSearchBar />
     </div>
 
-    <!-- Categories Section -->
+    <div class="mt-10">
 
-    <div>
-      <HomePageCategoriesSection />
-    </div>
+      <div class="lg:grid lg:grid-cols-6 md:grid md-grid-cols-3 gap-5 w-full">
 
-    <!-- Sale Parts Section  -->
+        <div class="lg:col-span-2 md:col-span-6">
+          <MiscCategoriesSection />
+        </div>
 
-    <div>
-      <HomePageSalePartsSection />  
-    </div>
 
-    <!-- New Parts Section -->
+        <div class="lg:col-span-4 md:col-span-6 w-full">
 
-    <div>
-      <HomePageNewPartsSection />
+          <HomePageSalePartsSection />
+
+          <HomePageNewPartsSection />
+
+        </div>
+
+      </div>
+
     </div>
 
     <!-- About Section -->
@@ -65,6 +69,10 @@
       <HomePageCamaroConnectionsSection />
     </div>
 
+    <div>
+      <MiscFooter />
+    </div>
+
 
   </div>
 
@@ -75,7 +83,7 @@
 <script>
 
 export default {
-    name: "IndexPage",
-
+  name: "IndexPage",
+  layout: "center"
 }
 </script>

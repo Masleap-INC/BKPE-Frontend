@@ -5,7 +5,7 @@
          <!-- Nav Bar -->
 
         <div>
-            <NavBar />
+            <MiscNavBar />
         </div>
 
         <!-- Search Bar -->
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Footer -->
-        <Footer />
+        <MiscFooter />
         
 
     </div>
