@@ -54,9 +54,8 @@ export default {
       
         },
 
-        async attempt({ commit},token){
-            
-            
+        async attempt({ commit },token){
+                     
             commit('SET_TOKEN',token)
            
             try {
