@@ -18,7 +18,7 @@
         <!-- Categories Section -->
 
         <div class="">
-            <HomePageCategoriesSection />
+            <MiscCategoriesSection />
         </div>
 
         <!-- All Products Section -->
