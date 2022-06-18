@@ -4,7 +4,8 @@ export default {
 
     state: () => ({
         token:null,
-        user:null
+        user:null,
+        loadingState: false
     }),
     getters:{
         authenticated(state){
@@ -12,12 +13,13 @@ export default {
                 return  true
             }else{
                 return false
-            }
-                
+            }     
         },
         user(state){
-            
             return state.user
+        },
+        loadingState:(state)=>{
+            return state.loadingState
         }
     },
     mutations: {
@@ -27,6 +29,9 @@ export default {
         SET_USER(state,user){
             state.user = user
 
+        },
+        SET_LOADING_STATE(state,bool){
+            state.loadingState = bool
         }
     },
     actions:{
@@ -39,11 +44,11 @@ export default {
             commit('SET_TOKEN',null)
             commit('SET_USER',null)
         },
-        async signIn(store,credentials){
+        async signIn({dispatch},credentials){
             
             const data = await this.$axios.$post('http://127.0.0.1:8000/api/users/login/', credentials)
             
-            store.dispatch('attempt',data.access)
+            dispatch('attempt',data.access)
            
             if(data){
                 localStorage.setItem("accessToken",data.access)
@@ -54,7 +59,7 @@ export default {
       
         },
 
-        async attempt({ commit },token){
+        async attempt({ commit, dispatch },token){
                      
             commit('SET_TOKEN',token)
            
@@ -67,13 +72,18 @@ export default {
                 })
                 
                 commit('SET_USER',data)
-
+                dispatch('loadingStateChange',false)
             }catch(e){
                 commit('SET_TOKEN',null)
                 commit('SET_USER',null)
+                dispatch('loadingStateChange',false)
                 console.log(e)
             }
+        },
+        loadingStateChange({commit},bool){
+            commit('SET_LOADING_STATE',bool)
         }
+        
     }
       
 }

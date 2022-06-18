@@ -232,17 +232,14 @@ export default {
         };
     },
 
-     computed:{
-    
-    ...mapGetters({
-      getCart:'cart/getCart',
-      
+    computed:{
+        ...mapGetters({
+        getCart:'cart/getCart',
     }),
     
   },
 
-    mounted(){
-        
+    mounted(){  
         this.$store.dispatch("cart/fetchCartLocalstorage");
         // this.cartItems = [...this.getCart]
     },

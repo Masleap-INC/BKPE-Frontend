@@ -1,6 +1,8 @@
 <template>
-  <div class="loading">
-    <span></span>
+  <div>
+    <div class="loading">
+      <span></span>
+    </div>
   </div>
 </template>
 

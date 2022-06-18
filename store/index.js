@@ -1,6 +1,7 @@
 import {Store} from 'vuex'
 import cart from './cart'
 import auth from './auth'
+import loading from './loading'
 
 
 new Store({
@@ -8,12 +9,12 @@ new Store({
     state: () => ({
       
     }),
-    mutations: {
-     
-    },
     modules: {
      cart,
-     auth
-    },
+     auth,
+     loading
+    }
+    
+
     
 })
