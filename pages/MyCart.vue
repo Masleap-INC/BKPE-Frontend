@@ -23,7 +23,7 @@
         <!-- Cart Items and Total -->
 
         <div
-            class="text-white px-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 sm:px-5 my-10 "
+            class="text-white px-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-20 sm:px-5 my-10 "
         >
             <!-- Cart Items -->
 

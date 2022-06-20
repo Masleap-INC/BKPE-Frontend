@@ -2,7 +2,7 @@
   <div class="text-white">
     <!-- Heading -->
 
-    <div class="block w-5/6 py-2 border-b-4 border-white">
+    <div class="block w-full px-5 py-2 border-b-4 border-white">
       <h2 class>
         <span class="block font-bold text-left text-2xl w-3/6"
           >Items</span
@@ -15,7 +15,7 @@
     <!-- Items -->
 
     <div v-for="item in cartItems" :key="item.id" class="py-5">
-      <div class="block w-5/6 py-2 border-b-2 border-white">
+      <div class="block w-full px-5 py-2 border-b-2 border-white">
         <h2 class="">
           <!-- Product Details -->
 
@@ -31,7 +31,7 @@
             <span class="inline-block">
               <!-- Product Name -->
 
-              <span class="block mb-1 font-medium">{{ item.name }}</span>
+              <span class="block mb-1 font-medium text-ellipsis overflow-hidden h-3">{{ item.name }}</span>
 
               <!-- Product Brand -->
 
