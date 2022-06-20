@@ -3,7 +3,6 @@
 
     
     
-    <div  class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
         <!-- Product Details Section -->
         <LoadingData v-if="$fetchState.pending" />
         <section v-else>
@@ -444,7 +443,6 @@
             </div>
         </section>
     </div>
-</div>
 </template>
 
 <script>
