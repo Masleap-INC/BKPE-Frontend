@@ -31,7 +31,7 @@
             <span class="inline-block">
               <!-- Product Name -->
 
-              <span class="block mb-1 font-medium text-ellipsis overflow-hidden h-3">{{ item.name }}</span>
+              <span class="block mb-1 font-medium text-ellipsis overflow-hidden h-5">{{ item.name }}</span>
 
               <!-- Product Brand -->
 

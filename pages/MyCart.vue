@@ -64,7 +64,7 @@
 
                     <div class="w-fit mx-auto">
 
-                        <NuxtLink to="/" > <button class="mt-10 bg-white px-10 py-2 text-xl text-black border-2 border-white hover:text-white hover:bg-transparent duration-300">Cheakout</button></NuxtLink>
+                        <NuxtLink to="/" > <button class="mt-10 bg-white px-10 py-2 text-xl text-black border-2 border-white hover:text-white hover:bg-transparent duration-300">Checkout</button></NuxtLink>
 
                     </div>
 
