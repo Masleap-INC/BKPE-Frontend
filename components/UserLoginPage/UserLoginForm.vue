@@ -4,7 +4,7 @@
 
         
 
-        <div class=" bg-black bg-inherit bg-cover h-full w-full py-48 relative">
+        <div class=" bg-black bg-inherit bg-cover h-full w-full py-20 relative">
 
             
 
