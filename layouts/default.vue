@@ -1,9 +1,9 @@
 <template>
 
-  <div class="pt-20 md:pt-10 sm:pt-10 bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
     <LoadingData v-if="loadingState" />
     <div v-else>
-      <MiscNavBar />
+      <MiscTopBar />
       <Nuxt />
       <MiscFooter />
     </div>

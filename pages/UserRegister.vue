@@ -1,7 +1,5 @@
 <template>
     <div>
-        <img src="../assets/page-background.png" alt="" class=" object-cover fixed w-full h-full top-0 bottom-0 z-0 ">
-
         <div>
             <section>
                 <div class=" bg-black bg-inherit bg-cover h-full w-full py-48 relative">
@@ -98,7 +96,6 @@ import { mapActions } from 'vuex'
 
  export default {
    name: "UserRegisterPage",
-   layout: 'center',
    
 //    middleware:'authenticated',
   data() {

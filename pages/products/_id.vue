@@ -3,7 +3,7 @@
 
     
     
-    <div  class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
+    <div>
         <!-- Product Details Section -->
         <LoadingData v-if="$fetchState.pending" />
         <section v-else>
@@ -451,7 +451,6 @@
 import { mapActions,mapGetters } from 'vuex'
 
 export default {
-
     data() {
         return {
 
