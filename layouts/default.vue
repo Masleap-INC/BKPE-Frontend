@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-[url('~/assets/page-background.png')] bg-fixed h-full w-full">
+  <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full">
     <LoadingData v-if="loadingState" />
     <div v-else>
       <MiscTopBar />

@@ -1,8 +1,5 @@
 <template>
-    <div>
-
-    
-    
+   
     <div>
         <!-- Product Details Section -->
         <LoadingData v-if="$fetchState.pending" />
@@ -444,7 +441,6 @@
             </div>
         </section>
     </div>
-</div>
 </template>
 
 <script>

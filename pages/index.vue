@@ -61,11 +61,7 @@
       <div>
         <HomePageCamaroConnectionsSection />
       </div>
-
-      <div>
-        <MiscFooter />
-      </div>
-
+      
     </div>
 
 
