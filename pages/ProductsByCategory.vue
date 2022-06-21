@@ -8,6 +8,12 @@
       <TopBar />
     </div>
 
+    <!-- Back button -->
+
+    <div class="block mt-10 mb-5">
+        <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+    </div>
+
     <!-- SearchBar -->
 
     <div class="mt-10">
@@ -37,6 +43,12 @@ import TopBar from '../components/Misc/TopBar.vue'
 import CategoriesSection from '../components/Misc/CategoriesSection.vue'
 
 export default {
-  components: { SearchBar, ProductsSection, TopBar, CategoriesSection },
+    components: { SearchBar, ProductsSection, TopBar, CategoriesSection },
+
+    methods: {
+        goBack() {
+            this.$router.back();
+        }
+    },
 }
 </script>
