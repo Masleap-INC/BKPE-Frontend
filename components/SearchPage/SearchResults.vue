@@ -1,22 +1,18 @@
 <template>
 
-  <div class="px-10 w-full">
+    <div class="px-10">
 
-    <!-- Heading -->
+        <!-- Heading -->
 
-    <div>
-      <h2 class="block w-full text-3xl text-white font-bold border-b-white border-b-4 pb-5 mb-5">Products</h2>
-    </div>
+        <div>
+            <h2 class=" block text-white text-3xl font-bold w-full border-b-4 border-b-white pt-10 pb-5">Search Results</h2>
+        </div>
 
-    <!-- No Results -->
+        <!-- Search Results  -->
 
-    <div :class="'hidden'" class="w-fit mx-auto p-10 border-2 border-white my-10">
-      <h2 class="block text-center text-4xl text-white font-medium  mb-5">No Results Found !</h2>
-    </div>
+        <div class="pt-10 pb-20">
 
-    <!-- Product List -->
-    
-    <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
+            <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
 
                 <!-- Product 1 -->
 
@@ -263,7 +259,9 @@
 
             </div>
 
-  </div>
 
+        </div>
+
+    </div>
 
 </template>
