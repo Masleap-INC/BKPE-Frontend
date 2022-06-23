@@ -19,11 +19,13 @@
 
                 <!-- Product Price -->
 
-                <h2  class="block my-1 text-xl text-gray-500 font-light" :class="(types == 'sale')?'line-through':''">${{product.price}}</h2>
+                <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.price}}</h2>
 
                 <!-- Sale Price -->
 
-                <h2 v-if="types == 'sale'" class="block text-red-700 my-1 text-xl font-bold"><b>Sale Price:</b> ${{product.price}}</h2>
+                <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"> ${{product.salePrice}}</h2>
+                <h2 v-else class="block text-red-700 my-1 text-xl font-bold">${{product.price}}</h2>
+
             </NuxtLink>
         </div>
     </div>
@@ -50,9 +52,11 @@ export default {
     },
     methods: {
         async getProducts(){
+            // const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/'+this.types+'/')
             const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/')
+            console.log(data.products)
         
-            data.forEach(element => {
+            data.products.forEach(element => {
                 this.products.push(element)
             });
         }

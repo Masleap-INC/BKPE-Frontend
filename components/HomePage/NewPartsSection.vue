@@ -20,7 +20,7 @@
 
         <div class="my-20 px-20 w-full">
 
-            <ProductGrid />            
+            <ProductGrid types="newProducts" />            
 
         </div>
 

@@ -13,7 +13,7 @@
 
                 <div class="my-10 w-fit mx-auto">
 
-                    <button class="bg-none rounded-full border-2 px-7 py-2 mx-auto hover:bg-white hover:text-blue-600 hover:duration-300 ">SHOW ME THE PARTS</button>
+                    <button class="bg-none rounded-full border-2 px-7 py-2 mx-auto hover:bg-white hover:text-blue-600 hover:duration-300 " @click="getFilteredProduct" >SHOW ME THE PARTS</button>
 
                 </div>
 
@@ -31,7 +31,7 @@
 
                         <span class="mr-5">
 
-                            <input id="year-1967" class="sr-only peer" type="radio" name="year" value="1967" checked>
+                            <input id="year-1967" class="sr-only peer" type="radio" name="year" value="1967" checked @change="onChangeYear($event)" >
 
                             <label for="year-1967" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
 
@@ -41,9 +41,9 @@
 
                         <span class="mr-5">
 
-                            <input id="year-1968" class="sr-only peer" type="radio" name="year" value="1967">
+                            <input id="year-1968" class="sr-only peer" type="radio" name="year" value="1968" @change="onChangeYear($event)" >
 
-                            <label for="year-1968" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
+                            <label for="year-1968" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1968</label>
 
                         </span>
 
@@ -51,9 +51,9 @@
 
                         <span>
 
-                            <input id="year-1969" class="sr-only peer" type="radio" name="year" value="1967">
+                            <input id="year-1969" class="sr-only peer" type="radio" name="year" value="1969" @change="onChangeYear($event)" >
 
-                            <label for="year-1969" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
+                            <label for="year-1969" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1969</label>
 
                         </span>
 
@@ -81,7 +81,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value="restoration" checked>
+                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value="RESTORATION" checked @change="onChangeType($event)">
 
                             <label for="part-restoration" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -91,7 +91,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value="moderization">
+                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value="moderization" @change="onChangeType($event)">
 
                             <label for="part-moderization" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -107,7 +107,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value="nos">
+                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value="nos" @change="onChangeType($event)">
 
                             <label for="part-nos" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -117,7 +117,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-used" class="sr-only peer" type="radio" name="part" value="nos">
+                            <input id="part-used" class="sr-only peer" type="radio" name="part" value="used" @change="onChangeType($event)">
 
                             <label for="part-used" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 
@@ -143,341 +143,11 @@
 
                         <!-- Category 1 -->
 
-                        <span class="block mb-3">
+                        <span class="block mb-3" v-for="(ctg,idx) in categories" :key="idx">
 
-                            <input id="category-1" class=" peer" type="radio" name="category" value="TURN-KEY MUSCLE CARS" checked>
+                            <input :id="idx" class=" peer" type="radio" name="category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
 
-                            <label for="category-1" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TURN-KEY MUSCLE CARS</label>
-
-                        </span>
-
-
-                        <!-- Category 2 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-2" class=" peer" type="radio" name="category" value="D.I.Y. MUSCLE CAR KIT">
-
-                            <label for="category-2" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-
-                        </span>
-
-
-                        <!-- Category 3 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-3" class=" peer" type="radio" name="category" value="BODY COMPONENTS">
-
-                            <label for="category-3" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BODY COMPONENTS</label>
-
-                        </span>
-
-
-                        <!-- Category 4 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-4" class=" peer" type="radio" name="category" value="BODY SHELLS">
-
-                            <label for="category-4" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BODY SHELLS</label>
-
-                        </span>
-
-
-                        <!-- Category 5 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-5" class=" peer" type="radio" name="category" value="BRAKES">
-
-                            <label for="category-5" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BRAKES</label>
-
-                        </span>
-
-
-                        <!-- Category 6 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-6" class=" peer" type="radio" name="category" value="CHASSIS & SUSPENSION">
-
-                            <label for="category-6" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CHASSIS & SUSPENSION</label>
-
-                        </span>
-
-
-                        <!-- Category 7 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-7" class=" peer" type="radio" name="category" value="CHEMICALS">
-
-                            <label for="category-7" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CHEMICALS</label>
-
-                        </span>
-
-
-                        <!-- Category 8 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-8" class=" peer" type="radio" name="category" value="CONVERTIBLE COMPONENTS">
-
-                            <label for="category-8" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CONVERTIBLE COMPONENTS</label>
-
-                        </span>
-
-
-                        <!-- Category 9 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-9" class=" peer" type="radio" name="category" value="COOLING SYSTEM">
-
-                            <label for="category-9" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">COOLING SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 10 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-10" class=" peer" type="radio" name="category" value="DRIVESHAFTS AND U-JOINTS">
-
-                            <label for="category-10" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">DRIVESHAFTS AND U-JOINTS</label>
-
-                        </span>
-
-
-                        <!-- Category 11 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-11" class=" peer" type="radio" name="category" value="ELECTRICAL SYSTEM">
-
-                            <label for="category-11" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ELECTRICAL SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 12 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-12" class=" peer" type="radio" name="category" value="ENGINES">
-
-                            <label for="category-12" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENGINES</label>
-
-                        </span>
-
-
-                        <!-- Category 13 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-13" class=" peer" type="radio" name="category" value="ENGINE COMPARTMENT">
-
-                            <label for="category-13" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENGINE COMPARTMENT</label>
-
-                        </span>
-
-
-                        <!-- Category 14 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-14" class=" peer" type="radio" name="category" value="ENTERTAINMENT SYSTEM">
-
-                            <label for="category-14" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENTERTAINMENT SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 15 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-15" class=" peer" type="radio" name="category" value="EXHAUST SYSTEM">
-
-                            <label for="category-15" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">EXHAUST SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 16 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-16" class=" peer" type="radio" name="category" value="EXTERIOR">
-
-                            <label for="category-16" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">EXTERIOR</label>
-
-                        </span>
-
-
-                        <!-- Category 17 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-17" class=" peer" type="radio" name="category" value="FUEL SYSTEM">
-
-                            <label for="category-17" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">FUEL SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 18 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-18" class=" peer" type="radio" name="category" value="HVAC SYSTEM">
-
-                            <label for="category-18" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">HVAC SYSTEM</label>
-
-                        </span>
-
-
-                        <!-- Category 19 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-19" class=" peer" type="radio" name="category" value="INTERIOR">
-
-                            <label for="category-19" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">INTERIOR</label>
-
-                        </span>
-
-
-                        <!-- Category 20 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-20" class=" peer" type="radio" name="category" value="LIGHTS">
-
-                            <label for="category-20" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">LIGHTS</label>
-
-                        </span>
-
-
-                        <!-- Category 21 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-21" class=" peer" type="radio" name="category" value="LITERATURE">
-
-                            <label for="category-21" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">LITERATURE</label>
-
-                        </span>
-
-
-                        <!-- Category 22 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-22" class=" peer" type="radio" name="category" value="MARCATIONS">
-
-                            <label for="category-22" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MARCATIONS</label>
-
-                        </span>
-
-
-                        <!-- Category 23 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-23" class=" peer" type="radio" name="category" value="OPTIONS">
-
-                            <label for="category-23" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">OPTIONS</label>
-
-                        </span>
-
-
-                        <!-- Category 24 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-24" class=" peer" type="radio" name="category" value="RALLY SPORT COMPONENTS">
-
-                            <label for="category-24" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RALLY SPORT COMPONENTS</label>
-
-                        </span>
-
-
-                        <!-- Category 25 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-25" class=" peer" type="radio" name="category" value="REAR ENDS">
-
-                            <label for="category-25" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">REAR ENDS</label>
-
-                        </span>
-
-
-                        <!-- Category 26 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-26" class=" peer" type="radio" name="category" value="DIFFERENTIALS">
-
-                            <label for="category-26" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">DIFFERENTIALS</label>
-
-                        </span>
-
-
-                        <!-- Category 27 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-27" class=" peer" type="radio" name="category" value="STEERING">
-
-                            <label for="category-27" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">STEERING</label>
-
-                        </span>
-
-
-                        <!-- Category 28 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-28" class=" peer" type="radio" name="category" value="TRANSMISSIONS-AUTOMATIC">
-
-                            <label for="category-28" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRANSMISSIONS-AUTOMATIC</label>
-
-                        </span>
-
-
-                        <!-- Category 29 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-29" class=" peer" type="radio" name="category" value="TRANSMISSIONS-MANUAL">
-
-                            <label for="category-29" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRANSMISSIONS-MANUAL</label>
-
-                        </span>
-
-
-                        <!-- Category 30 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-30" class=" peer" type="radio" name="category" value="TRUNK">
-
-                            <label for="category-30" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRUNK</label>
-
-                        </span>
-
-
-                        <!-- Category 31 -->
-
-                        <span class="block mb-3">
-
-                            <input id="category-31" class=" peer" type="radio" name="category" value="WHEELS & TIRES">
-
-                            <label for="category-31" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">WHEELS & TIRES</label>
+                            <label :for="idx" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ctg.name}}</label>
 
                         </span>
 
@@ -539,7 +209,7 @@
 
                                 <div class="block float-left mb-10 w-fit mx-auto">
 
-                                    <button class="bg-none rounded-full border-2 px-7 py-2 mx-auto ">SHOW ME THE PARTS</button>
+                                    <button  class="bg-none rounded-full border-2 px-7 py-2 mx-auto " @click="getFilteredProduct" >SHOW ME THE PARTS</button>
 
                                 </div>
 
@@ -557,7 +227,7 @@
 
                                         <span class="mr-5">
 
-                                            <input id="year-1967-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967" checked>
+                                            <input id="year-1967-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967" checked @change="onChangeYear($event)">
 
                                             <label for="year-1967-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
 
@@ -567,9 +237,9 @@
 
                                         <span class="mr-5">
 
-                                            <input id="year-1968-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967">
+                                            <input id="year-1968-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1968" @change="onChangeYear($event)">
 
-                                            <label for="year-1968-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
+                                            <label for="year-1968-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1968</label>
 
                                         </span>
 
@@ -577,9 +247,9 @@
 
                                         <span>
 
-                                            <input id="year-1969-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967">
+                                            <input id="year-1969-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1969" @change="onChangeYear($event)">
 
-                                            <label for="year-1969-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
+                                            <label for="year-1969-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1969</label>
 
                                         </span>
 
@@ -607,7 +277,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="restoration" checked>
+                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="restoration" checked @change="onChangeCategory($event)">
 
                                             <label for="part-restoration-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -617,7 +287,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="moderization">
+                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="moderization" @change="onChangeType($event)">
 
                                             <label for="part-moderization-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -633,7 +303,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="nos">
+                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="nos" @change="onChangeType($event)">
 
                                             <label for="part-nos-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -643,7 +313,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="nos">
+                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="used" @change="onChangeType($event)">
 
                                             <label for="part-used-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 
@@ -667,343 +337,13 @@
 
                                     <div class="w-fit">
 
-                                        <!-- Category 1 -->
+                                        <!-- Categories -->
 
-                                        <span class="block mb-3">
+                                        <span class="block mb-3" v-for="(ctg,idx) in categories" :key="idx">
 
-                                            <input id="category-1-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="TURN-KEY MUSCLE CARS" checked>
+                                            <input :id="idx" class=" peer" type="radio" name="category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
 
-                                            <label for="category-1-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600">TURN-KEY MUSCLE CARS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 2 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-2-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-
-                                            <label for="category-2-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-
-                                        </span>
-
-
-                                        <!-- Category 3 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-3-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="BODY COMPONENTS">
-
-                                            <label for="category-3-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BODY COMPONENTS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 4 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-4-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="BODY SHELLS">
-
-                                            <label for="category-4-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BODY SHELLS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 5 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-5-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="BRAKES">
-
-                                            <label for="category-5-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">BRAKES</label>
-
-                                        </span>
-
-
-                                        <!-- Category 6 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-6-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="CHASSIS & SUSPENSION">
-
-                                            <label for="category-6-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CHASSIS & SUSPENSION</label>
-
-                                        </span>
-
-
-                                        <!-- Category 7 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-7-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="CHEMICALS">
-
-                                            <label for="category-7-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CHEMICALS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 8 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-8-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="CONVERTIBLE COMPONENTS">
-
-                                            <label for="category-8-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">CONVERTIBLE COMPONENTS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 9 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-9-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="COOLING SYSTEM">
-
-                                            <label for="category-9-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">COOLING SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 10 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-10-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="DRIVESHAFTS AND U-JOINTS">
-
-                                            <label for="category-10-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">DRIVESHAFTS AND U-JOINTS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 11 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-11-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="ELECTRICAL SYSTEM">
-
-                                            <label for="category-11-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ELECTRICAL SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 12 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-12-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="ENGINES">
-
-                                            <label for="category-12-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENGINES</label>
-
-                                        </span>
-
-
-                                        <!-- Category 13 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-13-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="ENGINE COMPARTMENT">
-
-                                            <label for="category-13-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENGINE COMPARTMENT</label>
-
-                                        </span>
-
-
-                                        <!-- Category 14 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-14-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="ENTERTAINMENT SYSTEM">
-
-                                            <label for="category-14-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">ENTERTAINMENT SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 15 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-15-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="EXHAUST SYSTEM">
-
-                                            <label for="category-15-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">EXHAUST SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 16 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-16-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="EXTERIOR">
-
-                                            <label for="category-16-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">EXTERIOR</label>
-
-                                        </span>
-
-
-                                        <!-- Category 17 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-17-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="FUEL SYSTEM">
-
-                                            <label for="category-17-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">FUEL SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 18 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-18-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="HVAC SYSTEM">
-
-                                            <label for="category-18-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">HVAC SYSTEM</label>
-
-                                        </span>
-
-
-                                        <!-- Category 19 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-19-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="INTERIOR">
-
-                                            <label for="category-19-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">INTERIOR</label>
-
-                                        </span>
-
-
-                                        <!-- Category 20 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-20-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="LIGHTS">
-
-                                            <label for="category-20-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">LIGHTS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 21 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-21-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="LITERATURE">
-
-                                            <label for="category-21-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">LITERATURE</label>
-
-                                        </span>
-
-
-                                        <!-- Category 22 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-22-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="MARCATIONS">
-
-                                            <label for="category-22-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MARCATIONS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 23 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-23-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="OPTIONS">
-
-                                            <label for="category-23-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">OPTIONS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 24 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-24-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="RALLY SPORT COMPONENTS">
-
-                                            <label for="category-24-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RALLY SPORT COMPONENTS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 25 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-25-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="REAR ENDS">
-
-                                            <label for="category-25-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">REAR ENDS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 26 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-26-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="DIFFERENTIALS">
-
-                                            <label for="category-26-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">DIFFERENTIALS</label>
-
-                                        </span>
-
-
-                                        <!-- Category 27 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-27-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="STEERING">
-
-                                            <label for="category-27-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">STEERING</label>
-
-                                        </span>
-
-
-                                        <!-- Category 28 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-28-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="TRANSMISSIONS-AUTOMATIC">
-
-                                            <label for="category-28-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRANSMISSIONS-AUTOMATIC</label>
-
-                                        </span>
-
-
-                                        <!-- Category 29 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-29-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="TRANSMISSIONS-MANUAL">
-
-                                            <label for="category-29-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRANSMISSIONS-MANUAL</label>
-
-                                        </span>
-
-
-                                        <!-- Category 30 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-30-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="TRUNK">
-
-                                            <label for="category-30-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">TRUNK</label>
-
-                                        </span>
-
-
-                                        <!-- Category 31 -->
-
-                                        <span class="block mb-3">
-
-                                            <input id="category-31-mobile-menu" class=" peer" type="radio" name="category-mobile-menu" value="WHEELS & TIRES">
-
-                                            <label for="category-31-mobile-menu" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">WHEELS & TIRES</label>
+                                            <label :for="idx" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ctg.name}}</label>
 
                                         </span>
 
@@ -1037,9 +377,16 @@ export default {
         return {
 
             isOpen: false,
+            filters:{year: '1967',type: 'RESTORATION',category: 0,},
+            categories:[],
+            id:null
+           
 
         }
 
+    },
+    async fetch() {
+        await this.getCategories()
     },
 
     // beforeMount() {
@@ -1058,10 +405,30 @@ export default {
 
     // },
 
-
+    
 
     methods: {
+        async getCategories(){
+            const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/categories/')           
+            this.categories = {...data}
 
+        },
+        onChangeYear(event) {
+            this.filters.year = event.target.value;
+
+        },
+        onChangeType(event) {
+            this.filters.type = event.target.value;
+
+        },
+        onChangeCategory(event) {
+            this.filters.category = event.target.value;
+            
+        },
+        getFilteredProduct() {
+            this.$store.dispatch('products/getProducts',this.filters)
+            this.$router.push('/ProductsByCategory');
+        },
         // SideBarDeterminer() {
 
         //     if (window.outerWidth < 768) {

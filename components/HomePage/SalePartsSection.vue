@@ -21,7 +21,7 @@
 
         <div class="my-20 px-20 w-full">
 
-            <ProductGrid types="sale"/>
+            <ProductGrid types="onsale"/>
 
         </div>
 

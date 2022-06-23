@@ -9,7 +9,8 @@
 
                 <div class="mx-10">
                     <div class>
-                        <img :src="images[currentIndex].src" alt />
+                        <!-- <img :src="images[currentIndex].src" alt /> -->
+                        <img :src="`http://127.0.0.1:8000${product.image}`" alt />
                     </div>
 
                     <div class="mx-auto">
@@ -310,56 +311,58 @@
                 <div class="block mt-10 lg:border-r-2 md:border-b-2 sm:border-b-2 border-white p-10 pt-5 overflow-y-scroll h-screen">
                     <!-- Review -->
 
-                    <h2 v-for="(review,index) in product.reviews" :key="index" class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg">
-
+                    <h2
+                        v-for="review in reviews"
+                        :key="review"
+                        class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg"
+                    >
                         <!-- Name & Rating block -->
 
                         <span class="block mb-5">
+                        <span class="flex text-xl h-auto justify-between">
+                            <!-- Name -->
 
-                            <span class="flex text-xl h-auto justify-between">
-                                <!-- Name -->
+                            <span class="inline-block text-xl font-bold align-top mr-5">{{
+                            review.name
+                            }}</span>
 
-                                <span class="inline-block text-xl font-bold align-top mr-5">{{review.name}}</span>
+                            <!-- Rating -->
 
-                                <!-- Rating -->
+                            <span class="inline-block">
+                            <!-- Rating value -->
 
-                                <span class="inline-block">
-                                    <!-- Rating value -->
+                            <span class="inline-block text-xl font-light align-top"
+                                >Rating: {{ review.rating }}</span
+                            >
 
-                                    <span
-                                        class="inline-block text-xl font-light align-top"
-                                    >Rating: {{review.rating}}</span>
+                            <!-- Star icon -->
 
-                                    <!-- Star icon -->
-
-                                    <span
-                                        class="inline-block h-7 w-7 justify-center items-center self-center"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="stroke-yellow-500 fill-yellow-500"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                            />
-                                        </svg>
-                                    </span>
-                                </span>
+                            <span
+                                class="inline-block h-7 w-7 justify-center items-center self-center"
+                            >
+                                <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="stroke-yellow-500 fill-yellow-500"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                >
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                                </svg>
                             </span>
-
+                            </span>
                         </span>
-
+                        </span>
 
                         <!-- Description -->
 
-                            <span class="block">
-                                <p>{{review.comment}}</p>
-                            </span>
-
+                        <span class="block">
+                        <p>{{ review.description }}</p>
+                        </span>
                     </h2>
                 </div>
+
 
                 <!-- Write a Review Column -->
 
@@ -377,7 +380,7 @@
 
                         <!-- Form -->
 
-                        <form action>
+                        <form @submit.prevent="submitReview">
                             <!-- Name label and input -->
 
                             <div class="my-5">
@@ -388,11 +391,12 @@
 
                                 <input
                                     id
+                                    v-model="name"
                                     type="text"
                                     name="name"
                                     placeholder="Type Your Name"
                                     class="py-2 px-3 w-full rounded-md"
-                                    required
+                                    required  
                                 />
                             </div>
 
@@ -404,7 +408,7 @@
                                     class="block text-lg text-white font-semibold mb-3"
                                 >Rate Product</label>
 
-                                <select id name="rating" class="p-2">
+                                <select id v-model="rating" name="rating" class="p-2">
                                     <option value="1">Poor</option>
 
                                     <option value="2">Average</option>
@@ -427,6 +431,7 @@
 
                                 <textarea
                                     id
+                                    v-model="description"
                                     name="description"
                                     cols="30"
                                     rows="5"
@@ -434,6 +439,11 @@
                                 ></textarea>
 
                                 <!-- <input id="" type="text" name="name" placeholder="Type Your Name" class="py-2 px-3 w-full rounded-md" required> -->
+                                <div class="w-fit mx-auto">
+                                    <button class="px-10 py-2 border-2 border-white bg-transparent text-white hover:bg-white hover:text-black hover:duration-300">
+                                    Submit
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -453,6 +463,9 @@ export default {
             product:{},
 
             currentIndex: 0,
+            name:null,
+            rating:null,
+            description:null,
 
             images: [
                 { src: require('../../assets/about-bg.jpg') },
@@ -487,9 +500,7 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const data = await this.$axios.$get(
-            `http://127.0.0.1:8000/api/products/${this.$route.params.id}`
-        )
+        const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/${this.$route.params.id}`)
         this.product = {...data}
         
         },
@@ -499,8 +510,22 @@ export default {
                 product:product,
                 quantity:1
             })
+        },
+        submitReview(){
+            
+            const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${this.$route.params.id}/reviews`,
+            { 
+            rating: this.rating,
+            comment: this.description 
+            })
+            console.log(data)
+        },
+
+        async getReviews(){
+            // const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/${this.$route.params.id}`)
         }
     },
+    
 
 
 
