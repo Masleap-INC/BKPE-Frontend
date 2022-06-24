@@ -100,8 +100,7 @@ import { mapActions } from 'vuex'
 
  export default {
    name: "UserRegisterPage",
-   
-//    middleware:'authenticated',
+   middleware:'authenticated',
   data() {
     return {
       

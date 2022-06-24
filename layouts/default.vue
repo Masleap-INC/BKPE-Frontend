@@ -21,9 +21,11 @@ export default {
       }),
     },
     beforeCreate(){ 
+      this.$store.dispatch('products/getCategories')
       this.$store.dispatch('auth/loadingStateChange',true)
     },
     mounted(){
+
       if(localStorage.getItem("accessToken")){
         this.$store.dispatch('auth/attempt', localStorage.getItem("accessToken"));
       }else{

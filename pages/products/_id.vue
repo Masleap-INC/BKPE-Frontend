@@ -52,9 +52,13 @@
                         </span>
 
                         <!-- Product Price -->
-
-                        <span class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
-
+                        <div  v-if="product.onSale">
+                            <span class="block text-3xl mb-5 text-gray-500 font-light ">Regular Price: <span class="line-through">${{product.price}}</span></span>
+                            <span class="block text-3xl font-bold mb-5">Sale Price: ${{product.salePrice}}</span>
+                        </div>
+                        <div v-else >
+                            <span class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
+                        </div>
                         <!-- Product Variant Type 1 -->
 
                         <span class="block text-3xl font-bold my-5 bg-transparent">
@@ -270,7 +274,7 @@
                             <h2 class="block text-xl font-normal my-3">Model</h2>
 
                             <!-- Product Price -->
-
+                            
                             <h2 class="block text-red-700 my-3 text-xl font-bold">
                                 <b>Price:</b> $100
                             </h2>

@@ -39,17 +39,17 @@
 
                         <tr>
                             <td class="font-semibold pr-5">Subtotal:</td>
-                            <td>$100</td>
+                            <td>${{totalPrice.toFixed(2)}}</td>
                         </tr>
 
                         <tr class="border-b-2 border-b-white pb-10">
                             <td class="font-semibold pr-5">VAT:</td>
-                            <td>$10</td>
+                            <td>$0</td>
                         </tr>
 
                         <tr>
                             <td class="font-bold pr-5 ">Order Total:</td>
-                            <td>$110</td>
+                            <td>${{totalPrice.toFixed(2)}}</td>
                         </tr>
 
                     </table>
@@ -58,7 +58,7 @@
 
                     <div class="w-fit mx-auto">
 
-                        <NuxtLink to="/" > <button class="mt-10 bg-white px-10 py-2 text-xl text-black border-2 border-white hover:text-white hover:bg-transparent duration-300">Checkout</button></NuxtLink>
+                        <NuxtLink to="/OrderCheckout" > <button class="mt-10 bg-white px-10 py-2 text-xl text-black border-2 border-white hover:text-white hover:bg-transparent duration-300">Checkout</button></NuxtLink>
 
                     </div>
                 </div>
@@ -82,17 +82,17 @@ export default {
     computed:{
         ...mapGetters({
             getCart:'cart/getCart',
+            totalPrice:'cart/getTotalPrice'
         }),
     },
 
     mounted(){  
         this.$store.dispatch("cart/fetchCartLocalstorage");
-        // this.cartItems = [...this.getCart]
     },
     
     methods: {
         goBack() {
-            this.$router.back();
+            this.$router.back()
         }
     }
     

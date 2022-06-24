@@ -369,7 +369,7 @@
 
 
 <script>
-
+import {mapGetters} from 'vuex'
 export default {
 
     data() {
@@ -378,16 +378,19 @@ export default {
 
             isOpen: false,
             filters:{year: '1967',type: 'RESTORATION',category: 0,},
-            categories:[],
-            id:null
-           
+            // categories:[],
 
         }
 
     },
-    async fetch() {
-        await this.getCategories()
+    computed:{
+        ...mapGetters({
+            categories:'products/categories'
+        }),
     },
+    // async fetch() {
+    //     await this.getCategories()
+    // },
 
     // beforeMount() {
 
@@ -405,14 +408,16 @@ export default {
 
     // },
 
-    
+    mounted(){
+        console.log('iugbh',this.categories)
+    },
 
     methods: {
-        async getCategories(){
-            const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/categories/')           
-            this.categories = {...data}
+        // async getCategories(){
+        //     const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/categories/')           
+            
 
-        },
+        // },
         onChangeYear(event) {
             this.filters.year = event.target.value;
 

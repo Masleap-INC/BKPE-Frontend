@@ -37,7 +37,7 @@
 
                             <!-- Product Price -->
 
-                            <span class="block font-bold">$ {{item.product.price}}</span>
+                            <span class="block font-bold">$ {{item.product.onSale ? item.product.salePrice : item.product.price}}</span>
 
                         </span>
                     </span>
@@ -79,7 +79,7 @@
 
                         <!-- Subtotal Price-->
 
-                        <span class="block mt-4">$100</span>
+                        <!-- <span class="block mt-4">$100</span> -->
 
                     </span>
                 </h2>

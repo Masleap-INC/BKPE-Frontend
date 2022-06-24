@@ -166,7 +166,7 @@
 
                             <!-- Col 2 -->
 
-                            <div class=" text-2xl text-right w-full">$100</div>
+                            <div class=" text-2xl text-right w-full">${{totalPrice}}</div>
                         </div>
 
                         <!-- Row 2 (Shipping) -->
@@ -179,7 +179,7 @@
 
                             <!-- Col 2 -->
 
-                            <div class=" text-2xl text-right w-full">$50</div>
+                            <div class=" text-2xl text-right w-full">$0</div>
                         </div>
 
 
@@ -193,7 +193,7 @@
 
                             <!-- Col 2 -->
 
-                            <div class=" text-2xl text-right w-full">$50</div>
+                            <div class=" text-2xl text-right w-full">$0</div>
                         </div>
 
 
@@ -207,7 +207,7 @@
 
                             <!-- Col 2 -->
 
-                            <div class=" text-2xl text-right w-full">$200</div>
+                            <div class=" text-2xl text-right w-full">${{totalPrice}}</div>
                         </div>
                     </div>
                 </div>
@@ -228,10 +228,15 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex'
 export default {
-     
-        methods: {
+    computed:{
+        ...mapGetters({
+            getCart:'cart/getCart',
+            totalPrice:'cart/getTotalPrice'
+        }),
+    }, 
+    methods: {
 
             goBack() {
                 this.$router.back();

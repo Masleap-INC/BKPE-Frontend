@@ -84,8 +84,7 @@ import { mapActions } from 'vuex'
     
 export default {
     name:"UserLoginPage",
-    
-    // middleware:"authenticated",
+    middleware:"authenticated",
     data() {
         return {
         email: '',
