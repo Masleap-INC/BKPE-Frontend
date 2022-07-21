@@ -6,6 +6,12 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
+            <!-- Back button -->
+
+            <div class="block">
+                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+            </div>
+
             <!-- Main Text -->
 
             <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">CAREERS AT BLACK KNIGHT</h1>
@@ -35,7 +41,7 @@
                 <!-- Job List -->
 
 
-                <div class="lgw-2/3 md:w-5/6 sm:w-5/6 mx-auto">
+                <div class="lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">
 
                     <h2 class="block text-3xl font-semibold mb-10">CURRENT OPENINGS</h2>
 
@@ -120,3 +126,20 @@
     </div>
 
 </template>
+
+
+<script>
+
+export default {
+
+    methods: {
+
+        goBack() {
+            this.$router.back();
+        }
+
+    },
+
+}
+
+</script>
