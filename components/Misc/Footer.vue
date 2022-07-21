@@ -18,7 +18,7 @@
 
                     <h2 class="block text-base font-thin">
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CAREERS AT BLACK KNIGHT</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/CareerPage">CAREERS AT BLACK KNIGHT</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">CHARITABLE WORK</NuxtLink></span>
 
