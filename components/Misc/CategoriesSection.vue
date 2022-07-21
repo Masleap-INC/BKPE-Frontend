@@ -31,7 +31,7 @@
 
                         <span class="mr-5">
 
-                            <input id="year-1967" class="sr-only peer" type="radio" name="year" value="1967" checked @change="onChangeYear($event)" >
+                            <input id="year-1967" class="sr-only peer" type="radio" name="year" value="1967" :checked="filter.year==1967" @change="onChangeYear($event)" >
 
                             <label for="year-1967" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
 
@@ -41,7 +41,7 @@
 
                         <span class="mr-5">
 
-                            <input id="year-1968" class="sr-only peer" type="radio" name="year" value="1968" @change="onChangeYear($event)" >
+                            <input id="year-1968" class="sr-only peer" type="radio" name="year" value="1968" :checked="filter.year==1968" @change="onChangeYear($event)" >
 
                             <label for="year-1968" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1968</label>
 
@@ -51,7 +51,7 @@
 
                         <span>
 
-                            <input id="year-1969" class="sr-only peer" type="radio" name="year" value="1969" @change="onChangeYear($event)" >
+                            <input id="year-1969" class="sr-only peer" type="radio" name="year" value="1969" :checked="filter.year==1969" @change="onChangeYear($event)" >
 
                             <label for="year-1969" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1969</label>
 
@@ -81,7 +81,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value="RESTORATION" checked @change="onChangeType($event)">
+                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value="RESTORATION" :checked="filter.type=='RESTORATION'" @change="onChangeType($event)">
 
                             <label for="part-restoration" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -91,7 +91,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value="moderization" @change="onChangeType($event)">
+                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value="MODERIZATION" :checked="filter.type=='MODERIZATION'" @change="onChangeType($event)">
 
                             <label for="part-moderization" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -107,7 +107,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value="nos" @change="onChangeType($event)">
+                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value="NOS" :checked="filter.type=='NOS'" @change="onChangeType($event)">
 
                             <label for="part-nos" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -117,7 +117,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-used" class="sr-only peer" type="radio" name="part" value="used" @change="onChangeType($event)">
+                            <input id="part-used" class="sr-only peer" type="radio" name="part" value="USED" :checked="filter.type=='USED'" @change="onChangeType($event)">
 
                             <label for="part-used" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 
@@ -150,6 +150,7 @@
                             <label :for="idx" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ctg.name}}</label>
 
                         </span>
+                        
 
                     </div>
 
@@ -227,7 +228,7 @@
 
                                         <span class="mr-5">
 
-                                            <input id="year-1967-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967" checked @change="onChangeYear($event)">
+                                            <input id="year-1967-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1967" :checked="filter.year==1967" @change="onChangeYear($event)">
 
                                             <label for="year-1967-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1967</label>
 
@@ -237,7 +238,7 @@
 
                                         <span class="mr-5">
 
-                                            <input id="year-1968-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1968" @change="onChangeYear($event)">
+                                            <input id="year-1968-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1968" :checked="filter.year==1968" @change="onChangeYear($event)">
 
                                             <label for="year-1968-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1968</label>
 
@@ -247,7 +248,7 @@
 
                                         <span>
 
-                                            <input id="year-1969-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1969" @change="onChangeYear($event)">
+                                            <input id="year-1969-mobile-menu" class="sr-only peer" type="radio" name="year-mobile-menu" value="1969" :checked="filter.year==1969" @change="onChangeYear($event)">
 
                                             <label for="year-1969-mobile-menu" class="bg:none px-5 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">1969</label>
 
@@ -277,7 +278,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="restoration" checked @change="onChangeCategory($event)">
+                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="RESTORATION" :checked="filter.type=='RESTORATION'" @change="onChangeCategory($event)">
 
                                             <label for="part-restoration-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -287,7 +288,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="moderization" @change="onChangeType($event)">
+                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="MODERIZATION" :checked="filter.type=='MODERIZATION'"  @change="onChangeType($event)">
 
                                             <label for="part-moderization-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -303,7 +304,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="nos" @change="onChangeType($event)">
+                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="NOS" :checked="filter.type=='NOS'" @change="onChangeType($event)">
 
                                             <label for="part-nos-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -313,7 +314,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="used" @change="onChangeType($event)">
+                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="USED" :checked="filter.type=='USED'" @change="onChangeType($event)">
 
                                             <label for="part-used-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 
@@ -341,7 +342,7 @@
 
                                         <span class="block mb-3" v-for="(ctg,idx) in categories" :key="idx">
 
-                                            <input :id="idx" class=" peer" type="radio" name="category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
+                                            <input :id="idx" class=" peer" type="radio" name="mobile-category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
 
                                             <label :for="idx" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ctg.name}}</label>
 
@@ -377,47 +378,18 @@ export default {
         return {
 
             isOpen: false,
-            filters:{year: '1967',type: 'RESTORATION',category: 0,},
-            // categories:[],
-
+            filters:{year: '1967',type: 'RESTORATION',category: 1}
         }
 
     },
     computed:{
         ...mapGetters({
-            categories:'products/categories'
+            categories:'products/categories',
+            filter:'products/filter'
         }),
-    },
-    // async fetch() {
-    //     await this.getCategories()
-    // },
-
-    // beforeMount() {
-
-    //     if (window.screenX.Width < 768) {
-
-    //         this.toggle();
-
-    //     }
-
-    //     else {
-
-    //         this.isOpen = true;
-
-    //     }
-
-    // },
-
-    mounted(){
-        console.log('iugbh',this.categories)
     },
 
     methods: {
-        // async getCategories(){
-        //     const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/categories/')           
-            
-
-        // },
         onChangeYear(event) {
             this.filters.year = event.target.value;
 
@@ -431,24 +403,9 @@ export default {
             
         },
         getFilteredProduct() {
-            this.$store.dispatch('products/getProducts',this.filters)
+            this.$store.dispatch('products/getFilterProducts',this.filters)
             this.$router.push('/ProductsByCategory');
         },
-        // SideBarDeterminer() {
-
-        //     if (window.outerWidth < 768) {
-
-        //         this.isOpen = false;
-
-        //     } 
-
-        //     else{
-
-        //         this.isOpen = true;
-
-        //     }
-
-        // },
 
         toggle() {
             this.isOpen = !this.isOpen;

@@ -33,33 +33,37 @@
 </template>
 
 <script>
+// import {mapGetters} from 'vuex'
 export default {
+
     props:{
-        types:{
-            type:String,
+        products:{
+            type:Array,
             default:null
         }
     },
-    data(){
-        return{
-            products:[],
+    // data(){
+    //     return{
+    //         products:[],
             
-        }
-    },
-    
-    async fetch(){
-        await this.getProducts()
-    },
-    methods: {
-        async getProducts(){
-            // const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/'+this.types+'/')
-            const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/')
-            console.log(data.products)
-        
-            data.products.forEach(element => {
-                this.products.push(element)
-            });
-        }
-    },
+    //     }
+    // },
+    // computed:{
+    //   ...mapGetters({
+    //     newProducts: 'products/newProducts',
+    //     saleProducts: 'products/saleProducts'
+    //   }),
+    // },
+    // async fetch(){
+    //     await this.getProducts()
+    // },
+    // methods: {
+    //     async getProducts(){
+    //         const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/${this.types === 'onsale'?'saleStatus':'ProdStatus'}/${this.types}/`)
+    //         data.forEach(element => {
+    //             this.products.push(element)
+    //         });
+    //     }
+    // },
 }
 </script>

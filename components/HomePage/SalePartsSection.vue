@@ -21,10 +21,21 @@
 
         <div class="my-20 px-20 w-full">
 
-            <ProductGrid types="onsale"/>
+            <ProductGrid :products="saleProducts" />
 
         </div>
 
     </div>
 
 </template>
+
+<script>
+import {mapGetters} from 'vuex'
+export default{
+    computed:{
+        ...mapGetters({
+            saleProducts: 'products/saleProducts',
+        }),
+    },
+}
+</script>

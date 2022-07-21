@@ -14,16 +14,17 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
-  
     computed:{
       ...mapGetters({
         loadingState: 'auth/loadingState',
       }),
     },
     beforeCreate(){ 
-      this.$store.dispatch('products/getCategories')
+    //   this.$store.dispatch('products/getCategories')
+    //   this.$store.dispatch('products/getAppProducts')
       this.$store.dispatch('auth/loadingStateChange',true)
     },
+  
     mounted(){
 
       if(localStorage.getItem("accessToken")){
@@ -32,6 +33,7 @@ export default {
         this.$store.dispatch('auth/loadingStateChange',false)
       }
     }
+
 
 }
 </script>

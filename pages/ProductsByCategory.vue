@@ -78,7 +78,7 @@ import {mapGetters} from 'vuex'
 export default {
     computed:{
         ...mapGetters({
-            products:'products/products',
+            products:'products/filterProducts',
         }),
     },
     mounted(){

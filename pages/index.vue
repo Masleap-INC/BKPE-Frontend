@@ -72,5 +72,14 @@
 <script>
 export default {
   name: "IndexPage",
+    async asyncData({store}) {
+      if(!store.getters['products/newProducts'] && !store.getters['products/saleProducts']){       
+        await store.dispatch('products/getAppProducts')
+      }
+      if(!store.getters['products/categories']){
+        await store.dispatch('products/getCategories')
+      }
+
+    },
 }
 </script>

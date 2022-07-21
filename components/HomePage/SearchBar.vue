@@ -31,9 +31,7 @@ export default {
         search(){           
             this.$store.dispatch('products/setSearchKey',this.searchKey)
             this.$router.push('/SearchPage')
-           
         }
-        
     },
 }
 </script>

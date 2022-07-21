@@ -92,16 +92,13 @@ export default {
         }),
     },
     watch: {
-        // watching top-level property
         searchKey(val, oldVal) {
-            console.log(val,oldVal)
             this.getProducts()
         }
     },
     methods: {
         async getProducts(){
             const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/?keyword=${this.searchKey}`)
-            console.log(data.products)
             this.products = [...data.products]
         },
         goBack() {
