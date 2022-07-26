@@ -20,11 +20,11 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/CareerPage">CAREERS AT BLACK KNIGHT</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CHARITABLE WORK</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/CharitableWork">CHARITABLE WORK</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">COMPANY HISTORY</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/CompanyHistory">COMPANY HISTORY</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CONTACT US</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/ContactUs">CONTACT US</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">GREEN POLICY</NuxtLink></span>
 
