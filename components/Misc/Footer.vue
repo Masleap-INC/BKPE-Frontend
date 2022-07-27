@@ -28,7 +28,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/GreenPolicy">GREEN POLICY</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">LEGAL INFORMATION</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/LegalInformation">LEGAL INFORMATION</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">PRIVACY AND SECURITY</NuxtLink></span>
 
