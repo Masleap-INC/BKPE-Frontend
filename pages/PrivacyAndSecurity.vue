@@ -10,10 +10,10 @@
 
 
 
-        <!-- Legal Information Section -->
+        <!-- Privacy And Security Section -->
 
         <div>
-            <LegalInformationSection />
+            <PrivacyAndSecuritySection />
         </div>
 
 
@@ -32,13 +32,13 @@
 <script>
 import TopBar from "../components/Misc/TopBar.vue";
 import Footer from "../components/Misc/Footer.vue";
-import LegalInformationSection from "../components/FooterPages/CompanyInfo/LegalInformation/LegalInformationSection.vue";
+import PrivacyAndSecuritySection from "../components/FooterPages/CompanyInfo/PrivacyAndSecurity/PrivacyAndSecuritySection.vue";
 
 export default {
     components: {
     TopBar,
     Footer,
-    LegalInformationSection
+    PrivacyAndSecuritySection
 }
 };
 
