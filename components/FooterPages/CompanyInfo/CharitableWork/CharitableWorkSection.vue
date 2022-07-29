@@ -6,15 +6,10 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back Button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
 
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT CHARITABLE WORK</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT CHARITABLE WORK</h1>
 
             <!-- Divider Lines -->
 
@@ -43,7 +38,7 @@
 
                 <div class="lg:py-40 md:py-20 sm:py-20 bg-black bg-opacity-50 self-center">
 
-                    <h2 class="lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-4xl text-center font-semibold">If you know of a charity that could benefit from Black Knight’s generosity, please send us an e-mail with information on how to contact the charity and why you believe it is a worthy cause.</h2>
+                    <h2 class="lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-4xl text-justify font-semibold">If you know of a charity that could benefit from Black Knight’s generosity, please send us an e-mail with information on how to contact the charity and why you believe it is a worthy cause.</h2>
 
                     
                     <!-- Email Button -->
@@ -53,6 +48,12 @@
 
                         <a href="mailto: charity@bkpe.com" class=" block w-fit mx-auto text-xl font-semibold px-5 py-3 mt-10 border-2 border-white rounded-3xl hover:bg-white hover:text-blue-600 duration-300">EMAIL COMMUNITY OUTREACH DEPARTMENT</a>
 
+                    </div>
+
+                    <!-- Back button -->
+
+                    <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto py-10">
+                        <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
                     </div>
 
                 </div>
