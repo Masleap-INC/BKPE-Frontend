@@ -53,7 +53,9 @@
                     <!-- Back button -->
 
                     <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto py-10">
-                        <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+                        <NuxtLink to="/">
+                            <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                        </NuxtLink>
                     </div>
 
                 </div>
@@ -68,19 +70,3 @@
 
 </template>
 
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>
