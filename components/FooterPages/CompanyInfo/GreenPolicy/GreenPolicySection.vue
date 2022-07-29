@@ -4,15 +4,9 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back Button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
-
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT ASSOCIATED COMPANIES <br> GREEN POLICY</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT ASSOCIATED COMPANIES <br> GREEN POLICY</h1>
 
             <!-- Divider Lines -->
 
@@ -22,7 +16,7 @@
 
             <!-- Sub Text -->
 
-            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-center">
+            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-justify">
                 At the Black Knight associated companies we are committed to running our business in an environmentally conscious and friendly manner. To that end, we have taken the following steps to ensure that we can deliver the finest muscle cars and muscle car parts with the minimum environmental impact.
             </p>           
 
@@ -30,9 +24,9 @@
 
         <!-- Green Policy Section -->
 
-        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-white my-14">
+        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-white my-5">
 
-            <ul class="list-disc w-fit mx-auto pb-10 border-b-2 border-white">
+            <ul class="list-disc w-fit mx-auto pb-10 border-b-2 border-white text-justify">
 
                 <li class="my-10">All packaging materials that come into our facility are either reused by us or is collected and disposed of via recycling. </li>
 
@@ -55,7 +49,7 @@
             </ul>
 
 
-            <div class="block lg:grid lg:grid-cols-4 gap-20 py-10">
+            <div class="block lg:grid lg:grid-cols-4 gap-20 py-10 text-justify">
 
                 <!-- Column 1 -->
 
@@ -81,22 +75,15 @@
 
         </div>
 
+        <!-- Back button -->
+
+            <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto pt-20 pb-40">
+                <NuxtLink to="/">
+                    <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                </NuxtLink>
+                
+            </div>
+
     </div>
 
 </template>
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>

@@ -19,7 +19,7 @@
         <!-- Career Section -->
 
         <div>
-            <CharitableWorkSection />
+            <WhoWeAreSection />
         </div>
 
 
@@ -39,14 +39,14 @@
 import TopBar from "../components/Misc/TopBar.vue";
 import HeroSection from "../components/Misc/HeroSection.vue";
 import Footer from "../components/Misc/Footer.vue";
-import CharitableWorkSection from "../components/FooterPages/CompanyInfo/CharitableWork/CharitableWorkSection.vue";
+import WhoWeAreSection from "../components/FooterPages/CompanyInfo/WhoWeAre/WhoWeAreSection.vue";
 
 export default {
     components: {
     TopBar,
     HeroSection,
     Footer,
-    CharitableWorkSection
+    WhoWeAreSection
 }
 };
 

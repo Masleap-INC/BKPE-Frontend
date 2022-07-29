@@ -8,6 +8,12 @@
             <TopBar />
         </div>
 
+        <!-- Hero Section -->
+
+        <div>
+            <HeroSection />
+        </div>
+
 
 
         <!-- Contact Us Section -->
@@ -31,12 +37,14 @@
 
 <script>
 import TopBar from "../components/Misc/TopBar.vue";
+import HeroSection from "../components/Misc/HeroSection.vue";
 import Footer from "../components/Misc/Footer.vue";
 import ContactUsSection from "../components/FooterPages/CompanyInfo/ContactUs/ContactUsSection.vue";
 
 export default {
     components: {
     TopBar,
+    HeroSection,
     Footer,
     ContactUsSection
 }

@@ -6,15 +6,10 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
 
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">CAREERS AT BLACK KNIGHT</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">CAREERS AT BLACK KNIGHT</h1>
 
             <!-- Divider Lines -->
 
@@ -24,7 +19,7 @@
 
             <!-- Sub Text -->
 
-            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-center">At the Black Knight associated companies we are always interested in hearing from experienced people who share our passion for performance automobiles. Thus, should you have experience with any of the following, we encourage you to contact us</p>
+            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-justify">At the Black Knight associated companies we are always interested in hearing from experienced people who share our passion for performance automobiles. Thus, should you have experience with any of the following, we encourage you to contact us</p>
 
         </div>
 
@@ -32,7 +27,7 @@
         <!-- Jobs Section -->
 
 
-        <div class="lg:grid lg:grid-cols-2 gap-5 mx-10 py-20 text-white">
+        <div class="block lg:grid lg:grid-cols-2 gap-5 mx-10 py-20 text-white">
 
             <!-- Column 1 -->
 
@@ -110,7 +105,7 @@
 
                     <div class="w-full my-10">
 
-                        <p class="block text-2xl">Want to be ahead of the curve and have your resume on file with us? Then click on the link below, tell us what contribution you can make to the Black Knight family and attach your resume. If your attitude, education, experience and skill meet any future need, we will gladly contact and arrange an interview.</p>
+                        <p class="block text-2xl text-justify">Want to be ahead of the curve and have your resume on file with us? Then click on the link below, tell us what contribution you can make to the Black Knight family and attach your resume. If your attitude, education, experience and skill meet any future need, we will gladly contact and arrange an interview.</p>
 
                         <a href="mailto: careers@bkpe.com" class=" block w-fit mx-auto text-xl font-semibold px-5 py-3 mt-10 border-2 border-white rounded-3xl hover:bg-white hover:text-blue-600 duration-300">EMAIL HUMAN RESOURCES</a>
 
@@ -118,28 +113,20 @@
 
                 </div>
 
+                <!-- Back button -->
+
+                <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto py-20">
+                    <NuxtLink to="/">
+                        <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                    </NuxtLink>
+                </div>
+
             </div>
 
 
         </div>
 
+
     </div>
 
 </template>
-
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>

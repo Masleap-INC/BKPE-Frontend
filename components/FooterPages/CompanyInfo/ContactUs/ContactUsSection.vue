@@ -4,15 +4,9 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back Button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
-
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT PERFORMANCE PARTS <br> CONTACT US</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT PERFORMANCE PARTS <br> CONTACT US</h1>
 
             <!-- Divider Lines -->
 
@@ -22,7 +16,7 @@
 
             <!-- Sub Text -->
 
-            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-center">
+            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-justify">
                 We invite our customers to contact us in a variety of ways depending on the need seeking to be accomplished by the communication
             </p>
 
@@ -281,7 +275,7 @@
 
         <!-- General Inquiry Section -->
 
-        <div class="border-b-2 border-white py-10">
+        <div class=" py-10">
 
             <div class="lg:grid md:grid lg:grid-cols-2 md:grid-cols-2 gap-5 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-white  ">
 
@@ -295,7 +289,7 @@
 
                     <!-- Description -->
 
-                    <p class="text-xl">When communicating with BKPP we ask that you please be sure to include your contact information (including your address, best phone number and best e-mail) and the invoice for the product that concerns your inquiry, if any. Providing this information in every correspondence will ensure that you inquiries are responded to by us in a timely fashion.</p>
+                    <p class="text-xl text-justify">When communicating with BKPP we ask that you please be sure to include your contact information (including your address, best phone number and best e-mail) and the invoice for the product that concerns your inquiry, if any. Providing this information in every correspondence will ensure that you inquiries are responded to by us in a timely fashion.</p>
                     
                 </div>
 
@@ -369,9 +363,9 @@
 
             <!-- Instruction -->
 
-            <div class="mt-20 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-white">
+            <div class="mt-20 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-white border-b-2 border-white pb-10">
 
-                <p class="text-xl">When communicating with BKPP we ask that you please be sure to include your contact information (including your address, best phone number and best e-mail) and the invoice for the product that concerns your inquiry, if any. Providing this information in every correspondence will ensure that you inquiries are responded to by us in a timely fashion.</p>
+                <p class="text-xl text-justify">When communicating with BKPP we ask that you please be sure to include your contact information (including your address, best phone number and best e-mail) and the invoice for the product that concerns your inquiry, if any. Providing this information in every correspondence will ensure that you inquiries are responded to by us in a timely fashion.</p>
 
             </div>
 
@@ -451,7 +445,17 @@
                         </h2>
               
                 </div>
+                
 
+            </div>
+
+            <!-- Back button -->
+
+            <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto py-20">
+                <NuxtLink to="/">
+                    <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                </NuxtLink>
+                
             </div>
 
         </div>
@@ -459,19 +463,3 @@
     </div>
 
 </template>
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>

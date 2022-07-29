@@ -9,6 +9,13 @@
         </div>
 
 
+        <!-- Hero Section -->
+
+        <div>
+            <HeroSection />
+        </div>
+
+
 
         <!-- Privacy And Security Section -->
 
@@ -31,12 +38,14 @@
 
 <script>
 import TopBar from "../components/Misc/TopBar.vue";
+import HeroSection from "../components/Misc/HeroSection.vue";
 import Footer from "../components/Misc/Footer.vue";
 import PrivacyAndSecuritySection from "../components/FooterPages/CompanyInfo/PrivacyAndSecurity/PrivacyAndSecuritySection.vue";
 
 export default {
     components: {
     TopBar,
+    HeroSection,
     Footer,
     PrivacyAndSecuritySection
 }

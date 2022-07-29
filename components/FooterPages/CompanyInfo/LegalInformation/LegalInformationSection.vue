@@ -4,15 +4,9 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back Button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
-
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT<br>LEGAL INFORMATION</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT<br>LEGAL INFORMATION</h1>
 
             <!-- Divider Lines -->
 
@@ -24,7 +18,7 @@
 
         <!-- Legal Information Section -->
 
-        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-xl text-white my-14">
+        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-xl text-white text-justify my-14">
 
             <!-- Row 1 -->
 
@@ -222,22 +216,15 @@
 
         </div>
 
+        <!-- Back button -->
+
+            <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto pb-40">
+                <NuxtLink to="/">
+                    <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                </NuxtLink>
+                
+            </div>
+
     </div>
 
 </template>
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>

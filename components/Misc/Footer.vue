@@ -32,7 +32,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/PrivacyAndSecurity">PRIVACY AND SECURITY</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">WHO WE ARE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/WhoWeAre">WHO WE ARE</NuxtLink></span>
 
                     </h2>
  
