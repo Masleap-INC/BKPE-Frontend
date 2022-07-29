@@ -6,15 +6,9 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back Button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
-
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT<br>PRIVACY AND SECURITY</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">BLACK KNIGHT<br>PRIVACY AND SECURITY</h1>
 
             <!-- Divider Lines -->
 
@@ -24,7 +18,7 @@
             
             <!-- Sub Text -->
 
-            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-center">
+            <p class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-2xl text-justify">
                 Black Knight Performance Parts, Inc. (BKPP), is committed to protecting our customers’ privacy and protecting their online shopping experience. BKPP utilizes the information we collect from you to process orders and to ensure the best online shopping experience. Please read the following as it outlines how your information is collected, protected, and used.
             </p>
 
@@ -32,7 +26,7 @@
 
         <!-- Privacy And Security Section -->
 
-        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-xl text-white my-14">
+        <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto text-xl text-white text-justify my-14">
 
             <!-- Row 1 -->
 
@@ -165,12 +159,12 @@
 
                 <!-- Heading -->
 
-                <h2 class="py-5 text-4xl font-bold border-b-2 border-white text-center w-fit mx-auto">QUESTIONS?</h2>
+                <h2 class="py-5 text-4xl font-bold border-b-2 border-white text-justify">QUESTIONS?</h2>
 
 
                 <!-- Texts -->
 
-                <p class="my-5 text-3xl text-center">
+                <p class="my-5 text-3xl text-justify">
                     If you have any questions about the BKPP Camaro Parts Guru Privacy Policy, please do not hesitate to ask via the <NuxtLink to="/ContactUs" class="font-bold hover:underline">Contact Us</NuxtLink> page.
                 </p>
 
@@ -180,22 +174,15 @@
 
         </div>
 
+        <!-- Back button -->
+
+            <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto pb-40">
+                <NuxtLink to="/">
+                    <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+                </NuxtLink>
+                
+            </div>
+
     </div>
 
 </template>
-
-<script>
-
-export default {
-
-    methods: {
-
-        goBack() {
-            this.$router.back();
-        }
-
-    },
-
-}
-
-</script>
