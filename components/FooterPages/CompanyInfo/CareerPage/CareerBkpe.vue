@@ -6,15 +6,10 @@
 
         <div class="bg-black bg-opacity-50 text-white w-full py-20 px-10">
 
-            <!-- Back button -->
-
-            <div class="block">
-                <button class="text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-            </div>
 
             <!-- Main Text -->
 
-            <h1 class="block text-5xl font-bold text-center pt-10 lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">CAREERS AT BLACK KNIGHT</h1>
+            <h1 class="block text-5xl font-bold text-center lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto">CAREERS AT BLACK KNIGHT</h1>
 
             <!-- Divider Lines -->
 
@@ -32,7 +27,7 @@
         <!-- Jobs Section -->
 
 
-        <div class="lg:grid lg:grid-cols-2 gap-5 mx-10 py-20 text-white">
+        <div class="block lg:grid lg:grid-cols-2 gap-5 mx-10 py-20 text-white">
 
             <!-- Column 1 -->
 
@@ -118,10 +113,17 @@
 
                 </div>
 
+                <!-- Back button -->
+
+                <div class="block lg:w-2/3 md:w-5/6 sm:w-5/6 mx-auto py-20">
+                    <button class=" float-right text-white text-xl ml-5 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+                </div>
+
             </div>
 
 
         </div>
+
 
     </div>
 
