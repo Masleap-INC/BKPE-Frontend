@@ -10,7 +10,7 @@
                 <div class="mx-10">
                     <div class>
                         <!-- <img :src="images[currentIndex].src" alt /> -->
-                        <img :src="`http://127.0.0.1:8000${product.image}`" alt />
+                        <img :src="`http://3.219.163.252:8000${product.image}`" alt />
                     </div>
 
                     <div class="mx-auto">
@@ -504,7 +504,7 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/${this.$route.params.id}`)
+        const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/${this.$route.params.id}`)
         this.product = {...data}
         
         },

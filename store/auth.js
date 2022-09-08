@@ -46,7 +46,7 @@ export default {
         },
         async signIn({dispatch},credentials){
             
-            const data = await this.$axios.$post('http://3.219.163.252:8000/login/', credentials)
+            const data = await this.$axios.$post('http://3.219.163.252:8000/api/users/login/', credentials)
             
             dispatch('attempt',data.access)
            

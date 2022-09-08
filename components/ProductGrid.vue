@@ -6,7 +6,7 @@
 
                 <!-- Product Image  -->
 
-                <img :src="`http://127.0.0.1:8000${product.image}`" alt="" class="h-350 w-400">
+                <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class="h-350 w-400">
 
                 <!-- Product Title -->
 
