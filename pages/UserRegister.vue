@@ -121,7 +121,7 @@ import { mapActions } from 'vuex'
       
       if(this.password === this.confirmPassword){
           
-        const data = await this.$axios.$post('http://127.0.0.1:8000/api/users/register/',
+        const data = await this.$axios.$post('http://3.219.163.252:8000/api/users/register/',
         { 
             name: this.name,
             email: this.email,

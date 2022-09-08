@@ -517,7 +517,7 @@ export default {
         },
         submitReview(){
             
-            const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${this.$route.params.id}/reviews`,
+            const data = this.$axios.$post(`http://3.219.163.252:8000/${this.$route.params.id}/reviews`,
             { 
             rating: this.rating,
             comment: this.description 

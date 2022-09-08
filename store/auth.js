@@ -46,7 +46,7 @@ export default {
         },
         async signIn({dispatch},credentials){
             
-            const data = await this.$axios.$post('http://127.0.0.1:8000/api/users/login/', credentials)
+            const data = await this.$axios.$post('http://3.219.163.252:8000/login/', credentials)
             
             dispatch('attempt',data.access)
            
@@ -64,7 +64,7 @@ export default {
             commit('SET_TOKEN',token)
            
             try {
-                const data = await this.$axios.$get('http://127.0.0.1:8000/api/users/profile/',{        
+                const data = await this.$axios.$get('http://3.219.163.252:8000/api/users/profile/',{        
                     headers:{
                         'Authorization':`Bearer ${token}`
                         // 'Authorization':`Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNzIxMzM0LCJpYXQiOjE2NDgxMjkzMzQsImp0aSI6IjAwZDUxNmU0NGU3NjRiZWVhOWI0OGQ4NmMyMGMyMTQ0IiwidXNlcl9pZCI6Mn0.gl-mekJCHM5oDrmXv68FUR59kxJ4WHUGqXjQY3w1jN0`

@@ -58,7 +58,7 @@ export default {
                      
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
+                const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
                 commit('SET_FILTER_PRODUCTS',data)
            
             }catch(e){  
@@ -66,13 +66,13 @@ export default {
             }
         },
         async getAppProducts({commit}){
-            const newProducts = await this.$axios.$get('http://127.0.0.1:8000/api/products/ProdStatus/newProducts/')
+            const newProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/ProdStatus/newProducts/')
             commit('SET_NEW_PRODUCTS',newProducts)
-            const saleProducts = await this.$axios.$get('http://127.0.0.1:8000/api/products/saleStatus/onsale/')
+            const saleProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/saleStatus/onsale/')
             commit('SET_SALE_PRODUCTS',saleProducts)
         },
         async getCategories({commit}){
-            const data = await this.$axios.$get('http://127.0.0.1:8000/api/products/categories/')
+            const data = await this.$axios.$get('http://3.219.163.252:8000/api/products/categories/')
             commit('SET_CATEGORIES',data)
         },
         setSearchKey({commit},key){
