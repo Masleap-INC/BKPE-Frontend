@@ -10,12 +10,13 @@
             <div class="w-full">
 
                 <!-- Filter Button -->
-
+                
                 <div class="my-10 w-fit mx-auto">
 
                     <button class="bg-none rounded-full border-2 px-7 py-2 mx-auto hover:bg-white hover:text-blue-600 hover:duration-300 " @click="getFilteredProduct" >SHOW ME THE PARTS</button>
 
                 </div>
+     
 
                 <!-- Choose Year -->
 
@@ -143,7 +144,7 @@
 
                         <!-- Category 1 -->
 
-                        <span class="block mb-3" v-for="(ctg,idx) in categories" :key="idx">
+                        <span  v-for="(ctg,idx) in categories" :key="idx" class="block mb-3">
 
                             <input :id="idx" class=" peer" type="radio" name="category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
 
@@ -166,7 +167,7 @@
         <div class=" lg:hidden">
             <!-- Drawer Menu -->
 
-            <div class="">
+            <div class="mb-10">
                 <div class="grid grid-cols-2 w-full  bg-black border-white border-b-2 mx-auto p-3">
                     <!-- Heading text  -->
 
@@ -340,7 +341,7 @@
 
                                         <!-- Categories -->
 
-                                        <span class="block mb-3" v-for="(ctg,idx) in categories" :key="idx">
+                                        <span v-for="(ctg,idx) in categories" :key="idx" class="block mb-3" >
 
                                             <input :id="idx" class=" peer" type="radio" name="mobile-category" :value="ctg.id" :checked="idx==0"  @change="onChangeCategory($event)">
 
@@ -385,7 +386,8 @@ export default {
     computed:{
         ...mapGetters({
             categories:'products/categories',
-            filter:'products/filter'
+            filter:'products/filter',
+            
         }),
     },
 

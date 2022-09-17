@@ -1,7 +1,7 @@
 <template>
 
   <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full">
-    <LoadingData v-if="loadingState" />
+    <LoadingData v-if="loadingState || false" /> 
     <div v-else>
       <MiscTopBar />
       <Nuxt />
@@ -14,19 +14,21 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
+ 
     computed:{
       ...mapGetters({
         loadingState: 'auth/loadingState',
+        appLoadingState: 'loading/loadingState'
       }),
     },
     beforeCreate(){ 
-    //   this.$store.dispatch('products/getCategories')
-    //   this.$store.dispatch('products/getAppProducts')
       this.$store.dispatch('auth/loadingStateChange',true)
     },
+
+
   
     mounted(){
-
+      
       if(localStorage.getItem("accessToken")){
         this.$store.dispatch('auth/attempt', localStorage.getItem("accessToken"));
       }else{

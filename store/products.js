@@ -8,7 +8,8 @@ export default {
         searchKey:null,
         categories:null,
         newProducts:null,
-        saleProducts:null
+        saleProducts:null,
+        CLoadingState:true
 
     }),
     getters:{
@@ -29,6 +30,9 @@ export default {
         },
         searchKey(state){
             return state.searchKey
+        },
+        CLoadingState:(state)=>{
+            return state.CLoadingState
         }
     },
     mutations: {
@@ -49,18 +53,21 @@ export default {
         },
         SET_SEARCH_KEY(state,key){
             state.searchKey = key
+        },
+        SET_CLOADING_STATE(state,bool){
+            state.CLoadingState = bool
         }
        
     },
     actions:{
 
-        async getFilterProducts({ commit },filters){
-                     
+        async getFilterProducts({ commit,dispatch },filters){
+            dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
                 const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
                 commit('SET_FILTER_PRODUCTS',data)
-           
+                dispatch('CLoadingStateChange',false)
             }catch(e){  
                 console.log(e)
             }
@@ -72,11 +79,15 @@ export default {
             commit('SET_SALE_PRODUCTS',saleProducts)
         },
         async getCategories({commit}){
+
             const data = await this.$axios.$get('http://3.219.163.252:8000/api/products/categories/')
             commit('SET_CATEGORIES',data)
         },
         setSearchKey({commit},key){
             commit('SET_SEARCH_KEY',key)
+        },
+        CLoadingStateChange({commit},bool){
+            commit('SET_CLOADING_STATE',bool)
         }
 
         

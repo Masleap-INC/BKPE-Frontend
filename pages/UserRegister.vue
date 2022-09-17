@@ -2,7 +2,9 @@
     <div>
         <div>
             <div class="block mt-10 px-10">
-                <button class="text-white text-xl px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+                <NuxtLink to="/">
+                <button class="text-white text-xl px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" >&lt; Go Back</button>
+                </NuxtLink>
             </div>
 
             <section>
@@ -131,8 +133,8 @@ import { mapActions } from 'vuex'
         
         if(data){
             
-            this.signIn({username:this.email,password:this.password})
-            await this.$router.push('/');
+
+            await this.$router.push('/UserLogin');
         }else{
             console.log(data.message)
         }

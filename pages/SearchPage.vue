@@ -9,9 +9,11 @@
         </div>
 
         <!-- Back button -->
-
+        
         <div class="block mt-10 mb-5">
-            <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+            <NuxtLink to="/">
+            <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+            </NuxtLink>
         </div>
 
         <!-- SearchBar -->
@@ -32,15 +34,17 @@
                 </div>
 
                 <!-- Search Results  -->
-
+                <div v-if="products.length == 0 && !Sloading" class="w-fit mx-auto p-10 border-2 border-white my-10">
+                <h2 class="block text-center text-4xl text-white font-medium  mb-5">No Results Found !</h2>
+                </div>
                 <div class="pt-10 pb-20">
                     <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
                         <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 ">
                             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 
-                                <!-- Product Image  -->
+                                <!-- Product Image  --> 
 
-                                <img :src="`http://127.0.0.1:8000${product.image}`" alt="" class="h-350 w-400">
+                                <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class="h-350 w-400">
 
                                 <!-- Product Title -->
 
@@ -80,7 +84,7 @@ export default {
     data(){
         return{
             products:[],
-            
+            Sloading:true
         }
     },
     async fetch(){
@@ -98,8 +102,10 @@ export default {
     },
     methods: {
         async getProducts(){
+            this.Sloading = true
             const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/?keyword=${this.searchKey}`)
             this.products = [...data.products]
+            this.Sloading = false
         },
         goBack() {
             this.$router.back();

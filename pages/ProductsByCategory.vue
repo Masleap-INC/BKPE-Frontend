@@ -1,10 +1,13 @@
 <template>
   <div>
     <!-- Back button -->
-
-    <div class="block mt-10 mb-5">
-        <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-    </div>
+    <NuxtLink to="/">
+      <div class="block mt-10 mb-5">
+        
+        <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+        
+      </div>
+    </NuxtLink>
 
     <!-- SearchBar -->
 
@@ -32,9 +35,9 @@
                 <h2 class="block w-full text-3xl text-white font-bold border-b-white border-b-4 pb-5 mb-5">Products</h2>
                 </div>
 
-                <!-- No Results -->
+                <!-- No Results -->  
 
-                <div :class="'hidden'" class="w-fit mx-auto p-10 border-2 border-white my-10">
+                <div v-if="products.length == 0 && !CLoadingState" class="w-fit mx-auto p-10 border-2 border-white my-10">
                 <h2 class="block text-center text-4xl text-white font-medium  mb-5">No Results Found !</h2>
                 </div>
                  <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
@@ -43,7 +46,7 @@
 
                             <!-- Product Image  -->
 
-                            <img :src="`http://127.0.0.1:8000${product.image}`" alt="" class="h-350 w-400">
+                            <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class="h-350 w-400">
 
                             <!-- Product Title -->
 
@@ -79,10 +82,8 @@ export default {
     computed:{
         ...mapGetters({
             products:'products/filterProducts',
+            CLoadingState:'products/CLoadingState'
         }),
-    },
-    mounted(){
-      
     },
     methods: {
         goBack() {

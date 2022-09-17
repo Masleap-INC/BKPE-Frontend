@@ -3,7 +3,9 @@
 
         
         <div class="block mt-10 px-10">
-            <button class="text-white text-xl px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+            <NuxtLink to="/">
+            <button class="text-white text-xl px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+            </NuxtLink>
         </div>
  
         <!-- Page Heading -->
@@ -56,7 +58,7 @@
 
                     <!-- Checkout Button -->
 
-                    <div class="w-fit mx-auto">
+                    <div v-if="getCart.length>0 ? true : false" class="w-fit mx-auto" >
 
                         <NuxtLink to="/OrderCheckout" > <button class="mt-10 bg-white px-10 py-2 text-xl text-black border-2 border-white hover:text-white hover:bg-transparent duration-300">Checkout</button></NuxtLink>
 

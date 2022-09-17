@@ -20,7 +20,7 @@
                         <!-- Product Image -->
 
                         <span class="inline-block mr-2 h-14 w-20 top-0">
-                            <img :src="`http://127.0.0.1:8000${item.product.image}`" alt />
+                            <img :src="`http://3.219.163.252:8000${item.product.image}`" alt />
                         </span>
 
                         <!-- Product Info -->

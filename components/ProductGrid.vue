@@ -1,13 +1,13 @@
 <template>
 
      <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
-        <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 ">
+        <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 w-full h-full">
             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 
                 <!-- Product Image  -->
-
-                <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class="h-350 w-400">
-
+                <div class="lg:h-[100px] lg:max-h-[100px] lg:min-h-[100px] md:h-[150px] md:max-h-[150px] md:min-h-[150px]              " >
+                    <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class=" w-full h-full object-cover"> 
+                </div>
                 <!-- Product Title -->
 
                 <h2 class="block text-blue-700 text-lg font-bold my-1 text-ellipsis overflow-hidden w-fit h-8">{{product.name.slice(0,20)}} <span v-if="product.name.length>25">...</span></h2>

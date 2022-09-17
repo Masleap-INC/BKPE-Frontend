@@ -1,6 +1,13 @@
 <template>
    
     <div>
+        <!-- Back button -->
+
+        <div class="block mt-10">
+            <NuxtLink to="/">
+                <button class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
+            </NuxtLink>
+        </div>
         <!-- Product Details Section -->
         <LoadingData v-if="$fetchState.pending" />
         <section v-else>
@@ -517,7 +524,7 @@ export default {
         },
         submitReview(){
             
-            const data = this.$axios.$post(`http://3.219.163.252:8000/${this.$route.params.id}/reviews`,
+            const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${parseInt(this.$route.params.id)}/reviews/`,
             { 
             rating: this.rating,
             comment: this.description 
