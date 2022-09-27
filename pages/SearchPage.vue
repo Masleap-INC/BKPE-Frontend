@@ -43,8 +43,11 @@
                             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 
                                 <!-- Product Image  --> 
+                                <div class="lg:h-[100px] lg:max-h-[100px] lg:min-h-[100px] md:h-[150px] md:max-h-[150px] md:min-h-[150px]">
+                                    <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class=" w-full h-full object-cover">
+                                </div>
 
-                                <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class="h-350 w-400">
+                                
 
                                 <!-- Product Title -->
 
