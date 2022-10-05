@@ -383,6 +383,8 @@ export default {
         }
 
     },
+
+     
     computed:{
         ...mapGetters({
             categories:'products/categories',

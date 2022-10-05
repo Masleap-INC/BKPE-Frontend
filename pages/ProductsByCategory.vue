@@ -82,6 +82,12 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
+    async asyncData({store}) {
+      if(!store.getters['products/categories']){
+        await store.dispatch('products/getCategories')
+      }
+    },
+
     computed:{
         ...mapGetters({
             products:'products/filterProducts',

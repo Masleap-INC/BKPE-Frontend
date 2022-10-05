@@ -81,7 +81,9 @@ export default {
         async getCategories({commit}){
 
             const data = await this.$axios.$get('http://3.219.163.252:8000/api/products/categories/')
+
             commit('SET_CATEGORIES',data)
+
         },
         setSearchKey({commit},key){
             commit('SET_SEARCH_KEY',key)
