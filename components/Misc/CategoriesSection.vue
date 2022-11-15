@@ -82,7 +82,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value="RESTORATION" :checked="filter.type=='RESTORATION'" @change="onChangeType($event)">
+                            <input id="part-restoration" class="sr-only peer" type="radio" name="part" value=1 :checked="filter.type==1" @change="onChangeType($event)">
 
                             <label for="part-restoration" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -92,7 +92,7 @@
 
                         <span class="w-fit mx-auto">
 
-                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value="MODERIZATION" :checked="filter.type=='MODERIZATION'" @change="onChangeType($event)">
+                            <input id="part-moderization" class="sr-only peer" type="radio" name="part" value=2 :checked="filter.type==2" @change="onChangeType($event)">
 
                             <label for="part-moderization" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -108,7 +108,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value="NOS" :checked="filter.type=='NOS'" @change="onChangeType($event)">
+                            <input id="part-nos" class="sr-only peer" type="radio" name="part" value=3 :checked="filter.type==3" @change="onChangeType($event)">
 
                             <label for="part-nos" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -118,7 +118,7 @@
 
                         <span class=" w-fit mx-auto">
 
-                            <input id="part-used" class="sr-only peer" type="radio" name="part" value="USED" :checked="filter.type=='USED'" @change="onChangeType($event)">
+                            <input id="part-used" class="sr-only peer" type="radio" name="part" value=4 :checked="filter.type==4" @change="onChangeType($event)">
 
                             <label for="part-used" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 
@@ -379,7 +379,7 @@ export default {
         return {
 
             isOpen: false,
-            filters:{year: '1967',type: 'RESTORATION',category: 1}
+            filters:{year: '1967',type: 1,category: 5}
         }
 
     },

@@ -2,11 +2,12 @@
 
      <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
         <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 w-full h-full">
+            
             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 
                 <!-- Product Image  -->
                 <div class="lg:h-[100px] lg:max-h-[100px] lg:min-h-[100px] md:h-[150px] md:max-h-[150px] md:min-h-[150px]" >
-                    <img :src="`http://3.219.163.252:8000${product.image}`" alt="" class=" w-full h-full object-cover"> 
+                    <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(product.images[0].name)[1]}`" alt="" class=" w-full h-full object-cover"> 
                 </div>
                 <!-- Product Title -->
 
@@ -15,7 +16,7 @@
 
                 <!-- Product Brand -->
 
-                <h2 class="block text-md font-bold">{{product.brand}}</h2>
+                <h2 class="block text-md font-bold">{{product.brand.name}}</h2>
 
                 <!-- Product Price -->
 
@@ -42,6 +43,12 @@ export default {
             default:null
         }
     },
+
+    methods:{
+        imagename(name){
+            return name.split(".")
+        }
+    }
     // data(){
     //     return{
     //         products:[],

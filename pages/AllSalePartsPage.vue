@@ -21,7 +21,7 @@
         <!-- Search Bar -->
 
         <div class="mt-10">
-            <SearchBar />
+            <SearchBar /> 
         </div>
 
 
@@ -55,7 +55,8 @@ export default{
         
     },
     async fetch() {
-      this.saleProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/saleStatus/onsale/')
+      const data = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?onSale=true')
+      this.saleProducts = data.results
       this.LoadingState=false
       
     },

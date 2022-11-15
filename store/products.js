@@ -3,10 +3,11 @@ export default {
     namespaced: true,
 
     state: () => ({
-        filter:{year: '1967',type: 'RESTORATION',category: 1},
+        filter:{year: '1967',type: 1,category: 5},
         filterProducts:[],
         searchKey:null,
         categories:null,
+        products:null,
         newProducts:null,
         saleProducts:null,
         CLoadingState:true
@@ -40,16 +41,16 @@ export default {
             state.filterProducts = [...filterProducts]
         },
         SET_NEW_PRODUCTS(state,newProducts){
-            state.newProducts = [...newProducts]
+            state.newProducts = newProducts
         },
         SET_SALE_PRODUCTS(state,saleProducts){
-            state.saleProducts = [...saleProducts]
+            state.saleProducts = saleProducts
         },
         SET_FILTERS(state,filters){
             state.filter = {...filters}
         },
         SET_CATEGORIES(state,categories){
-            state.categories = [...categories]
+            state.categories = categories
         },
         SET_SEARCH_KEY(state,key){
             state.searchKey = key
@@ -65,24 +66,28 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
-                commit('SET_FILTER_PRODUCTS',data)
+                console.log(filters)
+                // const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
+                const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
+                console.log(data)
+                commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
                 console.log(e)
             }
         },
         async getAppProducts({commit}){
-            const newProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/ProdStatus/newProducts/')
-            commit('SET_NEW_PRODUCTS',newProducts)
-            const saleProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/saleStatus/onsale/')
-            commit('SET_SALE_PRODUCTS',saleProducts)
+            const newProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
+            commit('SET_NEW_PRODUCTS',newProducts.results)
+            const saleProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?onSale=true')
+            commit('SET_SALE_PRODUCTS',saleProducts.results)
+            
         },
         async getCategories({commit}){
 
-            const data = await this.$axios.$get('http://3.219.163.252:8000/api/products/categories/')
+            const data = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/categories/')
 
-            commit('SET_CATEGORIES',data)
+            commit('SET_CATEGORIES',data.results)
 
         },
         setSearchKey({commit},key){

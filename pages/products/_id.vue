@@ -16,8 +16,9 @@
 
                 <div class="mx-10">
                     <div class>
-                        <!-- <img :src="images[currentIndex].src" alt /> -->
-                        <img :src="`http://3.219.163.252:8000${product.image}`" alt />
+                        <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${images[currentIndex].name}`" alt /> -->
+                        <img :src="images[currentIndex].src" alt />
+                        
                     </div>
 
                     <div class="mx-auto">
@@ -27,6 +28,7 @@
                             @click="currentIndex = index"
                         >
                             <img :src="image.src" alt class="h-14 w-auto my-5 mx-2 inline-block" />
+                            <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(image.name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(image.name)[1]}`" alt class="h-14 w-auto my-5 mx-2 inline-block" /> -->
                         </button>
                     </div>
                 </div>
@@ -42,7 +44,7 @@
                         <!-- Product Brand -->
 
                         <span class="block text-xl font-medium mb-2">
-                            <b>Brand:</b> {{product.brand}}
+                            <b>Brand:</b> {{product.brand.name}}
                         </span>
 
                         <!-- Product Model -->
@@ -478,15 +480,7 @@ export default {
             rating:null,
             description:null,
 
-            images: [
-                { src: require('../../assets/about-bg.jpg') },
-                { src: require('../../assets/BLACK-KNIGHT-CUSTOMS.jpg') },
-                { src: require('../../assets/BLACK-KNIGHT-PERFORMANCE-ENGINEERING.jpg') },
-                { src: require('../../assets/camaro-matrix.jpg') },
-                { src: require('../../assets/camaro-nation.jpg') },
-                { src: require('../../assets/camaropedia.jpg') },
-                { src: require('../../assets/demo-product-image.jpg') }
-            ],
+            images: [],
 
 
             reviews: [
@@ -511,8 +505,11 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/${this.$route.params.id}`)
+        const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/${this.$route.params.id}`)
         this.product = {...data}
+        this.product.images.forEach(image => {
+            this.images.push({src:`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${image.name}`})
+        });
         
         },
 
@@ -522,14 +519,16 @@ export default {
                 quantity:1
             })
         },
-        submitReview(){
-            
-            const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${parseInt(this.$route.params.id)}/reviews/`,
-            { 
-            rating: this.rating,
-            comment: this.description 
-            })
-            console.log(data)
+        // submitReview(){      
+        //     const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${parseInt(this.$route.params.id)}/reviews/`,
+        //     { 
+        //     rating: this.rating,
+        //     comment: this.description 
+        //     })
+        // },
+
+        imagename(name){
+            return name.split(".")
         },
 
         async getReviews(){

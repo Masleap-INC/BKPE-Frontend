@@ -54,7 +54,8 @@ export default{
         
     },
     async fetch() {
-      this.newProducts = await this.$axios.$get('http://3.219.163.252:8000/api/products/ProdStatus/newProducts/')
+      const data = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
+      this.newProducts = data.results
       this.LoadingState=false
     },
 }
