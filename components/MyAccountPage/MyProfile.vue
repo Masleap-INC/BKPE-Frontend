@@ -53,8 +53,10 @@
                 <input
                   type="text"
                   name="name"
+                 
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
+                  v-model="user.username"
                 />
               </div>
 
@@ -70,6 +72,7 @@
                   name="email"
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
+                  v-model="user.email"
                 />
               </div>
 
@@ -124,7 +127,15 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
+
+  computed:{
+      ...mapGetters({
+          user: 'auth/user',
+          authenticated: 'auth/authenticated'
+      }),
+  },
   methods: {
     UploadPhoto() {
       this.$refs.fileUpload.click()

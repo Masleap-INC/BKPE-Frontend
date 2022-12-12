@@ -279,7 +279,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="RESTORATION" :checked="filter.type=='RESTORATION'" @change="onChangeCategory($event)">
+                                            <input id="part-restoration-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="1" :checked="filter.type=='1'" @change="onChangeCategory($event)">
 
                                             <label for="part-restoration-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">RESTORATION</label>
 
@@ -289,7 +289,7 @@
 
                                         <span class="w-fit mx-auto">
 
-                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="MODERIZATION" :checked="filter.type=='MODERIZATION'"  @change="onChangeType($event)">
+                                            <input id="part-moderization-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="2" :checked="filter.type=='2'"  @change="onChangeType($event)">
 
                                             <label for="part-moderization-mobile-menu" class="w-full bg:none px-3 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">MODERIZATION</label>
 
@@ -305,7 +305,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="NOS" :checked="filter.type=='NOS'" @change="onChangeType($event)">
+                                            <input id="part-nos-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="3" :checked="filter.type=='3'" @change="onChangeType($event)">
 
                                             <label for="part-nos-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">NOS</label>
 
@@ -315,7 +315,7 @@
 
                                         <span class=" w-fit mx-auto">
 
-                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="USED" :checked="filter.type=='USED'" @change="onChangeType($event)">
+                                            <input id="part-used-mobile-menu" class="sr-only peer" type="radio" name="part-mobile-menu" value="4" :checked="filter.type=='4'" @change="onChangeType($event)">
 
                                             <label for="part-used-mobile-menu" class=" bg:none px-12 py-2 border-2 border-white hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">USED</label>
 

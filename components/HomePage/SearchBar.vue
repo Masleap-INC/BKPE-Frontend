@@ -29,7 +29,6 @@ export default {
 
     methods: {
         search(e){ 
-            console.log(e.key) 
             if(e.key === 'Enter'){
                 this.$store.dispatch('products/setSearchKey',this.searchKey)
                 this.$router.push('/SearchPage')

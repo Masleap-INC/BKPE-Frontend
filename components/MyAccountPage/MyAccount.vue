@@ -16,7 +16,7 @@
                 <div class=" lg:col-span-2 w-fit text-left">
                         
                         <h2 class="text-3xl text-white font-semibold py-5 w-fit mx-auto">
-                            Name
+                            {{user.username}}
                         </h2>
                 </div>
 
@@ -105,7 +105,7 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex'
 import MyProfile from './MyProfile.vue'
 import MyOrders from './MyOrders.vue'
 import MyAddress from './MyAddress.vue'
@@ -129,6 +129,12 @@ import MyAddress from './MyAddress.vue'
             }
         },
         
+        computed:{
+            ...mapGetters({
+                user: 'auth/user',
+                authenticated: 'auth/authenticated'
+            }),
+        },
 
 
         methods: {

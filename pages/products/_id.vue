@@ -16,8 +16,8 @@
 
                 <div class="mx-10">
                     <div class>
-                        <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${images[currentIndex].name}`" alt /> -->
-                        <img :src="images[currentIndex].src" alt />
+                        <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${product.images[currentIndex].name}`" alt />
+                        <!-- <img :src="images[currentIndex].src" alt /> -->
                         
                     </div>
 
@@ -69,7 +69,7 @@
                             <span class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
                         </div>
                         <!-- Product Variant Type 1 -->
-
+<!-- 
                         <span class="block text-3xl font-bold my-5 bg-transparent">
                             <label
                                 for="product-option-1"
@@ -81,23 +81,23 @@
                                 name="product-option-1"
                                 class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
                             >
-                                <!-- Option 1 -->
+                        
 
                                 <option value="1" class="text-gray-700">option 1</option>
 
-                                <!-- Option 2 -->
+                       
 
                                 <option value="2" class="text-gray-700">option 2</option>
 
-                                <!-- Option 2 -->
+                             
 
                                 <option value="3" class="text-gray-700">option 3</option>
                             </select>
-                        </span>
+                        </span> -->
 
                         <!-- Product Variant Type 2 -->
 
-                        <span class="block text-3xl font-bold my-5 bg-transparent">
+                        <!-- <span class="block text-3xl font-bold my-5 bg-transparent">
                             <label
                                 for="product-option-1"
                                 class="block text-white text-xl font-medium"
@@ -108,19 +108,16 @@
                                 name="product-option-1"
                                 class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
                             >
-                                <!-- Option 1 -->
-
+                            
                                 <option value="1" class="text-gray-700">option 1</option>
 
-                                <!-- Option 2 -->
 
                                 <option value="2" class="text-gray-700">option 2</option>
 
-                                <!-- Option 2 -->
 
                                 <option value="3" class="text-gray-700">option 3</option>
                             </select>
-                        </span>
+                        </span> -->
 
                         <!-- Add To Cart Button -->
 
@@ -160,134 +157,36 @@
                         class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-auto gap-5 place-items-center"
                     >
                         <!-- Product 1 -->
+                        
+                        <div v-for="(product,idx) in similarProducts" :key="idx" class="bg-white rounded-xl p-2">
+                        
+                            <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
+                            <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(product.images[0].name)[1]}`" alt />
 
-                        <div class="bg-white rounded-xl p-2">
-                            <!-- Product Image  -->
+                       
 
-                            <img src="../../assets/demo-product-image.jpg" alt />
+                            <h2 class="block text-blue-700 text-2xl font-bold my-3">{{product.name}}</h2>
 
-                            <!-- Product Title -->
+                         
 
-                            <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
+                            <h2 class="block text-xl font-normal my-3">{{product.brand.name}}</h2>
 
-                            <!-- Product Brand -->
+                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.price}}</h2>
 
-                            <h2 class="block text-xl font-normal my-3">Brand</h2>
+                            <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.salePrice}}</h2>
 
-                            <!-- Product Model -->
+            
+                            <!-- <h2 class="block text-xl font-normal my-3"></h2> -->
 
-                            <h2 class="block text-xl font-normal my-3">Model</h2>
-
-                            <!-- Product Price -->
-
-                            <h2 class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> $100
+                        
+                            <h2 v-else class="block text-red-700 my-3 text-xl font-bold">
+                                <b>Price:</b> ${{product.price}}
                             </h2>
-                        </div>
+                            </NuxtLink >
+                        </div> 
+                       
 
-                        <!-- Product 2 -->
 
-                        <div class="bg-white rounded-xl p-2">
-                            <!-- Product Image  -->
-
-                            <img src="../../assets/demo-product-image.jpg" alt />
-
-                            <!-- Product Title -->
-
-                            <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
-
-                            <!-- Product Brand -->
-
-                            <h2 class="block text-xl font-normal my-3">Brand</h2>
-
-                            <!-- Product Model -->
-
-                            <h2 class="block text-xl font-normal my-3">Model</h2>
-
-                            <!-- Product Price -->
-
-                            <h2 class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> $100
-                            </h2>
-                        </div>
-
-                        <!-- Product 3 -->
-
-                        <div class="bg-white rounded-xl p-2">
-                            <!-- Product Image  -->
-
-                            <img src="../../assets/demo-product-image.jpg" alt />
-
-                            <!-- Product Title -->
-
-                            <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
-
-                            <!-- Product Brand -->
-
-                            <h2 class="block text-xl font-normal my-3">Brand</h2>
-
-                            <!-- Product Model -->
-
-                            <h2 class="block text-xl font-normal my-3">Model</h2>
-
-                            <!-- Product Price -->
-
-                            <h2 class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> $100
-                            </h2>
-                        </div>
-
-                        <!-- Product 4 -->
-
-                        <div class="bg-white rounded-xl p-2">
-                            <!-- Product Image  -->
-
-                            <img src="../../assets/demo-product-image.jpg" alt />
-
-                            <!-- Product Title -->
-
-                            <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
-
-                            <!-- Product Brand -->
-
-                            <h2 class="block text-xl font-normal my-3">Brand</h2>
-
-                            <!-- Product Model -->
-
-                            <h2 class="block text-xl font-normal my-3">Model</h2>
-
-                            <!-- Product Price -->
-
-                            <h2 class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> $100
-                            </h2>
-                        </div>
-
-                        <!-- Product 5 -->
-
-                        <div class="bg-white rounded-xl p-2">
-                            <!-- Product Image  -->
-
-                            <img src="../../assets/demo-product-image.jpg" alt />
-
-                            <!-- Product Title -->
-
-                            <h2 class="block text-blue-700 text-2xl font-bold my-3">Product Name</h2>
-
-                            <!-- Product Brand -->
-
-                            <h2 class="block text-xl font-normal my-3">Brand</h2>
-
-                            <!-- Product Model -->
-
-                            <h2 class="block text-xl font-normal my-3">Model</h2>
-
-                            <!-- Product Price -->
-                            
-                            <h2 class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> $100
-                            </h2>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -323,12 +222,17 @@
 
                 <div class="block mt-10 lg:border-r-2 md:border-b-2 sm:border-b-2 border-white p-10 pt-5 overflow-y-scroll h-screen">
                     <!-- Review -->
-
-                    <h2
-                        v-for="review in reviews"
-                        :key="review"
+                    <div
+                     v-for="review in reviews"
+                    :key="review"
+                    
+                    >
+                    <div v-if="review.product == product.id">
+                    <h2  
                         class="text-white text-left w-full p-5 mb-5 border-2 border-white rounded-lg"
                     >
+                
+                                          
                         <!-- Name & Rating block -->
 
                         <span class="block mb-5">
@@ -373,7 +277,10 @@
                         <span class="block">
                         <p>{{ review.description }}</p>
                         </span>
+                        
                     </h2>
+                    </div>
+                    </div>
                 </div>
 
 
@@ -474,7 +381,7 @@ export default {
         return {
 
             product:{},
-
+            similarProducts:[],
             currentIndex: 0,
             name:null,
             rating:null,
@@ -484,11 +391,11 @@ export default {
 
 
             reviews: [
-                {name: 'Alvi', rating: 5, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar'},
-                {name: 'Imam', rating: 4, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
-                {name: 'Oaphy', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet'},
-                {name: 'Sid', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum '},
-                {name: 'Omi', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum, ullamcorper mattis, pulvinar dapibus leo.Lorem '},
+                // {name: 'Alvi', rating: 5, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar'},
+                // {name: 'Imam', rating: 4, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+                // {name: 'Oaphy', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet'},
+                // {name: 'Sid', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum '},
+                // {name: 'Omi', rating: 3, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum, ullamcorper mattis, pulvinar dapibus leo.Lorem '},
             ]
 
         }
@@ -498,7 +405,11 @@ export default {
         await this.getSingleProduct()
     },
     computed:{
-        ...mapGetters({getCart:'cart/getCart'})
+        ...mapGetters(
+            {
+                getCart:'cart/getCart',
+                user: 'auth/user',
+            })
     },
     methods: {
          ...mapActions({
@@ -508,9 +419,10 @@ export default {
         const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/${this.$route.params.id}`)
         this.product = {...data}
         this.product.images.forEach(image => {
-            this.images.push({src:`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${image.name}`})
+            this.images.push({src:`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${this.imagename(image.name)[0]}-thumbnail-100x100-70.${this.imagename(image.name)[1]}`})
         });
-        
+        const similarProductData = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?category=${data.category.id}&type=${data.type.id}&year=${data.year}`)
+        this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
 
         addToCart(product){
@@ -519,13 +431,19 @@ export default {
                 quantity:1
             })
         },
-        // submitReview(){      
-        //     const data = this.$axios.$post(`http://127.0.0.1:8000/api/products/${parseInt(this.$route.params.id)}/reviews/`,
-        //     { 
-        //     rating: this.rating,
-        //     comment: this.description 
-        //     })
-        // },
+        submitReview(){     
+            
+         
+            this.$axios.$post(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/reviews/`,
+            { 
+            title:this.name,
+            content: this.description,
+            product: this.$route.params.id,
+            user:1
+            })
+        this.reviews.unshift({name:this.name,rating:this.rating,description:this.description,product:this.product.id})
+   
+        },
 
         imagename(name){
             return name.split(".")
@@ -536,9 +454,6 @@ export default {
         }
     },
     
-
-
-
 }
 
 </script>

@@ -41,7 +41,7 @@
                 <h2 class="block text-center text-4xl text-white font-medium  mb-5">No Results Found !</h2>
                 </div>
                  <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
-                    <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 ">
+                    <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 w-full h-full ">
                         <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 
                             <!-- Product Image  -->

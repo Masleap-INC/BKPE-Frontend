@@ -66,10 +66,7 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                console.log(filters)
-                // const data = await this.$axios.$get(`http://3.219.163.252:8000/api/products/productByCategory&Year&Type/${filters.category}/${filters.year}/${filters.type}/`)
                 const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
-                console.log(data)
                 commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
