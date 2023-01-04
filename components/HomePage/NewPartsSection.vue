@@ -28,7 +28,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -53,7 +53,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -77,7 +77,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -101,7 +101,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -125,7 +125,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -149,7 +149,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -173,7 +173,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -197,7 +197,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -221,7 +221,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
@@ -245,7 +245,7 @@
 
                     <!-- Product Image  -->
 
-                    <img src="../../assets/demo-product-image.jpg" alt="">
+                    <img src="../../assets/demo-product-image.jpg" alt="" class=" w-full h-40 object-cover">
 
                     <!-- Product Title -->
 
