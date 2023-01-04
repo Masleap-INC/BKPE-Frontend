@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!($fetchState.pending)">
         <stripe-element-payment
         ref="paymentRef"
         :pk="pk"
@@ -11,31 +11,30 @@
 </template>
 
 <script>
-import { StripeElementPayment } from '@vue-stripe/vue-stripe';
+
 export default {
     name:"PaymentPage",
-    components: {
-        StripeElementPayment,
-    },
+
     data() {
        
         return {
             pk: 'pk_test_51H4LzxLRh1ikRvHv72d6YU7tPLUU1Xah4ryiaAUQ4UxQ2jWgcaL6Yq5MAJqNWcXMmKAjjDQBSkwxH3Grfn6mGrPY00zYSDv0XI',
             elementsOptions: {
-                appearance: {}, // appearance options 
+                appearance: {}
             },
             confirmParams: {
                 return_url: 'http://localhost:3000', // success url
             },
         }
     },
-    mounted () {
-        this.generatePaymentIntent();
+    async fetch() {
+     await this.generatePaymentIntent();
     },
     methods: {
         async generatePaymentIntent () {
-            const paymentIntent = await "" // await apiCallToGeneratePaymentIntent();  this is just a dummy, create your own API call
-            this.elementsOptions.clientSecret = paymentIntent.client_secret;
+            const paymentIntent = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/payment/create-payment-intent/4234/  ')
+            this.elementsOptions.clientSecret = paymentIntent.clientSecret;
+            console.log(paymentIntent)
         },
         pay () {
             this.$refs.paymentRef.submit();

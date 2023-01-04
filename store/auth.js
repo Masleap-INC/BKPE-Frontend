@@ -46,9 +46,8 @@ export default {
         },
         async signIn({commit,dispatch},credentials){
             
-            const data = await this.$axios.$post('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/auth/login/', credentials)
-            
-           
+            const data = await this.$axios.$post('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/auth/login/', credentials)
+        
             if(data){
                 dispatch('attempt',data.tokens.access) 
                 localStorage.setItem("accessToken",data.tokens.access)
@@ -64,7 +63,7 @@ export default {
             
             try {
        
-                const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/user/profile/?token=${token}`)
+                const data = await this.$axios.$get(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/user/profile/?token=${token}`)
                 // {        
                     // headers:{
                         // 'Authorization':`Bearer ${token}`
@@ -72,7 +71,7 @@ export default {
                     // }              
                 // }
                 commit('SET_USER',data)
-                commit('SET_TOKEN',data.tokens.access) 
+                console.log(data)
                 await this.$router.push('/');    
                 dispatch('loadingStateChange',false) 
                 

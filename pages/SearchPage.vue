@@ -106,7 +106,7 @@ export default {
     methods: {
         async getProducts(){
             this.Sloading = true
-            const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?name=${this.searchKey}`)
+            const data = await this.$axios.$get(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/?name=${this.searchKey}`)
             this.products = data.results
             this.Sloading = false
         },

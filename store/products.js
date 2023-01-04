@@ -66,7 +66,7 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
+                const data = await this.$axios.$get(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
                 commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
@@ -74,15 +74,17 @@ export default {
             }
         },
         async getAppProducts({commit}){
-            const newProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
+            // const newProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
+            const newProducts = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/')
             commit('SET_NEW_PRODUCTS',newProducts.results)
-            const saleProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?onSale=true')
+            const saleProducts = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/')
+
             commit('SET_SALE_PRODUCTS',saleProducts.results)
             
         },
         async getCategories({commit}){
 
-            const data = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/categories/')
+            const data = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/categories/')
 
             commit('SET_CATEGORIES',data.results)
 
