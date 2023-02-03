@@ -75,16 +75,16 @@ export default {
         },
         async getAppProducts({commit}){
             // const newProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
-            const newProducts = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/')
+            const newProducts = await this.$axios.$get('https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
             commit('SET_NEW_PRODUCTS',newProducts.results)
-            const saleProducts = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/products/')
+            const saleProducts = await this.$axios.$get('https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
 
             commit('SET_SALE_PRODUCTS',saleProducts.results)
             
         },
         async getCategories({commit}){
 
-            const data = await this.$axios.$get('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/categories/')
+            const data = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/categories/')
 
             commit('SET_CATEGORIES',data.results)
 

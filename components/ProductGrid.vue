@@ -7,7 +7,7 @@
 
                 <!-- Product Image  -->
                 <div class="lg:h-[100px] lg:max-h-[100px] lg:min-h-[100px] md:h-[150px] md:max-h-[150px] md:min-h-[150px]" >
-                    <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(product.images[0].name)[1]}`" alt="" class=" w-full h-full object-cover"> 
+                    <img :src="`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/images/__sized__/${imagename(product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(product.images[0].name)[1]}`" alt="" class=" w-full h-full object-cover"> 
                 </div>
                 <!-- Product Title -->
 

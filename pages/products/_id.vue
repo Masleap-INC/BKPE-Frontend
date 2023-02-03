@@ -434,7 +434,7 @@ export default {
         submitReview(){     
             
          
-            this.$axios.$post(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/reviews/`,
+            this.$axios.$post(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/reviews/`,
             { 
             title:this.name,
             content: this.description,

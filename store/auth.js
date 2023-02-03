@@ -45,7 +45,7 @@ export default {
         },
         async signIn({commit,dispatch},credentials){
             
-            const data = await this.$axios.$post('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/auth/login/', credentials)
+            const data = await this.$axios.$post('https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/login/', credentials)
         
             if(data){
                 dispatch('attempt',data.tokens.refresh) 
@@ -62,7 +62,7 @@ export default {
             
             try {
        
-                const data = await this.$axios.$get(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/user/profile/?token=${token}`)
+                const data = await this.$axios.$get(`https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/user/profile/?token=${token}`)
                 // {        
                     // headers:{
                         // 'Authorization':`Bearer ${token}`
