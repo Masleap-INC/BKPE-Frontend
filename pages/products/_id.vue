@@ -416,12 +416,12 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const data = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/${this.$route.params.id}`)
+        const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${this.$route.params.id}`)
         this.product = {...data}
         this.product.images.forEach(image => {
-            this.images.push({src:`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${this.imagename(image.name)[0]}-thumbnail-100x100-70.${this.imagename(image.name)[1]}`})
+            this.images.push({src:`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/images/__sized__/${this.imagename(image.name)[0]}-thumbnail-100x100-70.${this.imagename(image.name)[1]}`})
         });
-        const similarProductData = await this.$axios.$get(`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?category=${data.category.id}&type=${data.type.id}&year=${data.year}`)
+        const similarProductData = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?category=${data.category.id}&type=${data.type.id}&year=${data.year}`)
         this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
 

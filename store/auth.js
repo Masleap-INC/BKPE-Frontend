@@ -45,7 +45,7 @@ export default {
         },
         async signIn({commit,dispatch},credentials){
             
-            const data = await this.$axios.$post('https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/login/', credentials)
+            const data = await this.$axios.$post('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/login/', credentials)
         
             if(data){
                 dispatch('attempt',data.tokens.refresh) 
@@ -62,7 +62,7 @@ export default {
             
             try {
        
-                const data = await this.$axios.$get(`https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/user/profile/?token=${token}`)
+                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/user/profile/?token=${token}`)
                 // {        
                     // headers:{
                         // 'Authorization':`Bearer ${token}`
