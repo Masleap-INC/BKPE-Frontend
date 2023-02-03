@@ -25,12 +25,10 @@ export default {
       this.$store.dispatch('auth/loadingStateChange',true)
     },
 
-
-  
     mounted(){
       
-      if(localStorage.getItem("accessToken")){
-        this.$store.dispatch('auth/attempt', localStorage.getItem("accessToken"));
+      if(localStorage.getItem("refreshToken")){
+        this.$store.dispatch('auth/attempt', localStorage.getItem("refreshToken"));
       }else{
         this.$store.dispatch('auth/loadingStateChange',false)
       }

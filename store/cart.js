@@ -4,7 +4,7 @@ export default {
 
     state:()=>({
         cart:[],
-        totalPrice:0
+        totalPrice:6872
     }),
 
     getters:{

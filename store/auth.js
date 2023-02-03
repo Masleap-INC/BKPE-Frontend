@@ -28,7 +28,6 @@ export default {
         },
         SET_USER(state,user){
             state.user = user
-
         },
         SET_LOADING_STATE(state,bool){
             state.loadingState = bool
@@ -49,8 +48,8 @@ export default {
             const data = await this.$axios.$post('https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/auth/login/', credentials)
         
             if(data){
-                dispatch('attempt',data.tokens.access) 
-                localStorage.setItem("accessToken",data.tokens.access)
+                dispatch('attempt',data.tokens.refresh) 
+                localStorage.setItem("refreshToken",data.tokens.refresh)
             }else{
                 console.log(data)
             }
@@ -82,6 +81,9 @@ export default {
                 dispatch('loadingStateChange',false)
                 console.log(e)
             }
+        },
+        userUpdate({commit},data){
+            commit('SET_USER',data)
         },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)

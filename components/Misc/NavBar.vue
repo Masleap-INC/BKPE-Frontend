@@ -434,8 +434,9 @@ export default {
     methods: {
 
         logout(){
-            localStorage.removeItem("accessToken")
+            localStorage.removeItem("refreshToken")
             this.$store.dispatch("auth/logout")
+            this.$router.push('/')
         },
 
         ProductsDropDownToggle() {

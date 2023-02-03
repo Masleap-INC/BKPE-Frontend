@@ -126,17 +126,17 @@
                             
                             <!-- Submit Button -->
 
-                            <div v-if="getCart.length>0 ? true : false" class="w-full mt-10">
-                                <button class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300" type="submit">Continue</button>
-                            </div>
+                            <!-- <div v-if="getCart.length>0 ? true : false" class="w-full mt-10"> -->
+                                <NuxtLink to="/Payment">
+                                    <button class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300" type="submit">Continue</button>
+                                </NuxtLink>
+                                
+                            <!-- </div> -->
 
                             
-                            
-
                         </form>
 
                     </div>
-
 
                 </div>
 

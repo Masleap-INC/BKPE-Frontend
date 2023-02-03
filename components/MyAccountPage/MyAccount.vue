@@ -17,6 +17,7 @@
                         
                         <h2 class="text-3xl text-white font-semibold py-5 w-fit mx-auto">
                             {{user.username}}
+                            <!-- khgjgv -->
                         </h2>
                 </div>
 
@@ -24,7 +25,7 @@
 
                 <div class=" col-span-1 h-fit my-auto w-fit mx-auto lg:mr-0">
 
-                    <button class="px-3 py-2 border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300">LOGOUT</button>
+                    <button class="px-3 py-2 border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300" @click="logout">LOGOUT</button>
 
                 </div>
 
@@ -138,6 +139,12 @@ import MyAddress from './MyAddress.vue'
 
 
         methods: {
+
+            logout(){
+                localStorage.removeItem("refreshToken")
+                this.$store.dispatch("auth/logout")
+                this.$router.push('/')
+            },
 
             selectProfileTab() {
                 

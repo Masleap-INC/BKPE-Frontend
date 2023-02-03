@@ -11,37 +11,39 @@
 
       <!-- Content -->
 
+      <!-- Profile Photo -->
       <div class="text-black">
-        <form action="">
-          <!-- Profile Photo -->
+        <div class="w-32 h-32 mx-auto">
+          <img
+            class="w-full h-full object-cover"
+            src="https://img.icons8.com/ios/150/ffffff/name--v1.png"
+            alt=""
+          />
+        </div>
+
+        <!-- Upload Button -->
+
+        <div class="w-fit mx-auto">
+          <button
+            class="bg-white text-blue-600 py-2 px-4 rounded-full mt-5"
+            @click="UploadPhoto"
+          >
+            Change
+          </button>
+
+          <input
+            id="profile-photo-upload"
+            ref="fileUpload"
+            type="file"
+            class="hidden"
+          />
+        </div>
+        <form @submit.prevent="submitInfo">
+          
 
           <div class="w-full flex justify-center">
             <div class="lg:w-1/2 md:w-5/6 sm:w-5/6">
-              <div class="w-32 h-32 mx-auto">
-                <img
-                  class="w-full h-full object-cover"
-                  src="https://img.icons8.com/ios/150/ffffff/name--v1.png"
-                  alt=""
-                />
-              </div>
 
-              <!-- Upload Button -->
-
-              <div class="w-fit mx-auto">
-                <button
-                  class="bg-white text-blue-600 py-2 px-4 rounded-full mt-5"
-                  @click="UploadPhoto"
-                >
-                  Change
-                </button>
-
-                <input
-                  id="profile-photo-upload"
-                  ref="fileUpload"
-                  type="file"
-                  class="hidden"
-                />
-              </div>
 
               <!-- Name Label & Input -->
 
@@ -56,7 +58,7 @@
                  
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
-                  v-model="user.username"
+                  v-model="name"
                 />
               </div>
 
@@ -71,12 +73,46 @@
                   type="email"
                   name="email"
                   class="block w-full rounded-md px-3 py-2 text-xl"
-                  required
-                  v-model="user.email"
+                  disabled
+                  v-modal="email"
                 />
               </div>
 
+              <!-- Update Profile Button -->
+
+              <div class="mb-10 mt-20 w-full">
+                <button
+                  type="submit"
+                  class="bg-transparent border-2 border-white text-white text-2xl rounded-md px-5 py-2 hover:bg-blue-600 hover:ease-in duration-300 w-full"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="text-black">
+        <form action="">
+          <!-- Profile Photo -->
+
+          <div class="w-full flex justify-center">
+            <div class="lg:w-1/2 md:w-5/6 sm:w-5/6">
+
               <!-- Password Label & Input -->
+
+              <div class="my-10">
+                <label for="password" class="block text-2xl text-white mb-5"
+                  >Old Password</label
+                >
+
+                <input
+                  type="password"
+                  name="old-password"
+                  class="block w-full rounded-md px-3 py-2 text-xl"
+                  required
+                />
+              </div>
 
               <div class="my-10">
                 <label for="password" class="block text-2xl text-white mb-5"
@@ -115,13 +151,14 @@
                   type="submit"
                   class="bg-transparent border-2 border-white text-white text-2xl rounded-md px-5 py-2 hover:bg-blue-600 hover:ease-in duration-300 w-full"
                 >
-                  Update
+                  Update Passowrd
                 </button>
               </div>
             </div>
           </div>
         </form>
       </div>
+     
     </div>
   </div>
 </template>
@@ -130,16 +167,40 @@
 import {mapGetters} from 'vuex'
 export default {
 
+  data() {
+    return {
+      
+        name: '',
+        email: '',
+      
+    } 
+  },
+
   computed:{
       ...mapGetters({
           user: 'auth/user',
           authenticated: 'auth/authenticated'
       }),
   },
+  mounted(){ 
+    this.name = this.user.username
+  },
   methods: {
     UploadPhoto() {
       this.$refs.fileUpload.click()
     },
+    async submitInfo(){
+      const data = await this.$axios.$patch(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/users/${this.user.id}/`,
+      { 
+          username: this.name, 
+      });
+      this.$store.dispatch('auth/userUpdate',data)
+      console.log(data)
+    }
+  },
+  logout(){
+      localStorage.removeItem("refreshToken")
+      this.$store.dispatch("auth/logout")
   },
 }
 </script>
