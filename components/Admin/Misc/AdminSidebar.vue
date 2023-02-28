@@ -2,14 +2,14 @@
   <div>
     <!-- Top Bar -->
 
-    <div class="lg:hidden md:block sm:block min-w-screen bg-black px-5 py-2">
+    <div class="lg:hidden md:block sm:block min-w-screen bg-black px-5 py-2 fixed w-screen">
       <button @click="toggleSidebar">
         <img src="~assets/icons/menu.svg" alt="" :class="'w-10 h-10 ' +( showSidebar ? ' duration-300' : 'rotate-180 duration-300')" />
       </button>
     </div>
 
     <div
-      :class="'lg:py-10 lg:p-5 md:p-5 sm:p-5 lg:w-full md:w-fit sm:w-fit top-0 bottom-0 min-h-screen overflow-y-auto bg-black bg-opacity-80 absolute ' + (showSidebar ? 'translate-x-0 duration-300' : 'lg:translate-x-0 md:-translate-x-[500px] sm:-translate-x-[500px] duration-300')"
+      :class="'lg:py-10 lg:p-5 md:p-5 sm:p-5 lg:w-full md:w-fit sm:w-fit top-0 bottom-0 min-h-screen overflow-y-auto bg-black bg-opacity-80 lg:absolute md:fixed sm:fixed ' + (showSidebar ? 'translate-x-0 duration-300' : 'lg:translate-x-0 md:-translate-x-[500px] sm:-translate-x-[500px] duration-300')"
     >
       <!-- Account Section -->
 
