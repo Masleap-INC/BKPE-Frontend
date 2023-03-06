@@ -70,7 +70,6 @@ export default {
                     // }              
                 // }
                 commit('SET_USER',data)
-                console.log(data)
                 await this.$router.push('/');    
                 dispatch('loadingStateChange',false) 
                 
