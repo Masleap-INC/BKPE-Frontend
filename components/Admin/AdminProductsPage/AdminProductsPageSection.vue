@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(product) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
+                    <tr v-for="(product,index) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                         <td class="p-3">{{product.id}}</td>
                         <td class="p-3"><img src="~/assets/about-bg.jpg" alt="" class="h-16 w-20 object-cover"></td>
                         <td class="p-3">{{product.name}}</td>
@@ -63,7 +63,7 @@
                             <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Edit
                             </button>
-                            <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                            <button @click="() => deleteProduct(product.id,index)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Delete
                             </button>
                         </td>
@@ -91,7 +91,14 @@ export default {
             products: 'products/products',
         }),
     },
+
     methods: {
+        deleteProduct(productId,productIdx){
+            
+            const editedProductsList = [...this.products]
+            editedProductsList.splice(productIdx,1)
+            this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId})
+        },
         UploadFile() {
             this.$refs.fileUpload.click();
         },

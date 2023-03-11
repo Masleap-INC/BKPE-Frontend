@@ -79,11 +79,21 @@ export default {
                 console.log(e)
             }
         },
-        async getAppProductsAdmin({commit}){
-            const products = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
-            console.log(products.results)
-            commit('SET_PRODUCTS',products.results)
+        async getAppProductsAdmin({commit},editedProductList=null){
+            if(editedProductList==null){
+                const products = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
+                commit('SET_PRODUCTS',products.results)
+            }else{
+                commit('SET_PRODUCTS',editedProductList)
+            }
+            
         },
+
+        async getProductListAfterDeleteAdmin({commit},{editedProductsList,productId}){ 
+            await this.$axios.$delete(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${productId}/`)
+            commit('SET_PRODUCTS',editedProductsList)
+        },
+       
         async getAppProducts({commit}){
             
             const newProducts = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?new=true')
