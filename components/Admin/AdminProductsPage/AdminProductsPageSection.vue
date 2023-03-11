@@ -53,12 +53,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
-                        <td class="p-3">123456789</td>
+                    <tr v-for="(product) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
+                        <td class="p-3">{{product.id}}</td>
                         <td class="p-3"><img src="~/assets/about-bg.jpg" alt="" class="h-16 w-20 object-cover"></td>
-                        <td class="p-3">Product Category</td>
-                        <td class="p-3">$10000</td>
-                        <td class="p-3">20</td>
+                        <td class="p-3">{{product.name}}</td>
+                        <td class="p-3">{{product.price}}</td>
+                        <td class="p-3">{{product.quantity}}</td>
                         <td class="p-3">
                             <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Edit
@@ -79,10 +79,17 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import SearchBar from '~/components/HomePage/SearchBar.vue'
+
 export default {
     components: {
         SearchBar
+    },
+    computed:{
+        ...mapGetters({
+            products: 'products/products',
+        }),
     },
     methods: {
         UploadFile() {

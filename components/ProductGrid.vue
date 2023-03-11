@@ -1,7 +1,7 @@
 <template>
 
      <div class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-2 gap-3 place-items-center">
-        <div v-for="(product,index) in products" :key="index" class=" bg-white rounded-xl p-2 w-full h-full">
+        <div v-for="(product) in products" :key="product.id" class=" bg-white rounded-xl p-2 w-full h-full">
             
             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
 

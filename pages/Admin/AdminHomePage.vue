@@ -23,12 +23,19 @@
 </template>
 
 <script>
+
 import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
 import AdminHomePageSection from '~/components/Admin/AdminHomePage/AdminHomePageSection.vue'
 export default {
     components: {
         AdminSidebar,
         AdminHomePageSection
-    }
+    },
+    async asyncData({store}) {
+      if(!store.getters['products/products']){       
+        await store.dispatch('products/getAppProductsAdmin')
+      }
+
+    },
 }
 </script>

@@ -23,6 +23,9 @@ export default {
         saleProducts(state){
             return state.saleProducts
         },
+        products(state){
+            return state.products
+        },
         categories(state){
             return state.categories
         },
@@ -45,6 +48,9 @@ export default {
         },
         SET_SALE_PRODUCTS(state,saleProducts){
             state.saleProducts = saleProducts
+        },
+        SET_PRODUCTS(state,products){
+            state.products = products
         },
         SET_FILTERS(state,filters){
             state.filter = {...filters}
@@ -73,12 +79,16 @@ export default {
                 console.log(e)
             }
         },
+        async getAppProductsAdmin({commit}){
+            const products = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
+            console.log(products.results)
+            commit('SET_PRODUCTS',products.results)
+        },
         async getAppProducts({commit}){
-            // const newProducts = await this.$axios.$get('http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/products/?new=true')
+            
             const newProducts = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?new=true')
             commit('SET_NEW_PRODUCTS',newProducts.results)
             const saleProducts = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=true')
-
             commit('SET_SALE_PRODUCTS',saleProducts.results)
             
         },
