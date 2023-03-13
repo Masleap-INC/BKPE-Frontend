@@ -20,10 +20,12 @@
         <input ref="fileUpload" type="file" class="hidden">
 
         <!-- Create new -->
+        <NuxtLink to="/Admin/AdminCreateProductPage">
+            <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold">
+                + Create New
+            </button>
+        </NuxtLink>
 
-        <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold">
-            + Create New
-        </button>
 
     </div>
 
