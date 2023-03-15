@@ -37,12 +37,6 @@
 
             </span>
 
-            <!-- Order ID -->
-
-            <span class="block mb-5">
-                
-            </span>
-
         </div>
 
         <div class="mb-10 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5">
@@ -53,10 +47,22 @@
                 <h2 class=" "><span class="text-xl font-semibold mr-3">Order ID:</span> <span class="lg:text-lg md:text-lg sm:text-sm">#123456789123456789123456789</span> </h2>
             </div>
 
+            <!-- Order Date -->
+
+            <div>
+                <h2 class=" "><span class="text-xl font-semibold mr-3">Order Date:</span> <span class="lg:text-lg md:text-lg sm:text-sm">3/15/2023</span> </h2>
+            </div>
+
             <!-- Payment Status -->
 
             <div>
                 <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Status:</span> <span class="lg:text-lg md:text-lg sm:text-sm">Paid</span> </h2>
+            </div>
+
+            <!-- Payment Type -->
+
+            <div>
+                <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Type:</span> <span class="lg:text-lg md:text-lg sm:text-sm">Card</span> </h2>
             </div>
 
         </div>

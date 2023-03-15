@@ -26,6 +26,7 @@
                   <thead>
                       <tr class="border-b-2 border-b-white bg-blue-400 bg-opacity-30 text-xl">
                           <th class="p-3">ID</th>
+                          <th class="p-3">Order Date</th>
                           <th class="p-3">Customer Name</th>
                           <th class="p-3">Customer Email</th>
                           <th class="p-3">Status</th>
@@ -36,6 +37,7 @@
                   <tbody>
                       <tr class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                           <td class="p-3">123456789</td>
+                          <td class="p-3">3/15/2023</td>
                           <td class="p-3">John Doe</td>
                           <td class="p-3">johndoe@gmail.com</td>
                           <td class="p-3">Pending</td>
