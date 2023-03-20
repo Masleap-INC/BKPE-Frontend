@@ -47,7 +47,7 @@
           <!-- Account Button -->
 
           <div class="mt-5 w-fit mx-auto">
-            <NuxtLink to="/admin/account">
+            <NuxtLink to="/admin/AdminAccountPage">
               <button
                 class="w-20 inline-block mr-3 rounded-xl text-white font-semibold text-md border-2 border-white py-2 hover:bg-white hover:text-blue-600 duration-300"
               >
