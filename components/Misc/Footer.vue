@@ -51,21 +51,21 @@
 
                     <h2 class="block text-base font-thin">
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BK SUPERSTORE POLICIES</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">BK SUPERSTORE POLICIES</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">CHECK ORDER STATUS</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">DREAM LIST PROGRAM</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">DREAM LIST PROGRAM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">LOW PRICE GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarantee">LOW PRICE GUARANTEE</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED CUSTOMER SERVICE?</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/NeedCustomerService">NEED CUSTOMER SERVICE?</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED A PART?</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">NEED A PART?</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">REPORT A PROBLEM</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">REPORT A PROBLEM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SATISFACTION GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarantee">SATISFACTION GUARANTEE</NuxtLink></span>
 
                     </h2>
  
@@ -88,9 +88,9 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">MANUFACTURERS WE CARRY</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SELLING TO BLACK KNIGHT</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/ThirdColumn/SellingToBlackKnight">SELLING TO BLACK KNIGHT</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SUGGEST A MANUFACTURER</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/ThirdColumn/SuggestAManufacturer">SUGGEST A MANUFACTURER</NuxtLink></span>
 
                     </h2>
  
