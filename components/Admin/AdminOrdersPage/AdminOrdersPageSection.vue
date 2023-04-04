@@ -60,7 +60,7 @@
   
   <script>
   
-  import SearchBar from '~/components/Misc/SearchBar.vue'
+  import SearchBar from '~/components/HomePage/SearchBar.vue'
   
   export default {
   

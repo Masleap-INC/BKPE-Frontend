@@ -51,21 +51,21 @@
 
                     <h2 class="block text-base font-thin">
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BK SUPERSTORE POLICIES</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">BK SUPERSTORE POLICIES</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">CHECK ORDER STATUS</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">DREAM LIST PROGRAM</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">DREAM LIST PROGRAM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">LOW PRICE GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarantee">LOW PRICE GUARANTEE</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED CUSTOMER SERVICE?</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/NeedCustomerService">NEED CUSTOMER SERVICE?</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">NEED A PARTS?</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">NEED A PART?</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">REPORT A PROBLEM</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">REPORT A PROBLEM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SATISFACTION GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarantee">SATISFACTION GUARANTEE</NuxtLink></span>
 
                     </h2>
  
@@ -88,9 +88,9 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">MANUFACTURERS WE CARRY</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SELLING TO BLACK KNIGHT</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/ThirdColumn/SellingToBlackKnight">SELLING TO BLACK KNIGHT</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SUGGEST A MANUFACTURER</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/ThirdColumn/SuggestAManufacturer">SUGGEST A MANUFACTURER</NuxtLink></span>
 
                     </h2>
  
@@ -136,11 +136,11 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT PERFORMANCE ENGINEERING, INC.</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT D.I.Y. MUSCLE CAR KITS,INC.</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">BKPP: D.I.Y. MUSCLE CAR KITS</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">BLACK KNIGHT CUSTOMS, INC.</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO MATRIC</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO MATRIX</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">CAMARO NATION</NuxtLink></span>
 
@@ -154,7 +154,7 @@
 
             <!-- Copyright -->
 
-            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">© 2007-2014 BLACK KNIGHT PERFORMANCE ENGINEERING, INC., ALL RIGHTS RESERVED</div>
+            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">COPYRIGHT © 2009-2012 BLACK KNIGHT PERFORMANCE PARTS, INC., ALL RIGHTS RESERVED.</div>
 
         </div>
 
@@ -163,9 +163,11 @@
 
 
 </template>
-<script>
-export default {
-    name:"MiscFooter"
-}
-</script>
 
+
+<script>
+    export default {
+        
+        name: 'FooterComponent'
+    }
+</script>
