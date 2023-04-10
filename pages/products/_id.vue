@@ -16,7 +16,7 @@
 
                 <div class="mx-10">
                     <div class>
-                        <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${product.images[currentIndex].name}`" alt />
+                        <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${product.images[currentIndex].name}`" alt /> -->
                         <!-- <img :src="images[currentIndex].src" alt /> -->
                         
                     </div>

@@ -57,14 +57,17 @@
                 <tbody>
                     <tr v-for="(product,index) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                         <td class="p-3">{{product.id}}</td>
-                        <td class="p-3"><img src="~/assets/about-bg.jpg" alt="" class="h-16 w-20 object-cover"></td>
+                        <td class="p-3"><img :src="product.images[0]" alt="" class="h-16 w-20 object-cover"></td>
                         <td class="p-3">{{product.name}}</td>
                         <td class="p-3">{{product.price}}</td>
                         <td class="p-3">{{product.quantity}}</td>
                         <td class="p-3">
-                            <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
-                                Edit
-                            </button>
+                            <NuxtLink :to="{name:'Admin-AdminProductDetails-id',params:{id:product.id}}">
+                                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                                    Edit
+                                </button>
+                            </NuxtLink>
+
                             <button @click="() => deleteProduct(product.id,index)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Delete
                             </button>

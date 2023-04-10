@@ -28,7 +28,7 @@ import AdminOrderDetailsPageSection from '~/components/Admin/AdminOrdersPage/Adm
 export default {
     components: {
     AdminSidebar,
-    AdminOrderDetailsPageSection,
+    AdminOrderDetailsPageSection
 }
 }
 </script>
