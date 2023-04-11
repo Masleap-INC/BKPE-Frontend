@@ -35,17 +35,20 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
-                          <td class="p-3">123456789</td>
-                          <td class="p-3">3/15/2023</td>
-                          <td class="p-3">John Doe</td>
-                          <td class="p-3">johndoe@gmail.com</td>
-                          <td class="p-3">Pending</td>
-                          <td class="p-3">$1000000</td>
+                      <tr v-for="(order,index) in orders" :key="order.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
+                          <td class="p-3">{{order.id}}</td>
+                          <td class="p-3">{{order.created_at}}</td>
+                          <td class="p-3">{{order.user.username}}</td>
+                          <td class="p-3">{{order.user.email}}</td>
+                          <td class="p-3">{{order.order_status}}</td>
+                          <td class="p-3">${{order.total_price}}</td>
                           <td class="p-3">
-                              <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
-                                  View Details
-                              </button>
+                            <NuxtLink :to="{name:'Admin-AdminOrderDetails-idx', params:{idx:index}}">
+                                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                                    View Details
+                                </button>
+                            </NuxtLink>
+                             
                           </td>
                       </tr>
   
@@ -59,20 +62,26 @@
   </template>
   
   <script>
-  
+  import {mapGetters} from 'vuex'
   import SearchBar from '~/components/HomePage/SearchBar.vue'
   
   export default {
+
+
   
-      components: {
-          SearchBar
-      },
-  
-      methods: {
-          UploadFile() {
-              this.$refs.fileUpload.click();
-          },
-      },
+    components: {
+        SearchBar
+    },
+    computed:{
+        ...mapGetters({
+            orders: 'orders/orders',
+        }),
+    },
+    methods: {
+        UploadFile() {
+            this.$refs.fileUpload.click();
+        },
+    },
   
   }
   

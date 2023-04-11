@@ -13,7 +13,7 @@
             <!-- Page Section -->
 
             <div class="lg:col-span-4 md:col-span-5 sm:col-span-5 px-5 w-full lg:h-screen overflow-y-auto lg:pt-0 md:pt-10 sm:pt-10" >
-                <AdminUserDetailsPageSection />       
+                <AdminOrderDetailsPageSection :index="this.$route.params.idx" />       
             </div>
 
         </div>
@@ -24,11 +24,17 @@
 
 <script>
 import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
-import AdminUserDetailsPageSection from '~/components/Admin/AdminUsersPage/AdminUserDetailsPage/AdminUserDetailsPageSection.vue';
+import AdminOrderDetailsPageSection from '~/components/Admin/AdminOrdersPage/AdminOrderDetailsPage/AdminOrderDetailsPageSection.vue';
 export default {
     components: {
-    AdminSidebar,
-    AdminUserDetailsPageSection
-}
+        AdminSidebar,
+        AdminOrderDetailsPageSection
+    },
+    async asyncData({store}) {
+      if(!store.getters['orders/orders']){       
+        await store.dispatch('orders/getOrdersAdmin')
+      }
+
+    },
 }
 </script>

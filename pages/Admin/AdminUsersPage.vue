@@ -29,6 +29,12 @@ export default {
     components: {
         AdminSidebar,
         AdminUsersPageSection
-    }
+    },
+    async asyncData({store}) {
+      if(!store.getters['users/users']){       
+        await store.dispatch('users/getUsersAdmin')
+      }
+    },
+
 }
 </script>

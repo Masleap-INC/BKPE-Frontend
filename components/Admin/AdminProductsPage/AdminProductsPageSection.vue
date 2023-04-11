@@ -99,7 +99,6 @@ export default {
 
     methods: {
         deleteProduct(productId,productIdx){
-            
             const editedProductsList = [...this.products]
             editedProductsList.splice(productIdx,1)
             this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId})

@@ -195,7 +195,7 @@ export default {
           username: this.name, 
       });
       this.$store.dispatch('auth/userUpdate',data)
-      console.log(data)
+
     }
   },
   logout(){

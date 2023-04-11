@@ -50,7 +50,7 @@ export default {
 
         async generatePaymentIntent () {
 
-            const paymentIntent = await this.$axios.$get(`https://bkpe-multi-ven-prod-test-k5p06h.mo6.mogenius.io/payment/create-payment-intent/${(this.totalPrice*100)}/  `)
+            const paymentIntent = await this.$axios.$get(`https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/payment/create-payment-intent/${(this.totalPrice*100)}/  `)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
         
         },

@@ -33,9 +33,10 @@
           </thead>
           <tbody>
             <tr
+              v-for=" (user,index) in users" :key="user.id"
               class="odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10"
             >
-              <td class="p-3">123456789</td>
+              <td class="p-3">{{user.id}}</td>
               <td class="p-3">
                 <div class="w-20 h-20">
                     <img
@@ -44,15 +45,18 @@
                     />
                 </div>
               </td>
-              <td class="p-3">John Doe</td>
-              <td class="p-3">johndoe@gmail.com</td>
+              <td class="p-3">{{user.username}}</td>
+              <td class="p-3">{{user.email}}</td>
               <td class="p-3">123456789</td>
               <td class="p-3">
-                <button
-                  class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold"
-                >
-                  View Details
-                </button>
+                <NuxtLink :to="{name:'Admin-AdminUserDetails-idx-id', params:{idx:index,id:user.id}}">
+                  <button
+                    class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold"
+                  >
+                    View Details
+                  </button>
+                </NuxtLink>
+   
               </td>
             </tr>
           </tbody>
@@ -63,10 +67,16 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import SearchBar from '~/components/HomePage/SearchBar.vue'
 export default {
   components: {
     SearchBar,
+  },
+  computed:{
+    ...mapGetters({
+        users: 'users/users',
+    }),
   },
   methods: {
     UploadFile() {
