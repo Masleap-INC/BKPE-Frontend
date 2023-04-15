@@ -148,25 +148,24 @@ export default {
     },
     methods: {
         ...mapActions({
-        signIn:'auth/signIn'
+            signIn:'auth/signIn'
         }),
         toggleForgotPassword() {
             this.forgotPassword = !this.forgotPassword;
         },
         submit() {
-        const email = this.email
-        const password = this.password
-        const credential = {email,password}
-        this.signIn(credential)
+            const email = this.email
+            const password = this.password
+            const credential = {email,password}
+            this.signIn(credential)
         },
         async forgetSubmit(){
-            const data = await this.$axios.$post('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/request-reset-email/',
+            await this.$axios.$post('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/request-reset-email/',
             {           
                 email: this.recoverPassEmail,
                 redirect_url: "http://localhost:3000/UserResetPasswordPage"  
             });
 
-            console.log(data)
             this.recoverPassEmail = ''
 
         },

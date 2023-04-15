@@ -68,7 +68,7 @@
                         <div class=" align-middle">
                             
                             <label for="inventory" class="mr-2">Status</label>
-                            <select v-model="order_status" type="number" class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
+                            <select v-model="order_status" @change="onStatusUpdate($event)" type="number" class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
 
                                 <option value="Processing">Processing</option>
                                 <option value="Ready to Ship">Ready to Ship</option>
@@ -306,14 +306,15 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
 
 export default {
     props: ['index'],
     data(){
         return {
             currentIndex:Number(this.index),
-            order_status:''
+            order_status:'',
+           
         }
     },
 
@@ -326,7 +327,9 @@ export default {
         this.order_status = this.orders[this.currentIndex].order_status
     },
     methods: {
-       
+        ...mapActions({
+            ordersStateUpdate:'orders/ordersStateUpdate'
+        }),
         nextUser(){
             if(this.orders.length - 1 > this.currentIndex){
                 return this.currentIndex + 1
@@ -341,6 +344,18 @@ export default {
                 return this.currentIndex
             }
         },
+        async onStatusUpdate(event){
+            
+            const data = await this.$axios.$patch(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/${this.orders[this.currentIndex].id}/`,
+            {           
+                order_status:event.target.value
+            });
+            this.orders[this.currentIndex] = data
+
+            this.ordersStateUpdate(this.orders)
+
+        },
+
         goBack() {
             this.$router.back();
         }

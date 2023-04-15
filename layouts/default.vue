@@ -15,25 +15,24 @@
 import {mapGetters} from 'vuex'
 export default {
  
-    computed:{
-      ...mapGetters({
-        loadingState: 'auth/loadingState',
-        appLoadingState: 'loading/loadingState'
-      }),
-    },
-    beforeCreate(){ 
-      this.$store.dispatch('auth/loadingStateChange',true)
-    },
+  computed:{
+    ...mapGetters({
+      loadingState: 'auth/loadingState',
+      appLoadingState: 'loading/loadingState'
+    }),
+  },
+  beforeCreate(){ 
+    this.$store.dispatch('auth/loadingStateChange',true)
+  },
 
-    mounted(){
-      
-      if(localStorage.getItem("refreshToken")){
-        this.$store.dispatch('auth/attempt', localStorage.getItem("refreshToken"));
-      }else{
-        this.$store.dispatch('auth/loadingStateChange',false)
-      }
+  mounted(){
+    
+    if(localStorage.getItem("refreshToken")){
+      this.$store.dispatch('auth/attempt', localStorage.getItem("refreshToken"));
+    }else{
+      this.$store.dispatch('auth/loadingStateChange',false)
     }
-
+  }
 
 }
 </script>

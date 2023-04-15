@@ -22,7 +22,8 @@ export default {
         },
         SET_LOADING_STATE(state,bool){
             state.loadingState = bool
-        }
+        },
+        
     },
     actions:{
     
@@ -41,7 +42,9 @@ export default {
                 console.log(e)
             }
         },
-
+        ordersStateUpdate({commit},orders){
+            commit('SET_ORDERS',orders)
+        },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)
         }
