@@ -15,7 +15,7 @@
         
                 <div class="bg-white grid grid-cols-6 py-1 rounded-xl"> 
 
-                    <input   v-model="searchKey" v-on:keydown="(e)=>search(e)" type="text" placeholder="Search here..." class=" col-span-5 inline-block rounded-xl h-auto text-xl py-3 px-3 ml-3  focus:outline-none" >
+                    <input   v-model="searchKey" v-on:keydown="(e)=>search(e)" type="text" placeholder="Order Id" class=" col-span-5 inline-block rounded-xl h-auto text-xl py-3 px-3 ml-3  focus:outline-none" >
 
                     <button @click="()=>search({key:'Enter'})" class="inline-block mx-auto border-l-2 border-gray-300 px-5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

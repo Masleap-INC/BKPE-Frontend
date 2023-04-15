@@ -43,7 +43,9 @@ export default {
                 console.log(e)
             }
         },
-
+        usersStateUpdate({commit},users){
+            commit('SET_USERS',users)
+        },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)
         }
