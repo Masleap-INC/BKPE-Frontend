@@ -76,28 +76,29 @@
   </template>
   
   <script>
-  import {mapGetters,mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
   
   export default {
     data(){
         return{
-            searchKey:''
+            searchKey:'',
+            orders:[]
         }
     },
     computed:{
         ...mapGetters({
-            orders: 'orders/orders',
+            storeOrders: 'orders/orders',
         }),
     },
+    beforeMount(){
+        this.orders = this.storeOrders
+    },
     methods: {
-        ...mapActions({
-            ordersStateUpdate:'orders/ordersStateUpdate'
-        }),
         async search(e){ 
           
             if(e.key === 'Enter'){
                 const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/${this.searchKey}/`)
-                this.ordersStateUpdate([data])
+                this.orders=[data]
                 
             } 
             

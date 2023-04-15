@@ -22,7 +22,6 @@
               </button>
 
           </div>
-
       </div>
     </div>
 
@@ -81,31 +80,32 @@
 </template>
 
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
 
   data(){
     return {
-      searchKey:''
+      searchKey:'',
+      users:[]
     }
   },
 
   computed:{
     ...mapGetters({
-        users: 'users/users',
+        storeUsers: 'users/users',
     }),
   },
+  beforeMount(){
+    this.users = this.storeUsers
+  },
   methods: {
-    ...mapActions({
-      usersStateUpdate:'users/usersStateUpdate'
-    }),
 
     async search(e){ 
       
       if(e.key === 'Enter'){
         const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/users/?email=${this.searchKey}`)
-        this.usersStateUpdate(data.results)
+        this.users = data.results
           
       } 
         
