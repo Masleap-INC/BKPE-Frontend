@@ -18,9 +18,14 @@
 
     <section>
       <div class="grid lg:grid-cols-2 py-10">
-        <!-- Column for Product Images -->
+        <!-- Column for Product Images, Name and Initial Details -->
 
         <div class="mx-10">
+
+          <!-- Product Name -->
+
+          <span class="block text-4xl text-white font-bold mb-10">Product Name</span>
+
           <div class>
             <img :src="images[currentIndex].src" alt />
           </div>
@@ -38,44 +43,36 @@
               />
             </button>
           </div>
+
+          <!-- details -->
+
+          <div class=" text-white">
+
+            <!-- Product Year -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Year:</b> 1967, 1968, 1969
+            </span>
+
+            <!-- Product Type -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Type:</b> Product Type
+            </span>
+
+            <!-- Product Category -->
+
+            <span class="block text-xl font-normal mb-10">
+              <b>Category:</b> Product Type
+            </span>
+
+          </div>
         </div>
 
         <!-- Column for Product Info -->
 
         <div class="mx-10 mb-10 lg:mt-0 md:mt-10 sm:mt-10">
           <h2 class="text-white">
-            <!-- Product Name -->
-
-            <span class="block text-4xl font-bold mb-3">Product Name</span>
-
-            <!-- Product Brand -->
-
-            <span class="block text-xl font-medium mb-2">
-              <b>Brand:</b> Product Brand
-            </span>
-
-            <!-- Product Model -->
-
-            <span class="block text-xl font-normal mb-10">
-              <b>Model:</b>Product Model
-            </span>
-
-            <!-- Product Description -->
-
-            <span class="block w-5/6 text-lg font-light mb-10">
-              <h2 class="text-xl font-bold mb-3">Description:</h2>
-
-              <p class="text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              
-            </span>
 
             <!-- Product Price -->
 
@@ -83,7 +80,7 @@
 
             <!-- Product Variant Type 1 -->
 
-            <span class="block text-3xl font-bold my-5 bg-transparent">
+            <!-- <span class="block text-3xl font-bold my-5 bg-transparent">
               <label
                 for="product-option-1"
                 class="block text-white text-xl font-medium"
@@ -95,23 +92,19 @@
                 name="product-option-1"
                 class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
               >
-                <!-- Option 1 -->
 
                 <option value="1" class="text-gray-700">option 1</option>
 
-                <!-- Option 2 -->
-
                 <option value="2" class="text-gray-700">option 2</option>
 
-                <!-- Option 2 -->
-
                 <option value="3" class="text-gray-700">option 3</option>
+
               </select>
-            </span>
+            </span> -->
 
             <!-- Product Variant Type 2 -->
 
-            <span class="block text-3xl font-bold my-5 bg-transparent">
+            <!-- <span class="block text-3xl font-bold my-5 bg-transparent">
               <label
                 for="product-option-1"
                 class="block text-white text-xl font-medium"
@@ -123,19 +116,15 @@
                 name="product-option-1"
                 class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
               >
-                <!-- Option 1 -->
 
                 <option value="1" class="text-gray-700">option 1</option>
 
-                <!-- Option 2 -->
-
                 <option value="2" class="text-gray-700">option 2</option>
 
-                <!-- Option 2 -->
-
                 <option value="3" class="text-gray-700">option 3</option>
+
               </select>
-            </span>
+            </span> -->
 
             <!-- Qty -->
 
@@ -185,12 +174,160 @@
 
             <!-- Add To Cart Button -->
 
-            <span class="block mt-10">
+            <span class="block my-10">
               <button
                 class="bg-white rounded-lg border-2 border-white px-3 py-2 text-2xl text-blue-700 text-center font-semibold hover:text-white hover:bg-transparent hover:ease-in duration-300"
               >
                 Add to Cart
               </button>
+            </span>
+
+            <!-- GM Part Number(s) -->
+
+            <span class="block text-xl font-normal mb-2 text-ellipsis">
+              <b>GM Part Number(s):</b> <br>7701047 & 7701049 (67 & 68) & 8726875 & 9861931 (69)
+            </span>
+
+            <!-- Assembly Manual Number(s) -->
+
+            <span class="block text-xl font-normal mb-2 text-ellipsis">
+              <b>Assembly Manual Number(s):</b> <br>11/13-A2-1 & 5; 11/13-A4-3, 5 & 6 & 12-A3-1 & 2
+            </span>
+
+            <!-- BKPP Part Number -->
+
+            <span class="block text-xl font-normal mb-2 text-ellipsis">
+              <b>BKPP Part Number:</b> <br>BKPE-0005
+            </span>
+
+            <!-- Body Style -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Body Style:</b> All
+            </span>
+
+            <!-- Trim -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Trim:</b> All
+            </span>
+
+            <!-- Interior -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Interior:</b> All
+            </span>
+
+            <!-- Engine -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Engine:</b> All
+            </span>
+
+            <!-- Transmission -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Transmission:</b> All
+            </span>
+
+            <!-- Included -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Included:</b> 1
+            </span>
+
+            <!-- Required -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Required:</b> 1
+            </span>
+
+            <!-- GM Affiliation -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>GM Affiliation:</b> Yes
+            </span>
+
+            <!-- Remanufactured ? -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Remanufactured ?:</b> Yes
+            </span>
+
+            <!-- Made in the USA ? -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Made in the USA ?:</b> Yes
+            </span>
+
+            <!-- Sold As -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Sold As:</b> Assembly
+            </span>
+
+            <!-- Height -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Height:</b> 1000 cm
+            </span>
+
+            <!-- Width -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Width:</b> 1000 cm
+            </span>
+
+            <!-- Length -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Length:</b> 1000 cm
+            </span>
+
+            <!-- Weight -->
+
+            <span class="block text-xl font-normal mb-2">
+              <b>Weight:</b> 1000 kg
+            </span>
+
+            <!-- Shipping Method -->
+
+            <span class="block text-xl font-normal mb-10">
+              <b>Shipping Method:</b> Pickup Only
+            </span>
+
+            <!-- Product Description -->
+
+            <span class="block w-5/6 text-lg font-light mb-10">
+              <h2 class="text-xl font-bold mb-3">Description:</h2>
+
+              <p class="text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              
+            </span>
+
+            <!-- Product Notes -->
+
+            <span class="block w-5/6 text-lg font-light mb-10">
+              <h2 class="text-xl font-bold mb-3">Notes:</h2>
+
+              <p class="text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              
             </span>
           </h2>
         </div>
