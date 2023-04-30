@@ -37,20 +37,21 @@ export default {
             },
         }
     },
+    async fetch() {
+     await this.generatePaymentIntent();
+    },
     computed:{
         ...mapGetters({
             getCart:'cart/getCart',
             totalPrice:'cart/getTotalPrice'
         }),
     },
-    async fetch() {
-     await this.generatePaymentIntent();
-    },
+
     methods: {
 
         async generatePaymentIntent () {
 
-            const paymentIntent = await this.$axios.$get(`https://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/payment/create-payment-intent/${(this.totalPrice*100)}/  `)
+            const paymentIntent = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/payment/create-payment-intent/${this.totalPrice*100}/`)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
         
         },

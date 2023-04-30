@@ -12,130 +12,265 @@
         <LoadingData v-if="$fetchState.pending" />
         <section v-else>
             <div class="grid lg:grid-cols-2 py-10">
-                <!-- Column for Product Images -->
+                <!-- Column for Product Images, Name and Initial Details -->
 
                 <div class="mx-10">
-                    <div class>
-                        <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/${product.images[currentIndex].name}`" alt /> -->
-                        <!-- <img :src="images[currentIndex].src" alt /> -->
-                        
-                    </div>
 
-                    <div class="mx-auto">
-                        <button
-                            v-for="(image, index) in images"
-                            :key="index"
-                            @click="currentIndex = index"
-                        >
-                            <img :src="image.src" alt class="h-14 w-auto my-5 mx-2 inline-block" />
-                            <!-- <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(image.name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(image.name)[1]}`" alt class="h-14 w-auto my-5 mx-2 inline-block" /> -->
-                        </button>
-                    </div>
+                <!-- Product Name -->
+
+                <span class="block text-4xl text-white font-bold mb-10">{{product.name}}</span>
+
+                <div class>
+                    <img :src="product.images[currentIndex]" alt />
+                </div>
+
+                <div class="mx-auto">
+                    <button
+                    v-for="(image, index) in product.images"
+                    :key="image"
+                    @click="currentIndex = index"
+                    >
+                    <img
+                        :src="image"
+                        alt
+                        class="h-14 w-auto my-5 mx-2 inline-block"
+                    />
+                    </button>
+                </div>
+
+                <!-- details -->
+
+                <div class=" text-white">
+
+                    <!-- Product Year -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Year:</b> {{product.year}}
+                    </span>
+
+                    <!-- Product Type -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Type:</b> 
+                    </span>
+
+                    <!-- Product Category -->
+
+                    <span class="block text-xl font-normal mb-10">
+                    <b>Category:</b> {{product.category.name}}
+                    </span>
+
+                </div>
                 </div>
 
                 <!-- Column for Product Info -->
 
-                <div class="mx-10 my-10">
-                    <h2 class="text-white">
-                        <!-- Product Name -->
+                <div class="mx-10 mb-10 lg:mt-0 md:mt-10 sm:mt-10">
+                <h2 class="text-white">
 
-                        <span class="block text-4xl font-bold mb-3">{{product.name}}</span>
+                    <!-- Product Price -->
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.price}}</span>
 
-                        <!-- Product Brand -->
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.salePrice}}</span>
+            
 
-                        <span class="block text-xl font-medium mb-2">
-                            <b>Brand:</b> {{product.brand.name}}
-                        </span>
+                    <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
 
-                        <!-- Product Model -->
+                    <span
+                    class="block font-bold text-left text-lg w-full"
+                    >
 
-                        <span class="block text-xl font-normal mb-10">
-                            <b>Model:</b> Product Model
-                        </span>
+                    <label
+                        for="qty"
+                        class="block text-white text-xl font-medium"
+                        >Select Quantity</label
+                    >
 
-                        <!-- Product Description -->
+                    <!-- text box -->
 
-                        <span class="block w-5/6 text-lg font-light mb-10">
-                            <b class="text-xl font-bold">Description:</b>
-                            <br />{{product.description}}
-                        </span>
+                    <input
+                        id="qty"
+                        type="number"
+                        min="1"
+                        :max="10"
+                        class="block mr-1 mt-3 pl-2 text-black w-14"
+                        value="1"
+                        readonly
+                    />
 
-                        <!-- Product Price -->
-                        <div  v-if="product.onSale">
-                            <span class="block text-3xl mb-5 text-gray-500 font-light ">Regular Price: <span class="line-through">${{product.price}}</span></span>
-                            <span class="block text-3xl font-bold mb-5">Sale Price: ${{product.salePrice}}</span>
-                        </div>
-                        <div v-else >
-                            <span class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
-                        </div>
-                        <!-- Product Variant Type 1 -->
-<!-- 
-                        <span class="block text-3xl font-bold my-5 bg-transparent">
-                            <label
-                                for="product-option-1"
-                                class="block text-white text-xl font-medium"
-                            >Select Variant 1</label>
+                    <!-- Qty plus or minus buttons -->
 
-                            <select
-                                id
-                                name="product-option-1"
-                                class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
-                            >
-                        
+                    <span class="inline-block my-2 justify-between">
+                        <!-- plus button -->
 
-                                <option value="1" class="text-gray-700">option 1</option>
+                        <button
+                        type="button"
+                        class="inline-block w-6 h-auto bg-transparent border-2 border-white"
+                        >
+                        +
+                        </button>
 
-                       
+                        <!-- minus button -->
 
-                                <option value="2" class="text-gray-700">option 2</option>
+                        <button
+                        class="inline-block w-6 h-auto bg-transparent border-2 border-white"
+                        >
+                        -
+                        </button>
+                    </span>
+                    </span>
 
-                             
+                    <!-- Add To Cart Button -->
 
-                                <option value="3" class="text-gray-700">option 3</option>
-                            </select>
-                        </span> -->
+                    <span class="block my-10">
+                    <button
+                        class="bg-white rounded-lg border-2 border-white px-3 py-2 text-2xl text-blue-700 text-center font-semibold hover:text-white hover:bg-transparent hover:ease-in duration-300"
+                    >
+                        Add to Cart
+                    </button>
+                    </span>
 
-                        <!-- Product Variant Type 2 -->
+                    <!-- GM Part Number(s) -->
 
-                        <!-- <span class="block text-3xl font-bold my-5 bg-transparent">
-                            <label
-                                for="product-option-1"
-                                class="block text-white text-xl font-medium"
-                            >Select Variant 2</label>
+                    <span class="block text-xl font-normal mb-2 text-ellipsis">
+                    <b>GM Part Number(s):</b> <br>{{product.gm_part_numbers}}
+                    </span>
 
-                            <select
-                                id
-                                name="product-option-1"
-                                class="form-select appearance-none block bg-transparent bg-clip-padding border-2 border-white text-white text-base px-3 py-2 mt-3 w-1/2"
-                            >
-                            
-                                <option value="1" class="text-gray-700">option 1</option>
+                    <!-- Assembly Manual Number(s) -->
 
+                    <span class="block text-xl font-normal mb-2 text-ellipsis">
+                    <b>Assembly Manual Number(s):</b> <br>{{product.assembly_manual_numbers}}
+                    </span>
 
-                                <option value="2" class="text-gray-700">option 2</option>
+                    <!-- BKPP Part Number -->
 
+                    <span class="block text-xl font-normal mb-2 text-ellipsis">
+                    <b>BKPP Part Number:</b> <br>{{product.bkpe_part_number}}
+                    </span>
 
-                                <option value="3" class="text-gray-700">option 3</option>
-                            </select>
-                        </span> -->
+                    <!-- Body Style -->
 
-                        <!-- Add To Cart Button -->
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Body Style:</b> {{product.body_style}}
+                    </span>
 
-                        <span class="block mt-10">
-                            <button
-                                class="bg-white rounded-lg border-2 border-white px-3 py-2 text-2xl text-blue-700 text-center font-semibold hover:text-white hover:bg-transparent hover:ease-in duration-300"
-                                :disabled="getCart.find(el=>el.product.id == product.id)"
-                                @click="addToCart(product)"
-                            
-                            >Add to Cart</button>
-                        </span>
-                    </h2>
+                    <!-- Trim -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Trim:</b> {{product.trim}}
+                    </span>
+
+                    <!-- Interior -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Interior:</b> {{product.interiro}}
+                    </span>
+
+                    <!-- Engine -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Engine:</b> {{product.engine}}
+                    </span>
+
+                    <!-- Transmission -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Transmission:</b> {{product.transmission}}
+                    </span>
+
+                    <!-- Included -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Included:</b> {{product.included}}
+                    </span>
+
+                    <!-- Required -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Required:</b> {{product.required}}
+                    </span>
+
+                    <!-- GM Affiliation -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>GM Affiliation:</b> {{product.gm_affiliation}}
+                    </span>
+
+                    <!-- Remanufactured ? -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Remanufactured ?:</b> {{product.remanufactured}}
+                    </span>
+
+                    <!-- Made in the USA ? -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Made in the USA ?:</b> {{product.made_in_the_use ? 'Yes' : 'No'}}
+                    </span>
+
+                    <!-- Sold As -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Sold As:</b> {{product.sold_as}}
+                    </span>
+
+                    <!-- Height -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Height:</b> {{product.h}}
+                    </span>
+
+                    <!-- Width -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Width:</b> {{product.w}}
+                    </span>
+
+                    <!-- Length -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Length:</b> {{product.l}}
+                    </span>
+
+                    <!-- Weight -->
+
+                    <span class="block text-xl font-normal mb-2">
+                    <b>Weight:</b> {{product.weight}}
+                    </span>
+
+                    <!-- Shipping Method -->
+
+                    <span class="block text-xl font-normal mb-10">
+                    <b>Shipping Method:</b> {{product.shipping_method}}
+                    </span>
+
+                    <!-- Product Description -->
+
+                    <span class="block w-5/6 text-lg font-light mb-10">
+                    <h2 class="text-xl font-bold mb-3">Description:</h2>
+
+                    <p class="text-lg">
+                        {{product.description}}
+                    </p>
+                    
+                    </span>
+
+                    <!-- Product Notes -->
+
+                    <span class="block w-5/6 text-lg font-light mb-10">
+                    <h2 class="text-xl font-bold mb-3">Notes:</h2>
+
+                    <p class="text-lg">
+                        {{product.notes}}
+                    </p>
+                    
+                    </span>
+                </h2>
                 </div>
             </div>
         </section>
 
         <!-- Related Products Section -->
-
         <Section>
             <div class="py-10">
                 <!-- Related Products Heading -->
@@ -161,7 +296,7 @@
                         <div v-for="(product,idx) in similarProducts" :key="idx" class="bg-white rounded-xl p-2">
                         
                             <NuxtLink :to="{name:'products-id',params:{id:product.id}}">
-                            <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(product.images[0].name)[1]}`" alt />
+                            <img :src="product.images[0]" alt />
 
                        
 
@@ -169,15 +304,11 @@
 
                          
 
-                            <h2 class="block text-xl font-normal my-3">{{product.brand.name}}</h2>
+                            <h2 class="block text-xl font-normal my-3">{{product.part_manufacturer}}</h2>
 
                             <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.price}}</h2>
 
                             <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.salePrice}}</h2>
-
-            
-                            <!-- <h2 class="block text-xl font-normal my-3"></h2> -->
-
                         
                             <h2 v-else class="block text-red-700 my-3 text-xl font-bold">
                                 <b>Price:</b> ${{product.price}}
@@ -417,10 +548,9 @@ export default {
         }),
         async getSingleProduct() {
         const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${this.$route.params.id}`)
+        console.log(data)
         this.product = {...data}
-        this.product.images.forEach(image => {
-            this.images.push({src:`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/images/__sized__/${this.imagename(image.name)[0]}-thumbnail-100x100-70.${this.imagename(image.name)[1]}`})
-        });
+
         const similarProductData = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?category=${data.category.id}&type=${data.type.id}&year=${data.year}`)
         this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
@@ -432,8 +562,6 @@ export default {
             })
         },
         submitReview(){     
-            
-         
             this.$axios.$post(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/reviews/`,
             { 
             title:this.name,
