@@ -94,7 +94,7 @@
                         min="1"
                         :max="10"
                         class="block mr-1 mt-3 pl-2 text-black w-14"
-                        value="1"
+                        :value="quantity"
                         readonly
                     />
 
@@ -106,6 +106,7 @@
                         <button
                         type="button"
                         class="inline-block w-6 h-auto bg-transparent border-2 border-white"
+                        @click="incCartItmeQty"
                         >
                         +
                         </button>
@@ -114,6 +115,7 @@
 
                         <button
                         class="inline-block w-6 h-auto bg-transparent border-2 border-white"
+                        @click="decCartItmeQty"
                         >
                         -
                         </button>
@@ -125,6 +127,8 @@
                     <span class="block my-10">
                     <button
                         class="bg-white rounded-lg border-2 border-white px-3 py-2 text-2xl text-blue-700 text-center font-semibold hover:text-white hover:bg-transparent hover:ease-in duration-300"
+                        :disabled="getCart.find(el=>el.product.id == product.id)"
+                        @click="addToCart(product)"
                     >
                         Add to Cart
                     </button>
@@ -512,6 +516,7 @@ export default {
         return {
 
             product:{},
+            quantity:1,
             similarProducts:[],
             currentIndex: 0,
             name:null,
@@ -558,7 +563,7 @@ export default {
         addToCart(product){
             this.addToCartStore({
                 product:product,
-                quantity:1
+                quantity:this.quantity
             })
         },
         submitReview(){     
@@ -573,8 +578,16 @@ export default {
    
         },
 
-        imagename(name){
-            return name.split(".")
+        incCartItmeQty(){
+            if(this.product.quantity > this.quantity){
+                this.quantity = this.quantity + 1
+            }
+        },
+
+        decCartItmeQty(){
+            if(this.quantity > 1){
+                this.quantity = this.quantity - 1
+            }
         },
 
         async getReviews(){
