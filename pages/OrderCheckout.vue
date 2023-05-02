@@ -40,7 +40,7 @@
 
                             <div class="mb-5">
                                 <label for="email" class="block text-white text-2xl mb-3">Email</label>
-                                <input id="email" type="email" name="email" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="email" v-model="shippingDetails.email" type="email" name="email" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -48,7 +48,7 @@
 
                             <div class="mb-5">
                                 <label for="first-name" class="block text-white text-2xl mb-3">First Name</label>
-                                <input id="first-name" type="text" name="first-name" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="first-name" v-model="shippingDetails.firstName" type="text" name="first-name" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -56,7 +56,7 @@
 
                             <div class="mb-5">
                                 <label for="Last-name" class="block text-white text-2xl mb-3">Last Name</label>
-                                <input id="Last-name" type="text" name="Last-name" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="Last-name" v-model="shippingDetails.lastName" type="text" name="Last-name" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -64,7 +64,7 @@
 
                             <div class="mb-5">
                                 <label for="address" class="block text-white text-2xl mb-3">Address</label>
-                                <textarea id="address" type="text" name="address" class="px-3 py-2 text-xl w-full rounded-md" required></textarea>
+                                <textarea id="address" v-model="shippingDetails.address" type="text" name="address" class="px-3 py-2 text-xl w-full rounded-md" required></textarea>
                             </div>
 
 
@@ -76,14 +76,14 @@
 
                                 <div>
                                     <label for="city" class="block text-white text-2xl mb-3">City</label>
-                                    <input id="city" type="text" name="city" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="city" v-model="shippingDetails.city" type="text" name="city" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                                 <!-- Country -->
 
                                 <div>
                                     <label for="country" class="block text-white text-2xl mb-3">Country</label>
-                                    <input id="country" type="text" name="country" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="country" v-model="shippingDetails.country"  type="text" name="country" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                             </div>
@@ -98,14 +98,14 @@
 
                                 <div>
                                     <label for="zip" class="block text-white text-2xl mb-3">Postal Code</label>
-                                    <input id="zip" type="text" name="zip" class="px-3 py-2 text-xl w-full rounded-md" pattern="\d*" required>
+                                    <input id="zip" v-model="shippingDetails.postalCode" type="text" name="zip" class="px-3 py-2 text-xl w-full rounded-md" pattern="\d*" required>
                                 </div>
 
                                 <!-- Phone -->
 
                                 <div>
                                     <label for="phone" class="block text-white text-2xl mb-3">Phone</label>
-                                    <input id="phone" type="tel" name="phone" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="phone" v-model="shippingDetails.phone" type="tel" name="phone" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                             </div>
@@ -230,8 +230,22 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
 export default {
+    data(){
+        return{
+            shippingDetails:{
+                email:'',
+                firstName:'',
+                lastName:'',
+                address:'',
+                city:'',
+                country:'',
+                postalCode:'',
+                phone:''
+            }
+        }
+    },
     computed:{
         ...mapGetters({
             getCart:'cart/getCart',
@@ -239,6 +253,12 @@ export default {
         }),
     }, 
     methods: {
+            ...mapActions({
+                setShippingDetails:'orders/setShippingDetails'
+            }),
+            placeOrder(){
+                this.setShippingDetails(this.shippingDetails)
+            },
 
             goBack() {
                 this.$router.back();

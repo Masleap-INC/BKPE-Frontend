@@ -4,15 +4,18 @@ export default {
 
     state: () => ({
         orders:null,
-        loadingState: false
+        loadingState: false,
+        shippingDetails:null
     }),
     getters:{
-
         orders(state){
             return state.orders
         },
-        loadingState:(state)=>{
+        loadingState(state){
             return state.loadingState
+        },
+        shippingDetails(state){
+            return state.shippingDetails
         }
     },
     mutations: {
@@ -23,13 +26,14 @@ export default {
         SET_LOADING_STATE(state,bool){
             state.loadingState = bool
         },
+        SET_SHIPPING_DETAILS(state,shippingDetails){
+            state.shippingDetails = shippingDetails
+        }
         
     },
     actions:{
     
         async getOrdersAdmin({ commit, dispatch }){
-                     
-
             try {
        
                 const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/`)
@@ -44,6 +48,9 @@ export default {
         },
         ordersStateUpdate({commit},orders){
             commit('SET_ORDERS',orders)
+        },
+        setShippingDetails({commit},details){
+            commit('SET_SHIPPING_DETAILS',details)
         },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)

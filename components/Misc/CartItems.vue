@@ -20,7 +20,7 @@
                         <!-- Product Image -->
 
                         <span class="inline-block mr-2 h-14 w-20 top-0">
-                            <img :src="`http://ec2-3-219-163-252.compute-1.amazonaws.com:7000/images/__sized__/${imagename(item.product.images[0].name)[0]}-crop-c0-5__0-5-400x400-70.${imagename(item.product.images[0].name)[1]}`" alt />
+                            <img :src="item.product.images[0]" alt />
                         </span>
 
                         <!-- Product Info -->
@@ -33,7 +33,7 @@
 
                             <!-- Product Brand -->
 
-                            <span class="block mb-1">{{item.product.brand.name}}</span>
+                            <span class="block mb-1">{{item.product.part_manufacturer}}</span>
 
                             <!-- Product Price -->
 
@@ -47,7 +47,7 @@
                     <span class="inline-block font-bold text-left text-lg w-1/6 ">
                         <!-- text box -->
 
-                        <input id="qty" type="number" min="1" :max="item.inventory" class="block mr-1 pl-2 text-black w-14" :value="item.quantity" readonly>
+                        <input id="qty" type="number" class="block mr-1 pl-2 text-black w-14" :value="item.quantity" readonly>
 
                         <!-- Qty plus or minus buttons -->
 
@@ -118,17 +118,19 @@ export default {
 
     methods:{
     incCartItmeQty(index){
-      this.$store.dispatch("cart/incItemQty",index)
+        if(this.getCart[index].product.quantity > this.getCart[index].quantity){
+            this.$store.dispatch("cart/incItemQty",index)
+        }
     },
     decCartItmeQty(index){
-      this.$store.dispatch("cart/decItemQty",index)
+        if(this.getCart[index].quantity > 1){
+            this.$store.dispatch("cart/decItemQty",index)
+        }
     },
     remCartItem(index){
       this.$store.dispatch("cart/remCartItem",index)
     },
-    imagename(name){
-        return name.split(".")
-    },
+
   }
 
     

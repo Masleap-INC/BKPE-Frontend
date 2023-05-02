@@ -33,7 +33,7 @@ export default {
                 appearance: {}
             },
             confirmParams: {
-                return_url: 'http://localhost:3000', // success url
+                return_url: 'http://localhost:3000/PaymentSuccess', // success url
             },
         }
     },
