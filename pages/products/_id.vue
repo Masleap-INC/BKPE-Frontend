@@ -552,10 +552,15 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
+        const config = {
+            headers:{
+                "Access-Control-Allow-Origin": "*"
+            }
+        };
         const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${this.$route.params.id}`)
 
         this.product = {...data}
-        console.log(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+ (data.salePrice-1000) : 'min_price='+data.price-1000}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+data.price+1000}`)
+       
         const similarProductData = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
         this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
