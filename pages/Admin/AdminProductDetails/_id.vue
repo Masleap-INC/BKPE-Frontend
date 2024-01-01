@@ -571,7 +571,7 @@ export default {
     },
     methods: {
         async getSingleProduct() {
-            const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${this.$route.params.id}`)
+            const data = await this.$axios.$get(`http://35.74.66.245:8000/products/${this.$route.params.id}`)
             this.product = {...data}
 
         },

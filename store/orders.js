@@ -36,7 +36,7 @@ export default {
         async getOrdersAdmin({ commit, dispatch }){
             try {
        
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/`)
+                const data = await this.$axios.$get(`http://35.74.66.245:8000/order/`)
 
                 commit('SET_ORDERS',data.results)
                 dispatch('loadingStateChange',false) 

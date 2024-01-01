@@ -160,7 +160,7 @@ export default {
             this.signIn(credential)
         },
         async forgetSubmit(){
-            await this.$axios.$post('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/request-reset-email/',
+            await this.$axios.$post('http://35.74.66.245:8000/auth/request-reset-email/',
             {           
                 email: this.recoverPassEmail,
                 redirect_url: "http://localhost:3000/UserResetPasswordPage"  

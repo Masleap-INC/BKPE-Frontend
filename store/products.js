@@ -72,7 +72,7 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
+                const data = await this.$axios.$get(`http://35.74.66.245:8000/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
                 commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
@@ -81,7 +81,7 @@ export default {
         },
         async getAppProductsAdmin({commit},editedProductList=null){
             if(editedProductList==null){
-                const products = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/')
+                const products = await this.$axios.$get('http://35.74.66.245:8000/products/')
                 commit('SET_PRODUCTS',products.results)
             }else{
                 commit('SET_PRODUCTS',editedProductList)

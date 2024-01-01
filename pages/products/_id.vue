@@ -557,11 +557,11 @@ export default {
                 "Access-Control-Allow-Origin": "*"
             }
         };
-        const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${this.$route.params.id}`)
+        const data = await this.$axios.$get(`http://35.74.66.245:8000/products/${this.$route.params.id}`)
 
         this.product = {...data}
        
-        const similarProductData = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
+        const similarProductData = await this.$axios.$get(`http://35.74.66.245:8000/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
         this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
 
@@ -572,7 +572,7 @@ export default {
             })
         },
         submitReview(){     
-            this.$axios.$post(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/reviews/`,
+            this.$axios.$post(`http://35.74.66.245:8000/reviews/`,
             { 
             title:this.name,
             content: this.description,

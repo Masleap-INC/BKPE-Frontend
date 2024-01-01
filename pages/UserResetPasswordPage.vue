@@ -96,7 +96,7 @@ export default {
             if(this.password === this.confirmPassword){
                 console.log(this.$route.query.token)
                 console.log(this.$route.query.uidb64)
-                const data = await this.$axios.$patch('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/password-reset-complete',
+                const data = await this.$axios.$patch('http://35.74.66.245:8000/auth/password-reset-complete',
                 {           
                     password: this.password,
                     token: this.$route.query.token,

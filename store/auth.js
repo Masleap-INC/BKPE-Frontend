@@ -45,7 +45,7 @@ export default {
         },
         async signIn({commit,dispatch},credentials){
             
-            const data = await this.$axios.$post('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/auth/login/', credentials)
+            const data = await this.$axios.$post('http://35.74.66.245:8000/auth/login/', credentials)
         
             if(data){
                 dispatch('attempt',data.tokens.refresh) 
