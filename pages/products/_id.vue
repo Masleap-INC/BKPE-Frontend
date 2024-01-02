@@ -552,16 +552,16 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const config = {
-            headers:{
-                "Access-Control-Allow-Origin": "*"
-            }
-        };
-        const data = await this.$axios.$get(`http://35.74.66.245:8000/products/${this.$route.params.id}`)
-
+        // const config = {
+        //     headers:{
+        //         "Access-Control-Allow-Origin": "*"
+        //     }
+        // };
+        const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
+        console.log(data)
         this.product = {...data}
        
-        const similarProductData = await this.$axios.$get(`http://35.74.66.245:8000/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
+        const similarProductData = await this.$axios.$get(`/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
         this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
         },
 
@@ -572,7 +572,7 @@ export default {
             })
         },
         submitReview(){     
-            this.$axios.$post(`http://35.74.66.245:8000/reviews/`,
+            this.$axios.$post(`/reviews/`,
             { 
             title:this.name,
             content: this.description,
@@ -596,7 +596,7 @@ export default {
         },
 
         async getReviews(){
-            // const data = await this.$axios.$get(`http://127.0.0.1:8000/api/products/${this.$route.params.id}`)
+            // const data = await this.$axios.$get(`/api/products/${this.$route.params.id}`)
         }
     },
     

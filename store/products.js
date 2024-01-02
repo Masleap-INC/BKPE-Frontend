@@ -72,7 +72,7 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`http://35.74.66.245:8000/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
+                const data = await this.$axios.$get(`/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
                 commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
@@ -81,7 +81,7 @@ export default {
         },
         async getAppProductsAdmin({commit},editedProductList=null){
             if(editedProductList==null){
-                const products = await this.$axios.$get('http://35.74.66.245:8000/products/')
+                const products = await this.$axios.$get('/products/')
                 commit('SET_PRODUCTS',products.results)
             }else{
                 commit('SET_PRODUCTS',editedProductList)
@@ -90,21 +90,21 @@ export default {
         },
 
         async getProductListAfterDeleteAdmin({commit},{editedProductsList,productId}){ 
-            await this.$axios.$delete(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/${productId}/`)
+            await this.$axios.$delete(`/products/${productId}/`)
             commit('SET_PRODUCTS',editedProductsList)
         },
        
         async getAppProducts({commit}){
             
-            const newProducts = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?new=true')
+            const newProducts = await this.$axios.$get('/products/?new=true')
             commit('SET_NEW_PRODUCTS',newProducts.results)
-            const saleProducts = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=true')
+            const saleProducts = await this.$axios.$get('/products/?onSale=true')
             commit('SET_SALE_PRODUCTS',saleProducts.results)
             
         },
         async getCategories({commit}){
 
-            const data = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/categories/')
+            const data = await this.$axios.$get('/categories/')
 
             commit('SET_CATEGORIES',data.results)
 

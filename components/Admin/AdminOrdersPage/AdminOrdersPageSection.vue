@@ -97,7 +97,7 @@
         async search(e){ 
           
             if(e.key === 'Enter'){
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/${this.searchKey}/`)
+                const data = await this.$axios.$get(`/order/${this.searchKey}/`)
                 this.orders=[data]
                 
             } 

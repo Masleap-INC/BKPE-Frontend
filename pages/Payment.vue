@@ -51,7 +51,7 @@ export default {
 
         async generatePaymentIntent () {
 
-            const paymentIntent = await this.$axios.$get(`http://35.74.66.245:8000/payment/create-payment-intent/${this.totalPrice*100}/`)
+            const paymentIntent = await this.$axios.$get(`/payment/create-payment-intent/${this.totalPrice*100}/`)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
         
         },

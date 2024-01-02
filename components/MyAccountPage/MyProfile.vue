@@ -190,7 +190,7 @@ export default {
       this.$refs.fileUpload.click()
     },
     async submitInfo(){
-      const data = await this.$axios.$patch(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/users/${this.user.id}/`,
+      const data = await this.$axios.$patch(`/users/${this.user.id}/`,
       { 
           username: this.name, 
       });

@@ -64,7 +64,7 @@ export default {
                 "total_price": this.totalPrice
             }
             console.log(order)
-            // await this.$axios.$post(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/`,order)
+            // await this.$axios.$post(`/order/`,order)
 
         },
         goBack() {

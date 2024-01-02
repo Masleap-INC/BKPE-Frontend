@@ -346,7 +346,7 @@ export default {
         },
         async onStatusUpdate(event){
             
-            const data = await this.$axios.$patch(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/order/${this.orders[this.currentIndex].id}/`,
+            const data = await this.$axios.$patch(`/order/${this.orders[this.currentIndex].id}/`,
             {           
                 order_status:event.target.value
             });

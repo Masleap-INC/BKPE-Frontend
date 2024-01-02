@@ -104,7 +104,7 @@ export default {
     async search(e){ 
       
       if(e.key === 'Enter'){
-        const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/users/?email=${this.searchKey}`)
+        const data = await this.$axios.$get(`/users/?email=${this.searchKey}`)
         this.users = data.results
           
       } 

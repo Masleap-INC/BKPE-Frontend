@@ -106,7 +106,7 @@ export default {
     methods: {
         async getProducts(){
             this.Sloading = true
-            const data = await this.$axios.$get(`http://35.74.66.245:8000/products/?name=${this.searchKey}`)
+            const data = await this.$axios.$get(`/products/?name=${this.searchKey}`)
             this.products = data.results
             this.Sloading = false
         },

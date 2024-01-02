@@ -125,7 +125,7 @@ export default {
         async search(e){ 
       
             if(e.key === 'Enter'){
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?name=${this.searchKey}`)
+                const data = await this.$axios.$get(`/products/?name=${this.searchKey}`)
                 this.products = data.results
                 
             } 

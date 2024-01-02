@@ -200,9 +200,6 @@
 
     </div>
         </div>
-
-
-
     </div>
 
 </template>
