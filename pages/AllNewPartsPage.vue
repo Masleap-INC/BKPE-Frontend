@@ -54,7 +54,7 @@ export default{
         
     },
     async fetch() {
-      const data = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?new=true')
+      const data = await this.$axios.$get('/products/?new=true')
       this.newProducts = data.results
       this.LoadingState=false
     },

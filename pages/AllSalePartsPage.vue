@@ -55,7 +55,7 @@ export default{
         
     },
     async fetch() {
-      const data = await this.$axios.$get('http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/products/?onSale=true')
+      const data = await this.$axios.$get('/products/?onSale=true')
       this.saleProducts = data.results
       this.LoadingState=false
       

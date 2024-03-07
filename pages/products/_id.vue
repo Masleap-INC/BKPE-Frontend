@@ -45,19 +45,19 @@
                     <!-- Product Year -->
 
                     <span class="block text-xl font-normal mb-2">
-                    <b>Year:</b> {{product.year}}
+                    <b>Year:</b> {{product.years}}
                     </span>
 
                     <!-- Product Type -->
 
                     <span class="block text-xl font-normal mb-2">
-                    <b>Type:</b> 
+                    <b>Type:</b> {{product.part_type}}
                     </span>
 
                     <!-- Product Category -->
 
                     <span class="block text-xl font-normal mb-10">
-                    <b>Category:</b> {{product.category.name}}
+                    <b>Category:</b> {{product.product_category.name}}
                     </span>
 
                 </div>
@@ -69,12 +69,12 @@
                 <h2 class="text-white">
 
                     <!-- Product Price -->
-                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.price}}</span>
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.unit_price}}</span>
 
-                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.salePrice}}</span>
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.unit_price}}</span>
             
 
-                    <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.price}}</span>
+                    <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.unit_price}}</span>
 
                     <span
                     class="block font-bold text-left text-lg w-full"
@@ -143,13 +143,13 @@
                     <!-- Assembly Manual Number(s) -->
 
                     <span class="block text-xl font-normal mb-2 text-ellipsis">
-                    <b>Assembly Manual Number(s):</b> <br>{{product.assembly_manual_numbers}}
+                    <b>Assembly Manual Number(s):</b> <br>{{product.aim_numbers}}
                     </span>
 
                     <!-- BKPP Part Number -->
 
                     <span class="block text-xl font-normal mb-2 text-ellipsis">
-                    <b>BKPP Part Number:</b> <br>{{product.bkpe_part_number}}
+                    <b>BKPP Part Number:</b> <br>{{product.bkpp_p_n}}
                     </span>
 
                     <!-- Body Style -->
@@ -167,7 +167,7 @@
                     <!-- Interior -->
 
                     <span class="block text-xl font-normal mb-2">
-                    <b>Interior:</b> {{product.interiro}}
+                    <b>Interior:</b> {{product.interior}}
                     </span>
 
                     <!-- Engine -->
@@ -185,13 +185,13 @@
                     <!-- Included -->
 
                     <span class="block text-xl font-normal mb-2">
-                    <b>Included:</b> {{product.included}}
+                    <b>Included:</b> {{product.quantity_included}}
                     </span>
 
                     <!-- Required -->
 
                     <span class="block text-xl font-normal mb-2">
-                    <b>Required:</b> {{product.required}}
+                    <b>Required:</b> {{product.quantity_needed}}
                     </span>
 
                     <!-- GM Affiliation -->
@@ -310,12 +310,12 @@
 
                             <h2 class="block text-xl font-normal my-3">{{product.part_manufacturer}}</h2>
 
-                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.price}}</h2>
+                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.unit_price}}</h2>
 
-                            <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.salePrice}}</h2>
+                            <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.unit_price}}</h2>
                         
                             <h2 v-else class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> ${{product.price}}
+                                <b>Price:</b> ${{product.unit_price}}
                             </h2>
                             </NuxtLink >
                         </div> 

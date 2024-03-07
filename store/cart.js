@@ -41,7 +41,7 @@ export default {
         SET_TOTAL_PRICE(store){
             let price = 0
             store.cart.forEach(item => {
-                price =  price + ((item.product.onSale ? item.product.salePrice : item.product.price) * item.quantity)
+                price =  price + ((item.product.onSale ? item.product.unit_price : item.product.unit_price) * item.quantity)
             });
             store.totalPrice = price
         }
