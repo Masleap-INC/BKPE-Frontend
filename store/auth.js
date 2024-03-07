@@ -39,6 +39,7 @@ export default {
         //     commit('SET_USER',data)
         // },
 
+        // Logout
         logout({commit}){
             commit('SET_TOKEN',null)
             commit('SET_USER',null)
