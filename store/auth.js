@@ -45,6 +45,8 @@ export default {
             commit('SET_USER',null)
         },
         async signIn({commit,dispatch},credentials){
+
+            // jihax62523@fryshare.com : zidny1234
             
             const data = await this.$axios.$post('/auth/login/', credentials)
         
@@ -65,13 +67,14 @@ export default {
             
             try {
        
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/user/profile/?token=${token}`)
+                const data = await this.$axios.$get(`/user/profile/?token=${token}`)
                 // {        
                     // headers:{
                         // 'Authorization':`Bearer ${token}`
                         // 'Authorization':`Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNzIxMzM0LCJpYXQiOjE2NDgxMjkzMzQsImp0aSI6IjAwZDUxNmU0NGU3NjRiZWVhOWI0OGQ4NmMyMGMyMTQ0IiwidXNlcl9pZCI6Mn0.gl-mekJCHM5oDrmXv68FUR59kxJ4WHUGqXjQY3w1jN0`
                     // }              
                 // }
+                console.log(data)
                 commit('SET_USER',data)   
                 dispatch('loadingStateChange',false) 
                 

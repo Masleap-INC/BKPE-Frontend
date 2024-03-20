@@ -118,19 +118,17 @@ import { mapActions } from 'vuex'
    
     ...mapActions({
         signIn:'auth/signIn'
-        }),
+    }),
     async submit() {
       
       if(this.password === this.confirmPassword){
           
-        // const data = await this.$axios.$post('http://3.219.163.252:8000/api/users/register/',
         const data = await this.$axios.$post('/auth/register/',
         { 
             username: this.name,
             email: this.email,
             password: this.password   
         });
-        
         
         if(data){
             

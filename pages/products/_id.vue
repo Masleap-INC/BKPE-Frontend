@@ -57,7 +57,7 @@
                     <!-- Product Category -->
 
                     <span class="block text-xl font-normal mb-10">
-                    <b>Category:</b> {{product.product_category.name}}
+                    <b>Category:</b> {{product.product_category}}
                     </span>
 
                 </div>
@@ -71,7 +71,7 @@
                     <!-- Product Price -->
                     <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.unit_price}}</span>
 
-                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.unit_price}}</span>
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.sale_price}}</span>
             
 
                     <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.unit_price}}</span>
@@ -295,7 +295,6 @@
                     <div
                         class="grid grid-flow-row-dense lg:grid-cols-5 lg:gap-y-10 md:grid-cols-3 sm:grid-cols-1 grid-rows-auto gap-5 place-items-center"
                     >
-                        <!-- Product 1 -->
                         
                         <div v-for="(product,idx) in similarProducts" :key="idx" class="bg-white rounded-xl p-2">
                         
@@ -375,7 +374,7 @@
                             <!-- Name -->
 
                             <span class="inline-block text-xl font-bold align-top mr-5">{{
-                            review.name
+                            review.user_name
                             }}</span>
 
                             <!-- Rating -->
@@ -410,7 +409,7 @@
                         <!-- Description -->
 
                         <span class="block">
-                        <p>{{ review.description }}</p>
+                        <p>{{ review.content }}</p>
                         </span>
                         
                     </h2>
@@ -539,12 +538,14 @@ export default {
     },
     async fetch() {
         await this.getSingleProduct()
+        await this.getReviews()
     },
     computed:{
         ...mapGetters(
             {
                 getCart:'cart/getCart',
                 user: 'auth/user',
+                authenticated: 'auth/authenticated'
             })
     },
     methods: {
@@ -552,17 +553,14 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        // const config = {
-        //     headers:{
-        //         "Access-Control-Allow-Origin": "*"
-        //     }
-        // };
         const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
-        console.log(data)
+
         this.product = {...data}
        
-        const similarProductData = await this.$axios.$get(`/products/?onSale=${data.onSale}&${data.onSale?'min_sale_price='+(parseInt(data.salePrice)-1000) : 'min_price='+(parseInt(data.price-1000))}&${data.onSale?'max_sale_price='+(parseInt(data.salePrice)+1000) : 'max_price='+(parseInt(data.price)+1000)}`)
-        this.similarProducts  = similarProductData.results.slice(0,5).filter((product) => product.id !== data.id)
+        // const similarProductsData = await this.$axios.$get(`/products/product-filter/?new=${data.new ? 'True' : 'False'}&onSale=${data.onSale ? 'True' : 'False'}&min_price=${parseInt(data.unit_price-1000)}&max_price=${parseInt(data.unit_price+1000)}`)
+        
+        // this.similarProducts  = similarProductsData.slice(0,5).filter((product) => product.id !== data.id)
+        
         },
 
         addToCart(product){
@@ -571,15 +569,22 @@ export default {
                 quantity:this.quantity
             })
         },
-        submitReview(){     
-            this.$axios.$post(`/reviews/`,
-            { 
-            title:this.name,
-            content: this.description,
-            product: this.$route.params.id,
-            user:1
+
+        submitReview(){
+            if(this.authenticated){
+                this.$axios.$post(`/reviews/`,
+            {
+                "user_name": this.name,
+                "content": this.description,
+                "rating": this.rating,
+                "product": this.$route.params.id,
+                "user": this.user.id
             })
-        this.reviews.unshift({name:this.name,rating:this.rating,description:this.description,product:this.product.id})
+            this.reviews.unshift({user_name:this.name,rating:this.rating,content:this.description,product:this.product.id})
+            }else{
+                console.log("Please Login to commnet")
+            }
+            
    
         },
 
@@ -596,7 +601,8 @@ export default {
         },
 
         async getReviews(){
-            // const data = await this.$axios.$get(`/api/products/${this.$route.params.id}`)
+            const data = await this.$axios.$get(`/reviews/filter-review/?product=${this.$route.params.id}`)
+            this.reviews = [...data]
         }
     },
     

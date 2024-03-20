@@ -86,7 +86,7 @@
 
                         <!-- Form Heading -->
 
-                        <h2 class="text-center text-xl text-white font-semibold mt-10 px-3">Submit email associated with your account and a password reset link will be sent to your email.</h2>
+                        <h2 class="text-center text-xl text-white font-semibold mt-10 px-3">Submit email associated with your account and a OTP will be sent to your email.</h2>
 
 
 
@@ -160,11 +160,15 @@ export default {
             this.signIn(credential)
         },
         async forgetSubmit(){
-            await this.$axios.$post('/auth/request-reset-email/',
+            const data = await this.$axios.$post('/auth/request-reset-email/',
             {           
                 email: this.recoverPassEmail,
-                redirect_url: "http://localhost:3000/UserResetPasswordPage"  
+                // redirect_url: "http://localhost:3000/UserResetPasswordPage"  
             });
+
+            if(data.success === 'We have sent you an OTP to reset your password'){
+                this.$router.push("/UserOtpVerify");
+            }
 
             this.recoverPassEmail = ''
 

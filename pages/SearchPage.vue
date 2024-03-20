@@ -64,7 +64,7 @@
 
                                 <!-- Sale Price -->
 
-                                <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"> ${{product.unit_price}}</h2>
+                                <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"> ${{product.sale_price}}</h2>
                                 <h2 v-else class="block text-red-700 my-1 text-xl font-bold">${{product.unit_price}}</h2>
 
                             </NuxtLink>

@@ -11,7 +11,7 @@
 
             <!-- Form Heading -->
 
-            <h2 class="text-center text-4xl text-white font-semibold mt-10">Reset Password</h2>
+            <h2 class="text-center text-4xl text-white font-semibold mt-10">Verify OTP</h2>
 
             
             
@@ -19,7 +19,7 @@
 
             <div class=" bg-transparent py-5 px-10">
 
-                <form @submit.prevent="resetPassword">
+                <form @submit.prevent="verifyOtp">
 
 
                     <!-- Email Label & Input -->
@@ -42,30 +42,20 @@
 
                     </div>
 
-                    <!-- Password Label & Input -->
-
-                    <div class="my-10">
-
-                        <label for="password" class="block text-xl text-white mb-5">Password</label>
-
-                        <input type="password" v-model="password" name="password" placeholder="Type new password" class="block w-full h-10 rounded-md px-5" required>
-
-                    </div>
-
                     <!-- Confirm Password Label & Input -->
 
                     <div class="my-10">
 
-                        <label for="confirm-password" class="block text-xl text-white mb-5">Confirm Password</label>
+                        <label for="otp" class="block text-xl text-white mb-5">OTP</label>
 
-                        <input type="password" v-model="confirmPassword" name="confirm-password" placeholder="Confirm new password" class="block w-full h-10 rounded-md px-5" required>
+                        <input type="number" v-model="otp" name="otp" placeholder="OTP" class="block w-full h-10 rounded-md px-5" required>
 
                     </div>
 
                     <!-- reset Button -->
 
                     <div class="my-10 mx-auto w-fit">
-                        <button type="submit" class="bg-transparent border-2 border-white text-white text-2xl rounded-md px-5 py-2 hover:bg-white hover:text-black hover:ease-in duration-300">Reset</button>
+                        <button type="submit" class="bg-transparent border-2 border-white text-white text-2xl rounded-md px-5 py-2 hover:bg-white hover:text-black hover:ease-in duration-300">Verify</button>
                     </div>
 
                 </form>
@@ -89,38 +79,29 @@
 <script>
     
 export default {
-    name:"UserResetPasswordPage",
+    name:"UserOtpVerifyPage",
     middleware:"authenticated",
     data() {
-        return {
+        return {      
             email: '',
-            password: '',
-            confirmPassword: '',
+            otp: '',
         }
     },
     methods: {
-      
-        async resetPassword(){
+    
+        async verifyOtp(){
+            const data = await this.$axios.$post('/auth/verify-otp/',
+            {           
+                email: this.email,
+                otp: this.otp,
+            });
 
-            if(this.password === this.confirmPassword){
-
-                const data = await this.$axios.$post('/auth/reset-password-view/',
-                {   
-                    email: this.email,
-                    password: this.password,
-                    password_confirm: this.confirmPassword
-                    
-                });
-
-                console.log(data)
-
-                if(data.detail === 'Password reset successfully.'){
-                    this.$router.push("/UserLogin");
-                }
-
+            if(data.detail === 'OTP verified successfully.') {
+                this.$router.push("/UserResetPasswordPage");
             }
-
+        
         },
+
         goBack() {
             this.$router.back();
         }
