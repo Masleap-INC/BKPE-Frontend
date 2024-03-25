@@ -31,7 +31,7 @@ export default {
 
             try {
        
-                const data = await this.$axios.$get(`http://bkpe-env.eba-hezmw5qh.ap-northeast-1.elasticbeanstalk.com/users/`)
+                const data = await this.$axios.$get(`/users/`)
 
 
                 commit('SET_USERS',data.results)

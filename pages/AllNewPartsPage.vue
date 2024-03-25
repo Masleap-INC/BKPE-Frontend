@@ -54,8 +54,8 @@ export default{
         
     },
     async fetch() {
-      const data = await this.$axios.$get('/products/?new=true')
-      this.newProducts = data.results
+      const data = await this.$axios.$get('/products/search-onsalenew/?search_param=new')
+      this.newProducts = data
       this.LoadingState=false
     },
 }

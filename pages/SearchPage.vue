@@ -106,8 +106,8 @@ export default {
     methods: {
         async getProducts(){
             this.Sloading = true
-            const data = await this.$axios.$get(`/products/?name=${this.searchKey}`)
-            this.products = data.results
+            const data = await this.$axios.$get(`/products/search/?name=${this.searchKey}`)
+            this.products = data
             this.Sloading = false
         },
         goBack() {

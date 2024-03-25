@@ -53,6 +53,7 @@ export default {
             if(data){
                 dispatch('attempt',data.tokens.refresh) 
                 localStorage.setItem("refreshToken",data.tokens.refresh)
+                localStorage.setItem("accessToken",data.tokens.access)
                 await this.$router.push('/'); 
 
             }else{

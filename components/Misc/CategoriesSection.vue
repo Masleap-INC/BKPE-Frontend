@@ -379,7 +379,7 @@ export default {
         return {
 
             isOpen: false,
-            filters:{year: '1967',type: 1,category: 5}
+            filters:{year: '1967',type: 1,category: 'f32dc3c5-0403-4d1b-a699-efdb54e85ae9'}
         }
 
     },

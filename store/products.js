@@ -3,7 +3,7 @@ export default {
     namespaced: true,
 
     state: () => ({
-        filter:{year: '1967',type: 1,category: 5},
+        filter:{year: '1967',type: 1,category: 'f32dc3c5-0403-4d1b-a699-efdb54e85ae9'},
         filterProducts:[],
         searchKey:null,
         categories:null,
@@ -72,7 +72,7 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`/products/?category=${filters.category}&type=${filters.type}&year=${filters.year}`)
+                const data = await this.$axios.$get(`products/product-filter-specific-attribute/?category=${this.category}&year=${this.year}&type=${this.type}`)
                 commit('SET_FILTER_PRODUCTS',data.results)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
@@ -96,10 +96,10 @@ export default {
        
         async getAppProducts({commit}){
             
-            const newProducts = await this.$axios.$get('/products/?new=true')
-            commit('SET_NEW_PRODUCTS',newProducts.results)
-            const saleProducts = await this.$axios.$get('/products/?onSale=true')
-            commit('SET_SALE_PRODUCTS',saleProducts.results)
+            const newProducts = await this.$axios.$get('/products/search-onsalenew/?search_param=new')
+            commit('SET_NEW_PRODUCTS',newProducts)
+            const saleProducts = await this.$axios.$get('/products/search-onsalenew/?search_param=onsale')
+            commit('SET_SALE_PRODUCTS',saleProducts)
             
         },
         async getCategories({commit}){

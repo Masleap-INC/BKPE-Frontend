@@ -93,7 +93,7 @@
         </form>
       </div>
       <div class="text-black">
-        <form action="">
+        <form @submit.prevent="updatePassword">
           <!-- Profile Photo -->
 
           <div class="w-full flex justify-center">
@@ -111,12 +111,13 @@
                   name="old-password"
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
+                  v-model="oldPassword"
                 />
               </div>
 
               <div class="my-10">
                 <label for="password" class="block text-2xl text-white mb-5"
-                  >Password</label
+                  >New Password</label
                 >
 
                 <input
@@ -124,6 +125,7 @@
                   name="password"
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
+                  v-model="newPassword"
                 />
               </div>
 
@@ -141,6 +143,7 @@
                   name="confirm-password"
                   class="block w-full rounded-md px-3 py-2 text-xl"
                   required
+                  v-model="confirmPassword"
                 />
               </div>
 
@@ -172,6 +175,10 @@ export default {
       
         name: '',
         email: '',
+        oldPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+
       
     } 
   },
@@ -197,10 +204,31 @@ export default {
       });
       this.$store.dispatch('auth/userUpdate',data)
 
+    },
+    async updatePassword(){
+      try{
+        console.log(`Bearer ${localStorage.getItem("accessToken")}`)
+        await this.$axios.$post(`/auth/reset-password/`,
+        { 
+          old_password:this.oldPassword,
+          new_password:this.newPassword,
+          confirm_password:this.confirmPassword
+        },
+        
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        })
+      }catch(err){
+        console.log(err)
+      }
+      
     }
   },
   logout(){
       localStorage.removeItem("refreshToken")
+      localStorage.removeItem("accessToken")
       this.$store.dispatch("auth/logout")
   },
 }

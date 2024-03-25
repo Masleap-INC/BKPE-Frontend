@@ -55,8 +55,8 @@ export default{
         
     },
     async fetch() {
-      const data = await this.$axios.$get('/products/?onSale=true')
-      this.saleProducts = data.results
+      const data = await this.$axios.$get('/products/search-onsalenew/?search_param=onsale')
+      this.saleProducts = data
       this.LoadingState=false
       
     },
