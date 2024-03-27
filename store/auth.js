@@ -1,3 +1,4 @@
+
 export default { 
 
     namespaced: true,
@@ -31,7 +32,8 @@ export default {
         },
         SET_LOADING_STATE(state,bool){
             state.loadingState = bool
-        }
+        },
+
     },
     actions:{
         // signUp({commit},data){
@@ -46,20 +48,13 @@ export default {
         },
         async signIn({commit,dispatch},credentials){
 
-            // jihax62523@fryshare.com : zidny1234
-            
             const data = await this.$axios.$post('/auth/login/', credentials)
-        
-            if(data){
-                dispatch('attempt',data.tokens.refresh) 
-                localStorage.setItem("refreshToken",data.tokens.refresh)
-                localStorage.setItem("accessToken",data.tokens.access)
-                await this.$router.push('/'); 
+    
+            dispatch('attempt',data.tokens.refresh) 
+            localStorage.setItem("refreshToken",data.tokens.refresh)
+            localStorage.setItem("accessToken",data.tokens.access)
+            await this.$router.push('/'); 
 
-            }else{
-                console.log(data)
-            }
-      
         },
     
         async attempt({ commit, dispatch },token){

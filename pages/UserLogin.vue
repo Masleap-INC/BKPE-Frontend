@@ -148,7 +148,8 @@ export default {
     },
     methods: {
         ...mapActions({
-            signIn:'auth/signIn'
+            signIn:'auth/signIn',
+            addAlert:'alert/addAlert'
         }),
         toggleForgotPassword() {
             this.forgotPassword = !this.forgotPassword;

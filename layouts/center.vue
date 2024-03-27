@@ -1,5 +1,6 @@
 <template>
   <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full">
+    <MiscAlertView />
     <LoadingData v-if="loadingState" />
     <Nuxt v-else />
   </div>

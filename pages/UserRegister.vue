@@ -117,28 +117,35 @@ import { mapActions } from 'vuex'
   methods: {
    
     ...mapActions({
-        signIn:'auth/signIn'
+        signIn:'auth/signIn',
+        addAlert:'alert/addAlert'
     }),
     async submit() {
       
       if(this.password === this.confirmPassword){
-          
-        const data = await this.$axios.$post('/auth/register/',
-        { 
-            username: this.name,
-            email: this.email,
-            password: this.password   
-        });
-        
-        if(data){
+
+        try {
+            const data = await this.$axios.$post('/auth/register/',
+            { 
+                username: this.name,
+                email: this.email,
+                password: this.password   
+            });
+            if(data){  
+                await this.$router.push('/UserLogin');
+            }else{
+                console.log(data.message)
+            }
+            this.addAlert({ message: `Please verify your registration from the given link send to your email before login`, type: 'success' })
             
-            await this.$router.push('/UserLogin');
-        }else{
-            console.log(data.message)
+        }catch(err){
+            console.log(err)
+            this.addAlert({ message: err, type: 'error' })
+            
         }
-      
+
       }else{
-          console.log("Password did not match ")
+        this.addAlert({message:'Password did not match', type: 'error'})
       }
 
     },
