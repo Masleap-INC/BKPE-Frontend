@@ -34,13 +34,13 @@
 
                     <div class="mb-20 ">
 
-                        <form action="" class="w-5/6 lg:mx-0 md:mx-auto sm:mx-auto">
+                        <form @submit.prevent="placeOrder" class="w-5/6 lg:mx-0 md:mx-auto sm:mx-auto">
 
                             <!-- Email -->
 
                             <div class="mb-5">
                                 <label for="email" class="block text-white text-2xl mb-3">Email</label>
-                                <input id="email" v-model="shippingDetails.email" type="email" name="email" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="email" v-model="orderDetails.email" type="email" name="email" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -48,7 +48,7 @@
 
                             <div class="mb-5">
                                 <label for="first-name" class="block text-white text-2xl mb-3">First Name</label>
-                                <input id="first-name" v-model="shippingDetails.firstName" type="text" name="first-name" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="first-name" v-model="orderDetails.firstName" type="text" name="first-name" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -56,7 +56,7 @@
 
                             <div class="mb-5">
                                 <label for="Last-name" class="block text-white text-2xl mb-3">Last Name</label>
-                                <input id="Last-name" v-model="shippingDetails.lastName" type="text" name="Last-name" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                <input id="Last-name" v-model="orderDetails.lastName" type="text" name="Last-name" class="px-3 py-2 text-xl w-full rounded-md" required>
                             </div>
 
 
@@ -64,7 +64,7 @@
 
                             <div class="mb-5">
                                 <label for="address" class="block text-white text-2xl mb-3">Address</label>
-                                <textarea id="address" v-model="shippingDetails.address" type="text" name="address" class="px-3 py-2 text-xl w-full rounded-md" required></textarea>
+                                <textarea id="address" v-model="orderDetails.address" type="text" name="address" class="px-3 py-2 text-xl w-full rounded-md" required></textarea>
                             </div>
 
 
@@ -76,14 +76,14 @@
 
                                 <div>
                                     <label for="city" class="block text-white text-2xl mb-3">City</label>
-                                    <input id="city" v-model="shippingDetails.city" type="text" name="city" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="city" v-model="orderDetails.city" type="text" name="city" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                                 <!-- Country -->
 
                                 <div>
                                     <label for="country" class="block text-white text-2xl mb-3">Country</label>
-                                    <input id="country" v-model="shippingDetails.country"  type="text" name="country" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="country" v-model="orderDetails.country"  type="text" name="country" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                             </div>
@@ -98,14 +98,14 @@
 
                                 <div>
                                     <label for="zip" class="block text-white text-2xl mb-3">Postal Code</label>
-                                    <input id="zip" v-model="shippingDetails.postalCode" type="text" name="zip" class="px-3 py-2 text-xl w-full rounded-md" pattern="\d*" required>
+                                    <input id="zip" v-model="orderDetails.postalCode" type="text" name="zip" class="px-3 py-2 text-xl w-full rounded-md" pattern="\d*" required>
                                 </div>
 
                                 <!-- Phone -->
 
                                 <div>
                                     <label for="phone" class="block text-white text-2xl mb-3">Phone</label>
-                                    <input id="phone" v-model="shippingDetails.phone" type="tel" name="phone" class="px-3 py-2 text-xl w-full rounded-md" required>
+                                    <input id="phone" v-model="orderDetails.phone" type="number" name="phone" class="px-3 py-2 text-xl w-full rounded-md" required>
                                 </div>
 
                             </div>
@@ -115,11 +115,9 @@
                             <div>
                                 <label for="payment-method" class="block text-white text-2xl mb-3">Payment Method</label>
 
-                                <select id="payment-method" name="payment-method" class="px-5 py-3 text-xl rounded-md" >
-
-                                    <option value="cod">Cash on Delivery</option>
+                                <select v-model="orderDetails.selectedPaymentMethod" id="payment-method" name="payment-method" class="px-5 py-3 text-xl rounded-md">
                                     <option value="online">Pay Online</option>
-
+                                    <option value="cash-on-delivery">Cash on Delivery</option>
                                 </select>
                             </div>
 
@@ -127,9 +125,9 @@
                             <!-- Submit Button -->
 
                             <!-- <div v-if="getCart.length>0 ? true : false" class="w-full mt-10"> -->
-                                <NuxtLink to="/Payment">
-                                    <button class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300" type="submit">Continue</button>
-                                </NuxtLink>
+                                
+                                <button class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300" type="submit">Continue</button>
+                                
                                 
                             <!-- </div> -->
 
@@ -234,7 +232,11 @@ import {mapGetters,mapActions} from 'vuex'
 export default {
     data(){
         return{
-            shippingDetails:{
+            
+            orderDetails:{
+                selectedPaymentMethod:'online',
+                shipping:0,
+                vat: 0,
                 email:'',
                 firstName:'',
                 lastName:'',
@@ -254,10 +256,38 @@ export default {
     }, 
     methods: {
             ...mapActions({
-                setShippingDetails:'orders/setShippingDetails'
+                setOrderDetails:'orders/setOrderDetails',
             }),
-            placeOrder(){
-                this.setShippingDetails(this.shippingDetails)
+            async placeOrder(){
+                if(this.selectedPaymentMethod === 'cash-on-delivery'){
+                    await this.$axios.$post(`/order/complete-order/`,{
+                        vat:this.orderDetails.vat,
+                        shipping:this.orderDetail.shipping,
+                        sub_total:this.totalPrice,
+                        total_price:this.orderDetail.vat + this.orderDetail.shipping + this.totalPrice,
+                        first_name:this.orderDetail.firstName,
+                        last_name:this.orderDetail.lastName,
+                        address:this.orderDetail.address,
+                        city:this.orderDetail.city,
+                        country:this.orderDetail.country,
+                        postal_code:this.orderDetail.postalCode,
+                        Phone:this.orderDetail.phone,
+                        payment_method:this.orderDetails.selectedPaymentMethod,
+                        cart_id:localStorage.getItem('cart_id'),
+                        order_status:'placed',
+                        email:this.orderDetail.email
+                    },{
+                        headers:{
+                            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                        }
+                    })
+                    this.$router.push('/')
+                }else{
+                    this.setOrderDetails(this.orderDetails)
+                    this.$router.push('/Payment')
+                }
+                
+                
             },
 
             goBack() {

@@ -5,7 +5,8 @@ export default {
     state: () => ({
         orders:null,
         loadingState: false,
-        shippingDetails:null
+        orderDetails:null,
+
     }),
     getters:{
         orders(state){
@@ -14,9 +15,10 @@ export default {
         loadingState(state){
             return state.loadingState
         },
-        shippingDetails(state){
-            return state.shippingDetails
-        }
+        getOrderDetails(state){
+            return state.orderDetails
+        },
+
     },
     mutations: {
 
@@ -26,10 +28,10 @@ export default {
         SET_LOADING_STATE(state,bool){
             state.loadingState = bool
         },
-        SET_SHIPPING_DETAILS(state,shippingDetails){
-            state.shippingDetails = shippingDetails
-        }
-        
+        SET_ORDER_DETAILS(state,orderDetails){
+            state.orderDetails = orderDetails
+        },
+
     },
     actions:{
     
@@ -49,13 +51,13 @@ export default {
         ordersStateUpdate({commit},orders){
             commit('SET_ORDERS',orders)
         },
-        setShippingDetails({commit},details){
-            commit('SET_SHIPPING_DETAILS',details)
+        setOrderDetails({commit},details){
+            commit('SET_ORDER_DETAILS',details)
         },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)
-        }
-        
+        },
+
     }
       
 }

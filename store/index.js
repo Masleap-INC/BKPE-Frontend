@@ -4,6 +4,7 @@ import auth from './auth'
 import loading from './loading'
 import users from './users'
 import alert from './alert'
+import orders from './orders'
 
 
 new Store({
@@ -17,6 +18,7 @@ new Store({
      auth,
      loading,
      users,
+     orders
      
     }
     

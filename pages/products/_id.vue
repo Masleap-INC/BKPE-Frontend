@@ -69,12 +69,12 @@
                 <h2 class="text-white">
 
                     <!-- Product Price -->
-                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.unit_price}}</span>
+                    <span v-if="product.onSale" class="block text-3xl font-bold mb-5 line-through">Price: ${{product.normal_price}}</span>
 
                     <span v-if="product.onSale" class="block text-3xl font-bold mb-5">Sale Price: ${{product.sale_price}}</span>
             
 
-                    <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.unit_price}}</span>
+                    <span v-else class="block text-3xl font-bold mb-5">Price: ${{product.normal_price}}</span>
 
                     <span
                     class="block font-bold text-left text-lg w-full"
@@ -521,9 +521,7 @@ export default {
             name:null,
             rating:null,
             description:null,
-
             images: [],
-
             reviews: []
 
         }
@@ -559,7 +557,16 @@ export default {
         addToCart(product){
             this.addToCartStore({
                 product:product,
-                quantity:this.quantity
+                quantity:this.quantity,
+                cart:{
+                    user: this.user.email,
+                    cart_id: localStorage.getItem('cart_id') ,
+                    product_id: product.id,
+                    product_name: product.name,
+                    price: (product.normal_price * this.quantity).toFixed(2),
+                    quantity: this.quantity,
+                    product_image: product.images[0]
+                }
             })
         },
 
@@ -582,7 +589,7 @@ export default {
         },
 
         incCartItmeQty(){
-            if(this.product.quantity > this.quantity){
+            if(this.product.quantity_needed > this.quantity){
                 this.quantity = this.quantity + 1
             }
         },

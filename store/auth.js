@@ -45,6 +45,7 @@ export default {
         logout({commit}){
             commit('SET_TOKEN',null)
             commit('SET_USER',null)
+            localStorage.setItem('cart_id',null)
         },
         async signIn({commit,dispatch},credentials){
 
@@ -64,14 +65,11 @@ export default {
             try {
        
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
-                // {        
-                    // headers:{
-                        // 'Authorization':`Bearer ${token}`
-                        // 'Authorization':`Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNzIxMzM0LCJpYXQiOjE2NDgxMjkzMzQsImp0aSI6IjAwZDUxNmU0NGU3NjRiZWVhOWI0OGQ4NmMyMGMyMTQ0IiwidXNlcl9pZCI6Mn0.gl-mekJCHM5oDrmXv68FUR59kxJ4WHUGqXjQY3w1jN0`
-                    // }              
-                // }
-                console.log(data)
-                commit('SET_USER',data)   
+
+                commit('SET_USER',data)
+                const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('cart_id',uniqueId)
+                // localStorage.removeItem('cart')
                 dispatch('loadingStateChange',false) 
                 
          
@@ -79,7 +77,6 @@ export default {
                 commit('SET_TOKEN',null)
                 commit('SET_USER',null)
                 dispatch('loadingStateChange',false)
-                console.log(e)
             }
         },
         userUpdate({commit},data){

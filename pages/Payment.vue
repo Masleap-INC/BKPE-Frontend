@@ -51,12 +51,12 @@ export default {
 
         async generatePaymentIntent () {
 
-            const paymentIntent = await this.$axios.$get(`/payment/create-payment-intent/${this.totalPrice*100}/`)
+            const paymentIntent = await this.$axios.$get(`/payment/create-payment-intent/${this.totalPrice*100}/?cart_id=${localStorage.getItem("cart_id")}`)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
         
         },
-        pay () {
-            this.$refs.paymentRef.submit();
+        async pay () {
+            await this.$refs.paymentRef.submit();
         },
     },
 }

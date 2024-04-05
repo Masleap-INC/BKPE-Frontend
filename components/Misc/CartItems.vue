@@ -37,7 +37,7 @@
 
                             <!-- Product Price -->
 
-                            <span class="block font-bold">$ {{item.product.onSale ? item.product.salePrice : item.product.price}}</span>
+                            <span class="block font-bold">$ {{item.product.onSale ? item.product.sale_price : item.product.normal_price}}</span>
 
                         </span>
                     </span>
@@ -55,11 +55,11 @@
 
                             <!-- plus button -->
 
-                            <button  type="button" class="inline-block w-6 h-auto bg-transparent border-2 border-white" @click="incCartItmeQty(index)">+</button>
+                            <button  type="button" class="inline-block w-6 h-auto bg-transparent border-2 border-white" @click="incCartItmeQty(index,item.id,item.quantity,item.product.onSale ? item.product.sale_price : item.product.normal_price)">+</button>
 
                             <!-- minus button -->
 
-                            <button class="inline-block w-6 h-auto bg-transparent border-2 border-white" @click="decCartItmeQty(index)">-</button>
+                            <button class="inline-block w-6 h-auto bg-transparent border-2 border-white" @click="decCartItmeQty(index,item.id,item.quantity,item.product.onSale ? item.product.sale_price : item.product.normal_price)">-</button>
                         </span>
                     </span>       
 
@@ -70,7 +70,7 @@
                         <!-- Delete Item Button -->
 
                         <span class="block top-0">
-                            <button class=" hover:scale-110 duration-300" @click="remCartItem(index)">
+                            <button class=" hover:scale-110 duration-300" @click="remCartItem(index,item.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
@@ -117,18 +117,19 @@ export default {
     },
 
     methods:{
-    incCartItmeQty(index){
-        if(this.getCart[index].product.quantity > this.getCart[index].quantity){
-            this.$store.dispatch("cart/incItemQty",index)
+    incCartItmeQty(index,id,qty,price){
+        console.log('game')
+        if(this.getCart[index].product.quantity_included > this.getCart[index].quantity){
+            this.$store.dispatch("cart/incItemQty",{idx:index,id:id,qty,price})
         }
     },
-    decCartItmeQty(index){
+    decCartItmeQty(index,id,qty,price){
         if(this.getCart[index].quantity > 1){
-            this.$store.dispatch("cart/decItemQty",index)
+            this.$store.dispatch("cart/decItemQty",{idx:index,id:id,qty,price})
         }
     },
-    remCartItem(index){
-      this.$store.dispatch("cart/remCartItem",index)
+    remCartItem(index,id){
+      this.$store.dispatch("cart/remCartItem",{idx:index,id:id})
     },
 
   }
