@@ -15,12 +15,14 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
+  
   computed:{
     ...mapGetters({
       loadingState: 'auth/loadingState',
       appLoadingState: 'loading/loadingState'
     }),
   },
+  
   beforeCreate(){ 
     this.$store.dispatch('auth/loadingStateChange',true)
   },

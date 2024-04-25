@@ -21,7 +21,6 @@ export default {
 
     computed:{
         ...mapGetters({
-            orderDetails:'orders/getOrderDetails',
             user:'auth/user',
             cart:'cart/getCart',
             totalPrice:'cart/getTotalPrice'
@@ -29,28 +28,37 @@ export default {
     }, 
 
     async mounted(){
-        const { paymentIntent } = await this.$stripe.paymentIntents.retrieve('pi_3P1xYuLRh1ikRvHv0oB2xTTy_secret_AkLN7XWyIvgV6n5Z8y7yCrnrh');
-        console.log(paymentIntent)
+        
+        // const { paymentIntent } = await this.$stripe.retrievePaymentIntent(this.$route.query.payment_intent_client_secret);
+        // console.log(paymentIntent)
+        const data = await this.$axios.$get(`http://54.146.158.4/payment/status/?payment_intent_id=${this.$route.query.payment_intent}`)
+        if(data.status === "succeeded"){
+            this.orderPlaced(data.metadata)
+        }else{
+            this.$router.push('/')
+        }
+        
+
     },
 
     methods: {
-        async orderPlaced(){
+        async orderPlaced(orderDetails){
             const response = await this.$axios.$post(`/order/complete-order/`,{
-                vat:this.orderDetails.vat,
-                shipping:this.orderDetails.shipping,
-                sub_total:this.totalPrice,
-                total_price:this.orderDetails.vat + this.orderDetail.shipping + this.totalPrice,
-                first_name:this.orderDetails.firstName,
-                last_name:this.orderDetails.lastName,
-                address:this.orderDetails.address,
-                city:this.orderDetails.city,
-                country:this.orderDetails.country,
-                postal_code:this.orderDetails.postalCode,
-                Phone:this.orderDetails.phone,
-                payment_method:this.orderDetails.selectedPaymentMethod,
-                cart_id:localStorage.getItem('cart_id'),
-                order_status:'placed',
-                email:this.orderDetails.email
+                vat:orderDetails.vat,
+                shipping:orderDetails.shipping,
+                sub_total:orderDetails.sub_total,
+                total_price:orderDetails.total_price,
+                first_name:orderDetails.first_name,
+                last_name:orderDetails.last_name,
+                address:orderDetails.address,
+                city:orderDetails.city,
+                country:orderDetails.country,
+                postal_code:orderDetails.postal_code,
+                Phone:orderDetails.phone,
+                payment_method:orderDetails.payment_method,
+                cart_id:orderDetails.cart_id,
+                order_status:orderDetails.order_status,
+                email:orderDetails.email
             },{
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`

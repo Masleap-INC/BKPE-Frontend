@@ -71,10 +71,11 @@
                 <tbody>
                     <tr v-for="(product,index) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                         <td class="p-3">{{product.id}}</td>
-                        <td class="p-3"><img :src="product.images[0]" alt="" class="h-16 w-20 object-cover"></td>
+                        <!-- <td class="p-3">{{product.images[0].image}}</td> -->
+                        <td class="p-3"><img :src="product.images[0] ? product.images[0].image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover"></td>
                         <td class="p-3">{{product.name}}</td>
-                        <td class="p-3">{{product.price}}</td>
-                        <td class="p-3">{{product.quantity}}</td>
+                        <td class="p-3">{{product.normal_price}}</td>
+                        <td class="p-3">{{product.inventory}}</td>
                         <td class="p-3">
                             <NuxtLink :to="{name:'Admin-AdminProductDetails-id',params:{id:product.id}}">
                                 <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
@@ -99,8 +100,6 @@
 
 <script>
 import {mapGetters} from 'vuex'
-
-
 export default {
     data(){
         return {
@@ -120,6 +119,7 @@ export default {
         deleteProduct(productId,productIdx){
             const editedProductsList = [...this.products]
             editedProductsList.splice(productIdx,1)
+            this.products = editedProductsList
             this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId})
         },
         async search(e){ 
@@ -134,6 +134,7 @@ export default {
         UploadFile() {
             this.$refs.fileUpload.click();
         },
+
     },
 }
 </script>

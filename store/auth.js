@@ -63,13 +63,13 @@ export default {
             commit('SET_TOKEN',token)
             
             try {
-       
+                console.log('attempt')
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
 
                 commit('SET_USER',data)
                 const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
                 localStorage.setItem('cart_id',uniqueId)
-                // localStorage.removeItem('cart')
+                localStorage.removeItem('cart')
                 dispatch('loadingStateChange',false) 
                 
          

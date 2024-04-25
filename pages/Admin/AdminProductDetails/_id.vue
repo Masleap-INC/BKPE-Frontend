@@ -58,23 +58,21 @@
                             <div class=" block w-fit mb-5 ml-auto">
                                 <!-- Update Button -->
 
-                                <button class=" inline-block mr-1 text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Update</button>
+                                <button @click="updateProduct" class=" inline-block mr-1 text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Update</button>
 
                                 <!-- Delete Button -->
 
-                                <button class=" inline-block text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Delete</button>
+                                <button @click = "deleteProduct" class=" inline-block text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Delete</button>
                             </div>
 
                             <!-- Product ID & Inventory -->
-
-                            
 
                             <div class=" mt-5 mb-10">
 
                                 <!-- Product ID -->
 
                                 <span class="block mb-5">
-                                    <h2 class=" "><span class="text-xl font-semibold mr-3">Product ID:</span> <span class="lg:text-lg md:text-lg sm:text-sm"># {{product.id}}</span> </h2>
+                                    <h2 class=" "><span class="text-xl font-semibold mr-3">Product ID:</span> <span class="lg:text-lg md:text-lg sm:text-sm"># {{formData.id}}</span> </h2>
                                 </span>
 
                                 <!-- Inventory -->
@@ -84,7 +82,7 @@
                                     <div class=" align-middle">
 
                                         <label for="inventory" class="mr-2">Inventory</label>
-                                        <input v-model="product.quantity" type="number" class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
+                                        <input v-model="formData.inventory" type="number"  class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
 
                                     </div>
 
@@ -93,42 +91,33 @@
                             </div>
 
                             <!-- Product Image and catrgory Section -->
-                            
+        
                             <div class="min-h-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10 ">
 
                                 <!-- Images -->
 
-                                <div class=" mb-10">
-
+                                <div class="mb-10">
                                     <!-- Heading -->
-
-                                    <div class=" flex justify-between pb-2 mb-5 border-b-[2px] border-b-white">
-                                        <h2 class=" inline-block align-middle text-2xl font-semibold">Images</h2>
-
+                                    <div class="flex justify-between pb-2 mb-5 border-b-[2px] border-b-white">
+                                        <h2 class="inline-block align-middle text-2xl font-semibold">Images</h2>
                                         <!-- Add Image Button -->
-
-                                        <button class=" inline-block align-middle text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">+ Add Image</button>
+                                        <input type="file" accept="image/*" ref="fileInput" multiple style="display: none" @change="handleFileSelect">
+                                        <button @click="$refs.fileInput.click()" class="inline-block align-middle text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">+ Add Image</button>
                                     </div>
 
-                                    <div class="relative border-[2px] border-white p-2 grid lg:grid-cols-2 md:grid-cols-2 sm: grid-cols-2 gap-5 h-full" >
-
-                                        <div v-for="image in product.images" :key="image" class="relative w-full h-32">
-                                            <!-- Image -->
-
-                                            <img :src="image" alt="" class="w-full h-32 object-cover">
-
+                                    <div class="relative border-[2px] border-white p-2 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-5 h-full">
+                                        <!-- Display Selected Images -->
+                                        <div v-for="(image, index) in selectedImages" :key="index" class="relative w-full h-32">
+                                            
+                                            <img :src="image.image" :alt="image.image" class="w-full h-32 object-cover">
                                             <!-- Delete Button -->
-
-                                            <div class="absolute top-1 right-1 bg-white p-1 rounded-full hover:bg-black duration-300">
+                                            <div @click="removeImage(index)" class="absolute top-1 right-1 bg-white p-1 rounded-full hover:bg-black duration-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                 </div>
 
                                 <!-- Categories -->
@@ -147,18 +136,18 @@
                                         <h2 class="block mb-2 text-xl" for="year">Year</h2>
 
                                         <div class="mb-2">
-                                            <input id="1967" type="checkbox" class="peer" name="1967" value="1967">
-                                            <label for="1967" class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1967</label><br>
+                                            <input id="1967" v-model="formData.year_1967" type="checkbox" class="peer" name="1967" value="yes">
+                                            <label for="1967"  class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1967</label><br>
                                         </div>
 
                                         <div class="mb-2">
-                                            <input id="1968" type="checkbox" class="peer" name="1968" value="1968">
-                                            <label for="1968" class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1968</label><br>
+                                            <input id="1968" v-model="formData.year_1968" type="checkbox" class="peer" name="1968" value="yes">
+                                            <label for="1968"  class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1968</label><br>
                                         </div>
 
                                         <div class="mb-2">
-                                            <input id="1969" type="checkbox" class="peer" name="1969" value="1969">
-                                            <label for="1969" class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1969</label><br><br>
+                                            <input id="1969" v-model="formData.year_1969" type="checkbox" class="peer" name="1969" value="yes">
+                                            <label for="1969"  class="peer-checked:bg-white peer-checked:text-blue-600 px-2 py-1 rounded-lg"> 1969</label><br><br>
                                         </div>
 
                                     </div>
@@ -168,7 +157,7 @@
                                     <div class="mb-5">
                                         <label class="block mb-2 text-xl" for="type">Type</label>
 
-                                        <select  name="type" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <select v-model="formData.part_type" name="type"  class="w-full px-3 py-2 text-black focus:outline-none">
                                             <option value="RESTORATION">Restoration</option>
                                             <option value="MODERIZATION">Moderization</option>
                                             <option value="NOS">NOS</option>
@@ -186,45 +175,12 @@
 
                                         <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
 
-                                            <li>
-                                                <input id="1" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="1" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="2" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="2" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="3" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="3" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="4" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="4" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="5" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="5" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="6" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="6" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="7" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="7" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
-
-                                            <li>
-                                                <input id="8" class=" peer" type="radio" name="category-mobile-menu" value="D.I.Y. MUSCLE CAR KIT">
-                                                <label for="8" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">D.I.Y. MUSCLE CAR KIT</label>
-                                            </li>
+                                            <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                                                <li v-for="category in categories" :key="category.id">
+                                                    <input :id="category.id" class="peer" type="radio" name="category-mobile-menu" :value="category.id" v-model="formData.category">
+                                                    <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                                                </li>
+                                            </ul>
 
                                         </ul>
 
@@ -241,7 +197,7 @@
                                 <!-- Heading -->
 
                                 <div class="pb-1 mb-5 border-b-[2px] border-b-white">
-                                    <h2 class=" text-2xl font-semibold">Vendor Information</h2>
+                                    <h2 class=" text-2xl font-semibold">Supplier Information</h2>
                                 </div>
 
                                 <!-- Inputs -->
@@ -251,22 +207,22 @@
                                     <!-- Vendor ID Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="vendor-id">Vendor ID</label>
-                                        <input v-model="product.vendor_id" type="text" name="vendor-id" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="Supplier's Name">Supplier's Name</label>
+                                        <input v-model="formData.suppliers_name" type="text"  name="Supplier's Name" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Vendor Name Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="vendor-name">Vendor Name</label>
-                                        <input v-model="product.vendor_name" type="text" name="vendor-name" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="Supplier's Part Name">Supplier's Part Name</label>
+                                        <input v-model="formData.suppliers_part_name" type="text"  name="Supplier's Part Name" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Vendor Email Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="vendor-email">Vendor Email</label>
-                                        <input v-model="product.vendor_email" type="email" name="vendor-email" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="Supplier's Part Number">Supplier's Part Number</label>
+                                        <input v-model="formData.suppliers_part_number" type="email" name="Supplier's Part Number" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                 </div>
@@ -289,142 +245,236 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="name">Name</label>
-                                        <input v-model="product.name" type="text" name="name" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.name" type="text" name="name" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Brand Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="brand">Brand</label>
+                                        <input v-model="formData.brand" type="text" name="brand" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Product Id Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Product Id">Product Id</label>
+                                        <input v-model="formData.product_id" type="text" name="Product Id" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Slug Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Slug">Slug</label>
+                                        <input v-model="formData.slug" type="text" name="Slug" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Sku Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Sku">Sku</label>
+                                        <input v-model="formData.sku" type="text" name="Sku" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Publish Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Publish">Publish</label>
+                                        <select v-model="formData.publish" name="Publish" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+
+                                    <!-- Years Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Years">Years</label>
+                                        <input v-model="formData.years" type="text" name="Years" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- To Whom Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="to-whom">To Whom</label>
-                                        <input v-model="product.to_whom" type="text" name="to-whom" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.to_whom" type="text" name="to-whom" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
-                                    <!-- Price Label and Input -->
+                                    <!--Unit Price Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="price">Price ($)</label>
-                                        <input v-model="product.price" type="text" name="price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="unit price">Unit Price ($)</label>
+                                        <input v-model="formData.unit_price" type="number" name="unit price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!--Unit Cost Price Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="unit-cost-price">Unit Cost Price ($)</label>
+                                        <input v-model="formData.unit_cost" type="number" name="unit-cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Cost Price Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="cost-price">Cost Price ($)</label>
-                                        <input type="text" name="cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.cost" type="number" name="cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!--Normal Price Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Normal price">Normal Price ($)</label>
+                                        <input v-model="formData.normal_price" type="number" name="Normal price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!--Sale Price Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Sale price">Sale Price ($)</label>
+                                        <input v-model="formData.sale_price" type="number" name="Sale price" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- New Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="new">New</label>
+                                        <select v-model="formData.new" name="new" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- New Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="on sale">On Sale</label>
+                                        <select v-model="formData.onSale" name="on sale" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
                                     </div>
 
                                     <!-- Description Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="description">Description</label>
-                                        <textarea v-model="product.description"  name="description" class="w-full px-3 py-2 text-black focus:outline-none"></textarea>
+                                        <textarea v-model="formData.description" name="description" class="w-full px-3 py-2 text-black focus:outline-none"></textarea>
                                     </div>
 
                                     <!-- Notes Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="notes">Notes</label>
-                                        <textarea v-model="product.notes" name="notes" class="w-full px-3 py-2 text-black focus:outline-none"></textarea>
+                                        <textarea v-model="formData.notes" name="notes" class="w-full px-3 py-2 text-black focus:outline-none"></textarea>
                                     </div>
 
                                     <!-- GM Part Number(s) Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="gm-part-numbers">GM Part Number(s)</label>
-                                        <input v-model="product.gm_part_numbers" type="text" name="gm-part-numbers" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.gm_part_numbers" type="text" name="gm-part-numbers" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Assembly Manual Number(s) Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="assembly-manual-numbers">Assembly Manual Number(s)</label>
-                                        <input v-model="product.assembly_manual_numbers" type="text" name="assembly-manual-numbers" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.aim_numbers" type="text" name="assembly-manual-numbers" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Body Style Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="body-style">Body Style</label>
-                                        <input v-model="product.body_style" type="text" name="body-style" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.body_style" type="text" name="body-style" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Trim Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="trim">Trim</label>
-                                        <input v-model="product.trim" type="text" name="trim" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.trim" type="text" name="trim" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Interior Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="interior">Interior</label>
-                                        <input v-model="product.interior" type="text" name="interior" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.interior" type="text" name="interior" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Engine Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="engine">Engine</label>
-                                        <input v-model="product.engine" type="text" name="engine" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.engine" type="text" name="engine" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Transmission Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="transmission">Transmission</label>
-                                        <input v-model="product.transmission" type="text" name="transmission" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.transmission" type="text" name="transmission" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Part Manufacturer Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="part-manufacturer">Part Manufacturer</label>
-                                        <input v-model="product.part_manufacturer" type="text" name="part-manufacturer" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.part_manufacturer" type="text" name="part-manufacturer" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Manufacturer's Part Name Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="manufacturers-part-name">Manufacturer's Part Name</label>
-                                        <input v-model="product.manufacturer_part_name" type="text" name="manufacturers-part-name" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.manufacturer_part_name" type="text" name="manufacturers-part-name" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Manufacturer's Part Number Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="manufacturers-part-number">Manufacturer's Part Number</label>
-                                        <input v-model="product.manufacturers_part_number" type="text" name="manufacturers-part-number" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.manufacturer_part_number" type="text" name="manufacturers-part-number" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
-                                    <!-- Included Label and Input -->
+                                    <!-- MSRP Part Number Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="included">Included</label>
-                                        <input v-model="product.included" type="text" name="included" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="msrp">MSRP</label>
+                                        <input v-model="formData.msrp" type="text" name="msrp" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
-                                    <!-- Required Label and Input -->
+                                    <!-- Quantity Included Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="required">Required</label>
-                                        <input v-model="product.required" type="text" name="required" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <label class="block mb-2 text-xl" for="included">Quantity Included</label>
+                                        <input v-model="formData.quantity_included" type="text" name="included" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Quantity Required Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Needed">Quantity Needed</label>
+                                        <input v-model="formData.quantity_needed" type="text" name="Needed" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- BKPP Part Number Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="bkpp-part-number">BKPP Part Number</label>
-                                        <input v-model="product.bkpe_part_number" type="text" name="bkpp-part-number" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.bkpp_p_n" type="text" name="bkpp-part-number" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- GM Affiliation Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="gm-affiliation">GM Affiliation</label>
-                                        <select v-model="product.gm_affiliation" name="gm-affiliation" class="w-full px-3 py-2 text-black focus:outline-none">
-                                            <option  :value="true" >Yes</option>
-                                            <option  :value="false">No</option>
+                                        <select v-model="formData.gm_affiliation" name="gm-affiliation" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
                                         </select>
                                     </div>
 
@@ -432,9 +482,9 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="remanufactured">Remanufactured ?</label>
-                                        <select v-model="product.remanufactured" name="remanufactured" class="w-full px-3 py-2 text-black focus:outline-none">
-                                            <option :value="true">Yes</option>
-                                            <option :value="false">No</option>
+                                        <select v-model="formData.remanufactured" name="remanufactured" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
                                         </select>
                                     </div>
 
@@ -442,9 +492,9 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="made-in-the-usa">Made in the USA ?</label>
-                                        <select v-model="product.made_in_the_usa" name="made-in-the-usa" class="w-full px-3 py-2 text-black focus:outline-none">
-                                            <option :value="true">Yes</option>
-                                            <option :value="false">No</option>
+                                        <select v-model="made_in_the_usa" name="made-in-the-usa" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
                                         </select>
                                     </div>
 
@@ -452,21 +502,21 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="sold-as">Sold As</label>
-                                        <input v-model="product.sole_as" type="text" name="sold-as" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.sold_as" type="text" name="sold-as" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Help Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="help">Help</label>
-                                        <input v-model="product.help" type="text" name="help" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.help" type="text" name="help" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Shipping Method Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="shipping-method">Shipping Method</label>
-                                        <select name="shipping-method" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <select v-model="formData.shipping_method"  name="shipping-method" class="w-full px-3 py-2 text-black focus:outline-none">
                                             <option value="Pick-Up-Only">Pick Up Only</option>
                                             <option value="Regular">Regular</option>  
                                             <option value="Truck Freight">Truck Freight</option>
@@ -479,62 +529,145 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="special-handling">Special Handling</label>
-                                        <input v-model="product.special_handling" type="text" name="special-handling" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.special_handling" type="text" name="special-handling" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Height Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="height">Height</label>
-                                        <input v-model="product.h" type="text" name="height" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.h" type="text" name="height" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Width Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="width">Width</label>
-                                        <input v-model="product.w"  type="text" name="width" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.w" type="text" name="width" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Length Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="length">Length</label>
-                                        <input v-model="product.l"  type="text" name="length" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.l" type="text" name="length" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                     <!-- Weight Label and Input -->
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="weight">Weight</label>
-                                        <input v-model="product.weight"  type="text" name="weight" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <input v-model="formData.weight" type="text" name="weight" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                 </div>
 
                                 <!-- Explainatory PDF labels and inputs -->
 
-                                <div class=" grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
+                                <!-- <div class=" grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
 
-                                    <!-- Explainatory PDF 1 -->
+                                    
 
                                     <div class="w-full ">
                                         <label class="block mb-2 text-xl" for="explainatory-pdf-1">Explainatory PDF 1</label>
-                                        <input type="file" name="explainatory-pdf-1" class="w-full py-2 text-black focus:outline-none">
+                                        <input v-model="formData." type="file" name="explainatory-pdf-1" class="w-full py-2 text-black focus:outline-none">
                                     </div>
 
-                                    <!-- Explainatory PDF 2 -->
+                                    
 
                                     <div class="w-full ">
                                         <label class="block mb-2 text-xl" for="explainatory-pdf-2">Explainatory PDF 2</label>
-                                        <input type="file" name="explainatory-pdf-2" class="w-full py-2 text-black focus:outline-none">
+                                        <input v-model="formData." type="file" name="explainatory-pdf-2" class="w-full py-2 text-black focus:outline-none">
                                     </div>
 
-                                    <!-- Explainatory PDF 3 -->
+                                    
 
                                     <div class="w-full ">
                                         <label class="block mb-2 text-xl" for="explainatory-pdf-3">Explainatory PDF 3</label>
-                                        <input type="file" name="explainatory-pdf-3" class="w-full py-2 text-black focus:outline-none">
+                                        <input v-model="formData." type="file" name="explainatory-pdf-3" class="w-full py-2 text-black focus:outline-none">
+                                    </div>
+
+                                </div> -->
+
+                            </div>
+
+                            <!-- Other Information -->
+
+                            <div class="mt-16">
+
+                                <!-- Heading -->
+
+                                <div class="pb-1 mb-5 border-b-[2px] border-b-white">
+                                    <h2 class=" text-2xl font-semibold">Other Information</h2>
+                                </div>
+
+                                <!-- Inputs -->
+
+                                <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
+
+                                    <!-- Email to Tim label and field -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="email-to-time">Email to Tim</label>
+                                        <select name="email-to-time" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Email Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="email-address">Email Address</label>
+                                        <input v-model="formData.email_address" type="email" name="email-address" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Customer Number Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Customer Number">Customer Number</label>
+                                        <input v-model="formData.customer_number" type="text" name="Customer Number" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Street Address Name Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Street Address">Street Address</label>
+                                        <input v-model="formData.street_address" type="text" name="Street Address" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- City State Zip Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="City State Zip">City State Zip</label> 
+                                        <input v-model="formData.city_state_zip" type="email" name="City State Zip" class="w-full px-3 py-2 text-black focus:outline-none">
+                                    </div>
+
+                                    <!-- Fixed Shipping Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Fixed Shipping">Fixed Shipping</label>
+                                        <select v-model="formData.fixed_shipping" name="Fixed Shipping" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Multiple Fixed Shipping Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Multiple Fixed Shipping">Multiple Fixed Shipping</label>
+                                        <select v-model="formData.multiple_fixed_shipping" name="Multiple Fixed Shipping" class="w-full px-3 py-2 text-black focus:outline-none">
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Photo P N Label and Input -->
+
+                                    <div class="">
+                                        <label class="block mb-2 text-xl" for="Photo Part Number">Photo Part Number</label>
+                                        <input v-model="formData.photo_p_n" type="text" name="Photo Part Number" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
                                 </div>
@@ -554,6 +687,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
 export default {
 
@@ -562,18 +696,226 @@ export default {
     },
     data() {
         return {
-
-
-        }
+            formData: {
+                id: '',
+                product_id: '',
+                part_type: '',
+                brand: '',
+                bkpp_p_n: '',
+                publish: 'no',
+                year_1967: false,
+                year_1968: false,
+                year_1969: false,
+                name: '',
+                description: '',
+                notes: '',
+                gm_part_numbers: '',
+                aim_numbers: '',
+                years: '',
+                body_style: '',
+                trim: '',
+                interior: '',
+                engine: '',
+                transmission: '',
+                part_manufacturer: '',
+                manufacturer_part_name: '',
+                manufacturer_part_number: '',
+                suppliers_name: '',
+                suppliers_part_name: '',
+                suppliers_part_number: '',
+                email_to_tim: 'no',
+                email_address: '',
+                customer_number: '',
+                street_address: '',
+                city_state_zip: '',
+                quantity_included: '',
+                quantity_needed: '',
+                to_whom: '',
+                cost: '',
+                msrp: '',
+                unit_cost: '',
+                unit_price: '',
+                sale_price: '',
+                normal_price: '',
+                photo_p_n: '',
+                fixed_shipping: 'no',
+                multiple_fixed_shipping: 'no',
+                inventory: 0,
+                gm_affiliation: '',
+                remanufactured: 'no',
+                made_in_the_usa: 'no',
+                sold_as: '',
+                shipping_method: '',
+                help: '',
+                special_handling: '',
+                h: '',
+                l: '',
+                w: '',
+                weight: '',
+                slug: '',
+                sku: '',
+                new: 'yes',
+                onSale: 'no',
+                category: ''
+            },
+            
+            selectedImages: [],
+        };
+    },
+    computed:{
+        ...mapGetters({
+            categories:'products/categories',
+            storeProducts: 'products/products',
+        }),
+    },
+    beforeMount(){
+        this.products = this.storeProducts
     },
     async fetch() {
         await this.getSingleProduct()
     },
     methods: {
         async getSingleProduct() {
-            const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
-            this.product = {...data}
+            try {
+                const data = await this.$axios.$get(`/products/product-details/${this.$route.params.id}`);
+                this.formData = { ...data };
+                this.formData.new = this.formData.new ? 'yes' : 'no';
+                this.formData.onSale = this.formData.onSale ? 'yes' : 'no';
+                this.formData.multiple_fixed_shipping = this.formData.multiple_fixed_shipping ? 'yes' : 'no';
+                this.formData.remanufactured = this.formData.remanufactured ? 'yes' : 'no';
+                this.formData.made_in_the_usa = this.formData.made_in_the_usa ? 'yes' : 'no';
+                this.formData.email_to_tim = this.formData.email_to_tim ? 'yes' : 'no';
+                this.formData.fixed_shipping = this.formData.fixed_shipping ? 'yes' : 'no';
+                this.selectedImages = this.formData.images.map(item => ({id:item.id, image:`http://54.146.158.4${item.image}`}));
+                // this.selectedImages = this.formData.images;
+                console.log(this.selectedImages)
+                console.log(this.formData);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+            }
+        },
 
+        removeImage(index) {
+            if (index >= 0 && index < this.selectedImages.length) {
+                // Remove image from selectedImages array
+                this.selectedImages.splice(index, 1);
+            }
+        },
+
+        handleFileSelect(event) {
+            const files = event.target.files;
+            if (!files) return;
+
+            // Convert file list to array of objects containing file and URL
+            const newImages = Array.from(files).map(file => ({ id: null, image: URL.createObjectURL(file) }));
+            // Concatenate new images with existing ones
+            this.selectedImages = this.selectedImages.concat(newImages);
+        },
+
+
+        async updateProduct() {
+            // Perform API call to update product
+            // try {
+                const formDataToSend = new FormData();
+
+                // Append product data
+                formDataToSend.append('product_id', this.formData.product_id);
+                formDataToSend.append('part_type', this.formData.part_type);
+                formDataToSend.append('brand', this.formData.brand == null ? "" : this.formData.brand);
+                formDataToSend.append('bkpp_p_n', this.formData.bkpp_p_n);
+                formDataToSend.append('publish', this.formData.publish);
+                formDataToSend.append('year_1967', this.formData.year_1967 ? 'yes' : 'no');
+                formDataToSend.append('year_1968', this.formData.year_1968 ? 'yes' : 'no');
+                formDataToSend.append('year_1969', this.formData.year_1969 ? 'yes' : 'no');
+                formDataToSend.append('name', this.formData.name);
+                formDataToSend.append('description', this.formData.description);
+                formDataToSend.append('notes', this.formData.notes);
+                formDataToSend.append('gm_part_numbers', this.formData.gm_part_numbers);
+                formDataToSend.append('aim_numbers', this.formData.aim_numbers);
+                formDataToSend.append('years', this.formData.years);
+                formDataToSend.append('body_style', this.formData.body_style);
+                formDataToSend.append('trim', this.formData.trim);
+                formDataToSend.append('interior', this.formData.interior);
+                formDataToSend.append('engine', this.formData.engine);
+                formDataToSend.append('transmission', this.formData.transmission);
+                formDataToSend.append('part_manufacturer', this.formData.part_manufacturer);
+                formDataToSend.append('manufacturer_part_name', this.formData.manufacturer_part_name);
+                formDataToSend.append('manufacturer_part_number', this.formData.manufacturer_part_number);
+                formDataToSend.append('suppliers_name', this.formData.suppliers_name);
+                formDataToSend.append('suppliers_part_name', this.formData.suppliers_part_name);
+                formDataToSend.append('suppliers_part_number', this.formData.suppliers_part_number);
+                formDataToSend.append('email_to_tim', this.formData.email_to_tim);
+                formDataToSend.append('email_address', this.formData.email_address);
+                formDataToSend.append('customer_number', this.formData.customer_number);
+                formDataToSend.append('street_address', this.formData.street_address);
+                formDataToSend.append('city_state_zip', this.formData.city_state_zip);
+                formDataToSend.append('quantity_included', this.formData.quantity_included);
+                formDataToSend.append('quantity_needed', this.formData.quantity_needed);
+                formDataToSend.append('to_whom', this.formData.to_whom);
+                formDataToSend.append('cost', this.formData.cost);
+                formDataToSend.append('msrp', this.formData.msrp);
+                formDataToSend.append('unit_cost', this.formData.unit_cost);
+                formDataToSend.append('unit_price', this.formData.unit_price);
+                formDataToSend.append('sale_price', this.formData.sale_price);
+                formDataToSend.append('normal_price', this.formData.normal_price);
+                formDataToSend.append('photo_p_n', this.formData.photo_p_n);
+                formDataToSend.append('fixed_shipping', this.formData.fixed_shipping);
+                formDataToSend.append('multiple_fixed_shipping', this.formData.multiple_fixed_shipping);
+                formDataToSend.append('inventory', this.formData.inventory);
+                formDataToSend.append('gm_affiliation', this.formData.gm_affiliation);
+                formDataToSend.append('remanufactured', this.formData.remanufactured);
+                formDataToSend.append('made_in_the_usa', this.formData.made_in_the_usa);
+                formDataToSend.append('sold_as', this.formData.sold_as);
+                formDataToSend.append('shipping_method', this.formData.shipping_method);
+                formDataToSend.append('help', this.formData.help);
+                formDataToSend.append('special_handling', this.formData.special_handling);
+                formDataToSend.append('h', this.formData.h);
+                formDataToSend.append('l', this.formData.l);
+                formDataToSend.append('w', this.formData.w);
+                formDataToSend.append('weight', this.formData.weight);
+                formDataToSend.append('slug', this.formData.slug);
+                formDataToSend.append('sku', this.formData.sku);
+                formDataToSend.append('new', this.formData.new);
+                formDataToSend.append('onSale', this.formData.onSale);
+                formDataToSend.append('category', this.formData.category);
+                // Append other product data fields...
+
+                // Append existing image IDs (assuming the API expects IDs)
+                for (let i = 0; i < this.formData.images.length; i++) {
+                    formDataToSend.append('images', this.formData.images[i]);
+                }
+
+                // Append new image files
+                for (let i = 0; i < this.selectedImages.length; i++) {
+                    // Check if the selected image is a file (not an object with an id)
+                    if (!(this.selectedImages[i].id)) {
+                        formDataToSend.append('images', this.selectedImages[i].file);
+                    }
+                }
+
+                // Send the FormData object via POST request
+                await this.$axios.put(`/products/product-details/${this.formData.id}/`, formDataToSend, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                });
+                console.log('Product updated successfully!');
+            // } catch (error) {
+            //     console.error('Error updating product:', error);
+            // }
+        },
+
+        deleteProduct(){
+            // await this.$axios.delete(`/products/product-details/${this.formData.id}`, {
+            //     headers: {
+            //         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            //     }
+            // });
+            
+            // const editedProductsList = [...this.products]
+            const editedProductsList = this.products.filter(product => product.id !== this.formData.id)
+            this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId:this.formData.id})
+            // this.$router.push('/Admin/AdminProductsPage');
         },
 
         goBack() {

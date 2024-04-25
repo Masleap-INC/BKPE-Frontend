@@ -50,6 +50,7 @@ export default {
             state.saleProducts = saleProducts
         },
         SET_PRODUCTS(state,products){
+            console.log("game")
             state.products = products
         },
         SET_FILTERS(state,filters){
@@ -90,8 +91,13 @@ export default {
         },
 
         async getProductListAfterDeleteAdmin({commit},{editedProductsList,productId}){ 
-            await this.$axios.$delete(`/products/${productId}/`)
+            await this.$axios.delete(`/products/product-details/${productId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            });
             commit('SET_PRODUCTS',editedProductsList)
+            this.$router.push('/Admin/AdminProductsPage');
         },
        
         async getAppProducts({commit}){

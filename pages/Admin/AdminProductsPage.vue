@@ -29,13 +29,6 @@ export default {
     components: {
         AdminSidebar,
         AdminProductsPageSection,
-        
-    },
-    async asyncData({store}) {
-      if(!store.getters['products/products']){       
-        await store.dispatch('products/getAppProductsAdmin')
-      }
-
     },
 }
 </script>

@@ -396,15 +396,12 @@ export default {
     methods: {
         onChangeYear(event) {
             this.filters.year = event.target.value;
-
         },
         onChangeType(event) {
             this.filters.type = event.target.value;
-
         },
         onChangeCategory(event) {
-            this.filters.category = event.target.value;
-            
+            this.filters.category = event.target.value;  
         },
         getFilteredProduct() {
             this.$store.dispatch('products/getFilterProducts',this.filters)

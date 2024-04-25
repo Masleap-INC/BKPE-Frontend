@@ -38,10 +38,11 @@ export default {
         }
     },
     async fetch() {
-     await this.generatePaymentIntent();
+      await this.generatePaymentIntent();
     },
     computed:{
         ...mapGetters({
+            orderDetails:'orders/getOrderDetails',
             getCart:'cart/getCart',
             totalPrice:'cart/getTotalPrice'
         }),
@@ -50,9 +51,32 @@ export default {
     methods: {
 
         async generatePaymentIntent () {
-
-            const paymentIntent = await this.$axios.$get(`/payment/create-payment-intent/${this.totalPrice*100}/?cart_id=${localStorage.getItem("cart_id")}`)
+            console.log(this.orderDetails)
+            try{
+                const paymentIntent = await this.$axios.$get(`http://54.146.158.4/payment/create-payment-intent/${(this.orderDetails.vat + this.orderDetails.shipping + this.totalPrice)*100}/?
+                amount=${this.totalPrice}
+                &vat=${this.orderDetails.vat}
+                &shipping=${this.orderDetails.shipping}
+                &sub_total=${this.totalPrice}
+                &total_price=${this.orderDetails.vat + this.orderDetails.shipping + this.totalPrice}
+                &first_name=${this.orderDetails.firstName}
+                &last_name=${this.orderDetails.lastName}
+                &address=${this.orderDetails.address}
+                &city=${this.orderDetails.city}
+                &country=${this.orderDetails.country}
+                &postal_code=${this.orderDetails.postalCode}
+                &phone=${this.orderDetails.phone}
+                &payment_method=${this.orderDetails.selectedPaymentMethod}
+                &cart_id=${localStorage.getItem('cart_id')}
+                &order_status=placed
+                &email=${this.orderDetails.email}
+                `)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
+            }catch(err){
+                console.log(err)
+            }
+            
+            // this.elementsOptions.clientSecret = 'pi_3P6vR4LRh1ikRvHv0SmTQtPN_secret_JW0EqnHHY9mcUU2N579J12Sbp'
         
         },
         async pay () {

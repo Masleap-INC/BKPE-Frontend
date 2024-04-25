@@ -10,6 +10,7 @@
 import {mapGetters} from 'vuex'
 export default {
     name:"CenterComponent",
+    
     computed:{
       ...mapGetters({
         loadingState: 'auth/loadingState',
