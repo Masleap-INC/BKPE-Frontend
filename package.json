@@ -17,6 +17,7 @@
     "@vue-stripe/vue-stripe": "^4.4.4",
     "chart.js": "^3.8.2",
     "core-js": "^3.19.3",
+    "js-cookie": "^3.0.5",
     "nuxt": "^2.15.8",
     "nuxt-stripe-module": "^3.2.0",
     "sass": "^1.49.11",

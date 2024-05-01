@@ -30,5 +30,10 @@ export default {
         AdminSidebar,
         AdminProductsPageSection,
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
 }
 </script>

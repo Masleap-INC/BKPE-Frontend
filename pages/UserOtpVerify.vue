@@ -87,6 +87,11 @@ export default {
             otp: '',
         }
     },
+    mounted() {
+        if (this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     methods: {
     
         async verifyOtp(){

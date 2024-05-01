@@ -47,6 +47,11 @@ export default {
             totalPrice:'cart/getTotalPrice'
         }),
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
 
     methods: {
 
@@ -68,7 +73,7 @@ export default {
                 &phone=${this.orderDetails.phone}
                 &payment_method=${this.orderDetails.selectedPaymentMethod}
                 &cart_id=${localStorage.getItem('cart_id')}
-                &order_status=placed
+                &order_status=Placed
                 &email=${this.orderDetails.email}
                 `)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;

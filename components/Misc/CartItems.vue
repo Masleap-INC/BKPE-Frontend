@@ -119,7 +119,7 @@ export default {
     methods:{
     incCartItmeQty(index,id,qty,price){
         console.log('game')
-        if(this.getCart[index].product.quantity_included > this.getCart[index].quantity){
+        if(this.getCart[index].product.inventory > this.getCart[index].quantity){
             this.$store.dispatch("cart/incItemQty",{idx:index,id:id,qty,price})
         }
     },

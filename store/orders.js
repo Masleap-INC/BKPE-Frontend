@@ -38,9 +38,9 @@ export default {
         async getOrdersAdmin({ commit, dispatch }){
             try {
        
-                const data = await this.$axios.$get(`/order/`)
+                const data = await this.$axios.$get(`/order/order-list`)
 
-                commit('SET_ORDERS',data.results)
+                commit('SET_ORDERS',data)
                 dispatch('loadingStateChange',false) 
          
             }catch(e){

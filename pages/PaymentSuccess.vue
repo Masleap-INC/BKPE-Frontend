@@ -31,6 +31,11 @@ export default {
         
         // const { paymentIntent } = await this.$stripe.retrievePaymentIntent(this.$route.query.payment_intent_client_secret);
         // console.log(paymentIntent)
+
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+
         const data = await this.$axios.$get(`http://54.146.158.4/payment/status/?payment_intent_id=${this.$route.query.payment_intent}`)
         if(data.status === "succeeded"){
             this.orderPlaced(data.metadata)

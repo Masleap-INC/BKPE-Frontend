@@ -1,4 +1,4 @@
-<template>
+np<template>
     <div>
   
       <!-- Heading -->
@@ -52,8 +52,8 @@
                       <tr v-for="(order,index) in orders" :key="order.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                           <td class="p-3">{{order.id}}</td>
                           <td class="p-3">{{order.created_at}}</td>
-                          <td class="p-3">{{order.user.username}}</td>
-                          <td class="p-3">{{order.user.email}}</td>
+                          <td class="p-3">{{order.first_name +" "+ order.user.last_name}}</td>
+                          <td class="p-3">{{order.email}}</td>
                           <td class="p-3">{{order.order_status}}</td>
                           <td class="p-3">${{order.total_price}}</td>
                           <td class="p-3">

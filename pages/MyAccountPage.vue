@@ -37,7 +37,11 @@ import MyAccount from '../components/MyAccountPage/MyAccount.vue'
 
 export default {
   components: { MyAccount },
-
+  mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
   methods: {
     goBack() {
       this.$router.back()

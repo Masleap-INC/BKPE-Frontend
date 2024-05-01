@@ -113,7 +113,11 @@ import { mapActions } from 'vuex'
       
     } 
   },
-  
+  mounted() {
+        if (this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
   methods: {
    
     ...mapActions({

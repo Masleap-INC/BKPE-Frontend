@@ -254,6 +254,11 @@ export default {
             totalPrice:'cart/getTotalPrice'
         }),
     }, 
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     methods: {
             ...mapActions({
                 setOrderDetails:'orders/setOrderDetails',
@@ -274,7 +279,7 @@ export default {
                         Phone:this.orderDetail.phone,
                         payment_method:this.orderDetails.selectedPaymentMethod,
                         cart_id:localStorage.getItem('cart_id'),
-                        order_status:'placed',
+                        order_status:'Placed',
                         email:this.orderDetail.email
                     },{
                         headers:{

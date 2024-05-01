@@ -91,6 +91,7 @@ export default {
         },
 
         async getProductListAfterDeleteAdmin({commit},{editedProductsList,productId}){ 
+            console.log(productId)
             await this.$axios.delete(`/products/product-details/${productId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`

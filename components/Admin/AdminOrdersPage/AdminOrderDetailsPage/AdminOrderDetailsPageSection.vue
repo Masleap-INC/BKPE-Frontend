@@ -51,7 +51,7 @@
                 <div class=" block w-fit mb-5 ml-auto">
                     <!-- Update Button -->
 
-                    <button class=" inline-block mr-1 text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Update</button>
+                    <!-- <button class=" inline-block mr-1 text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Update</button> -->
 
                 </div>
 
@@ -69,7 +69,7 @@
                             
                             <label for="inventory" class="mr-2">Status</label>
                             <select v-model="order_status" @change="onStatusUpdate($event)" type="number" class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
-
+                                <option value="Placed">Placed</option>
                                 <option value="Processing">Processing</option>
                                 <option value="Ready to Ship">Ready to Ship</option>
                                 <option value="Shipped">Shipped</option>
@@ -99,14 +99,14 @@
 
                     <!-- Payment Status -->
 
-                    <div>
+                    <!-- <div>
                         <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Status:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].payment_status}}</span> </h2>
-                    </div>
+                    </div> -->
 
                     <!-- Payment Type -->
 
                     <div>
-                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Type:</span> <span class="lg:text-lg md:text-lg sm:text-sm">Card</span> </h2>
+                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Type:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].payment_method}}</span> </h2>
                     </div>
 
                 </div>
@@ -130,7 +130,7 @@
                         <!-- User Name -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">User Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].user.username}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">User Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].first_name+" "+orders[currentIndex].last_name}}</span> </h2>
                         </div>
 
                         <!-- Last Name -->
@@ -142,13 +142,13 @@
                         <!-- Email -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Email:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].user.email}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Email:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].email}}</span> </h2>
                         </div>
 
                         <!-- Phone -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Phone:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].user.phone_number}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Phone:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].Phone}}</span> </h2>
                         </div>
 
                     </div>
@@ -173,25 +173,25 @@
                         <!-- Address -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Address:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].shipping_info.details}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Address:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].address}}</span> </h2>
                         </div>
 
                         <!-- Country -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Country:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].shipping_info.country}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Country:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].country}}</span> </h2>
                         </div>
 
                         <!-- City -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">City:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].shipping_info.city}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">City:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].city}}</span> </h2>
                         </div>
 
                         <!-- Zip -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Zip:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].shipping_info.postal_code}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Zip:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].postal_code}}</span> </h2>
                         </div>
 
                     </div>
@@ -212,7 +212,7 @@
 
                     <div>
 
-                        <div class="w-full overflow-x-auto max-h-[300px] overflow-y-auto">
+                        <!-- <div class="w-full overflow-x-auto max-h-[300px] overflow-y-auto">
 
                             <table class="w-full text-left ">
 
@@ -240,7 +240,7 @@
 
                             </table>
 
-                        </div>
+                        </div> -->
 
                         
 
@@ -257,7 +257,7 @@
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Item Subtotal:</td>
-                                        <td class="py-3 text-xl text-right">$20000</td>
+                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].sub_total}}</td>
 
                                     </tr>
 
@@ -266,7 +266,7 @@
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Tax:</td>
-                                        <td class="py-3 text-xl text-right">$200</td>
+                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].vat}}</td>
 
                                     </tr>
 
@@ -275,7 +275,7 @@
                                     <tr class="border-b-2 border-white">
 
                                         <td class="py-3 pr-3 text-xl font-bold">Shipping:</td>
-                                        <td class="py-3 text-xl text-right">$200</td>
+                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].shipping}}</td>
 
                                     </tr>
 
@@ -325,6 +325,7 @@ export default {
     },
     beforeMount(){
         this.order_status = this.orders[this.currentIndex].order_status
+        this.getOrderItems()
     },
     methods: {
         ...mapActions({
@@ -346,14 +347,25 @@ export default {
         },
         async onStatusUpdate(event){
             
-            const data = await this.$axios.$patch(`/order/${this.orders[this.currentIndex].id}/`,
+            const data = await this.$axios.$put(`/order/${this.orders[this.currentIndex].id}/`,
             {           
-                order_status:event.target.value
+                order_status:event.target.value,
+                vat: this.orders[this.currentIndex].vat
             });
             this.orders[this.currentIndex] = data
 
             this.ordersStateUpdate(this.orders)
 
+        },
+
+        async getOrderItems(){
+            console.log(this.orders[this.currentIndex].cart_id)
+            const data = await this.$axios.$get(`/order/add-to-cart/?cart_id=${this.orders[this.currentIndex].cart_id}`,{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            });
+            console.log(data)
         },
 
         goBack() {

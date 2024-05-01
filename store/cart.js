@@ -65,7 +65,10 @@ export default {
         },
         async incItemQty({commit},{idx,id,qty,price}){
             console.log(qty,price)
-            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:qty+1,price:(price*qty).toFixed(2)},{
+            const newQty = qty + 1
+            const newPrice = newQty * price
+            console.log(newPrice)
+            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:newQty,price:newPrice.toFixed(2)},{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -87,6 +90,7 @@ export default {
             commit('ADD_CART_LOCALSTORAGE')
         },
         async remCartItem({commit},{idx,id}){
+            console.log("cart deleted")
             await this.$axios.$delete(`/order/update_cart/${id}`,{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("accessToken")}`

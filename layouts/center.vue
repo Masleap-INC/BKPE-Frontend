@@ -10,22 +10,15 @@
 import {mapGetters} from 'vuex'
 export default {
     name:"CenterComponent",
-    
+    middleware:"authenticated",
     computed:{
       ...mapGetters({
         loadingState: 'auth/loadingState',
-        authenticated: 'auth/authenticated'
       }),
     },
     beforeCreate(){ 
       this.$store.dispatch('auth/loadingStateChange',true)
     },
-    mounted(){
-      if(localStorage.getItem("accessToken")){
-        this.$store.dispatch('auth/attempt', localStorage.getItem("accessToken"));
-      }else{
-        this.$store.dispatch('auth/loadingStateChange',false)
-      }
-    }
+
 }
 </script>

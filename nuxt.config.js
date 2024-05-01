@@ -25,7 +25,9 @@ export default {
   plugins: [
     { src: '~/plugins/chart.js', mode: 'client' },
     { src: '~/plugins/stripe.js', ssr: false },
-    { src: '~/plugins/asyncDataLoader.js', ssr: false}
+    { src: '~/plugins/asyncDataLoader.js', ssr: false},
+    // { src: '~/plugins/sessionValidator.js', mode: 'client' },
+    { src: '~/plugins/auth.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -66,5 +68,11 @@ export default {
         autoprefixer: {},
       },
     },
-  }
+  },
+
+  // router: {
+  //   middleware: ['check-auth'],
+  // }
+  
 }
+

@@ -26,6 +26,7 @@
 import HeroSection from "~/components/HomePage/HeroSection.vue";
 import SatisfactionGuaranteeSection from "~/components/FooterPages/SecondColumn/SatisfactionGuarantee/SatisfactionGuaranteeSection.vue";
 export default {
+    middleware: 'no-auth',
     components: {
     HeroSection,
     SatisfactionGuaranteeSection

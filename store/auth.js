@@ -1,4 +1,3 @@
-
 export default { 
 
     namespaced: true,
@@ -47,13 +46,14 @@ export default {
             commit('SET_USER',null)
             localStorage.setItem('cart_id',null)
         },
-        async signIn({commit,dispatch},credentials){
+        async signIn({dispatch},credentials){
 
             const data = await this.$axios.$post('/auth/login/', credentials)
     
             dispatch('attempt',data.tokens.refresh) 
             localStorage.setItem("refreshToken",data.tokens.refresh)
             localStorage.setItem("accessToken",data.tokens.access)
+          
             await this.$router.push('/'); 
 
         },
@@ -84,7 +84,8 @@ export default {
         },
         loadingStateChange({commit},bool){
             commit('SET_LOADING_STATE',bool)
-        }
+        },
+
         
     }
       

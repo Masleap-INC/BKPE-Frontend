@@ -31,6 +31,11 @@ export default {
         AdminSidebar,
         AdminHomePageSection
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     async asyncData({store}) {
       if(!store.getters['products/products']){       
         await store.dispatch('products/getAppProductsAdmin')

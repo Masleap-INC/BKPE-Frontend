@@ -30,11 +30,22 @@ export default {
         AdminSidebar,
         AdminOrderDetailsPageSection
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     async asyncData({store}) {
       if(!store.getters['orders/orders']){       
         await store.dispatch('orders/getOrdersAdmin')
       }
 
+    //   await this.getOrderProducts()
+
     },
+
+    // methods : {
+        
+    // }
 }
 </script>

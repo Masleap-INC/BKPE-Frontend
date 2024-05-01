@@ -510,6 +510,7 @@
 <script>
 import { mapActions,mapGetters } from 'vuex'
 
+
 export default {
     data() {
         return {
@@ -539,6 +540,7 @@ export default {
                 authenticated: 'auth/authenticated'
             })
     },
+    
     methods: {
          ...mapActions({
             addToCartStore:'cart/addToCart'

@@ -30,6 +30,11 @@ export default {
         AdminSidebar,
         AdminUserDetailsPageSection
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     async asyncData({store}) {
       if(!store.getters['users/users']){       
         await store.dispatch('users/getUsersAdmin')

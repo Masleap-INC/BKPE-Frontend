@@ -32,7 +32,7 @@
                         </div>
 
                         <!-- Navigate Button -->
-
+<!-- 
                         <div class="text-white inline-block align-middle py-2">
 
                             <span class="">
@@ -45,7 +45,7 @@
                                 <button class="px-2 rounded-xl hover:text-blue-600 hover:bg-white duration-300">Next &#8594;</button>
                             </span>
 
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Product Details -->
@@ -98,18 +98,19 @@
 
                                 <div class="mb-10">
                                     <!-- Heading -->
-                                    <div class="flex justify-between pb-2 mb-5 border-b-[2px] border-b-white">
+                                    
+
+                                    <div class="flex justify-between pb-2 my-5 border-b-[2px] border-b-white">
                                         <h2 class="inline-block align-middle text-2xl font-semibold">Images</h2>
                                         <!-- Add Image Button -->
                                         <input type="file" accept="image/*" ref="fileInput" multiple style="display: none" @change="handleFileSelect">
                                         <button @click="$refs.fileInput.click()" class="inline-block align-middle text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">+ Add Image</button>
                                     </div>
 
-                                    <div class="relative border-[2px] border-white p-2 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-5 h-full">
+                                    <div class="relative border-[2px] border-white p-2 grid lg:grid-cols-2 md:grid-cols-2 sm: grid-cols-2 gap-5 h-full">
                                         <!-- Display Selected Images -->
                                         <div v-for="(image, index) in selectedImages" :key="index" class="relative w-full h-32">
-                                            
-                                            <img :src="image.image" :alt="image.image" class="w-full h-32 object-cover">
+                                            <img :src="image.url" :alt="image.name" class="w-full h-32 object-cover">
                                             <!-- Delete Button -->
                                             <div @click="removeImage(index)" class="absolute top-1 right-1 bg-white p-1 rounded-full hover:bg-black duration-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -118,6 +119,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    
                                 </div>
 
                                 <!-- Categories -->
@@ -768,6 +771,11 @@ export default {
             storeProducts: 'products/products',
         }),
     },
+    mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+        }
+    },
     beforeMount(){
         this.products = this.storeProducts
     },
@@ -786,10 +794,16 @@ export default {
                 this.formData.made_in_the_usa = this.formData.made_in_the_usa ? 'yes' : 'no';
                 this.formData.email_to_tim = this.formData.email_to_tim ? 'yes' : 'no';
                 this.formData.fixed_shipping = this.formData.fixed_shipping ? 'yes' : 'no';
-                this.selectedImages = this.formData.images.map(item => ({id:item.id, image:`http://54.146.158.4${item.image}`}));
-                // this.selectedImages = this.formData.images;
+                const images = []
+                this.formData.images.forEach(async item => {
+                    const imageFile = await this.handleImageLink(item.image)
+                    images.push(imageFile)
+                    this.selectedImages = images
+                });
                 console.log(this.selectedImages)
-                console.log(this.formData);
+                // this.selectedImages = this.formData.images;
+                // console.log(this.formData)
+
             } catch (error) {
                 console.error('Error fetching product:', error);
             }
@@ -802,14 +816,37 @@ export default {
             }
         },
 
+        async handleImageLink(url) {
+            try {
+                const response = await fetch("http://54.146.158.4"+url);
+                const blob = await response.blob();
+                const filename = url.substring(url.lastIndexOf('/') + 1);
+                return { name: filename, url: URL.createObjectURL(blob), file: blob };
+            } catch (error) {
+                console.error("Error fetching image:", error);
+                return null;
+            }
+
+            
+        },
+
+
         handleFileSelect(event) {
             const files = event.target.files;
-            if (!files) return;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.selectedImages.push({
+                        name: file.name,
+                        url: e.target.result,
+                        file: file,
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
 
-            // Convert file list to array of objects containing file and URL
-            const newImages = Array.from(files).map(file => ({ id: null, image: URL.createObjectURL(file) }));
-            // Concatenate new images with existing ones
-            this.selectedImages = this.selectedImages.concat(newImages);
+            console.log(this.selectedImages)
         },
 
 
@@ -881,17 +918,15 @@ export default {
                 // Append other product data fields...
 
                 // Append existing image IDs (assuming the API expects IDs)
-                for (let i = 0; i < this.formData.images.length; i++) {
-                    formDataToSend.append('images', this.formData.images[i]);
-                }
+                // for (let i = 0; i < this.formData.images.length; i++) {
+                //     formDataToSend.append('images', this.formData.images[i]);
+                // }
 
                 // Append new image files
                 for (let i = 0; i < this.selectedImages.length; i++) {
-                    // Check if the selected image is a file (not an object with an id)
-                    if (!(this.selectedImages[i].id)) {
-                        formDataToSend.append('images', this.selectedImages[i].file);
-                    }
+                    formDataToSend.append('images', this.selectedImages[i].file);
                 }
+
 
                 // Send the FormData object via POST request
                 await this.$axios.put(`/products/product-details/${this.formData.id}/`, formDataToSend, {
@@ -899,23 +934,17 @@ export default {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
                 });
-                console.log('Product updated successfully!');
+                this.getSingleProduct()
             // } catch (error) {
             //     console.error('Error updating product:', error);
             // }
         },
 
         deleteProduct(){
-            // await this.$axios.delete(`/products/product-details/${this.formData.id}`, {
-            //     headers: {
-            //         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            //     }
-            // });
-            
-            // const editedProductsList = [...this.products]
+
             const editedProductsList = this.products.filter(product => product.id !== this.formData.id)
             this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId:this.formData.id})
-            // this.$router.push('/Admin/AdminProductsPage');
+
         },
 
         goBack() {
