@@ -5,7 +5,6 @@ export default {
     state:()=>({
         cart:[],
         totalPrice:0,
-
     }),
 
     getters:{
@@ -43,10 +42,16 @@ export default {
         SET_TOTAL_PRICE(store){
             let price = 0
             store.cart.forEach(item => {
-                price =  price + ((item.product.onSale ? item.product.normal_price : item.product.normal_price) * item.quantity)
+                price =  price + ((item.product.onSale ? item.product.sale_price : item.product.normal_price) * item.quantity)
             });
             store.totalPrice = price
         },
+        EMPTY_CART(store){
+            store.cart = []
+        },
+        FILL_CART(store,data){
+            store.cart = data
+        }
 
 
     },
@@ -64,7 +69,6 @@ export default {
             commit('ADD_CART_LOCALSTORAGE')
         },
         async incItemQty({commit},{idx,id,qty,price}){
-            console.log(qty,price)
             const newQty = qty + 1
             const newPrice = newQty * price
             console.log(newPrice)
@@ -90,7 +94,6 @@ export default {
             commit('ADD_CART_LOCALSTORAGE')
         },
         async remCartItem({commit},{idx,id}){
-            console.log("cart deleted")
             await this.$axios.$delete(`/order/update_cart/${id}`,{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -105,6 +108,33 @@ export default {
             commit("CLONE_CART_FROM_LOCALSTORAGE",cartFromLocalstorage);
             commit('SET_TOTAL_PRICE')
         },
+
+        async loadCart({commit,dispathc}){
+            const cartData = await this.$axios.$get(`/order/add-to-cart`,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })
+            if(cartData.length === 0){
+                const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('cart_id',uniqueId)
+                localStorage.removeItem('cart')
+            }else{
+                dispathc('emptyCart')
+                const storeCart = []
+                cartData.forEach(async (cart) => {
+                    const product = await this.$axios.$get(`/products/${cart.product_id}`)
+                    storeCart.push({id:cart.id,product:product, quantity:cart.quantity})
+                    localStorage.setItem("cart",JSON.stringify(storeCart))
+                    localStorage.setItem("cart_id",cart.cart_id)
+                    commit('ADD_TO_CART',{product:product,quantity:cart.quantity,id:cart.id})
+                });
+                
+            }
+        },
+        emptyCart({commit}){
+            commit('EMPTY_CART')
+        }
 
     }
 }

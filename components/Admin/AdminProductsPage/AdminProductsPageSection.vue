@@ -13,11 +13,11 @@
 
         <!-- Bulk Upload -->
 
-        <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold mr-3" @click="UploadFile">
+        <!-- <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold mr-3" @click="UploadFile">
             Bulk Upload
-        </button>
+        </button> -->
 
-        <input ref="fileUpload" type="file" class="hidden">
+        <!-- <input ref="fileUpload" type="file" class="hidden"> -->
 
         <!-- Create new -->
         <NuxtLink to="/Admin/AdminCreateProductPage">

@@ -22,9 +22,9 @@ export default {
     }),
   },
   
-  beforeCreate(){ 
-    this.$store.dispatch('auth/loadingStateChange',true)
-  },
+  // beforeCreate(){ 
+  //   this.$store.dispatch('auth/loadingStateChange',true)
+  // },
 
 
 }

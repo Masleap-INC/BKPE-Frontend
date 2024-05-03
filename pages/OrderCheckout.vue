@@ -264,23 +264,24 @@ export default {
                 setOrderDetails:'orders/setOrderDetails',
             }),
             async placeOrder(){
-                if(this.selectedPaymentMethod === 'cash-on-delivery'){
+                if(this.orderDetails.selectedPaymentMethod === 'cash-on-delivery'){
+                    console.log(this.orderDetails.lastName)
                     await this.$axios.$post(`/order/complete-order/`,{
                         vat:this.orderDetails.vat,
-                        shipping:this.orderDetail.shipping,
+                        shipping:this.orderDetails.shipping,
                         sub_total:this.totalPrice,
-                        total_price:this.orderDetail.vat + this.orderDetail.shipping + this.totalPrice,
-                        first_name:this.orderDetail.firstName,
-                        last_name:this.orderDetail.lastName,
-                        address:this.orderDetail.address,
-                        city:this.orderDetail.city,
-                        country:this.orderDetail.country,
-                        postal_code:this.orderDetail.postalCode,
-                        Phone:this.orderDetail.phone,
+                        total_price:this.orderDetails.vat + this.orderDetails.shipping + this.totalPrice,
+                        first_name:this.orderDetails.firstName,
+                        last_name:this.orderDetails.lastName,
+                        address:this.orderDetails.address,
+                        city:this.orderDetails.city,
+                        country:this.orderDetails.country,
+                        postal_code:this.orderDetails.postalCode,
+                        Phone:this.orderDetails.phone,
                         payment_method:this.orderDetails.selectedPaymentMethod,
                         cart_id:localStorage.getItem('cart_id'),
                         order_status:'Placed',
-                        email:this.orderDetail.email
+                        email:this.orderDetails.email
                     },{
                         headers:{
                             Authorization: `Bearer ${localStorage.getItem("accessToken")}`

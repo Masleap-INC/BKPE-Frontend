@@ -16,9 +16,9 @@ export default {
         loadingState: 'auth/loadingState',
       }),
     },
-    beforeCreate(){ 
-      this.$store.dispatch('auth/loadingStateChange',true)
-    },
+    // beforeCreate(){ 
+    //   this.$store.dispatch('auth/loadingStateChange',true)
+    // },
 
 }
 </script>

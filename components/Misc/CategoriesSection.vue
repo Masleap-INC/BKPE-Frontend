@@ -371,50 +371,50 @@
 
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex';
+
 export default {
-
-    data() {
-
-        return {
-
-            isOpen: false,
-            filters:{year: '1967',type: 1,category: 'f32dc3c5-0403-4d1b-a699-efdb54e85ae9'}
-        }
-
+  data() {
+    return {
+      isOpen: false,
+      filters: {} 
+    };
+  },
+  computed: {
+    ...mapGetters({
+      categories: 'products/categories',
+      filter: 'products/filter'
+    })
+  },
+  methods: {
+    onChangeYear(event) {
+      this.filters.year = event.target.value;
     },
-
-     
-    computed:{
-        ...mapGetters({
-            categories:'products/categories',
-            filter:'products/filter',
-            
-        }),
+    onChangeType(event) {
+      this.filters.type = event.target.value;
     },
-
-    methods: {
-        onChangeYear(event) {
-            this.filters.year = event.target.value;
-        },
-        onChangeType(event) {
-            this.filters.type = event.target.value;
-        },
-        onChangeCategory(event) {
-            this.filters.category = event.target.value;  
-        },
-        getFilteredProduct() {
-            this.$store.dispatch('products/getFilterProducts',this.filters)
-            this.$router.push('/ProductsByCategory');
-        },
-
-        toggle() {
-            this.isOpen = !this.isOpen;
-        }
-
+    onChangeCategory(event) {
+      this.filters.category = event.target.value;  
+    },
+    getFilteredProduct() {
+        console.log(this.filters)
+    //   this.$store.dispatch('products/getFilterProducts', this.filters);
+    //   this.$router.push('/ProductsByCategory');
+    },
+    toggle() {
+      this.isOpen = !this.isOpen;
     }
-
-
-}
-
+  },
+  watch: {
+    filter: {
+      handler(newValue) {
+        // Update filters based on computed filter value
+        this.filters.year = newValue.year;
+        this.filters.type = newValue.type;
+        this.filters.category = newValue.category;
+      },
+      immediate: true // Run the handler immediately to set the initial values
+    }
+  }
+};
 </script>

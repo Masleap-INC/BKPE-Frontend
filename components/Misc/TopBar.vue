@@ -113,7 +113,9 @@ import {mapGetters} from 'vuex'
             logout(){
                 localStorage.removeItem("refreshToken")
                 localStorage.removeItem("accessToken")
+                localStorage.removeItem("cart")
                 this.$store.dispatch("auth/logout")
+                this.$store.dispatch('cart/emptyCart')
                 this.$router.push('/');
             },
 

@@ -3,7 +3,7 @@ export default {
     namespaced: true,
 
     state: () => ({
-        filter:{year: '1967',type: 1,category: 'f32dc3c5-0403-4d1b-a699-efdb54e85ae9'},
+        filter:{year: '1967',type: 1,category: ''},
         filterProducts:[],
         searchKey:null,
         categories:null,
@@ -40,6 +40,9 @@ export default {
         }
     },
     mutations: {
+        SET_FILTERS_VALUE(state,category){
+            state.filter.category = category
+        },
         SET_FILTER_PRODUCTS(state,filterProducts){
             state.filterProducts = [...filterProducts]
         },
@@ -111,9 +114,10 @@ export default {
         },
         async getCategories({commit}){
 
-            const data = await this.$axios.$get('/categories/')
+            const data = await this.$axios.$get('/categories/categories')
 
-            commit('SET_CATEGORIES',data.results)
+            commit('SET_CATEGORIES',data)
+            commit('SET_FILTERS_VALUE',data[0].id)
 
         },
         setSearchKey({commit},key){

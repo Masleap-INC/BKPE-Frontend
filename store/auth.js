@@ -5,7 +5,7 @@ export default {
     state: () => ({
         token:null,
         user:null,
-        loadingState: false
+        loadingState: true
     }),
     getters:{
         authenticated(state){
@@ -63,15 +63,10 @@ export default {
             commit('SET_TOKEN',token)
             
             try {
-                console.log('attempt')
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
-
                 commit('SET_USER',data)
-                const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
-                localStorage.setItem('cart_id',uniqueId)
-                localStorage.removeItem('cart')
+                await dispatch('cart/loadCart', null, { root: true });
                 dispatch('loadingStateChange',false) 
-                
          
             }catch(e){
                 commit('SET_TOKEN',null)

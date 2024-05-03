@@ -110,6 +110,19 @@
               </li>
             </NuxtLink>
 
+            <NuxtLink to="/Admin/AdminCategoryPage">
+              <li
+                class="mt-3 text-xl py-3 font-semibold border-b-2 border-transparent hover:border-white duration-300"
+              >
+                <img
+                  src="~assets/icons/products.svg"
+                  alt=""
+                  class="h-10 w-10 inline-block"
+                />
+                <h2 class="inline-block align-middle">Categories</h2>
+              </li>
+            </NuxtLink>
+
             <NuxtLink to="/Admin/AdminProductsPage">
               <li
                 class="mt-3 text-xl py-3 font-semibold border-b-2 border-transparent hover:border-white duration-300"

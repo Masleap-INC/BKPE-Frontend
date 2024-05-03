@@ -10,7 +10,7 @@ import orders from './orders'
 new Store({
 
     state: () => ({
-      
+        
     }),
     modules: {
      alert,

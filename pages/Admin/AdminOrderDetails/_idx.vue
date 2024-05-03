@@ -40,12 +40,7 @@ export default {
         await store.dispatch('orders/getOrdersAdmin')
       }
 
-    //   await this.getOrderProducts()
-
     },
 
-    // methods : {
-        
-    // }
 }
 </script>

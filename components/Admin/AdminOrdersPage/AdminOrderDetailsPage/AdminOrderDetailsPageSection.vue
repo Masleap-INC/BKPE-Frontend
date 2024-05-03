@@ -212,7 +212,7 @@
 
                     <div>
 
-                        <!-- <div class="w-full overflow-x-auto max-h-[300px] overflow-y-auto">
+                        <div class="w-full overflow-x-auto max-h-[300px] overflow-y-auto">
 
                             <table class="w-full text-left ">
 
@@ -227,20 +227,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="">
-                                    <tr v-for="product in orders[currentIndex].products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
-                                        <td class="p-3">{{product.product_id}}</td>
-                                        <td class="p-3"><img src="~/assets/about-bg.jpg" alt="" class="h-16 w-20 object-cover"></td>
-                                        <td class="p-3">{{product.name}}</td>
-                                        <td class="p-3">$10000</td>
-                                        <td class="p-3">{{product.quantity}}</td>
-                                        <td class="p-3">$20000</td>
+                                    <tr v-for="item in orderedProducts" :key="item.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
+                                        <td class="p-3">{{item.product_id}}</td>
+                                        <td class="p-3"><img :src="item.product_image" alt="" class="h-16 w-20 object-cover"></td>
+                                        <td class="p-3">{{item.product_name}}</td>
+                                        <td class="p-3">${{ item.price / item.quantity }}</td>
+                                        <td class="p-3">{{item.quantity}}</td>
+                                        <td class="p-3">${{ item.price }}</td>
                                     </tr>
 
                                 </tbody>
 
                             </table>
 
-                        </div> -->
+                        </div>
 
                         
 
@@ -253,11 +253,12 @@
                                 <tbody>
 
                                     <!-- Item SubTotal -->
-
+ 
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Item Subtotal:</td>
                                         <td class="py-3 text-xl text-right">${{orders[currentIndex].sub_total}}</td>
+                                        <!-- <td class="py-3 text-xl font-bold text-right">${{orders[currentIndex]}}</td> -->
 
                                     </tr>
 
@@ -314,7 +315,7 @@ export default {
         return {
             currentIndex:Number(this.index),
             order_status:'',
-           
+            orderedProducts:[]
         }
     },
 
@@ -324,6 +325,7 @@ export default {
         }),
     },
     beforeMount(){
+        console.log(this.orders)
         this.order_status = this.orders[this.currentIndex].order_status
         this.getOrderItems()
     },
@@ -359,12 +361,12 @@ export default {
         },
 
         async getOrderItems(){
-            console.log(this.orders[this.currentIndex].cart_id)
-            const data = await this.$axios.$get(`/order/add-to-cart/?cart_id=${this.orders[this.currentIndex].cart_id}`,{
+            const data = await this.$axios.$get(`/order/cart-list/?cart_id=${this.orders[this.currentIndex].cart_id}`,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             });
+            this.orderedProducts = data
             console.log(data)
         },
 

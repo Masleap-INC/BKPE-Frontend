@@ -92,7 +92,7 @@
                         id="qty"
                         type="number"
                         min="1"
-                        :max="10"
+                        :max="product.inventory"
                         class="block mr-1 mt-3 pl-2 text-black w-14"
                         :value="quantity"
                         readonly
@@ -546,30 +546,47 @@ export default {
             addToCartStore:'cart/addToCart'
         }),
         async getSingleProduct() {
-        const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
+            const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
 
-        this.product = {...data}
-       
-        const similarProductsData = await this.$axios.$get(`/products/product-filter/?category=${data.category}&new=${data.new ? 'True' : 'False'}&onSale=${data.onSale ? 'True' : 'False'}&min_price=${parseInt(data.unit_price-1000)}&max_price=${parseInt(data.unit_price+1000)}`)
+            this.product = {...data}
+        
+            const similarProductsData = await this.$axios.$get(`/products/product-filter/?category=${data.category}&new=${data.new ? 'True' : 'False'}&onSale=${data.onSale ? 'True' : 'False'}&min_price=${parseInt(data.unit_price-1000)}&max_price=${parseInt(data.unit_price+1000)}`)
 
-        this.similarProducts  = similarProductsData.slice(0,5).filter((product) => product.id !== data.id)
+            this.similarProducts  = similarProductsData.slice(0,5).filter((product) => product.id !== data.id)
+
+   
+            if (this.getCart.length > 0) {
+                const index = this.getCart.findIndex(item => item.product.id === this.product.id);
+                if (index !== -1) {
+                    this.quantity = this.getCart[index].quantity;
+                }
+            }
         
         },
 
         addToCart(product){
-            this.addToCartStore({
-                product:product,
-                quantity:this.quantity,
-                cart:{
-                    user: this.user.email,
-                    cart_id: localStorage.getItem('cart_id') ,
-                    product_id: product.id,
-                    product_name: product.name,
-                    price: (product.normal_price * this.quantity).toFixed(2),
-                    quantity: this.quantity,
-                    product_image: product.images[0]
+            if(this.authenticated){
+                const index = this.getCart.findIndex(item => item.product.id === this.product.id);
+                if(index === -1){
+                    this.addToCartStore({
+                        product:product,
+                        quantity:this.quantity,
+                        cart:{
+                            user: this.user.email,
+                            cart_id: localStorage.getItem('cart_id') ,
+                            product_id: product.id,
+                            product_name: product.name,
+                            price: (product.normal_price * this.quantity).toFixed(2),
+                            quantity: this.quantity,
+                            product_image: product.images[0]
+                        }
+                    })
                 }
-            })
+                
+            }else{
+                this.$router.push('/UserLogin')
+            }
+            
         },
 
         submitReview(){
@@ -587,20 +604,32 @@ export default {
                 console.log("Please Login to commnet")
             }
             
-   
         },
 
         incCartItmeQty(){
-            if(this.product.quantity_needed > this.quantity){
+            if(this.product.inventory > this.quantity){
                 this.quantity = this.quantity + 1
+                if(this.getCart.length > 0){ 
+                    const index = this.getCart.findIndex(item => item.product.id === this.product.id);
+                    console.log(this.getCart[index])
+                    this.$store.dispatch("cart/incItemQty",{idx:index,id:this.getCart[index].id,qty:this.quantity - 1,price:this.product.onSale ? this.product.sale_price : this.product.normal_price})
+                }
+                
             }
         },
 
         decCartItmeQty(){
             if(this.quantity > 1){
                 this.quantity = this.quantity - 1
+                if(this.getCart.length > 0){
+                    const index = this.getCart.findIndex(item => item.product.id === this.product.id);
+                    console.log(this.getCart[index])
+                    this.$store.dispatch("cart/decItemQty",{idx:index,id:this.getCart[index].id,qty:this.quantity - 1,price:this.product.onSale ? this.product.sale_price : this.product.normal_price})
+                }
+                
             }
         },
+
 
         async getReviews(){
             const data = await this.$axios.$get(`/reviews/filter-review/?product=${this.$route.params.id}`)

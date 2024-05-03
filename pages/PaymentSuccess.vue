@@ -29,9 +29,6 @@ export default {
 
     async mounted(){
         
-        // const { paymentIntent } = await this.$stripe.retrievePaymentIntent(this.$route.query.payment_intent_client_secret);
-        // console.log(paymentIntent)
-
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
         }
@@ -74,7 +71,7 @@ export default {
 
         },
         goBack() {
-            this.$router.back();
+            this.$router.push('/');
         }
     },
 }
