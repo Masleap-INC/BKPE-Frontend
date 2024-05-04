@@ -53,7 +53,6 @@ export default {
             store.cart = data
         }
 
-
     },
 
     actions:{
@@ -94,7 +93,7 @@ export default {
             commit('ADD_CART_LOCALSTORAGE')
         },
         async remCartItem({commit},{idx,id}){
-            await this.$axios.$delete(`/order/update_cart/${id}`,{
+            await this.$axios.$delete(`/order/update-cart/${id}/`,{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -109,7 +108,7 @@ export default {
             commit('SET_TOTAL_PRICE')
         },
 
-        async loadCart({commit,dispathc}){
+        async loadCart({commit,dispatch}){
             const cartData = await this.$axios.$get(`/order/add-to-cart`,{
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -120,7 +119,7 @@ export default {
                 localStorage.setItem('cart_id',uniqueId)
                 localStorage.removeItem('cart')
             }else{
-                dispathc('emptyCart')
+                dispatch('emptyCart')
                 const storeCart = []
                 cartData.forEach(async (cart) => {
                     const product = await this.$axios.$get(`/products/${cart.product_id}`)

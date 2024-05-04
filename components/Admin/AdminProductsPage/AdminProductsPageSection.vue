@@ -72,7 +72,10 @@
                     <tr v-for="(product,index) in products" :key="product.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                         <td class="p-3">{{product.id}}</td>
                         <!-- <td class="p-3">{{product.images[0].image}}</td> -->
-                        <td class="p-3"><img :src="product.images[0] ? product.images[0].image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover"></td>
+                        <td class="p-3">
+                            <img v-if="product.images[0].image" :src="product.images[0] ? product.images[0].image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
+                            <img v-else :src="product.images[0] ? product.images[0] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
+                        </td>
                         <td class="p-3">{{product.name}}</td>
                         <td class="p-3">{{product.normal_price}}</td>
                         <td class="p-3">{{product.inventory}}</td>
@@ -86,6 +89,11 @@
                             <button @click="() => deleteProduct(product.id,index)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Delete
                             </button>
+                            <NuxtLink :to="{name:'Admin-AdminProductReview-id',params:{id:product.id}}">
+                                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                                    Reviews
+                                </button>
+                            </NuxtLink>
                         </td>
                     </tr>
 
@@ -125,8 +133,10 @@ export default {
         async search(e){ 
       
             if(e.key === 'Enter'){
-                const data = await this.$axios.$get(`/products/?name=${this.searchKey}`)
-                this.products = data.results
+                console.log(e.key)
+                const data = await this.$axios.$get(`/products/search/?name=${this.searchKey}`)
+                console.log(data)
+                this.products = data
                 
             } 
             

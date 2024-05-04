@@ -437,7 +437,7 @@
                         <form @submit.prevent="submitReview">
                             <!-- Name label and input -->
 
-                            <div class="my-5">
+                            <!-- <div class="my-5">
                                 <label
                                     for="name"
                                     class="block text-lg text-white font-semibold mb-3"
@@ -452,7 +452,7 @@
                                     class="py-2 px-3 w-full rounded-md"
                                     required  
                                 />
-                            </div>
+                            </div> -->
 
                             <!-- Rating label and input -->
 
@@ -591,15 +591,16 @@ export default {
 
         submitReview(){
             if(this.authenticated){
+                console.log(this.user)
                 this.$axios.$post(`/reviews/`,
-            {
-                "user_name": this.name,
-                "content": this.description,
-                "rating": this.rating,
-                "product": this.$route.params.id,
-                "user": this.user.id
-            })
-            this.reviews.unshift({user_name:this.name,rating:this.rating,content:this.description,product:this.product.id})
+                {
+                    "user_name": this.user.username,
+                    "content": this.description,
+                    "rating": this.rating,
+                    "product": this.$route.params.id,
+                    "user": this.user.id
+                })
+            this.reviews.unshift({user_name:this.user.username,rating:this.rating,content:this.description,product:this.product.id})
             }else{
                 console.log("Please Login to commnet")
             }

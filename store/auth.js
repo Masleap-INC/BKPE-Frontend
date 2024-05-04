@@ -50,7 +50,7 @@ export default {
 
             const data = await this.$axios.$post('/auth/login/', credentials)
     
-            dispatch('attempt',data.tokens.refresh) 
+            dispatch('attempt',data.tokens.access) 
             localStorage.setItem("refreshToken",data.tokens.refresh)
             localStorage.setItem("accessToken",data.tokens.access)
           
@@ -65,7 +65,7 @@ export default {
             try {
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
                 commit('SET_USER',data)
-                await dispatch('cart/loadCart', null, { root: true });
+                dispatch('cart/loadCart', null, { root: true });
                 dispatch('loadingStateChange',false) 
          
             }catch(e){
