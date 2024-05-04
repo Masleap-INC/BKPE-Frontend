@@ -73,7 +73,8 @@
                         <td class="p-3">{{product.id}}</td>
                         <!-- <td class="p-3">{{product.images[0].image}}</td> -->
                         <td class="p-3">
-                            <img v-if="product.images[0].image" :src="product.images[0] ? product.images[0].image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
+                            <img v-if="product.images.length == 0" :src="'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
+                            <img v-else-if="product.images[0].image" :src="product.images[0] ? product.images[0].image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
                             <img v-else :src="product.images[0] ? product.images[0] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'" alt="" class="h-16 w-20 object-cover">
                         </td>
                         <td class="p-3">{{product.name}}</td>

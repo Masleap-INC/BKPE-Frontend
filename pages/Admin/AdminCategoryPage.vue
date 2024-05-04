@@ -31,9 +31,13 @@
                     <!-- Inputs and Buttons -->
                     <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5">
                         <!-- Input Boxes -->
-                        <div v-for="item in categories" :key="item.id">
+                        <div v-for="item in categories" :key="item.id" >
                             <input v-model="item.name" type="text" class="w-full px-3 py-2 text-black focus:outline-none" :placeholder="item.name">
-                            <button @click="updateCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
+                            <div class="flex">
+                                <button @click="updateCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
+                                <button @click="deleteCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
+                            </div>
+                            
                         </div>
                     </div>
 
@@ -83,11 +87,7 @@ export default {
         if(this.category !== ""){
             try{
                 console.log("Gae")
-                const res = await this.$axios.$post(`/categories/categories/`,{name:this.category},{
-                    headers:{
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                })
+                const res = await this.$axios.$post(`/categories/categories/`,{name:this.category})
                 this.categories = [res, ...this.categories, ];
                 this.category = '';
 
@@ -100,16 +100,23 @@ export default {
     async updateCategory(item) {
         if(item.name !== ""){
             try {
-                await this.$axios.$put(`/categories/categories/${item.id}/`, { name: item.name }, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
+                await this.$axios.$put(`/categories/categories/${item.id}/`, { name: item.name });
             } catch (error) {
                 console.error('Error updating category:', error);
             }
         }
     
+    },
+
+    async deleteCategory(item) {
+        try {
+            await this.$axios.$delete(`/categories/categories/${item.id}/`);
+            const newCategoryList = this.categories.filter((category) => category.id !== item.id)
+            this.categories = newCategoryList
+        } catch (error) {
+            console.error('Error updating category:', error);
+        }
+
     }
   }
 };

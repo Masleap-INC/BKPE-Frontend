@@ -141,9 +141,7 @@ import MyAddress from './MyAddress.vue'
         methods: {
 
             logout(){
-                localStorage.removeItem("refreshToken")
                 this.$store.dispatch("auth/logout")
-                this.$router.push('/')
             },
 
             selectProfileTab() {
@@ -151,8 +149,6 @@ import MyAddress from './MyAddress.vue'
                 this.ProfileTab = true;
                 this.OrdersTab = false;
                 this.AddressTab = false;
-
-                
 
             },
 

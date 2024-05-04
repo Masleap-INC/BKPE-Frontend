@@ -26,7 +26,7 @@ export default {
     { src: '~/plugins/chart.js', mode: 'client' },
     { src: '~/plugins/stripe.js', ssr: false },
     { src: '~/plugins/asyncDataLoader.js', ssr: false},
-    // { src: '~/plugins/sessionValidator.js', mode: 'client' },
+    { src: '~/plugins/axios.js', mode: 'client' },
     { src: '~/plugins/auth.js', mode: 'client' }
   ],
 
@@ -55,8 +55,6 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'http://35.74.66.245:8000',
-    // baseUrl: 'http://54.88.28.253:80'
     baseUrl: 'http://54.146.158.4'
   },
 
@@ -70,9 +68,5 @@ export default {
     },
   },
 
-  // router: {
-  //   middleware: ['check-auth'],
-  // }
-  
 }
 

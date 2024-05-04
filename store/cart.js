@@ -57,11 +57,7 @@ export default {
 
     actions:{
         async addToCart({commit},data){
-            const response = await this.$axios.$post(`/order/add-to-cart/`,data.cart,{
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+            const response = await this.$axios.$post(`/order/add-to-cart/`,data.cart)
             console.log(response)
             commit('ADD_TO_CART',{product:data.product,quantity:data.quantity,id:response.id})
             commit('SET_TOTAL_PRICE')
@@ -71,33 +67,21 @@ export default {
             const newQty = qty + 1
             const newPrice = newQty * price
             console.log(newPrice)
-            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:newQty,price:newPrice.toFixed(2)},{
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:newQty,price:newPrice.toFixed(2)})
             console.log(response)
             commit('INC_ITEM_QTY',idx)
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
         },
         async decItemQty({commit},{idx,id,qty,price}){
-            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:qty-1,price:(price*qty).toFixed(2)},{
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+            const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:qty-1,price:(price*qty).toFixed(2)})
             console.log(response)
             commit('DEC_ITEM_QTY',idx)
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
         },
         async remCartItem({commit},{idx,id}){
-            await this.$axios.$delete(`/order/update-cart/${id}/`,{
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+            await this.$axios.$delete(`/order/update-cart/${id}/`)
             commit('REM_CART_ITEM',idx)
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
@@ -109,11 +93,7 @@ export default {
         },
 
         async loadCart({commit,dispatch}){
-            const cartData = await this.$axios.$get(`/order/add-to-cart`,{
-                headers:{
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+            const cartData = await this.$axios.$get(`/order/add-to-cart`)
             if(cartData.length === 0){
                 const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
                 localStorage.setItem('cart_id',uniqueId)

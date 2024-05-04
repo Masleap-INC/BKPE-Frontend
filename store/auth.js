@@ -35,16 +35,17 @@ export default {
 
     },
     actions:{
-        // signUp({commit},data){
-        //     commit('SET_TOKEN',data.token)
-        //     commit('SET_USER',data)
-        // },
 
         // Logout
-        logout({commit}){
+        logout({commit,redirect,dispatch}){
             commit('SET_TOKEN',null)
             commit('SET_USER',null)
+            localStorage.removeItem("refreshToken")
+            localStorage.removeItem("accessToken")
+            localStorage.removeItem("cart")
             localStorage.setItem('cart_id',null)
+            dispatch('cart/emptyCart', null, { root: true });
+            redirect('/')
         },
         async signIn({dispatch},credentials){
 
@@ -64,6 +65,7 @@ export default {
             
             try {
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
+                console.log(data)
                 commit('SET_USER',data)
                 dispatch('cart/loadCart', null, { root: true });
                 dispatch('loadingStateChange',false) 

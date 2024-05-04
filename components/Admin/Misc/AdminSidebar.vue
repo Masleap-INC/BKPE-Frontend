@@ -46,7 +46,7 @@
         <div class="pb-10 mb-5 border-b-2 border-b-white">
           <!-- Account Button -->
 
-          <div class="mt-5 w-fit mx-auto">
+          <!-- <div class="mt-5 w-fit mx-auto">
             <NuxtLink to="/admin/AdminAccountPage">
               <button
                 class="w-20 inline-block mr-3 rounded-xl text-white font-semibold text-md border-2 border-white py-2 hover:bg-white hover:text-blue-600 duration-300"
@@ -55,14 +55,14 @@
               </button>
             </NuxtLink>
 
-            <!-- Logout Button -->
+    
 
             <button
               class="w-20 inline-block rounded-xl text-white font-semibold text-md border-2 border-white py-2 hover:bg-white hover:text-blue-600 duration-300"
             >
               Logout
             </button>
-          </div>
+          </div> -->
         </div>
 
         <!-- MENU -->
