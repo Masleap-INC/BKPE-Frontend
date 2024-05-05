@@ -13,36 +13,36 @@
       <div class="w-full mx-auto">
         <h3 class="text-2xl font-semibold">Total Orders</h3>
 
-        <p class="text-lg font-semibold">100</p>
+        <p class="text-lg font-semibold">{{ analytics.total_order }}</p>
       </div>
 
       <div class="w-full mx-auto">
         <h3 class="text-2xl font-semibold">Total Sales</h3>
 
-        <p class="text-lg font-semibold">$100</p>
+        <p class="text-lg font-semibold">{{ analytics.total_sales }}</p>
       </div>
 
       <div class="w-full mx-auto">
         <h3 class="text-2xl font-semibold">Total Products</h3>
 
-        <p class="text-lg font-semibold">100</p>
+        <p class="text-lg font-semibold">{{ analytics.total_product }}</p>
       </div>
 
       <div class="w-full mx-auto">
         <h3 class="text-2xl font-semibold">Total Members</h3>
 
-        <p class="text-lg font-semibold">100</p>
+        <p class="text-lg font-semibold">{{ analytics.total_member }}</p>
       </div>
 
     </div>
 
     <!-- Charts -->
-
+<!-- 
     <div
       class="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10 mb-10"
     >
 
-      <!-- Line Chart -->
+    
 
       <div class="bg-blue-400 bg-opacity-30 p-5 rounded-xl">
 
@@ -57,7 +57,7 @@
         </client-only>
       </div>
 
-      <!-- Bar Chart -->
+      
 
       <div class="bg-blue-400 bg-opacity-30 p-5 rounded-xl">
 
@@ -71,7 +71,7 @@
           ></BarChart>
         </client-only>
       </div>
-    </div>
+    </div> -->
 
     <!-- Tables -->
 
@@ -109,107 +109,11 @@
           </thead>
 
           <tbody>
-            <tr class=" ">
-              <td>1</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>3</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>4</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>5</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>6</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>7</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>8</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
-              <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>9</td>
-              <td>John Doe</td>
-              <td>Processing</td>
-              <td>$100</td>
+            <tr class=" " v-for="(order) in recetnOrders" :key="order.id" >
+              <td>{{ order.id }}</td>
+              <td>{{ order.first_name+' '+order.last_name }}</td>
+              <td>{{ order.order_status }}</td>
+              <td>${{ order.total_price }}</td>
               <td>
                 <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
                   View
@@ -220,23 +124,21 @@
         </table>
       </div>
 
-      <!-- Members and Products tables -->
 
       <div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10" >
 
-        <!-- Members Table -->
+      
 
-        <div class=" bg-white bg-opacity-20 p-5 rounded-xl overflow-auto mb-10">
+        <!-- <div class=" bg-white bg-opacity-20 p-5 rounded-xl overflow-auto mb-10">
 
-          <!-- Heading -->
+     
 
           <div class=" flex justify-between mb-5">
 
-            <!-- Head Line -->
+   
 
             <h2 class="mb-5 text-xl inline-block align-middle">Members</h2>
 
-            <!-- See all Button -->
 
             <button class="inline-block bg-blue-400 bg-opacity-30 p-2 rounded-xl align-middle hover:underline">
               See All
@@ -313,19 +215,19 @@
           </table>
         </div>
 
-        <!-- Products Table -->
+      
 
         <div class=" bg-white bg-opacity-20 p-5 rounded-xl overflow-auto mb-10">
 
-          <!-- Heading -->
+      
 
           <div class=" flex justify-between mb-5">
 
-            <!-- Head Line -->
+   
 
             <h2 class="mb-5 text-xl inline-block align-middle">Products</h2>
 
-            <!-- See all Button -->
+          
 
             <button class="inline-block bg-blue-400 bg-opacity-30 p-2 rounded-xl align-middle hover:underline">
               See All
@@ -391,7 +293,7 @@
 
           </table>
 
-        </div>
+        </div> -->
 
       </div>
 
@@ -406,6 +308,13 @@ export default {
   name: 'AdminHomePageSection',
   data() {
     return {
+      analytics:{
+        total_order:0,
+        total_sales:0,
+        total_product:0,
+        total_member:0
+      },
+      recetnOrders:[],
       barChartData: {
         labels: [
           'January',
@@ -475,7 +384,19 @@ export default {
   mounted() {
     this.getDays()
   },
+  async fetch() {
+      await this.getAnalytics()
+      await this.getRecentOrders()
+  },
   methods: {
+    async getAnalytics(){
+      const { data } = await this.$axios.$get(`/order/analytics/`)
+      this.analytics = data
+    },
+    async getRecentOrders(){
+      const  data  = await this.$axios.$get(`/order/recent-order/`)
+      this.recetnOrders = data
+    },
     getDays() {
       const year = new Date().getFullYear()
       const month = new Date().getMonth()

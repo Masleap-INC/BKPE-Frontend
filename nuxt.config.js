@@ -68,5 +68,15 @@ export default {
     },
   },
 
+  // Define your routes
+  // routes: [
+  //   {
+  //     name: 'Admin-AdminOrderDetailsPage-AdminOrderDetailsPageSection',
+  //     path: '/admin/order/:id',
+  //     component: '~/components/Admin/AdminOrdersPage/AdminOrderDetailsPage/AdminOrderDetailsPageSection.vue'
+  //   }
+  // ]
+
+
 }
 

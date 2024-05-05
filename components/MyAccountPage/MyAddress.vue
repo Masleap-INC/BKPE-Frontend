@@ -344,12 +344,6 @@ export default {
           postal_code: this.updatePostal_code,
           phone: this.updatePhone,
           user:this.user.id
-        },
-        
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-          }
         })
       }catch(err){
         console.log(err)

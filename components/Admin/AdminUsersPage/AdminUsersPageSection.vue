@@ -37,10 +37,10 @@
               class="border-b-2 border-b-white bg-blue-400 bg-opacity-30 text-xl"
             >
               <th class="p-3">ID</th>
-              <th class="p-3">Image</th>
+              <!-- <th class="p-3">Image</th> -->
               <th class="p-3">Name</th>
               <th class="p-3">Email</th>
-              <th class="p-3">Phone</th>
+              <!-- <th class="p-3">Phone</th> -->
               <th class="p-3">Details</th>
             </tr>
           </thead>
@@ -50,17 +50,17 @@
               class="odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10"
             >
               <td class="p-3">{{user.id}}</td>
-              <td class="p-3">
+              <!-- <td class="p-3">
                 <div class="w-20 h-20">
                     <img
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                         class="w-20 h-20 object-cover rounded-full"
                     />
                 </div>
-              </td>
+              </td> -->
               <td class="p-3">{{user.username}}</td>
               <td class="p-3">{{user.email}}</td>
-              <td class="p-3">123456789</td>
+              <!-- <td class="p-3">123456789</td> -->
               <td class="p-3">
                 <NuxtLink :to="{name:'Admin-AdminUserDetails-idx-id', params:{idx:index,id:user.id}}">
                   <button

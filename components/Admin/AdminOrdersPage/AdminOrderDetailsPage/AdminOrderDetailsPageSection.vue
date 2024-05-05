@@ -20,7 +20,7 @@
 
             <!-- Navigate Button -->
 
-            <div class="text-white inline-block align-middle py-2">
+            <!-- <div class="text-white inline-block align-middle py-2">
 
                 <span class="">
                     <NuxtLink :to="{name:'Admin-AdminOrderDetails-idx', params:{idx:this.prevUser()}}">
@@ -38,7 +38,7 @@
                     
                 </span>
 
-            </div>
+            </div> -->
         </div>
 
         <!-- Product Details -->
@@ -88,25 +88,25 @@
                     <!-- Order ID -->
 
                     <div>
-                        <h2 class=" "><span class="text-xl font-semibold mr-3">Order ID:</span> <span class="lg:text-lg md:text-lg sm:text-sm">#{{orders[currentIndex].id}}</span> </h2>
+                        <h2 class=" "><span class="text-xl font-semibold mr-3">Order ID:</span> <span class="lg:text-lg md:text-lg sm:text-sm">#{{order.id}}</span> </h2>
                     </div>
 
                     <!-- Order Date -->
 
                     <div>
-                        <h2 class=" "><span class="text-xl font-semibold mr-3">Order Date:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].created_at}}</span> </h2>
+                        <h2 class=" "><span class="text-xl font-semibold mr-3">Order Date:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.created_at}}</span> </h2>
                     </div>
 
                     <!-- Payment Status -->
 
                     <!-- <div>
-                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Status:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].payment_status}}</span> </h2>
+                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Status:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.payment_status}}</span> </h2>
                     </div> -->
 
                     <!-- Payment Type -->
 
                     <div>
-                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Type:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].payment_method}}</span> </h2>
+                        <h2 class=" "><span class="text-xl font-semibold mr-3">Payment Type:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.payment_method}}</span> </h2>
                     </div>
 
                 </div>
@@ -130,7 +130,7 @@
                         <!-- User Name -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">User Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].first_name+" "+orders[currentIndex].last_name}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">User Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.first_name+" "+order.last_name}}</span> </h2>
                         </div>
 
                         <!-- Last Name -->
@@ -142,13 +142,13 @@
                         <!-- Email -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Email:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].email}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Email:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.email}}</span> </h2>
                         </div>
 
                         <!-- Phone -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Phone:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].Phone}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Phone:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.Phone}}</span> </h2>
                         </div>
 
                     </div>
@@ -173,25 +173,25 @@
                         <!-- Address -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Address:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].address}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Address:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.address}}</span> </h2>
                         </div>
 
                         <!-- Country -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Country:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].country}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Country:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.country}}</span> </h2>
                         </div>
 
                         <!-- City -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">City:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].city}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">City:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.city}}</span> </h2>
                         </div>
 
                         <!-- Zip -->
 
                         <div>
-                            <h2 class=" "><span class="text-xl font-semibold mr-3">Zip:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{orders[currentIndex].postal_code}}</span> </h2>
+                            <h2 class=" "><span class="text-xl font-semibold mr-3">Zip:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.postal_code}}</span> </h2>
                         </div>
 
                     </div>
@@ -257,8 +257,8 @@
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Item Subtotal:</td>
-                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].sub_total}}</td>
-                                        <!-- <td class="py-3 text-xl font-bold text-right">${{orders[currentIndex]}}</td> -->
+                                        <td class="py-3 text-xl text-right">${{order.sub_total}}</td>
+                                        <!-- <td class="py-3 text-xl font-bold text-right">${{order}}</td> -->
 
                                     </tr>
 
@@ -267,7 +267,7 @@
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Tax:</td>
-                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].vat}}</td>
+                                        <td class="py-3 text-xl text-right">${{order.vat}}</td>
 
                                     </tr>
 
@@ -276,7 +276,7 @@
                                     <tr class="border-b-2 border-white">
 
                                         <td class="py-3 pr-3 text-xl font-bold">Shipping:</td>
-                                        <td class="py-3 text-xl text-right">${{orders[currentIndex].shipping}}</td>
+                                        <td class="py-3 text-xl text-right">${{order.shipping}}</td>
 
                                     </tr>
 
@@ -285,7 +285,7 @@
                                     <tr>
 
                                         <td class="py-3 pr-3 text-xl font-bold">Total:</td>
-                                        <td class="py-3 text-xl font-bold text-right">${{orders[currentIndex].total_price}}</td>
+                                        <td class="py-3 text-xl font-bold text-right">${{order.total_price}}</td>
 
                                     </tr>
 
@@ -310,12 +310,12 @@
 import {mapGetters,mapActions} from 'vuex'
 
 export default {
-    props: ['index'],
     data(){
         return {
-            currentIndex:Number(this.index),
+           
             order_status:'',
-            orderedProducts:[]
+            orderedProducts:[],
+            order:{}
         }
     },
 
@@ -324,32 +324,35 @@ export default {
             orders: 'orders/orders',
         }),
     },
-    beforeMount(){
-        console.log(this.orders)
-        this.order_status = this.orders[this.currentIndex].order_status
-        this.getOrderItems()
+    async asyncData({ params, $axios }) {
+        try {
+            console.log("gol")
+            const { id } = params;
+            const order = await $axios.$get(`/order/${id}/`);
+            const orderedProducts = await $axios.$get(`/order/cart-list/?cart_id=${order.cart_id}`);
+
+            return { order, orderedProducts };
+        } catch (error) {
+            console.error('Error fetching order data:', error);
+            return { order: {}, orderedProducts: [] };
+        }
     },
+    // beforeMount(){
+    //     this.order_status = this.orders[this.currentIndex].order_status
+    //     this.getOrderItems()
+    // },
     methods: {
         ...mapActions({
             ordersStateUpdate:'orders/ordersStateUpdate'
         }),
-        nextUser(){
-            if(this.orders.length - 1 > this.currentIndex){
-                return this.currentIndex + 1
-            }else{
-                return this.currentIndex
-            }
-        },
-        prevUser(){
-            if( this.currentIndex >= 1){
-                return this.currentIndex - 1
-            }else{
-                return this.currentIndex
-            }
-        },
+        // async getOrder(){
+        //     const data = await this.$axios.$get(`/order/${oId}/`);
+        //     this.order = data;
+        // },
+
         async onStatusUpdate(event){
             
-            const data = await this.$axios.$put(`/order/${this.orders[this.currentIndex].id}/`,
+            const data = await this.$axios.$put(`/order/${this.order.id}/`,
             {           
                 order_status:event.target.value,
                 vat: this.orders[this.currentIndex].vat
@@ -361,7 +364,7 @@ export default {
         },
 
         async getOrderItems(){
-            const data = await this.$axios.$get(`/order/cart-list/?cart_id=${this.orders[this.currentIndex].cart_id}`,{
+            const data = await this.$axios.$get(`/order/cart-list/?cart_id=${this.order.cart_id}`,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }

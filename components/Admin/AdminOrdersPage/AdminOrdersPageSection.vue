@@ -15,7 +15,7 @@ np<template>
         
                 <div class="bg-white grid grid-cols-6 py-1 rounded-xl"> 
 
-                    <input   v-model="searchKey" v-on:keydown="(e)=>search(e)" type="text" placeholder="Order Id" class=" col-span-5 inline-block rounded-xl h-auto text-xl py-3 px-3 ml-3  focus:outline-none" >
+                    <input   v-model="searchKey" v-on:keydown="(e)=>search(e)" type="number" placeholder="Order Id" class=" col-span-5 inline-block rounded-xl h-auto text-xl py-3 px-3 ml-3  focus:outline-none" >
 
                     <button @click="()=>search({key:'Enter'})" class="inline-block mx-auto border-l-2 border-gray-300 px-5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -49,7 +49,7 @@ np<template>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr v-for="(order,index) in orders" :key="order.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
+                      <tr v-for="(order) in orders" :key="order.id" class=" odd:bg-black odd:bg-opacity-30 even:bg-white even:bg-opacity-10">
                           <td class="p-3">{{order.id}}</td>
                           <td class="p-3">{{order.created_at}}</td>
                           <td class="p-3">{{order.first_name +" "+ order.last_name}}</td>
@@ -57,7 +57,7 @@ np<template>
                           <td class="p-3">{{order.order_status}}</td>
                           <td class="p-3">${{order.total_price}}</td>
                           <td class="p-3">
-                            <NuxtLink :to="{name:'Admin-AdminOrderDetails-idx', params:{idx:index}}">
+                            <NuxtLink :to="{ name: 'Admin-AdminOrderDetails-idx', params: { idx: order.id } }">
                                 <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                     View Details
                                 </button>
@@ -97,8 +97,14 @@ np<template>
         async search(e){ 
           
             if(e.key === 'Enter'){
-                const data = await this.$axios.$get(`/order/${this.searchKey}/`)
-                this.orders=[data]
+                if (this.searchKey === '' || isNaN(this.searchKey)) {
+                    // If search key is empty or not a number, reset orders to original data
+                    this.orders = this.storeOrders;
+                } else {
+                    // If search key is a number, fetch data using API
+                    const data = await this.$axios.$get(`/order/${this.searchKey}/`);
+                    this.orders = [data];
+                }
                 
             } 
             
