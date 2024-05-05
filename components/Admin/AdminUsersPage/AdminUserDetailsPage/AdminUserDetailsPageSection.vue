@@ -275,7 +275,7 @@ export default {
 
     methods: {
         async getUserOrders(){
-            const data = await this.$axios.$get(`/order/user-order/?user_email=istiak.uiu.bd@gmail.com`)
+            const data = await this.$axios.$get(`/order/user-order/?user_email=${this.users[this.currentIndex].email}`)
             console.log(data)
             this.userOrders = [...data]
         },

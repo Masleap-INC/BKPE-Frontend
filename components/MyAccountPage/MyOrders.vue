@@ -17,21 +17,26 @@
         
         <!-- Order-1 -->
 
-        <div class="lg:grid md:grid lg:grid-cols-6 md:grid-cols-4 gap-5 p-5 mb-10 border-2 border-white hover:scale-105 duration-200">
+        <div v-for="(order) in userOrders" :key="order.id" class="lg:grid md:grid lg:grid-cols-6 md:grid-cols-4 gap-5 p-5 mb-10 border-2 border-white hover:scale-105 duration-200">
 
           <!-- Order ID & Date -->
 
-          <div class=" col-span-2">
+          <div class=" col-span-1">
 
-            <!-- ID -->
+          <!-- ID -->
+            <h2 class="block mb-1 font-semibold text-lg">ID</h2>
 
-            <h2 class="block mb-3 font-bold text-2xl">#00098563214</h2>
+            <p class=" block lg:mb-0 md:mb-0 sm:mb-5"> #{{ order.id }} </p>
+
+          </div>
+
+          <div class=" col-span-1">
 
             <!-- Date -->
 
             <h2 class="block mb-1 font-semibold text-lg">Placed On</h2>
 
-            <p class=" block lg:mb-0 md:mb-0 sm:mb-5">9-20-22</p>
+            <p class=" block lg:mb-0 md:mb-0 sm:mb-5"> {{order.created_at}} </p>
 
           </div>
 
@@ -41,27 +46,26 @@
 
             <!-- Heading -->
 
-            <h2 class="block mb-3 font-semibold text-xl lg:w-fit mx-auto">Payment Status</h2>
+            <h2 class="block mb-3 font-semibold text-xl lg:w-fit mx-auto">Order Status</h2>
 
             <!-- Value -->
 
-            <p class=" block lg:w-fit mx-auto text-lg sm:mb-5">Paid</p>
+            <p class=" block lg:w-fit mx-auto text-lg sm:mb-5">{{order.order_status}}</p>
 
           </div>
 
           <!-- Order Status -->
 
-          <div class=" col-span-1">
+          <!-- <div class=" col-span-1">
 
-            <!-- Heading -->
+   
 
             <h2 class="block mb-3 font-semibold text-xl lg:w-fit mx-auto">Order Status</h2>
 
-            <!-- Value -->
-
+         
             <p class=" block lg:w-fit mx-auto text-lg sm:mb-5">Processing</p>
 
-          </div>
+          </div> -->
 
 
           <!-- Order Total -->
@@ -74,7 +78,7 @@
 
             <!-- Value -->
 
-            <p class=" block lg:w-fit md:w-full sm:w-full lg:text-left md:text-left sm:text-center mx-auto text-2xl font-bold text-blue-200">$99000</p>
+            <p class=" block lg:w-fit md:w-full sm:w-full lg:text-left md:text-left sm:text-center mx-auto text-2xl font-bold text-blue-200">${{order.total_price}}</p>
 
           </div>
 
@@ -85,3 +89,36 @@
     </div>
 
 </template>
+
+<script>
+import {mapGetters} from 'vuex'
+export default {
+
+  data() {
+    return {
+      
+      userOrders:[]
+      
+    } 
+  },
+
+  computed:{
+      ...mapGetters({
+          user: 'auth/user',
+          authenticated: 'auth/authenticated'
+      }),
+  },
+
+  async fetch() {
+    await this.getUserOrders()
+  },
+
+  methods: {
+    async getUserOrders(){
+        const data = await this.$axios.$get(`/order/user-order/?user_email=${this.user.email}`)
+        this.userOrders = [...data]
+    },
+  }
+
+}
+</script>

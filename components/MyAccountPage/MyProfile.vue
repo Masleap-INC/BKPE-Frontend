@@ -227,8 +227,6 @@ export default {
     }
   },
   logout(){
-      localStorage.removeItem("refreshToken")
-      localStorage.removeItem("accessToken")
       this.$store.dispatch("auth/logout")
   },
 }

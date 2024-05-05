@@ -37,7 +37,7 @@ export default {
     actions:{
 
         // Logout
-        logout({commit,redirect,dispatch}){
+        logout({commit,dispatch}){
             commit('SET_TOKEN',null)
             commit('SET_USER',null)
             localStorage.removeItem("refreshToken")
@@ -45,7 +45,7 @@ export default {
             localStorage.removeItem("cart")
             localStorage.setItem('cart_id',null)
             dispatch('cart/emptyCart', null, { root: true });
-            redirect('/')
+            this.$router.push('/');
         },
         async signIn({dispatch},credentials){
 
