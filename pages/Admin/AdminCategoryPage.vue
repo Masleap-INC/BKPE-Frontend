@@ -70,8 +70,9 @@ export default {
   mounted(){
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
-  },
+    },
   async asyncData() {
     try {
       const response = await fetch('http://54.146.158.4/categories/categories');
@@ -86,9 +87,8 @@ export default {
     async createCategory(){
         if(this.category !== ""){
             try{
-                console.log("Gae")
                 const res = await this.$axios.$post(`/categories/categories/`,{name:this.category})
-                this.categories = [res, ...this.categories, ];
+                this.categories = [res, ...this.categories];
                 this.category = '';
 
 

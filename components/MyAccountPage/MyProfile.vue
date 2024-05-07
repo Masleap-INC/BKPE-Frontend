@@ -213,12 +213,6 @@ export default {
           old_password:this.oldPassword,
           new_password:this.newPassword,
           confirm_password:this.confirmPassword
-        },
-        
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-          }
         })
       }catch(err){
         console.log(err)
@@ -226,8 +220,6 @@ export default {
       
     }
   },
-  logout(){
-      this.$store.dispatch("auth/logout")
-  },
+
 }
 </script>

@@ -460,7 +460,7 @@
                                     <!-- Quantity Required Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="Needed">Quantity Needed</label>
+                                        <label class="block mb-2 text-xl" for="Needed">Quantity Required</label>
                                         <input v-model="formData.quantity_needed" type="text" name="Needed" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
@@ -521,10 +521,9 @@
                                         <label class="block mb-2 text-xl" for="shipping-method">Shipping Method</label>
                                         <select v-model="formData.shipping_method"  name="shipping-method" class="w-full px-3 py-2 text-black focus:outline-none">
                                             <option value="Pick-Up-Only">Pick Up Only</option>
-                                            <option value="Regular">Regular</option>  
-                                            <option value="Truck Freight">Truck Freight</option>
-                                            <option value="Oversize 1">Oversize 1</option>
-                                            <option value="Oversize 2">Oversize 2</option>        
+                                            <option value="Assembly">Assembly</option>  
+                                            <option value="Each">Each</option>
+                                            <option value="Pair">Pair</option>          
                                         </select>
                                     </div>
 
@@ -628,7 +627,7 @@
                                     <!-- Customer Number Label and Input -->
 
                                     <div class="">
-                                        <label class="block mb-2 text-xl" for="Customer Number">Customer Number</label>
+                                        <label class="block mb-2 text-xl" for="Customer Number">Customer</label>
                                         <input v-model="formData.customer_number" type="text" name="Customer Number" class="w-full px-3 py-2 text-black focus:outline-none">
                                     </div>
 
@@ -774,6 +773,7 @@ export default {
     mounted(){
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
     },
     beforeMount(){

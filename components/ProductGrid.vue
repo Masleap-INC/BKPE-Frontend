@@ -19,7 +19,7 @@
 
                 <!-- Product Brand -->
 
-                <h2 class="block text-md font-bold">{{product.part_manufacturer}}</h2>
+                <h2 class="block text-md font-bold">{{product.brand}}</h2>
 
                 <!-- Product Price -->
 

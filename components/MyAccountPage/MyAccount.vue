@@ -25,7 +25,7 @@
 
                 <div class=" col-span-1 h-fit my-auto w-fit mx-auto lg:mr-0">
 
-                    <button class="px-3 py-2 border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300" @click="logout">LOGOUT</button>
+                    <button class="px-3 py-2 border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300" @click="dashboard">Dashboard</button>
 
                 </div>
 
@@ -140,8 +140,8 @@ import MyAddress from './MyAddress.vue'
 
         methods: {
 
-            logout(){
-                this.$store.dispatch("auth/logout")
+            dashboard(){
+                this.$router.push('/Admin/AdminHomePage')
             },
 
             selectProfileTab() {

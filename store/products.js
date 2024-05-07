@@ -3,7 +3,7 @@ export default {
     namespaced: true,
 
     state: () => ({
-        filter:{year: '1967',type: 1,category: ''},
+        filter:{year: '1967',type: 'RESTORATION',category: ''},
         filterProducts:[],
         searchKey:null,
         categories:null,
@@ -62,6 +62,7 @@ export default {
         SET_CATEGORIES(state,categories){
             state.categories = categories
         },
+
         SET_SEARCH_KEY(state,key){
             state.searchKey = key
         },
@@ -76,8 +77,9 @@ export default {
             dispatch('CLoadingStateChange',true)
             commit('SET_FILTERS',filters)
             try {
-                const data = await this.$axios.$get(`products/product-filter-specific-attribute/?category=${this.category}&year=${this.year}&type=${this.type}`)
-                commit('SET_FILTER_PRODUCTS',data.results)
+                const data = await this.$axios.$get(`products/product-filter-specific-attribute/?category=${filters.category}&year_${filters.year}=True&type=${filters.type}`)
+                console.log(data)
+                commit('SET_FILTER_PRODUCTS',data)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
                 console.log(e)

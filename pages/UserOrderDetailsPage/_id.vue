@@ -4,16 +4,21 @@
 
         <div class="grid grid-cols-5 lg:relative">
 
-            <!-- Sidebar -->
-
-            <div class="lg:relative lg:col-span-1 md:col-span-5 sm:col-span-5 z-50">                   
-                <AdminSidebar />
-            </div>
 
             <!-- Page Section -->
 
-            <div class="lg:col-span-4 md:col-span-5 sm:col-span-5 px-5 w-full lg:h-screen overflow-y-auto lg:pt-0 md:pt-10 sm:pt-10" >
-                <!-- <AdminOrderDetailsPageSection :index="this.$route.params.idx" />        -->
+            
+
+            <div class=" mb-10 lg:col-span-5 md:col-span-5 sm:col-span-5 px-5 w-full h-screen  overflow-y-auto lg:pt-0 md:pt-10 sm:pt-10" >
+                <div class="flex justify-between mt-5">
+
+                <!-- Back Button -->
+
+                <div class="inline-block align-middle">
+                    <button class=" text-white text-md px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
+                </div>
+
+                </div>
                 <div>
 
                     <!-- Heading -->
@@ -24,36 +29,7 @@
 
                     <!-- Back and Navigate buttons -->
 
-                    <div class="flex justify-between mt-5">
-
-                        <!-- Back Button -->
-
-                        <div class="inline-block align-middle">
-                            <button class=" text-white text-md px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300" @click="goBack">&lt; Go Back</button>
-                        </div>
-
-                        <!-- Navigate Button -->
-
-                        <!-- <div class="text-white inline-block align-middle py-2">
-
-                            <span class="">
-                                <NuxtLink :to="{name:'Admin-AdminOrderDetails-idx', params:{idx:this.prevUser()}}">
-                                    <button  class="px-2 rounded-xl hover:text-blue-600 hover:bg-white duration-300">&#8592; Prev</button>
-                                </NuxtLink>
-                                
-                            </span>
-
-                            <span class="px-1">|</span>
-
-                            <span>
-                                <NuxtLink :to="{name:'Admin-AdminOrderDetails-idx', params:{idx:this.nextUser()}}">
-                                    <button class="px-2 rounded-xl hover:text-blue-600 hover:bg-white duration-300">Next &#8594;</button>
-                                </NuxtLink>
-                                
-                            </span>
-
-                        </div> -->
-                    </div>
+                    
 
                     <!-- Product Details -->
 
@@ -81,16 +57,8 @@
 
                                     <div class=" align-middle">
                                         
-                                        <label for="inventory" class="mr-2">Status</label>
-                                        <select v-model="order_status" @change="onStatusUpdate($event)" type="number" class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
-                                            <option value="Placed">Placed</option>
-                                            <option value="Processing">Processing</option>
-                                            <option value="Ready to Ship">Ready to Ship</option>
-                                            <option value="Shipped">Shipped</option>
-                                            <option value="Delivered">Delivered</option>
-
-                                        </select>
-
+                                        <label for="inventory" class="mr-2">Status : <span class="text-xl font-semibold mr-3">{{ order.order_status }}</span></label>
+                                       
                                     </div>
 
                                 </span>
@@ -146,12 +114,6 @@
                                     <div>
                                         <h2 class=" "><span class="text-xl font-semibold mr-3">User Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">{{order.first_name+" "+order.last_name}}</span> </h2>
                                     </div>
-
-                                    <!-- Last Name -->
-
-                                    <!-- <div>
-                                        <h2 class=" "><span class="text-xl font-semibold mr-3">Last Name:</span> <span class="lg:text-lg md:text-lg sm:text-sm">Doe</span> </h2>
-                                    </div> -->
 
                                     <!-- Email -->
 
@@ -309,14 +271,14 @@
                                         
                                     </div>
 
-            </div>
+                                </div>
 
-        </div>
+                            </div>
 
-    </div>
-</div>
+                        </div>
+                    </div>
 
-</div>
+                    </div>
             </div>
 
         </div>
@@ -326,18 +288,12 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
-import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
-// import AdminOrderDetailsPageSection from '~/components/Admin/AdminOrdersPage/AdminOrderDetailsPage/AdminOrderDetailsPageSection.vue';
+
 export default {
-    components: {
-        AdminSidebar,
-        // AdminOrderDetailsPageSection
-    },
+    
     data(){
         return {
-           
-            order_status:'',
+
             orderedProducts:[],
             order:{}
         }
@@ -352,13 +308,11 @@ export default {
         await this.fetchOrderData();
     },
     methods: {
-        ...mapActions({
-            ordersStateUpdate:'orders/ordersStateUpdate'
-        }),
+
         async fetchOrderData() {
             try {
-                const { idx } = this.$route.params;
-                const order = await this.$axios.$get(`/order/${idx}`);
+                const { id } = this.$route.params;
+                const order = await this.$axios.$get(`/order/${id}`);
                 const orderedProducts = await this.$axios.$get(`/order/cart-list/?cart_id=${order.cart_id}`);
 
                 this.order = order;
@@ -369,26 +323,13 @@ export default {
             }
         },
 
-        async onStatusUpdate(event){
-            
-            const data = await this.$axios.$put(`/order/${this.order.id}/`,
-            {           
-                order_status:event.target.value,
-                vat: this.order.vat
-            });
-            this.order= data
-            const orders = await this.$axios.$get(`/order/order-list`)
-            this.ordersStateUpdate(orders)
-
-        },
-
         async getOrderItems(){
             const data = await this.$axios.$get(`/order/cart-list/?cart_id=${this.order.cart_id}`);
             this.orderedProducts = data
         },
 
         goBack() {
-            this.$router.back();
+            this.$router.push('/MyAccountPage');
         }
     },
    

@@ -82,6 +82,12 @@
 
           </div>
 
+          <NuxtLink :to="{ name: 'UserOrderDetailsPage-id', params: { id: order.id } }">
+              <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                  View Details
+              </button>
+          </NuxtLink>
+
         </div>
 
       </div>

@@ -2,7 +2,7 @@
 
     <section>
 
-        <div class="bg-gradient-to-r from-black to-blue-900 py-10 mt-10">
+        <div class="bg-gradient-to-r from-black to-blue-900 py-10 ">
 
             <div class=" grid grid-flow-row lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 px-5 ">
 

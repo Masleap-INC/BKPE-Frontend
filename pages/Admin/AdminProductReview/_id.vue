@@ -83,9 +83,18 @@
           }
       },
 
+      mounted(){
+        if (!this.$store.getters['auth/authenticated']) {
+            this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
+        }
+    },
+
       async fetch() {
         await this.getReviews()
       },
+
+
 
       methods: {
           

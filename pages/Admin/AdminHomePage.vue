@@ -12,7 +12,7 @@
 
             <!-- Page Section -->
 
-            <div class="lg:col-span-4 md:col-span-5 sm:col-span-5 px-5 w-full lg:h-screen overflow-y-auto lg:pt-0 md:pt-10 sm:pt-10" >
+            <div class="  mb-10 lg:col-span-4 md:col-span-5 sm:col-span-5 px-5 w-full h-screen overflow-y-auto lg:pt-0 md:pt-10 sm:pt-10" >
                 <AdminHomePageSection />       
             </div>
 
@@ -34,6 +34,7 @@ export default {
     mounted(){
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
     },
     async asyncData({store}) {

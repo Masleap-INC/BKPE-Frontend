@@ -1,18 +1,18 @@
 <template>
-    <div class="lg:w-1/3 md:w-2/3 sm:w-5/6 mx-auto my-20">
-        <!-- Back button -->
-
+    <div>
         <div class="block mt-10">
-            <!-- <NuxtLink to="/"> -->
-                <button @click="printOrder" class="text-white text-xl ml-10 px-3 py-2 border-2 border-white hover:-translate-x-3 duration-300">&lt; Go Back</button>
-            <!-- </NuxtLink> -->
-        </div>
-        <!-- Heading -->
+           
+           
 
-        <h2 class="text-4xl text-white font-bold mb-10">Payment Successful</h2>
-        
+        </div>
+        <div class=" text-center my-20">
+
+            <h2 class="text-4xl text-white font-bold mb-10">Payment Successful</h2>
+
+            <button @click="goBack" class="text-white mt-10 px-3 py-2 border-2 border-white hover:bg-white hover:text-black duration-300 w-fit mx-auto">&lt; Back to Home</button>
+
+        </div>
     </div>
-    
 </template>
 
 <script>
@@ -29,9 +29,12 @@ export default {
 
     async mounted(){
         
+
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
+
 
         const data = await this.$axios.$get(`http://54.146.158.4/payment/status/?payment_intent_id=${this.$route.query.payment_intent}`)
         if(data.status === "succeeded"){

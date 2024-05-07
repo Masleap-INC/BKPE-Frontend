@@ -19,13 +19,13 @@
                     <span class="inline-block font-light text-left text-md w-3/6">
                         <!-- Product Image -->
 
-                        <span class="inline-block mr-2 h-14 w-20 top-0">
-                            <img :src="item.product.images[0]" alt />
+                        <span class="inline-block mr-2 h-14 w-20 h-20 top-0">
+                            <img class=" w-20 h-20 object-cover" :src="item.product.images[0]" alt />
                         </span>
 
                         <!-- Product Info -->
 
-                        <span class="inline-block">
+                        <span class="inline-block align-top">
 
                             <!-- Product Name -->
 
@@ -44,7 +44,7 @@
 
                     <!-- Qty -->
 
-                    <span class="inline-block font-bold text-left text-lg w-1/6 ">
+                    <span class="inline-block font-bold text-left text-lg w-1/6 align-top">
                         <!-- text box -->
 
                         <input id="qty" type="number" class="block mr-1 pl-2 text-black w-14" :value="item.quantity" readonly>
@@ -65,7 +65,7 @@
 
                     <!-- Subtotal --> 
 
-                    <span class="inline-block font-bold text-right text-lg w-1/6">
+                    <span class="inline-block font-bold text-right text-lg w-1/6 align-top">
                         
                         <!-- Delete Item Button -->
 

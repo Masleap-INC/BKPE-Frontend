@@ -3,7 +3,7 @@
 
         <!-- Heading -->
 
-        <h2 class="text-4xl text-white font-bold mb-10">Make Payment</h2>
+        <h2 class="text-4xl text-white font-bold mb-10 text-center">Make Payment</h2>
 
         <stripe-element-payment
         ref="paymentRef"
@@ -50,9 +50,9 @@ export default {
     mounted(){
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
     },
-
     methods: {
 
         async generatePaymentIntent () {

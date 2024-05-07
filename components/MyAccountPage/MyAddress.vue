@@ -313,12 +313,6 @@ export default {
           country: this.country,
           postal_code: this.postal_code,
           phone: this.phone,
-        },
-        
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-          }
         })
         this.id = data.id
         this.updateDetails = data.details

@@ -2,13 +2,19 @@
 export default function ({ $axios, redirect, store }) {
     $axios.onError(error => {
       // Handle errors here, for example, you can show error messages or redirect to an error page
-      console.error('Axios Error:', error.response)
+      console.error('Axios Error:', error.response.data.detail)
+
       // You can also handle specific error codes or messages
       if (error.response.status === 401) {
         // Redirect to login page or handle unauthorized access
         store.dispatch("auth/logout")
         redirect('/')
+        store.dispatch('alert/addAlert',{message:error.response.data.detail,type:"error"})
+      }else{
+        redirect('/')
+        store.dispatch('alert/addAlert',{message:"An error occured",type:"error"})
       }
+      
       // Return a Promise to suppress the error
       return Promise.reject(error)
     })

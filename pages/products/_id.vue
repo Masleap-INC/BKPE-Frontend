@@ -57,7 +57,7 @@
                     <!-- Product Category -->
 
                     <span class="block text-xl font-normal mb-10">
-                    <b>Category:</b> {{product.product_category}}
+                    <b>Category:</b> {{product.category}}
                     </span>
 
                 </div>
@@ -493,11 +493,12 @@
                                 ></textarea>
 
                                 <!-- <input id="" type="text" name="name" placeholder="Type Your Name" class="py-2 px-3 w-full rounded-md" required> -->
-                                <div class="w-fit mx-auto">
-                                    <button class="px-10 py-2 border-2 border-white bg-transparent text-white hover:bg-white hover:text-black hover:duration-300">
+                                
+                            </div>
+                            <div class="w-fit mx-auto">
+                                <button class="px-10 py-2 border-2 border-white bg-transparent text-white hover:bg-white hover:text-black hover:duration-300">
                                     Submit
-                                    </button>
-                                </div>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -585,6 +586,7 @@ export default {
                 
             }else{
                 this.$router.push('/UserLogin')
+                this.$store.dispatch('alert/addAlert',{message:'Please login to add products in your cart', type: 'error'})
             }
             
         },

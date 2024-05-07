@@ -19,7 +19,7 @@
       <div class="w-full mx-auto">
         <h3 class="text-2xl font-semibold">Total Sales</h3>
 
-        <p class="text-lg font-semibold">{{ analytics.total_sales }}</p>
+        <p class="text-lg font-semibold">${{ analytics.total_sales }}</p>
       </div>
 
       <div class="w-full mx-auto">
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Charts -->
-<!-- 
+
     <div
       class="w-full grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10 mb-10"
     >
@@ -71,7 +71,7 @@
           ></BarChart>
         </client-only>
       </div>
-    </div> -->
+    </div>
 
     <!-- Tables -->
 
@@ -91,9 +91,12 @@
 
           <!-- See all Button -->
 
-          <button class="inline-block bg-blue-400 bg-opacity-30 p-2 rounded-xl align-middle hover:underline">
-            See All
-          </button>
+          
+          <NuxtLink to="/Admin/AdminOrdersPage">
+            <button class="inline-block bg-blue-400 bg-opacity-30 p-2 rounded-xl align-middle hover:underline">
+              See All
+            </button>
+          </NuxtLink>
 
         </div>
 
@@ -115,9 +118,13 @@
               <td>{{ order.order_status }}</td>
               <td>${{ order.total_price }}</td>
               <td>
-                <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
-                  View
-                </button>
+                
+                <NuxtLink :to="{ name: 'Admin-AdminOrderDetails-idx', params: { idx: order.id } }">
+                  <button class="inline-block bg-white bg-opacity-50 py-2 px-3 rounded-xl align-middle hover:underline">
+                    View
+                  </button>
+                </NuxtLink>
+                
               </td>
             </tr>
           </tbody>
@@ -332,7 +339,7 @@ export default {
         ],
         datasets: [
           {
-            label: 'Number of Orders',
+            label: 'Total Sales',
             backgroundColor: '#ffffff',
             data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
             borderColor: '#ffffff',
@@ -345,7 +352,7 @@ export default {
           {
             label: 'Number of Orders',
             backgroundColor: '#ffffff',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 40, 20, 12, 100, 10, 40, 39, 80, 40, 40, 20, 12, 39, 10, 40, 39, 80, 40, 40, 20, 12, 39, 10, 40, 39, 80, 40],
             borderColor: '#ffffff',
           },
         ],

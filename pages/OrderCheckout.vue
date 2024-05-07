@@ -124,12 +124,11 @@
                             
                             <!-- Submit Button -->
 
-                            <!-- <div v-if="getCart.length>0 ? true : false" class="w-full mt-10"> -->
+                            <div v-if="getCart.length>0 ? true : false" class="w-full mt-10">
                                 
                                 <button class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300" type="submit">Continue</button>
-                                
-                                
-                            <!-- </div> -->
+                                      
+                            </div>
 
                             
                         </form>
@@ -257,6 +256,7 @@ export default {
     mounted(){
         if (!this.$store.getters['auth/authenticated']) {
             this.$router.push("/");
+            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
     },
     methods: {
