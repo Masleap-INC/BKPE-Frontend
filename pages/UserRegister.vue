@@ -125,6 +125,11 @@ import { mapActions } from 'vuex'
         addAlert:'alert/addAlert'
     }),
     async submit() {
+
+      if(this.name === '' || this.email === '' || this.password === '' || this.confirmPassword === ''){
+            this.addAlert({message:"Please provide a value for all the fields",type:"error"})
+        return;
+      }
       
       if(this.password === this.confirmPassword){
 
@@ -133,7 +138,8 @@ import { mapActions } from 'vuex'
             { 
                 username: this.name,
                 email: this.email,
-                password: this.password   
+                password: this.password,
+                role:"user"
             });
             if(data){  
                 await this.$router.push('/UserLogin');

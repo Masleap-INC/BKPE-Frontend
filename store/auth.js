@@ -15,6 +15,13 @@ export default {
                 return false
             }     
         },
+        authenticatedAdmin(state){
+            if(state.token && state.user && state.user.role === "admin"){
+                return  true
+            }else{
+                return false
+            }     
+        },
         user(state){
             return state.user
         },

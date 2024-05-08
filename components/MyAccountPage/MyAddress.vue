@@ -306,6 +306,14 @@ export default {
    
     async createAddress(){
       try{
+        const requiredFields = ['details', 'city', 'country', 'postal_code', 'phone'];
+
+        for (const field of requiredFields) {
+            if (!this[field]) {
+              this.$store.dispatch('alert/addAlert',{message:'Please provide a value for all the fields', type: 'error'})
+                return;
+            }
+        }
         const data = await this.$axios.$post(`/address/create-address/`,
         { 
           details: this.details,
@@ -329,6 +337,15 @@ export default {
     async updateAddress(){
       
       try{
+
+        const requiredFields = ['updateDetails', 'updateCity', 'updateCountry', 'updatePostal_code', 'updatePhone'];
+
+        for (const field of requiredFields) {
+            if (!this[field]) {
+              this.$store.dispatch('alert/addAlert',{message:'Please provide a value for all the fields', type: 'error'})
+                return;
+            }
+        }
 
         await this.$axios.$put(`/address/update-address/${this.id}/`,
         { 

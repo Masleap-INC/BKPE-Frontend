@@ -95,6 +95,10 @@ export default {
     methods: {
     
         async verifyOtp(){
+            if(this.email === '' || this.otp === ''){
+                this.addAlert({message:"Please provide a value for all the fields",type:"error"})
+                return;
+            }
             const data = await this.$axios.$post('/auth/verify-otp/',
             {           
                 email: this.email,

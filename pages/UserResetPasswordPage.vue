@@ -107,6 +107,11 @@ export default {
       
         async resetPassword(){
 
+            if(this.email === '' || this.password === '' || this.confirmPassword === ''){
+                this.$store.dispatch('alert/addAlert',{messgae:"Please provide a value for all the fields",type:"error"})
+                return;
+            }
+
             if(this.password === this.confirmPassword){
 
                 const data = await this.$axios.$post('/auth/reset-password-view/',
@@ -117,12 +122,13 @@ export default {
                     
                 });
 
-                console.log(data)
 
                 if(data.detail === 'Password reset successfully.'){
                     this.$router.push("/UserLogin");
                 }
 
+            }else{
+                this.$store.dispatch('alert/addAlert',{messgae:"Password did not match",type:"error"})
             }
 
         },

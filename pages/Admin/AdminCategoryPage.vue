@@ -68,9 +68,9 @@ export default {
     };
   },
   mounted(){
-        if (!this.$store.getters['auth/authenticated']) {
+        if (!this.$store.getters['auth/authenticatedAdmin']) {
             this.$router.push("/");
-            this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
+            this.$store.dispatch('alert/addAlert',{message:'Please login as admin', type: 'error'})
         }
     },
   async asyncData() {

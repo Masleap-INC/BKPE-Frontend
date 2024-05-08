@@ -24,8 +24,8 @@
 
                 <div class=" align-middle">
 
-                    <label for="inventory" class="mr-2">Inventory</label>
-                    <input v-model="formData.inventory" type="number"  class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
+                    <label for="inventory" class="mr-2">Inventory <span style="color: red;">*</span></label>
+                    <input v-model="formData.inventory" type="number" min="0"  class="mt-2 text-lg px-2 py-1 text-black focus:outline-none">
 
                 </div>
 
@@ -44,7 +44,7 @@
                 <!-- Heading -->
 
                 <div class="flex justify-between pb-2 mb-5 border-b-[2px] border-b-white">
-                    <h2 class="inline-block align-middle text-2xl font-semibold">Images</h2>
+                    <h2 class="inline-block align-middle text-2xl font-semibold">Images <span style="color: red;">*</span></h2>
                     <!-- Add Image Button -->
                     <input type="file" accept="image/*" ref="fileInput" multiple style="display: none" @change="handleFileSelect">
                     <button @click="$refs.fileInput.click()" class="inline-block align-middle text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">+ Add Image</button>
@@ -116,7 +116,7 @@
 
                     <!-- Heading -->
 
-                    <h2 class="block text-xl mb-5">Category</h2>
+                    <h2 class="block text-xl mb-5">Category <span style="color: red;">*</span></h2>
 
                     <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
 
@@ -189,14 +189,14 @@
                 <!-- Name Label and Input -->
 
                 <div class="">
-                    <label class="block mb-2 text-xl" for="name">Name</label>
+                    <label class="block mb-2 text-xl" for="name">Name <span style="color: red;">*</span></label>
                     <input v-model="formData.name" type="text" name="name" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!-- Brand Label and Input -->
 
                 <div class="">
-                    <label class="block mb-2 text-xl" for="brand">Brand</label>
+                    <label class="block mb-2 text-xl" for="brand">Brand <span style="color: red;">*</span></label>
                     <input v-model="formData.brand" type="text" name="brand" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
@@ -210,14 +210,14 @@
                 <!-- Slug Label and Input -->
 
                 <div class="">
-                    <label class="block mb-2 text-xl" for="Slug">Slug</label>
+                    <label class="block mb-2 text-xl" for="Slug">Slug <span style="color: red;">*</span></label>
                     <input v-model="formData.slug" type="text" name="Slug" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!-- Sku Label and Input -->
 
                 <div class="">
-                    <label class="block mb-2 text-xl" for="Sku">Sku</label>
+                    <label class="block mb-2 text-xl" for="Sku">Sku <span style="color: red;">*</span></label>
                     <input v-model="formData.sku" type="text" name="Sku" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
@@ -250,35 +250,35 @@
 
                 <div class="">
                     <label class="block mb-2 text-xl" for="unit price">Unit Price ($)</label>
-                    <input v-model="formData.unit_price" type="number" name="unit price" class="w-full px-3 py-2 text-black focus:outline-none">
+                    <input v-model="formData.unit_price" type="number" min="0" name="unit price" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!--Unit Cost Price Label and Input -->
 
                 <div class="">
                     <label class="block mb-2 text-xl" for="unit-cost-price">Unit Cost Price ($)</label>
-                    <input v-model="formData.unit_cost" type="number" name="unit-cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
+                    <input v-model="formData.unit_cost" type="number" min="0" name="unit-cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!-- Cost Price Label and Input -->
 
                 <div class="">
                     <label class="block mb-2 text-xl" for="cost-price">Cost Price ($)</label>
-                    <input v-model="formData.cost" type="number" name="cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
+                    <input v-model="formData.cost" type="number" min="0" name="cost-price" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!--Normal Price Label and Input -->
 
                 <div class="">
-                    <label class="block mb-2 text-xl" for="Normal price">Normal Price ($)</label>
-                    <input v-model="formData.normal_price" type="number" name="Normal price" class="w-full px-3 py-2 text-black focus:outline-none">
+                    <label class="block mb-2 text-xl" for="Normal price">Normal Price ($) <span style="color: red;">*</span></label>
+                    <input v-model="formData.normal_price" min="0" type="number" name="Normal price" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!--Sale Price Label and Input -->
 
                 <div class="">
                     <label class="block mb-2 text-xl" for="Sale price">Sale Price ($)</label>
-                    <input v-model="formData.sale_price" type="number" name="Sale price" class="w-full px-3 py-2 text-black focus:outline-none">
+                    <input v-model="formData.sale_price" min="0" type="number" name="Sale price" class="w-full px-3 py-2 text-black focus:outline-none">
                 </div>
 
                 <!-- New Label and Input -->
@@ -723,6 +723,32 @@ export default {
         },
         async submitForm() {
             try {
+
+
+                // Validate if at least one image is selected
+                if (this.selectedImages.length === 0) {
+                    this.$store.dispatch('alert/addAlert',{message:`Please select at least one image.`,type:"error"})
+                    
+                    return;
+                }
+
+                // Validate required fields
+                const requiredFields = ['name', 'brand', 'sku', 'slug', 'category'];
+                for (const field of requiredFields) {
+                    if (!this.formData[field]) {
+                        this.$store.dispatch('alert/addAlert',{message:`Please provide a value for ${field}.`,type:"error"})
+                        
+                        return;
+                    }
+                }
+
+
+                // Validate normal price
+                if (this.formData.normal_price <= 0) {
+                    this.$store.dispatch('alert/addAlert',{message:'Normal Price should be more than zero.',type:"error"})
+                    return;
+                }
+
                 const formDataToSend = new FormData();
                 formDataToSend.append('product_id', this.formData.product_id);
                 formDataToSend.append('part_type', this.formData.part_type);

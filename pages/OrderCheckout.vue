@@ -264,6 +264,15 @@ export default {
                 setOrderDetails:'orders/setOrderDetails',
             }),
             async placeOrder(){
+                const requiredFields = ['selectedPaymentMethod', 'shipping', 'vat', 'email', 'firstName', 'lastName', 'address', 'city', 'country', 'postalCode', 'phone'];
+
+                for (const field of requiredFields) {
+                    if (!this.orderDetails[field]) {
+                        this.$store.dispatch('alert/addAlert',{message:'Please provide a value for all the fields', type: 'error'})
+                        return;
+                    }
+                }
+
                 if(this.orderDetails.selectedPaymentMethod === 'cash-on-delivery'){
                     console.log(this.orderDetails.lastName)
                     await this.$axios.$post(`/order/complete-order/`,{

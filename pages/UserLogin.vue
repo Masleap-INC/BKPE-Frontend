@@ -160,6 +160,10 @@ export default {
             this.forgotPassword = !this.forgotPassword;
         },
         submit() {
+            if(this.email === '' || this.password === ''){
+                this.addAlert({message:"Please provide a value for all the fields",type:"error"})
+                return;
+            }
             const email = this.email
             const password = this.password
             const credential = {email,password}
@@ -169,7 +173,6 @@ export default {
             const data = await this.$axios.$post('/auth/request-reset-email/',
             {           
                 email: this.recoverPassEmail,
-                // redirect_url: "http://localhost:3000/UserResetPasswordPage"  
             });
 
             if(data.success === 'We have sent you an OTP to reset your password'){
