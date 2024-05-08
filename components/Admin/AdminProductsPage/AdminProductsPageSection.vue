@@ -11,21 +11,11 @@
 
     <div class="block w-fit ml-auto">
 
-        <!-- Bulk Upload -->
-
-        <!-- <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold mr-3" @click="UploadFile">
-            Bulk Upload
-        </button> -->
-
-        <!-- <input ref="fileUpload" type="file" class="hidden"> -->
-
-        <!-- Create new -->
         <NuxtLink to="/Admin/AdminCreateProductPage">
             <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-2 px-3 font-semibold">
                 + Create New
             </button>
         </NuxtLink>
-
 
     </div>
 
@@ -100,6 +90,15 @@
 
                 </tbody>
             </table>
+             <!-- Pagination -->
+             <div class="mt-5 flex justify-center">
+                <button @click="prev" v-if="previousPage" :disabled="!previousPage" class="mr-2 text-white text-sm px-3 py-1  hover:bg-white hover:text-black duration-300">
+                    &lt;- Prev
+                </button>
+                <button @click="next" v-if="nextPage" :disabled="!nextPage" class="text-white text-sm px-3 py-2  hover:bg-white hover:text-black duration-300">
+                    Next ->
+                </button>
+            </div>
         </div>
 
     </div>
@@ -108,23 +107,45 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+
 export default {
     data(){
         return {
             searchKey:'',
+            nextPage:null,
+            previousPage:null,
             products:[]
         }
     },
-    computed:{
-        ...mapGetters({
-            storeProducts: 'products/products',
-        }),
+    async fetch(){
+        await this.getProducts()
     },
+ 
+        
     beforeMount(){
         this.products = this.storeProducts
     },
     methods: {
+        async getProducts(url = '/products/') {
+            try {
+                const data = await this.$axios.$get(url);
+                this.products = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        },
+        async next() {
+            if (this.nextPage) {
+                await this.getProducts(this.nextPage);
+            }
+        },
+        async prev() {
+            if (this.previousPage) {
+                await this.getProducts(this.previousPage);
+            }
+        },
         deleteProduct(productId,productIdx){
             const editedProductsList = [...this.products]
             editedProductsList.splice(productIdx,1)

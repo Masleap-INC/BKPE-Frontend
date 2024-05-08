@@ -264,11 +264,11 @@ export default {
                 setOrderDetails:'orders/setOrderDetails',
             }),
             async placeOrder(){
-                const requiredFields = ['selectedPaymentMethod', 'shipping', 'vat', 'email', 'firstName', 'lastName', 'address', 'city', 'country', 'postalCode', 'phone'];
+                const requiredFields = ['selectedPaymentMethod', 'email', 'firstName', 'lastName', 'address', 'city', 'country', 'postalCode', 'phone'];
 
                 for (const field of requiredFields) {
                     if (!this.orderDetails[field]) {
-                        this.$store.dispatch('alert/addAlert',{message:'Please provide a value for all the fields', type: 'error'})
+                        this.$store.dispatch('alert/addAlert',{message:`Please provide a value for ${field}`, type: 'error'})
                         return;
                     }
                 }

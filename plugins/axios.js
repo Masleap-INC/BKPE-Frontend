@@ -2,7 +2,7 @@
 export default function ({ $axios, redirect, store }) {
     $axios.onError(error => {
       // Handle errors here, for example, you can show error messages or redirect to an error page
-      console.error('Axios Error:', error.response.data.detail)
+      console.error('Axios Error:', error)
 
       // You can also handle specific error codes or messages
       if (error.response.status === 401) {
