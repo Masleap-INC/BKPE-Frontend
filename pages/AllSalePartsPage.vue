@@ -36,6 +36,14 @@
                 </div>
             </div>
         </div>
+        <div class="mt-5 flex justify-center">
+            <button @click="prev" v-if="previousPage" :disabled="!previousPage" class="mr-2 text-white text-sm px-3 py-1  hover:bg-white hover:text-black duration-300">
+                &lt;- Prev
+            </button>
+            <button @click="next" v-if="nextPage" :disabled="!nextPage" class="text-white text-sm px-3 py-2  hover:bg-white hover:text-black duration-300">
+                Next ->
+            </button>
+        </div>
 
 
     </div>
@@ -50,16 +58,36 @@ export default{
     data(){
         return {
             saleProducts:[],
-            LoadingState:true
+            LoadingState:true,
+            nextPage:null,
+            previousPage:null,
         }
         
     },
     async fetch() {
-      const data = await this.$axios.$get('/products/search-onsalenew/?search_param=onsale')
-      this.saleProducts = data
-      this.LoadingState=false
+      await this.getSaleProducts()
       
     },
+
+    methods:{
+        async getSaleProducts(url='/products/search-onsalenew/?search_param=onsale'){
+            const data = await this.$axios.$get(url)
+            this.saleProducts = [...data.results]
+            this.nextPage = data.next;
+            this.previousPage = data.previous;
+            this.LoadingState=false
+        },
+        async next() {
+            if (this.nextPage) {
+                await this.getSaleProducts(this.nextPage);
+            }
+        },
+        async prev() {
+            if (this.previousPage) {
+                await this.getSaleProducts(this.previousPage);
+            }
+        },
+    }
 
 
 }

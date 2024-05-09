@@ -68,6 +68,15 @@ np<template>
   
                   </tbody>
               </table>
+              <!-- Pagination -->
+             <div class="mt-5 flex justify-center">
+                <button @click="prev" v-if="previousPage" :disabled="!previousPage" class="mr-2 text-white text-sm px-3 py-1  hover:bg-white hover:text-black duration-300">
+                    &lt;- Prev
+                </button>
+                <button @click="next" v-if="nextPage" :disabled="!nextPage" class="text-white text-sm px-3 py-2  hover:bg-white hover:text-black duration-300">
+                    Next ->
+                </button>
+            </div>
           </div>
   
       </div>
@@ -82,7 +91,9 @@ np<template>
     data(){
         return{
             searchKey:'',
-            orders:[]
+            orders:[],
+            nextPage:null,
+            previousPage:null,
         }
     },
     computed:{
@@ -90,10 +101,31 @@ np<template>
             storeOrders: 'orders/orders',
         }),
     },
-    beforeMount(){
-        this.orders = this.storeOrders
+    async fetch(){
+        await this.getOrders()
     },
+
     methods: {
+        async getOrders(url = '/order/order-list') {
+            try {
+                const data = await this.$axios.$get(url);
+                this.orders = data.results;
+                this.nextPage = data.next;
+                this.previousPage = data.previous;
+            } catch (error) {
+                console.error('Error fetching Orders:', error);
+            }
+        },
+        async next() {
+            if (this.nextPage) {
+                await this.getOrders(this.nextPage);
+            }
+        },
+        async prev() {
+            if (this.previousPage) {
+                await this.getOrders(this.previousPage);
+            }
+        },
         async search(e){ 
           
             if(e.key === 'Enter'){

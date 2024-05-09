@@ -550,6 +550,10 @@ export default {
             const data = await this.$axios.$get(`/products/${this.$route.params.id}`)
 
             this.product = {...data}
+
+            const category = await this.$axios.$get(`/categories/categories-info/?id=${data.category}`)
+
+            this.product.category = category.name
         
             const similarProductsData = await this.$axios.$get(`/products/product-filter/?category=${data.category}&new=${data.new ? 'True' : 'False'}&onSale=${data.onSale ? 'True' : 'False'}&min_price=${parseInt(data.unit_price-1000)}&max_price=${parseInt(data.unit_price+1000)}`)
 

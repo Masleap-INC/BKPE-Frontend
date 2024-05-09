@@ -341,7 +341,7 @@ export default {
           {
             label: 'Total Sales',
             backgroundColor: '#ffffff',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+            data: [],
             borderColor: '#ffffff',
           },
         ],
@@ -352,7 +352,7 @@ export default {
           {
             label: 'Number of Orders',
             backgroundColor: '#ffffff',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 40, 20, 12, 100, 10, 40, 39, 80, 40, 40, 20, 12, 39, 10, 40, 39, 80, 40, 40, 20, 12, 39, 10, 40, 39, 80, 40],
+            data: [],
             borderColor: '#ffffff',
           },
         ],
@@ -393,12 +393,25 @@ export default {
   },
   async fetch() {
       await this.getAnalytics()
+      await this.getChartData()
       await this.getRecentOrders()
   },
   methods: {
     async getAnalytics(){
       const { data } = await this.$axios.$get(`/order/analytics/`)
       this.analytics = data
+    },
+    async getChartData(){
+      const orderChart = await this.$axios.$get(`/order/daily-order/`)
+      console.log(this.lineChartData.datasets)
+      for (const day in orderChart.dayOrder){
+        this.lineChartData.datasets[0].data = [...(this.lineChartData.datasets[0].data),orderChart.dayOrder[day]]
+      }
+      const salesChart = await this.$axios.$get(`/order/monthly-sales/?year=`+new Date().getFullYear())
+      console.log(salesChart)
+      for (const month in salesChart.monthSales){
+        this.barChartData.datasets[0].data = [...(this.barChartData.datasets[0].data),salesChart.monthSales[month]]
+      }
     },
     async getRecentOrders(){
       const  data  = await this.$axios.$get(`/order/recent-order/`)

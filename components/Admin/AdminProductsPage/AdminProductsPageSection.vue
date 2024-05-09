@@ -121,10 +121,6 @@ export default {
         await this.getProducts()
     },
  
-        
-    beforeMount(){
-        this.products = this.storeProducts
-    },
     methods: {
         async getProducts(url = '/products/') {
             try {

@@ -274,29 +274,37 @@ export default {
                 }
 
                 if(this.orderDetails.selectedPaymentMethod === 'cash-on-delivery'){
-                    console.log(this.orderDetails.lastName)
-                    await this.$axios.$post(`/order/complete-order/`,{
-                        vat:this.orderDetails.vat,
-                        shipping:this.orderDetails.shipping,
-                        sub_total:this.totalPrice,
-                        total_price:this.orderDetails.vat + this.orderDetails.shipping + this.totalPrice,
-                        first_name:this.orderDetails.firstName,
-                        last_name:this.orderDetails.lastName,
-                        address:this.orderDetails.address,
-                        city:this.orderDetails.city,
-                        country:this.orderDetails.country,
-                        postal_code:this.orderDetails.postalCode,
-                        Phone:this.orderDetails.phone,
-                        payment_method:this.orderDetails.selectedPaymentMethod,
-                        cart_id:localStorage.getItem('cart_id'),
-                        order_status:'Placed',
-                        email:this.orderDetails.email
-                    },{
-                        headers:{
-                            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                        }
-                    })
-                    this.$router.push('/')
+
+                    try{
+                        await this.$axios.$post(`/order/complete-order/`,{
+                            vat:this.orderDetails.vat,
+                            shipping:this.orderDetails.shipping,
+                            sub_total:this.totalPrice,
+                            total_price:this.orderDetails.vat + this.orderDetails.shipping + this.totalPrice,
+                            first_name:this.orderDetails.firstName,
+                            last_name:this.orderDetails.lastName,
+                            address:this.orderDetails.address,
+                            city:this.orderDetails.city,
+                            country:this.orderDetails.country,
+                            postal_code:this.orderDetails.postalCode,
+                            Phone:this.orderDetails.phone,
+                            payment_method:this.orderDetails.selectedPaymentMethod,
+                            cart_id:localStorage.getItem('cart_id'),
+                            order_status:'Placed',
+                            email:this.orderDetails.email
+                        })
+                        const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+                        localStorage.setItem('cart_id',uniqueId)
+                        localStorage.removeItem('cart')
+                        this.$store.dispatch('cart/emptyCart')
+                        this.$router.push('/')
+                    }catch(err){
+                        console.log(err)
+                        this.$router.push('/');
+                    }
+
+                    
+                    
                 }else{
                     this.setOrderDetails(this.orderDetails)
                     this.$router.push('/Payment')

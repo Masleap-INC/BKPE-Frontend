@@ -40,7 +40,7 @@ export default {
        
                 const data = await this.$axios.$get(`/order/order-list`)
 
-                commit('SET_ORDERS',data)
+                commit('SET_ORDERS',data.results)
                 dispatch('loadingStateChange',false) 
          
             }catch(e){

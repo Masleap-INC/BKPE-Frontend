@@ -109,9 +109,9 @@ export default {
         async getAppProducts({commit}){
             
             const newProducts = await this.$axios.$get('/products/search-onsalenew/?search_param=new')
-            commit('SET_NEW_PRODUCTS',newProducts)
+            commit('SET_NEW_PRODUCTS',newProducts.results)
             const saleProducts = await this.$axios.$get('/products/search-onsalenew/?search_param=onsale')
-            commit('SET_SALE_PRODUCTS',saleProducts)
+            commit('SET_SALE_PRODUCTS',saleProducts.results)
             
         },
         async getCategories({commit}){

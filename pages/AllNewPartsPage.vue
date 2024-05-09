@@ -36,6 +36,14 @@
                 </div>
             </div>
         </div>
+        <div class="mt-5 flex justify-center">
+            <button @click="prev" v-if="previousPage" :disabled="!previousPage" class="mr-2 text-white text-sm px-3 py-1  hover:bg-white hover:text-black duration-300">
+                &lt;- Prev
+            </button>
+            <button @click="next" v-if="nextPage" :disabled="!nextPage" class="text-white text-sm px-3 py-2  hover:bg-white hover:text-black duration-300">
+                Next ->
+            </button>
+        </div>
 
 
     </div>
@@ -49,14 +57,34 @@ export default{
      data(){
         return {
             newProducts:[],
-            LoadingState:true
+            LoadingState:true,
+            nextPage:null,
+            previousPage:null,
         }
         
     },
     async fetch() {
-      const data = await this.$axios.$get('/products/search-onsalenew/?search_param=new')
-      this.newProducts = data
-      this.LoadingState=false
+        await this.getNewProducts()
     },
+
+    methods:{
+        async getNewProducts(url='/products/search-onsalenew/?search_param=new'){
+            const data = await this.$axios.$get(url)
+            this.newProducts = data.results
+            this.nextPage = data.next;
+            this.previousPage = data.previous;
+            this.LoadingState=false
+        },
+        async next() {
+            if (this.nextPage) {
+                await this.getNewProducts(this.nextPage);
+            }
+        },
+        async prev() {
+            if (this.previousPage) {
+                await this.getNewProducts(this.previousPage);
+            }
+        },
+    }
 }
 </script>

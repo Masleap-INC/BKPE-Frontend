@@ -48,29 +48,33 @@ export default {
 
     methods: {
         async orderPlaced(orderDetails){
-            const response = await this.$axios.$post(`/order/complete-order/`,{
-                vat:orderDetails.vat,
-                shipping:orderDetails.shipping,
-                sub_total:orderDetails.sub_total,
-                total_price:orderDetails.total_price,
-                first_name:orderDetails.first_name,
-                last_name:orderDetails.last_name,
-                address:orderDetails.address,
-                city:orderDetails.city,
-                country:orderDetails.country,
-                postal_code:orderDetails.postal_code,
-                Phone:orderDetails.phone,
-                payment_method:orderDetails.payment_method,
-                cart_id:orderDetails.cart_id,
-                order_status:orderDetails.order_status,
-                email:orderDetails.email
-            },{
-                headers:{
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
-        
-            console.log(response)
+            try{
+                await this.$axios.$post(`/order/complete-order/`,{
+                    vat:orderDetails.vat,
+                    shipping:orderDetails.shipping,
+                    sub_total:orderDetails.sub_total,
+                    total_price:orderDetails.total_price,
+                    first_name:orderDetails.first_name,
+                    last_name:orderDetails.last_name,
+                    address:orderDetails.address,
+                    city:orderDetails.city,
+                    country:orderDetails.country,
+                    postal_code:orderDetails.postal_code,
+                    Phone:orderDetails.phone,
+                    payment_method:orderDetails.payment_method,
+                    cart_id:orderDetails.cart_id,
+                    order_status:orderDetails.order_status,
+                    email:orderDetails.email
+                },)
+                const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('cart_id',uniqueId)
+                localStorage.removeItem('cart')
+                this.$store.dispatch('cart/emptyCart')
+            }catch(err){
+                console.log(err)
+                this.$router.push('/');
+            }
+            
 
         },
         goBack() {
