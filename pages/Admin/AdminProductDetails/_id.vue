@@ -1,6 +1,6 @@
 <template>
-
-    <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full text-white min-h-screen">
+    <LoadingData v-if="$fetchState.pending" />
+    <div v-else class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat h-full w-full text-white min-h-screen">
 
         <div class="grid grid-cols-5 lg:relative">
 
@@ -180,7 +180,7 @@
 
                                             <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
                                                 <li v-for="category in categories" :key="category.id">
-                                                    <input :id="category.id" class="peer" type="radio" name="category-mobile-menu" :value="category.id" v-model="formData.category">
+                                                    <input :id="category.id" class="peer" type="radio" name="category" :value="category.id" v-model="formData.category" @input="handleSubCategory(category.id)">
                                                     <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
                                                 </li>
                                             </ul>
@@ -191,6 +191,65 @@
 
                                 </div>
 
+                            </div>
+
+                            <div class="flex gap-5 mt-10 w-full">
+                                <div class="w-1/3">
+
+                                    <!-- Heading -->
+
+                                    <h2 class="block text-xl mb-5">Sub Category</h2>
+
+                                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                                        <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                                            <h1></h1>
+                                            <li v-for="category in subCategories" :key="category.id">
+                                                
+                                                <input :id="category.id" class="peer" type="radio" name="sub-category" :value="category.id" v-model="formData.subcategory" @input="handleSubSubCategory(category.id)">
+                                                <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 " >{{ category.name }}</label>
+                                            </li>
+                                        </ul>
+
+                                    </ul>
+
+                                </div>
+                                <div class="w-1/3">
+
+                                    <!-- Heading -->
+
+                                    <h2 class="block text-xl mb-5">Sub Sub Category </h2>
+
+                                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                                        <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                                            <li v-for="category in subSubCategories" :key="category.id">
+                                                <input :id="category.id" class="peer" type="radio" name="sub-sub-category" :value="category.id" v-model="formData.subsubcategory" @input="handleSubSubSubCategory(category.id)">
+                                                <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                                            </li>
+                                        </ul>
+
+                                    </ul>
+
+                                </div>
+                                <div class="w-1/3">
+
+                                    <!-- Heading -->
+
+                                    <h2 class="block text-xl mb-5">Sub Sub Sub Category </h2>
+
+                                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                                        <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                                            <li v-for="category in subSubSubCategories" :key="category.id">
+                                                <input :id="category.id" class="peer" type="radio" name="suv-sub-sub-category" :value="category.id" v-model="formData.subsubsubcategory" >
+                                                <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                                            </li>
+                                        </ul>
+
+                                    </ul>
+
+                                </div>
                             </div>
 
                             <!-- Vendor Info Section -->
@@ -689,7 +748,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+// import {mapGetters} from 'vuex'
 import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
 export default {
 
@@ -758,35 +817,78 @@ export default {
                 sku: '',
                 new: 'yes',
                 onSale: 'no',
-                category: ''
+                category: '',
+                subcategory: '',
+                subsubcategory:'',
+                subsubsubcategory:''
             },
             
             selectedImages: [],
+            categories:[],
+            subCategories:[],
+            subSubCategories:[],
+            subSubSubCategories:[],
         };
     },
-    computed:{
-        ...mapGetters({
-            categories:'products/categories',
-            storeProducts: 'products/products',
-        }),
-    },
+  
     mounted(){
         if (!this.$store.getters['auth/authenticatedAdmin']) {
             this.$router.push("/");
             this.$store.dispatch('alert/addAlert',{message:'Please login as admin', type: 'error'})
         }
     },
-    beforeMount(){
-        this.products = this.storeProducts
-    },
+
     async fetch() {
+        await this.getCategories()
         await this.getSingleProduct()
+        
     },
     methods: {
+        async getCategories(){
+            this.categories = await this.$axios.$get(`/categories/all-categories`)
+        },
+        handleSubCategory(categoryId){
+            
+            const subCategoriesList = categoryId !== null ? this.categories.find(category => category.id === categoryId) : undefined
+            if(subCategoriesList !== undefined){
+                this.subCategories = subCategoriesList.subcategory_set
+            }
+            
+            this.formData.subcategory = ''
+            this.subSubCategories = []
+            this.formData.subsubcategory = ''
+            this.subSubSubCategories = []
+            this.formData.subsubsubcategory = ''
+        },
+        handleSubSubCategory(subCategoryId){
+            
+            const subSubCategoriesList = subCategoryId !== null ? this.subCategories.find(category => category.id === subCategoryId) : undefined
+            if(subSubCategoriesList !== undefined){
+                this.subSubCategories = subSubCategoriesList.subsubcategory_set
+            }
+            
+            this.subSubSubCategories = []
+            this.formData.subsubsubcategory = ''
+            console.log(this.formData)
+        },
+        handleSubSubSubCategory(subSubCategoryId){
+            const subSubSubCategoriesList = subSubCategoryId !== null ?  this.subSubCategories.find(category => category.id === subSubCategoryId) : undefined
+            if(subSubSubCategoriesList !== undefined){
+                this.subSubSubCategories = subSubSubCategoriesList.subsubsubcategory_set
+            }
+
+        },
         async getSingleProduct() {
             try {
                 const data = await this.$axios.$get(`/products/product-details/${this.$route.params.id}`);
                 this.formData = { ...data };
+                this.handleSubCategory(data.category)
+                this.handleSubSubCategory(data.subcategory)
+                this.handleSubSubSubCategory(data.subsubcategory)
+                this.formData.subcategory = data.subcategory
+                this.formData.subsubcategory = data.subsubcategory
+                this.formData.subsubsubcategory = data.subsubsubcategory
+                
                 this.formData.new = this.formData.new ? 'yes' : 'no';
                 this.formData.onSale = this.formData.onSale ? 'yes' : 'no';
                 this.formData.multiple_fixed_shipping = this.formData.multiple_fixed_shipping ? 'yes' : 'no';
@@ -800,9 +902,8 @@ export default {
                     images.push(imageFile)
                     this.selectedImages = images
                 });
-                console.log(this.selectedImages)
-                // this.selectedImages = this.formData.images;
-                // console.log(this.formData)
+                
+                
 
             } catch (error) {
                 console.error('Error fetching product:', error);
@@ -852,7 +953,7 @@ export default {
 
         async updateProduct() {
             // Perform API call to update product
-            // try {
+            try {
                 const formDataToSend = new FormData();
 
                 // Append product data
@@ -915,6 +1016,18 @@ export default {
                 formDataToSend.append('new', this.formData.new);
                 formDataToSend.append('onSale', this.formData.onSale);
                 formDataToSend.append('category', this.formData.category);
+                console.log(this.formData)
+                if(this.formData.subcategory !== ''){
+                    formDataToSend.append('subcategory', this.formData.subcategory);
+                }
+
+                if(this.formData.subsubcategory !== ''){
+                    formDataToSend.append('subsubcategory', this.formData.subsubcategory);
+                }
+
+                if(this.formData.subsubcategory !== ''){
+                    formDataToSend.append('subsubsubcategory', this.formData.subsubsubcategory);
+                }
                 // Append other product data fields...
 
                 // Append existing image IDs (assuming the API expects IDs)
@@ -929,15 +1042,158 @@ export default {
 
 
                 // Send the FormData object via POST request
-                await this.$axios.put(`/products/product-details/${this.formData.id}/`, formDataToSend, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
+                await this.$axios.put(`/products/product-details/${this.formData.id}/`, formDataToSend);
+
+                this.$store.dispatch('alert/addAlert',{message:"Product updated successfully",type:"success"})
+                this.formData = {
+                    product_id: '',
+                    part_type: '',
+                    brand: '',
+                    bkpp_p_n: '',
+                    publish: 'no',
+                    year_1967: false,
+                    year_1968: false,
+                    year_1969: false,
+                    name: '',
+                    description: '',
+                    notes: '',
+                    gm_part_numbers: '',
+                    aim_numbers: '',
+                    years: '',
+                    body_style: '',
+                    trim: '',
+                    interior: '',
+                    engine: '',
+                    transmission: '',
+                    part_manufacturer: '',
+                    manufacturer_part_name: '',
+                    manufacturer_part_number: '',
+                    suppliers_name: '',
+                    suppliers_part_name: '',
+                    suppliers_part_number: '',
+                    email_to_tim: 'no',
+                    email_address: '',
+                    customer_number: '',
+                    street_address: '',
+                    city_state_zip: '',
+                    quantity_included: '',
+                    quantity_needed: '',
+                    to_whom: '',
+                    cost: '',
+                    msrp: '',
+                    unit_cost: '',
+                    unit_price: '',
+                    sale_price: '',
+                    normal_price: '',
+                    photo_p_n: '',
+                    fixed_shipping: 'no',
+                    multiple_fixed_shipping: 'no',
+                    inventory: 0,
+                    gm_affiliation: '',
+                    remanufactured: 'no',
+                    made_in_the_usa: 'no',
+                    sold_as: '',
+                    shipping_method: '',
+                    help: '',
+                    special_handling: '',
+                    h: '',
+                    l: '',
+                    w: '',
+                    weight: '',
+                    slug: '',
+                    sku: '',
+                    new: 'yes',
+                    onSale: 'no',
+                    category: "",
+                    subcategory: '',
+                    subsubcategory:'',
+                    subsubsubcategory:''
+                    
+                };
+                this.selectedImages = [];
+                this.subCategories = []
+                this.formData.subcategory = ''
+                this.subSubCategories = []
+                this.formData.subsubcategory = ''
+                this.subSubSubCategories = []
+                this.formData.subsubsubcategory = ''
                 this.getSingleProduct()
-            // } catch (error) {
-            //     console.error('Error updating product:', error);
-            // }
+            } catch (error) {
+                this.formData = {
+                    product_id: '',
+                    part_type: '',
+                    brand: '',
+                    bkpp_p_n: '',
+                    publish: 'no',
+                    year_1967: false,
+                    year_1968: false,
+                    year_1969: false,
+                    name: '',
+                    description: '',
+                    notes: '',
+                    gm_part_numbers: '',
+                    aim_numbers: '',
+                    years: '',
+                    body_style: '',
+                    trim: '',
+                    interior: '',
+                    engine: '',
+                    transmission: '',
+                    part_manufacturer: '',
+                    manufacturer_part_name: '',
+                    manufacturer_part_number: '',
+                    suppliers_name: '',
+                    suppliers_part_name: '',
+                    suppliers_part_number: '',
+                    email_to_tim: 'no',
+                    email_address: '',
+                    customer_number: '',
+                    street_address: '',
+                    city_state_zip: '',
+                    quantity_included: '',
+                    quantity_needed: '',
+                    to_whom: '',
+                    cost: '',
+                    msrp: '',
+                    unit_cost: '',
+                    unit_price: '',
+                    sale_price: '',
+                    normal_price: '',
+                    photo_p_n: '',
+                    fixed_shipping: 'no',
+                    multiple_fixed_shipping: 'no',
+                    inventory: 0,
+                    gm_affiliation: '',
+                    remanufactured: 'no',
+                    made_in_the_usa: 'no',
+                    sold_as: '',
+                    shipping_method: '',
+                    help: '',
+                    special_handling: '',
+                    h: '',
+                    l: '',
+                    w: '',
+                    weight: '',
+                    slug: '',
+                    sku: '',
+                    new: 'yes',
+                    onSale: 'no',
+                    category: "",
+                    subcategory: '',
+                    subsubcategory:'',
+                    subsubsubcategory:''
+                    
+                };
+                this.selectedImages = [];
+                this.subCategories = []
+                this.formData.subcategory = ''
+                this.subSubCategories = []
+                this.formData.subsubcategory = ''
+                this.subSubSubCategories = []
+                this.formData.subsubsubcategory = ''
+                this.getSingleProduct()
+                this.$store.dispatch('alert/addAlert',{message:"Error updating product",type:"error"})
+            }
         },
 
         deleteProduct(){

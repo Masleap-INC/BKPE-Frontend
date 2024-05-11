@@ -1,6 +1,6 @@
 <template>
-
-    <div>
+    <LoadingData v-if="$fetchState.pending" />
+    <div v-else>
 
         <!-- Product Actions -->
 
@@ -122,7 +122,7 @@
 
                         <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
                             <li v-for="category in categories" :key="category.id">
-                                <input :id="category.id" class="peer" type="radio" name="category-mobile-menu" :value="category.id" v-model="formData.category">
+                                <input :id="category.id" class="peer" type="radio" name="category" :value="category.id" v-model="formData.category" @input="handleSubCategory(category.id)">
                                 <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
                             </li>
                         </ul>
@@ -135,6 +135,64 @@
 
         </div>
 
+        <div class="flex gap-5 mt-10 w-full">
+            <div class="w-1/3">
+
+                <!-- Heading -->
+
+                <h2 class="block text-xl mb-5">Sub Category </h2>
+
+                <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                        <li v-for="category in subCategories" :key="category.id">
+                            
+                            <input :id="category.id" class="peer" type="radio" name="sub-category" :value="category.id" v-model="formData.subcategory" @input="handleSubSubCategory(category.id)">
+                            <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                        </li>
+                    </ul>
+
+                </ul>
+
+            </div>
+            <div class="w-1/3">
+
+                <!-- Heading -->
+
+                <h2 class="block text-xl mb-5">Sub Sub Category </h2>
+
+                <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                        <li v-for="category in subSubCategories" :key="category.id">
+                            <input :id="category.id" class="peer" type="radio" name="sub-sub-category" :value="category.id" v-model="formData.subsubcategory" @input="handleSubSubSubCategory(category.id)">
+                            <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                        </li>
+                    </ul>
+
+                </ul>
+
+            </div>
+            <div class="w-1/3">
+
+                <!-- Heading -->
+
+                <h2 class="block text-xl mb-5">Sub Sub Sub Category </h2>
+
+                <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+
+                    <ul class="h-[200px] p-2 overflow-auto border-[2px] border-white">
+                        <li v-for="category in subSubSubCategories" :key="category.id">
+                            <input :id="category.id" class="peer" type="radio" name="suv-sub-sub-category" :value="category.id" v-model="formData.subsubsubcategory" >
+                            <label :for="category.id" class="bg:none px-3 py-1 hover:bg-white hover:text-blue-600 peer-checked:bg-white peer-checked:text-blue-600 ">{{ category.name }}</label>
+                        </li>
+                    </ul>
+
+                </ul>
+
+            </div>
+        </div>
+        
         <!-- Vendor Info Section -->
 
         <div class="mt-16">
@@ -687,11 +745,17 @@ export default {
                 sku: '',
                 new: 'yes',
                 onSale: 'no',
-                category: ''
+                category: '',
+                subcategory: '',
+                subsubcategory:'',
+                subsubsubcategory:''
             },
             
             selectedImages: [],
-            categories: []
+            categories: [],
+            subCategories:[],
+            subSubCategories:[],
+            subSubSubCategories:[],
         };
     },
 
@@ -701,7 +765,23 @@ export default {
 
     methods: {
         async getCategories(){
-            this.categories = await this.$axios.$get(`/categories/categories`)
+            this.categories = await this.$axios.$get(`/categories/all-categories`)
+        },
+        handleSubCategory(categoryId){
+            this.subCategories = this.categories.find(category => category.id === categoryId).subcategory_set
+            this.formData.subcategory = ''
+            this.subSubCategories = []
+            this.formData.subsubcategory = ''
+            this.subSubSubCategories = []
+            this.formData.subsubsubcategory = ''
+        },
+        handleSubSubCategory(subCategoryId){
+            this.subSubCategories = this.subCategories.find(category => category.id === subCategoryId).subsubcategory_set
+            this.subSubSubCategories = []
+            this.formData.subsubsubcategory = ''
+        },
+        handleSubSubSubCategory(subSubCategoryId){
+            this.subSubSubCategories = this.subSubCategories.find(category => category.id === subSubCategoryId).subsubsubcategory_set
         },
         handleFileSelect(event) {
             const files = event.target.files;
@@ -809,16 +889,24 @@ export default {
                 formDataToSend.append('new', this.formData.new);
                 formDataToSend.append('onSale', this.formData.onSale);
                 formDataToSend.append('category', this.formData.category);
-                
+
+                if(this.formData.subcategory !== ''){
+                    formDataToSend.append('subcategory', this.formData.subcategory);
+                }
+
+                if(this.formData.subsubcategory !== ''){
+                    formDataToSend.append('subsubcategory', this.formData.subsubcategory);
+                }
+
+                if(this.formData.subsubcategory !== ''){
+                    formDataToSend.append('subsubsubcategory', this.formData.subsubsubcategory);
+                }
+    
                 for (let i = 0; i < this.selectedImages.length; i++) {
                     formDataToSend.append('images', this.selectedImages[i].file);
                 }
 
-                await this.$axios.post('/products/add-product/', formDataToSend,{
-                    headers:{
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
+                await this.$axios.post('/products/add-product/', formDataToSend);
 
                 this.formData = {
                     product_id: '',
@@ -879,13 +967,95 @@ export default {
                     sku: '',
                     new: 'yes',
                     onSale: 'no',
-                    category: ""
+                    category: "",
+                    subcategory: '',
+                    subsubcategory:'',
+                    subsubsubcategory:''
+                    
                 };
                 this.selectedImages = [];
-                alert('Form submitted successfully');
+                this.subCategories = []
+                this.formData.subcategory = ''
+                this.subSubCategories = []
+                this.formData.subsubcategory = ''
+                this.subSubSubCategories = []
+                this.formData.subsubsubcategory = ''
+                this.$store.dispatch('alert/addAlert',{message:"Product created successfully",type:"success"})
             } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Error submitting form');
+                this.formData = {
+                    product_id: '',
+                    part_type: '',
+                    brand: '',
+                    bkpp_p_n: '',
+                    publish: 'no',
+                    year_1967: false,
+                    year_1968: false,
+                    year_1969: false,
+                    name: '',
+                    description: '',
+                    notes: '',
+                    gm_part_numbers: '',
+                    aim_numbers: '',
+                    years: '',
+                    body_style: '',
+                    trim: '',
+                    interior: '',
+                    engine: '',
+                    transmission: '',
+                    part_manufacturer: '',
+                    manufacturer_part_name: '',
+                    manufacturer_part_number: '',
+                    suppliers_name: '',
+                    suppliers_part_name: '',
+                    suppliers_part_number: '',
+                    email_to_tim: 'no',
+                    email_address: '',
+                    customer_number: '',
+                    street_address: '',
+                    city_state_zip: '',
+                    quantity_included: '',
+                    quantity_needed: '',
+                    to_whom: '',
+                    cost: '',
+                    msrp: '',
+                    unit_cost: '',
+                    unit_price: '',
+                    sale_price: '',
+                    normal_price: '',
+                    photo_p_n: '',
+                    fixed_shipping: 'no',
+                    multiple_fixed_shipping: 'no',
+                    inventory: 0,
+                    gm_affiliation: '',
+                    remanufactured: 'no',
+                    made_in_the_usa: 'no',
+                    sold_as: '',
+                    shipping_method: '',
+                    help: '',
+                    special_handling: '',
+                    h: '',
+                    l: '',
+                    w: '',
+                    weight: '',
+                    slug: '',
+                    sku: '',
+                    new: 'yes',
+                    onSale: 'no',
+                    category: "",
+                    subcategory: '',
+                    subsubcategory:'',
+                    subsubsubcategory:''
+                    
+                };
+                this.selectedImages = [];
+                this.subCategories = []
+                this.formData.subcategory = ''
+                this.subSubCategories = []
+                this.formData.subsubcategory = ''
+                this.subSubSubCategories = []
+                this.formData.subsubsubcategory = ''
+                this.$store.dispatch('alert/addAlert',{message:"Error submitting form",type:"error"})
+
             }
         },
         productPage () {

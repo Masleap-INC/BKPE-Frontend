@@ -2,7 +2,7 @@
   <div v-if="alerts.length" class="alerts">
     <div v-for="(alert, index) in alerts" :key="index" :class="['alert', alert.type]">
       {{ alert.message }}
-      <button @click="dismissAlert(index)">X</button>
+      <button @click="dismissAlert(index)"> X </button>
     </div>
   </div>
 </template>
@@ -43,7 +43,7 @@
   }
 
   .success {
-    background-color: #007bff; /* Deep blue for success */
+    background-color: rgb(36, 143, 36); /* Deep blue for success */
   }
 
   .error {

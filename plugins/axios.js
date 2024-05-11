@@ -8,10 +8,10 @@ export default function ({ $axios, redirect, store }) {
       if (error.response.status === 401) {
         // Redirect to login page or handle unauthorized access
         store.dispatch("auth/logout")
-        redirect('/')
-        store.dispatch('alert/addAlert',{message:error.response.data.detail,type:"error"})
+        // redirect('/')
+        store.dispatch('alert/addAlert',{message:"Please login to access all the featrues",type:"error"})
       }else{
-        redirect('/')
+        // redirect('/')
         store.dispatch('alert/addAlert',{message:"An error occured",type:"error"})
       }
       

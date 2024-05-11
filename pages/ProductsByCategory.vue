@@ -58,16 +58,16 @@
 
                             <!-- Product Brand -->
 
-                            <h2 class="block text-md font-bold">{{product.part_manufacturer}}</h2>
+                            <h2 class="block text-md font-bold">{{product.brand}}</h2>
 
                             <!-- Product Price -->
 
-                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.unit_price}}</h2>
+                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.normal_price}}</h2>
 
                             <!-- Sale Price -->
 
                             <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"> ${{product.sale_price}}</h2>
-                            <h2 v-else class="block text-red-700 my-1 text-xl font-bold">${{product.unit_price}}</h2>
+                            <h2 v-else class="block text-red-700 my-1 text-xl font-bold">${{product.normal_price}}</h2>
 
                         </NuxtLink>
                     </div>
