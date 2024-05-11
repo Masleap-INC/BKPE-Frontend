@@ -272,6 +272,7 @@ export default {
         if(item.name !== ""){
             try {
                 await this.$axios.$put(`/categories/categories/${item.id}/`, { name: item.name });
+                this.$store.dispatch('alert/addAlert',{message:"Category updated successfully",type:"success"})
             } catch (error) {
                 console.error('Error updating category:', error);
             }
@@ -280,6 +281,7 @@ export default {
     },
     async deleteCategory(item) {
         try {
+            
             await this.$axios.$delete(`/categories/categories/${item.id}/`);
             const newCategoryList = this.categories.filter((category) => category.id !== item.id)
             this.categories = newCategoryList
@@ -302,6 +304,7 @@ export default {
         if(item.name !== "" && item.category_id !== ''){
             try {
                 await this.$axios.$put(`/categories/details-subcategories/${item.id}/`, {name:item.name,category_id:item.category_id});
+                this.$store.dispatch('alert/addAlert',{message:"Sub Category updated successfully",type:"success"})
             } catch (error) {
                 console.error('Error updating category:', error);
             }
@@ -310,6 +313,7 @@ export default {
     },
     async deleteSubCategory(item) {
         try {
+            
             await this.$axios.$delete(`/categories/details-subcategories/${item.id}/`);
             const newSubCategoryList = this.subCategories.filter((category) => category.id !== item.id)
             this.subCategories = newSubCategoryList
@@ -328,6 +332,7 @@ export default {
         if(item.name !== "" && item.subcategory_id !== ''){
             try {
                 await this.$axios.$put(`/categories/details-subsubcategories/${item.id}/`,{name:item.name,subcategory_id:item.subcategory_id});
+                this.$store.dispatch('alert/addAlert',{message:"Sub Sub Category updated successfully",type:"success"})
             } catch (error) {
                 console.error('Error updating category:', error);
             }
@@ -336,6 +341,7 @@ export default {
     },
     async deleteSubSubCategory(item) {
         try {
+            
             await this.$axios.$delete(`/categories/details-subsubcategories/${item.id}/`);
             const newSubSubCategoryList = this.subSubCategories.filter((category) => category.id !== item.id)
             this.subSubcategories = newSubSubCategoryList
@@ -351,6 +357,7 @@ export default {
         if(item.name !== "" && item.subsubcategory_id !== ''){
             try {
                 await this.$axios.$put(`/categories/details-subsubsubcategories/${item.id}/`, {name:item.name,subsubcategory_id:item.subsubcategory_id});
+                this.$store.dispatch('alert/addAlert',{message:"Sub Sub Sub Category updated successfully",type:"success"})
             } catch (error) {
                 console.error('Error updating category:', error);
             }
@@ -359,6 +366,7 @@ export default {
     },
     async deleteSubSubSubCategory(item) {
         try {
+            
             await this.$axios.$delete(`/categories/details-subsubsubcategories/${item.id}/`);
             const newSubSubSubCategoryList = this.subSubSubcategories.filter((category) => category.id !== item.id)
             this.subSubSubcategories = newSubSubSubCategoryList

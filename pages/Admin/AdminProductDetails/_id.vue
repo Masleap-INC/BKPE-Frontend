@@ -59,10 +59,7 @@
                                 <!-- Update Button -->
 
                                 <button @click="updateProduct" class=" inline-block mr-1 text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Update</button>
-
-                                <!-- Delete Button -->
-
-                                <button @click = "deleteProduct" class=" inline-block text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300">Delete</button>
+                               
                             </div>
 
                             <!-- Product ID & Inventory -->
@@ -1017,17 +1014,16 @@ export default {
                 formDataToSend.append('onSale', this.formData.onSale);
                 formDataToSend.append('category', this.formData.category);
                 console.log(this.formData)
-                if(this.formData.subcategory !== ''){
+                
                     formDataToSend.append('subcategory', this.formData.subcategory);
-                }
-
-                if(this.formData.subsubcategory !== ''){
+            
+             
                     formDataToSend.append('subsubcategory', this.formData.subsubcategory);
-                }
+              
 
-                if(this.formData.subsubcategory !== ''){
+             
                     formDataToSend.append('subsubsubcategory', this.formData.subsubsubcategory);
-                }
+             
                 // Append other product data fields...
 
                 // Append existing image IDs (assuming the API expects IDs)
@@ -1196,12 +1192,6 @@ export default {
             }
         },
 
-        deleteProduct(){
-
-            const editedProductsList = this.products.filter(product => product.id !== this.formData.id)
-            this.$store.dispatch('products/getProductListAfterDeleteAdmin',{editedProductsList,productId:this.formData.id})
-
-        },
 
         goBack() {
             this.$router.back();

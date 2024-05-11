@@ -56,9 +56,19 @@
 
                     <!-- Product Category -->
 
-                    <span class="block text-xl font-normal mb-10">
+                    <span class="block text-xl font-normal ">
                     <b>Category:</b> {{product.category}}
                     </span>
+                    <span class="block text-xl font-normal ">
+                    <b>Sub Category:</b> {{product.subcategory}}
+                    </span>
+                    <span class="block text-xl font-normal ">
+                    <b>Sub Sub Category:</b> {{product.subsubcategory}}
+                    </span>
+                    <span class="block text-xl font-normal ">
+                    <b>Sub Sub Sub Category:</b> {{product.subsubsubcategory}}
+                    </span>
+
 
                 </div>
                 </div>
@@ -554,7 +564,23 @@ export default {
             const category = await this.$axios.$get(`/categories/categories-info/?id=${data.category}`)
 
             this.product.category = category.name
-        
+
+            if(data.subcategory !== null){
+                const subCategory = await this.$axios.$get(`/categories/details-subcategories/${data.subcategory}`)
+                this.product.subcategory = subCategory.name
+            }
+
+            if(data.subsubcategory !== null){
+                const subSubCategory = await this.$axios.$get(`/categories/details-subsubcategories/${data.subsubcategory}`)
+                this.product.subsubcategory = subSubCategory.name
+            }
+
+            if(data.subsubsubcategory !== null){
+                const subSubSubCategory = await this.$axios.$get(`/categories/details-subsubsubcategories/${data.subsubsubcategory}`)
+                this.product.subsubsubcategory = subSubSubCategory.name
+            }
+
+            
             const similarProductsData = await this.$axios.$get(`/products/product-filter/?category=${data.category}&new=${data.new ? 'True' : 'False'}&onSale=${data.onSale ? 'True' : 'False'}&min_price=${parseInt(data.unit_price-1000)}&max_price=${parseInt(data.unit_price+1000)}`)
 
             this.similarProducts  = similarProductsData.slice(0,5).filter((product) => product.id !== data.id)
