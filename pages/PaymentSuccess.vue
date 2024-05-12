@@ -49,7 +49,7 @@ export default {
     methods: {
         async orderPlaced(orderDetails){
             try{
-                await this.$axios.$post(`/order/complete-order/`,{
+                const data = await this.$axios.$post(`/order/complete-order/`,{
                     vat:orderDetails.vat,
                     shipping:orderDetails.shipping,
                     sub_total:orderDetails.sub_total,
@@ -70,12 +70,14 @@ export default {
                 localStorage.setItem('cart_id',uniqueId)
                 localStorage.removeItem('cart')
                 this.$store.dispatch('cart/emptyCart')
+                await this.$axios.$post(`/chat/notifications/`,{
+                    message_description:'A order is places. Order ID: '+data.id,
+                    seen: false
+                })
             }catch(err){
                 console.log(err)
                 this.$router.push('/');
             }
-            
-
         },
         goBack() {
             this.$router.push('/');

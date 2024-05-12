@@ -276,7 +276,7 @@ export default {
                 if(this.orderDetails.selectedPaymentMethod === 'cash-on-delivery'){
 
                     try{
-                        await this.$axios.$post(`/order/complete-order/`,{
+                        const data = await this.$axios.$post(`/order/complete-order/`,{
                             vat:this.orderDetails.vat,
                             shipping:this.orderDetails.shipping,
                             sub_total:this.totalPrice,
@@ -297,7 +297,12 @@ export default {
                         localStorage.setItem('cart_id',uniqueId)
                         localStorage.removeItem('cart')
                         this.$store.dispatch('cart/emptyCart')
+                        await this.$axios.$post(`/chat/notifications/`,{
+                            message_description:'A order is places. Order ID: '+data.id,
+                            seen: false
+                        })
                         this.$router.push('/')
+
                     }catch(err){
                         console.log(err)
                         this.$router.push('/');

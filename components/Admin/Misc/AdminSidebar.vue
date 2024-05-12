@@ -97,7 +97,7 @@
                   class="h-10 w-10 inline-block"
                 />
 
-                <h2 class="inline-block align-middle">Notifications</h2>
+                <h2 class="inline-block align-middle">Notifications <span style="color: red;">{{ unseenCount }}</span></h2>
               </li>
             </NuxtLink>
 
@@ -160,11 +160,20 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         data() {
             return {
                 showSidebar: false
             }
+        },
+        fetch(){
+          this.$store.dispatch('notifications/getNotifications')
+        },
+        computed:{
+          ...mapGetters({
+              unseenCount:'notifications/getUnseenCount'
+          }),
         },
         methods: {
             toggleSidebar() {
