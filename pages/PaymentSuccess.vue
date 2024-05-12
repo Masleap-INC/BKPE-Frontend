@@ -71,7 +71,7 @@ export default {
                 localStorage.removeItem('cart')
                 this.$store.dispatch('cart/emptyCart')
                 await this.$axios.$post(`/chat/notifications/`,{
-                    message_description:'A order is places. Order ID: '+data.id,
+                    message_description:'A order is placed. Order ID: '+data.id,
                     seen: false
                 })
             }catch(err){
