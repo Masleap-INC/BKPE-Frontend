@@ -24,12 +24,12 @@
         <!-- Upload Button -->
 
         <div class="w-fit mx-auto">
-          <button
+          <!-- <button
             class="bg-white text-blue-600 py-2 px-4 rounded-full mt-5"
             @click="UploadPhoto"
           >
             Change
-          </button>
+          </button> -->
 
           <input
             id="profile-photo-upload"

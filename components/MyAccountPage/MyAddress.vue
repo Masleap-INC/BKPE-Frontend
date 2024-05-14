@@ -118,7 +118,7 @@
               class="w-full py-2 text-2xl text-white bg-transparent border-2 border-white rounded-md hover:bg-blue-600 hover:text-white duration-300"
               type="submit"
             >
-              Set
+              Save
             </button>
           </div>
         </form>

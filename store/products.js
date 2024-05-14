@@ -53,7 +53,6 @@ export default {
             state.saleProducts = saleProducts
         },
         SET_PRODUCTS(state,products){
-            console.log("game")
             state.products = products
         },
         SET_FILTERS(state,filters){
@@ -78,7 +77,6 @@ export default {
             commit('SET_FILTERS',filters)
             try {
                 const data = await this.$axios.$get(`products/product-filter-specific-attribute/?category=${filters.category}&year_${filters.year}=True&type=${filters.type}`)
-                console.log(data)
                 commit('SET_FILTER_PRODUCTS',data)
                 dispatch('CLoadingStateChange',false)
             }catch(e){  
@@ -96,7 +94,6 @@ export default {
         },
 
         async getProductListAfterDeleteAdmin({commit},{editedProductsList,productId}){ 
-            console.log(productId)
             await this.$axios.delete(`/products/product-details/${productId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`

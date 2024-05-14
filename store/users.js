@@ -40,7 +40,6 @@ export default {
          
             }catch(e){
                 dispatch('loadingStateChange',false)
-                console.log(e)
             }
         },
         loadingStateChange({commit},bool){

@@ -72,7 +72,6 @@ export default {
             
             try {
                 const data = await this.$axios.$get(`/user/profile/?token=${token}`)
-                console.log(data)
                 commit('SET_USER',data)
                 dispatch('cart/loadCart', null, { root: true });
                 dispatch('loadingStateChange',false) 

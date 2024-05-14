@@ -58,7 +58,6 @@ export default {
     actions:{
         async addToCart({commit},data){
             const response = await this.$axios.$post(`/order/add-to-cart/`,data.cart)
-            console.log(response)
             commit('ADD_TO_CART',{product:data.product,quantity:data.quantity,id:response.id})
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
@@ -66,16 +65,13 @@ export default {
         async incItemQty({commit},{idx,id,qty,price}){
             const newQty = qty + 1
             const newPrice = newQty * price
-            console.log(newPrice)
             const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:newQty,price:newPrice.toFixed(2)})
-            console.log(response)
             commit('INC_ITEM_QTY',idx)
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
         },
         async decItemQty({commit},{idx,id,qty,price}){
             const response = await this.$axios.$put(`/order/update-cart/${id}/`,{quantity:qty-1,price:(price*qty).toFixed(2)})
-            console.log(response)
             commit('DEC_ITEM_QTY',idx)
             commit('SET_TOTAL_PRICE')
             commit('ADD_CART_LOCALSTORAGE')
