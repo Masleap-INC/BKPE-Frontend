@@ -77,7 +77,7 @@
                                 </button>
                             </NuxtLink>
 
-                            <button @click="() => deleteProduct(product.id,index)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                            <button @click="setItemToDelete(product.id,index)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                 Delete
                             </button>
                             <NuxtLink :to="{name:'Admin-AdminProductReview-id',params:{id:product.id}}">
@@ -103,6 +103,19 @@
 
     </div>
 
+    <!-- Delete Modal -->
+    <!-- <DeleteModal v-if="showDeleteModal" :itemToDelete="itemToDelete" @delete="deleteCategory" @close="closeDeleteModal" /> -->
+    <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white rounded-lg p-8 max-w-md">
+            <p class="text-lg font-semibold mb-4 text-gray-800">Confirm Deletion</p>
+            <p class="text-gray-700 mb-6">Are you sure you want to delete?</p>
+            <div class="flex justify-end">
+                <button class="px-4 py-2 bg-red-500 text-white rounded mr-2 hover:bg-red-600" @click="confirmDelete">Delete</button>
+                <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" @click="cancelDelete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
   </div>
 </template>
 
@@ -114,7 +127,9 @@ export default {
             searchKey:'',
             nextPage:null,
             previousPage:null,
-            products:[]
+            products:[],
+            showDeleteModal: false,
+            itemToDelete: null
         }
     },
     async fetch(){
@@ -122,6 +137,21 @@ export default {
     },
  
     methods: {
+        setItemToDelete(id,idx) {
+            this.showDeleteModal = true; 
+            this.itemToDelete = {id:id,idx:idx};
+        },
+        confirmDelete(){
+
+            this.deleteProduct(this.itemToDelete.id,this.itemToDelete.idx)
+
+            this.showDeleteModal = false
+            this.itemToDelete = null                                                        
+        },
+        cancelDelete() {
+            this.showDeleteModal = false;
+            this.itemToDelete = null;
+        },
         async getProducts(url = '/products/') {
             try {
                 const data = await this.$axios.$get(url);

@@ -69,7 +69,7 @@
                                             <button @click="openModal(item)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                                 Details
                                             </button>
-                                            <button @click="() => deleteCategory(item)" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
+                                            <button @click="setItemToDelete({item:item,type:'cat'})" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300 rounded-xl py-1 px-2 font-semibold">
                                                 Delete
                                             </button>
                                         </td>
@@ -185,7 +185,7 @@
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
                                     <div class="flex mb-5">
                                         <button @click="updateSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
-                                        <button @click="deleteSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
+                                        <button @click="setItemToDelete({item:item,type:'sub'})" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
                                     
                                 </div>
@@ -228,7 +228,7 @@
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
                                     <div class="flex mb-5">
                                         <button @click="updateSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
-                                        <button @click="deleteSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
+                                        <button @click="setItemToDelete({item:item,type:'subsub'})" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
                                     
                                 </div>
@@ -271,7 +271,7 @@
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
                                     <div class="flex mb-5">
                                         <button @click="updateSubSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
-                                        <button @click="deleteSubSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
+                                        <button @click="setItemToDelete({item:item,type:'subsubsub'})" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
                                     
                                 </div>
@@ -287,6 +287,20 @@
             </div>
         </div>
 
+        <!-- Delete Modal -->
+        <!-- <DeleteModal v-if="showDeleteModal" :itemToDelete="itemToDelete" @delete="deleteCategory" @close="closeDeleteModal" /> -->
+        <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg p-8 max-w-md">
+                <p class="text-lg font-semibold mb-4 text-gray-800">Confirm Deletion</p>
+                <p class="text-gray-700 mb-6">Deleting a category will also delete it's sub cateogries and it's products.</p>
+                <p class="text-gray-700 mb-6">Are you sure you want to delete?</p>
+                <div class="flex justify-end">
+                    <button class="px-4 py-2 bg-red-500 text-white rounded mr-2 hover:bg-red-600" @click="confirmDelete">Delete</button>
+                    <button class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" @click="cancelDelete">Cancel</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
@@ -297,9 +311,11 @@
 <script>
 // import {mapGetters} from 'vuex'
 import AdminSidebar from '~/components/Admin/Misc/AdminSidebar.vue'
+// import DeleteModal from '../DeleteModal.vue';
 export default {
   components: {
     AdminSidebar,
+    // DeleteModal
   },
   data() {
     return {
@@ -322,6 +338,8 @@ export default {
       selectedSubCategories:[],
       selectedSubSubCategories:[],
       selectedSubSubSubCategories:[],
+      showDeleteModal: false,
+      itemToDelete: null
     };
   },
   mounted(){
@@ -348,6 +366,31 @@ export default {
     }
   },
   methods:{
+    setItemToDelete(itemOrId) {
+        this.showDeleteModal = true; 
+        this.itemToDelete = itemOrId;
+
+    },
+    confirmDelete(){
+      if(this.itemToDelete.type === 'cat'){
+        this.deleteCategory(this.itemToDelete.item)
+      }
+      if(this.itemToDelete.type === 'sub'){
+        this.deleteSubCategory(this.itemToDelete.item)
+      }
+      if(this.itemToDelete.type === 'subsub'){
+        this.deleteSubSubCategory(this.itemToDelete.item)
+      }
+      if(this.itemToDelete.type === 'subsubsub'){
+        this.deleteSubSubSubCategory(this.itemToDelete.item)
+      }
+      this.showDeleteModal = false
+      this.itemToDelete = null
+    },
+    cancelDelete() {
+      this.showDeleteModal = false;
+      this.itemToDelete = null;
+    },
     openModal(category) {
         this.selectedCategory = category;
         this.showModal = true;
@@ -504,7 +547,7 @@ export default {
             const subSubSubCategories = await this.$axios.$get('/categories/sub-sub-sub-categories');
             this.subSubSubCategories = subSubSubCategories.slice().reverse()
 
-            this.selectedSubCategories = this.subCategories.filter(item => item.category_id === item.id)
+            this.selectedSubCategories = this.subCategories
 
             this.subCategoryId = this.selectedSubCategories > 0 ?  this.selectedSubCategories[0].id : ''
 
