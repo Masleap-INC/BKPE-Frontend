@@ -90,7 +90,7 @@
 
         <!-- Modal -->
         <div v-if="showModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center">
-            <div class="bg-[url('~/assets/page-background.png')] bg-fixed bg-cover bg-no-repeat text-white rounded-lg p-8  relative h-[90%]">
+            <div class="bg-[#161A2F] overflow-y-auto  text-white rounded-lg p-8 overflow-hidden relative h-[80%] py-10">
                 <div class="absolute top-0 right-0 p-4">
                     <button @click="closeModal" class="text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,18 +148,18 @@
 
 
 
-                <div class="overflow-y-auto h-[80%] mt-8">
+                <div class="mt-8">
 
                     <!-- Sub Categories -->
 
-                    <div v-if="sub" >
+                    <div  v-if="sub" class="w-full" >
                         
-                        <div class="flex flex-col overflow-auto items-center justify-center">
+                        <div class=" overflow-auto ">
                             <!-- Header -->
-                            <h2 class=" text-white text-xl font-semibold mb-8">Create Sub Category</h2>
+                            <h2 class=" text-white text-xl font-semibold text-center mb-8">Create Sub Category</h2>
 
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5 mb-10">
+                            <div class="">
                                 <!-- Input Boxes -->
                                 <div class="mx-7">
                                     <label class="block mb-2" for="sub-category">Parent Category</label>
@@ -172,9 +172,9 @@
                                 </div>
                             </div>
 
-                            <h2 class=" text-white text-xl font-semibold mb-5">Sub Category List</h2>
+                            <h2 class=" text-white text-xl font-semibold text-center mb-5">Sub Category List</h2>
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5">
+                            <div class="">
                                 <!-- Input Boxes -->
                                 <div v-for="item in selectedSubCategories" :key="item.id" class="mx-6">
                                     <select v-model="item.category_id" name="s-sub-category" class="w-full px-3 py-1 mb-2 text-black focus:outline-none">
@@ -183,7 +183,7 @@
                                         </option>
                                     </select>
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
-                                    <div class="flex">
+                                    <div class="flex mb-5">
                                         <button @click="updateSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
                                         <button @click="deleteSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
@@ -197,14 +197,14 @@
 
                     <!-- Sub Sub Categories -->
 
-                    <div v-if="subSub">
+                    <div v-if="subSub" class="w-full">
                         
-                        <div class="flex flex-col overflow-auto items-center justify-center">
+                        <div class=" overflow-auto ">
                             <!-- Header -->
-                            <h2 class=" text-white text-xl font-semibold mb-8">Create Sub Sub Category</h2>
+                            <h2 class=" text-white text-xl font-semibold text-center mb-8">Create Sub Sub Category</h2>
 
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5 mb-10">
+                            <div class="mb-10">
                                 <!-- Input Boxes -->
                                 <div class="mx-7">
                                     <label class="block mb-2" for="sub-category">Parent Category</label>
@@ -217,16 +217,16 @@
                                 </div>
                             </div>
 
-                            <h2 class=" text-white text-xl font-semibold mb-5">Sub Sub Category List</h2>
+                            <h2 class=" text-white text-xl font-semibold text-center mb-5">Sub Sub Category List</h2>
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5">
+                            <div class="">
                                 <!-- Input Boxes -->
                                 <div v-for="item in selectedSubSubCategories" :key="item.id" class="mx-6">
                                     <select v-model="item.subcategory_id"  name="s-sub-sub-category"  class="w-full px-3 py-1 mb-2 text-black focus:outline-none">
                                         <option v-for="category in selectedSubCategories" :key="category.id" :value="category.id" :selected="category.id === item.subcategory_id">{{ category.name }}</option>
                                     </select>
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
-                                    <div class="flex">
+                                    <div class="flex mb-5">
                                         <button @click="updateSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
                                         <button @click="deleteSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
@@ -240,14 +240,14 @@
 
                     <!-- Sub Sub Sub Categories -->
 
-                    <div v-if="subSubSub">
+                    <div v-if="subSubSub" class="w-full">
                         
-                        <div class="flex flex-col overflow-auto items-center justify-center h-auto ">
+                        <div class=" overflow-auto items-center justify-center h-auto ">
                             <!-- Header -->
-                            <h2 class=" text-white text-xl font-semibold mb-8">Create Sub Sub Sub Category</h2>
+                            <h2 class=" text-white text-xl font-semibold text-center mb-8">Create Sub Sub Sub Category</h2>
 
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5 mb-10">
+                            <div class="mb-10">
                                 <!-- Input Boxes -->
                                 <div class="mx-7">
                                     <label class="block mb-2" for="sub-category">Parent Category</label>
@@ -260,16 +260,16 @@
                                 </div>
                             </div>
 
-                            <h2 class=" text-white text-xl font-semibold mb-5">Sub Sub Sub Category List</h2>
+                            <h2 class=" text-white text-xl text-center font-semibold mb-5">Sub Sub Sub Category List</h2>
                             <!-- Inputs and Buttons -->
-                            <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5">
+                            <div class="">
                                 <!-- Input Boxes -->
                                 <div v-for="item in selectedSubSubSubCategories" :key="item.id" class="mx-6">
                                     <select v-model="item.subsubcategory_id"  name="s-sub-sub-sub-category"  class="w-full px-3 py-1 mb-2 text-black focus:outline-none">
                                         <option v-for="category in selectedSubSubCategories" :key="category.id" :value="category.id" :selected="category.id === item.subsubcategory_id">{{ category.name }}</option>
                                     </select>
                                     <input v-model="item.name" type="text" class="w-full px-3 py-1 text-black focus:outline-none" :placeholder="item.name">
-                                    <div class="flex">
+                                    <div class="flex mb-5">
                                         <button @click="updateSubSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Update</button>
                                         <button @click="deleteSubSubSubCategory(item)" class="text-white text-sm px-2 py-1 border-2 border-white hover:bg-white hover:text-blue-600 duration-300 w-full mt-2">Delete</button>
                                     </div>
@@ -283,6 +283,7 @@
                     </div>
 
                 </div>
+            
             </div>
         </div>
 
