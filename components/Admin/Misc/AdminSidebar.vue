@@ -114,7 +114,7 @@
               </li>
             </NuxtLink>
 
-            <NuxtLink to="/Admin/AdminCategoryPage">
+            <NuxtLink to="/Admin/AdminCategoriesPage">
               <li
                 class="mt-3 text-xl py-3 font-semibold border-b-2 border-transparent hover:border-white duration-300"
               >

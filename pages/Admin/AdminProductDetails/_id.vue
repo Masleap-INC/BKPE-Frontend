@@ -551,7 +551,7 @@
 
                                     <div class="">
                                         <label class="block mb-2 text-xl" for="made-in-the-usa">Made in the USA ?</label>
-                                        <select v-model="made_in_the_usa" name="made-in-the-usa" class="w-full px-3 py-2 text-black focus:outline-none">
+                                        <select v-model="formData.made_in_the_usa" name="made-in-the-usa" class="w-full px-3 py-2 text-black focus:outline-none">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -786,13 +786,13 @@ export default {
                 customer_number: '',
                 street_address: '',
                 city_state_zip: '',
-                quantity_included: '',
-                quantity_needed: '',
+                quantity_included: 0,
+                quantity_needed: 0,
                 to_whom: '',
-                cost: '',
-                msrp: '',
-                unit_cost: '',
-                unit_price: '',
+                cost: 0,
+                msrp: 0,
+                unit_cost: 0,
+                unit_price: 0,
                 sale_price: '',
                 normal_price: '',
                 photo_p_n: '',
@@ -809,7 +809,7 @@ export default {
                 h: '',
                 l: '',
                 w: '',
-                weight: '',
+                weight: 0,
                 slug: '',
                 sku: '',
                 new: 'yes',
@@ -944,7 +944,7 @@ export default {
                 reader.readAsDataURL(file);
             }
 
-            console.log(this.selectedImages)
+
         },
 
 
@@ -1014,15 +1014,27 @@ export default {
                 formDataToSend.append('onSale', this.formData.onSale);
                 formDataToSend.append('category', this.formData.category);
                 console.log(this.formData)
-                
+                if( this.formData.subcategory === null){
+                    formDataToSend.append('subcategory', '');
+                }else{
                     formDataToSend.append('subcategory', this.formData.subcategory);
-            
-             
-                    formDataToSend.append('subsubcategory', this.formData.subsubcategory);
-              
+                }
 
-             
+                if( this.formData.subsubcategory === null){
+                    formDataToSend.append('subsubcategory', '');
+                }else{
+                    formDataToSend.append('subsubcategory', this.formData.subsubcategory);
+                }
+
+                if( this.formData.subsubsubcategory === null){
+                    formDataToSend.append('subsubsubcategory', '');
+                }else{
                     formDataToSend.append('subsubsubcategory', this.formData.subsubsubcategory);
+                }
+
+                for (const pair of formDataToSend.entries()) {
+                    console.log(pair[0]+ ' - ' + pair[1]); 
+                }
              
                 // Append other product data fields...
 
@@ -1072,15 +1084,15 @@ export default {
                     customer_number: '',
                     street_address: '',
                     city_state_zip: '',
-                    quantity_included: '',
-                    quantity_needed: '',
+                    quantity_included: 0,
+                    quantity_needed: 0,
                     to_whom: '',
-                    cost: '',
-                    msrp: '',
-                    unit_cost: '',
-                    unit_price: '',
-                    sale_price: '',
-                    normal_price: '',
+                    cost: 0,
+                    msrp: 0,
+                    unit_cost: 0,
+                    unit_price: 0,
+                    sale_price: 0,
+                    normal_price: 0,
                     photo_p_n: '',
                     fixed_shipping: 'no',
                     multiple_fixed_shipping: 'no',
@@ -1095,7 +1107,7 @@ export default {
                     h: '',
                     l: '',
                     w: '',
-                    weight: '',
+                    weight: 0,
                     slug: '',
                     sku: '',
                     new: 'yes',
@@ -1146,15 +1158,15 @@ export default {
                     customer_number: '',
                     street_address: '',
                     city_state_zip: '',
-                    quantity_included: '',
-                    quantity_needed: '',
+                    quantity_included: 0,
+                    quantity_needed: 0,
                     to_whom: '',
-                    cost: '',
-                    msrp: '',
-                    unit_cost: '',
-                    unit_price: '',
-                    sale_price: '',
-                    normal_price: '',
+                    cost: 0,
+                    msrp: 0,
+                    unit_cost: 0,
+                    unit_price: 0,
+                    sale_price: 0,
+                    normal_price: 0,
                     photo_p_n: '',
                     fixed_shipping: 'no',
                     multiple_fixed_shipping: 'no',
@@ -1169,7 +1181,7 @@ export default {
                     h: '',
                     l: '',
                     w: '',
-                    weight: '',
+                    weight: 0,
                     slug: '',
                     sku: '',
                     new: 'yes',

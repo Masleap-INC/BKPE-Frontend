@@ -23,7 +23,7 @@
 
                 <!-- Logout Button -->
 
-                <div class=" col-span-1 h-fit my-auto w-fit mx-auto lg:mr-0">
+                <div v-if="user.role === 'admin'" class=" col-span-1 h-fit my-auto w-fit mx-auto lg:mr-0">
 
                     <button class="px-3 py-2 border-2 border-white text-white hover:bg-white hover:text-blue-600 duration-300" @click="dashboard">Dashboard</button>
 

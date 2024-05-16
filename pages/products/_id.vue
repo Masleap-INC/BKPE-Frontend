@@ -317,14 +317,14 @@
 
                          
 
-                            <h2 class="block text-xl font-normal my-3">{{product.part_manufacturer}}</h2>
+                            <h2 class="block text-xl font-normal my-3">{{product.brand}}</h2>
 
-                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.unit_price}}</h2>
+                            <h2 v-if="product.onSale" class="block my-1 text-xl text-gray-500 font-light line-through">${{product.normal_price}}</h2>
 
-                            <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.unit_price}}</h2>
+                            <h2 v-if="product.onSale" class="block text-red-700 my-1 text-xl font-bold"><b>Price:</b> ${{product.sale_price}}</h2>
                         
                             <h2 v-else class="block text-red-700 my-3 text-xl font-bold">
-                                <b>Price:</b> ${{product.unit_price}}
+                                <b>Price:</b> ${{product.normal_price}}
                             </h2>
                             </NuxtLink >
                         </div> 

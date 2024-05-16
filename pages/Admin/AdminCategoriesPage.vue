@@ -441,7 +441,8 @@ export default {
 
     },
     async createCategory(){
-        if(this.category !== ""){
+        
+        if(this.category !== "" ){
             try{
                 const res = await this.$axios.$post(`/categories/categories/`,{name:this.category})
                 this.categories = [res, ...this.categories];
@@ -454,9 +455,10 @@ export default {
         }    
     },
     async createSubCategory(){
-        if(this.subCategory !== ""){
+        if(this.subCategory !== "" && this.categoryId !== ''){
             try{
                 const res = await this.$axios.$post(`/categories/sub-categories/`,{name:this.subCategory,category_id:this.categoryId})
+                this.subCategories = [res, ...this.subCategories]
                 this.selectedSubCategories = [res, ...this.selectedSubCategories];
                 this.subCategory = '';
 
@@ -466,9 +468,10 @@ export default {
         }    
     },
     async createSubSubCategory(){
-        if(this.subSubCategory !== ""){
+        if(this.subSubCategory !== "" && this.subCategoryId !== ''){
             try{
                 const res = await this.$axios.$post(`/categories/sub-sub-categories/`,{name:this.subSubCategory,subcategory_id:this.subCategoryId})
+                this.subSubCategories = [res, ... this.subSubCategories]
                 this.selectedSubSubCategories = [res, ...this.selectedSubSubCategories];
                 this.subSubCategory = '';
 
@@ -479,9 +482,10 @@ export default {
         }    
     },
     async createSubSubSubCategory(){
-        if(this.subSubSubCategory !== ""){
+        if(this.subSubSubCategory !== "" && this.subSubCategoryId !== ''){
             try{
                 const res = await this.$axios.$post(`/categories/sub-sub-sub-categories/`,{name:this.subSubSubCategory,subsubcategory_id:this.subSubCategoryId})
+                this.subSubSubCategories = [res, ... this.subSubSubCategories]
                 this.selectedSubSubSubCategories = [res, ...this.selectedSubSubSubCategories];
                 this.subSubSubCategory = '';
 
