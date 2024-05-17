@@ -35,12 +35,15 @@ export default {
             this.$store.dispatch('alert/addAlert',{message:'Please login', type: 'error'})
         }
 
+        const { paymentIntent } = await this.$stripe.retrievePaymentIntent(localStorage.getItem("client_secret"));
 
-        const data = await this.$axios.$get(`http://54.146.158.4/payment/status/?payment_intent_id=${this.$route.query.payment_intent}`)
+        const data = await this.$axios.$get(`http://54.146.158.4/payment/status/?payment_intent_id=${paymentIntent.id}`)
         if(data.status === "succeeded"){
             this.orderPlaced(data.metadata)
+            localStorage.removeItem("client_secret")
         }else{
             this.$router.push('/')
+            localStorage.removeItem("client_secret")
         }
         
 

@@ -33,7 +33,7 @@ export default {
                 appearance: {}
             },
             confirmParams: {
-                return_url: 'http://www.camaropartsguru.com/PaymentSuccess', // success url
+                return_url: 'http://bkpe-env.s3-website-ap-northeast-1.amazonaws.com/PaymentSuccess', // success url
             },
         }
     },
@@ -76,6 +76,7 @@ export default {
                 &order_status=Placed
                 &email=${this.orderDetails.email}
                 `)
+            localStorage.setItem("client_secret",paymentIntent.clientSecret)
             this.elementsOptions.clientSecret = paymentIntent.clientSecret;
             }catch(err){
                 console.log(err)
