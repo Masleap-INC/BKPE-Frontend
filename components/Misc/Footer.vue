@@ -57,7 +57,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">DREAM LIST PROGRAM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarantee">LOW PRICE GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarntee">LOW PRICE GUARANTEE</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/NeedCustomerService">NEED CUSTOMER SERVICE?</NuxtLink></span>
 
@@ -65,7 +65,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">REPORT A PROBLEM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarantee">SATISFACTION GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarntee">SATISFACTION GUARANTEE</NuxtLink></span>
 
                     </h2>
  

@@ -33,7 +33,7 @@ export default {
                 appearance: {}
             },
             confirmParams: {
-                return_url: 'http://bkpe-env.s3-website-ap-northeast-1.amazonaws.com/PaymentSuccess', // success url
+                return_url: 'http://www.camaropartsguru.com/PaymentSuccess', // success url
             },
         }
     },
