@@ -5,7 +5,7 @@
         <!-- Hero Section -->
 
         <div>
-            <HeroSection />
+            <SecondColumnHeaderSection />
         </div>
 
 
@@ -24,11 +24,11 @@
 
 
 <script>
-import HeroSection from "~/components/HomePage/HeroSection.vue";
+import SecondColumnHeaderSection from "~/components/FooterPages/SecondColumn/SecondColumnHeaderSection.vue";
 import NeedCustomerServiceSection from "~/components/FooterPages/SecondColumn/NeedCustomerService/NeedCustomerServiceSection.vue";
 export default {
     components: {
-    HeroSection,
+    SecondColumnHeaderSection,
     NeedCustomerServiceSection
 }
 };
