@@ -11,7 +11,7 @@
     <!-- Boxes -->
 
     <div
-      class="text-white grid grid-flow-row-dense lg:grid-cols-3 lg:gap-y-10 md:grid-cols-2 sm:grid-cols-1 grid-rows-2 gap-5 place-items-center lg:w-2/3 md:w-2/3 sm:w-5/6 mx-auto my-10"
+      class="text-white grid grid-flow-row-dense lg:grid-cols-3 lg:gap-y-10 md:grid-cols-2 sm:grid-cols-1 grid-rows-2 gap-5 place-items-center lg:w-5/6 md:w-2/3 sm:w-5/6 mx-auto my-10"
     >
       <!-- Block 1 -->
 
