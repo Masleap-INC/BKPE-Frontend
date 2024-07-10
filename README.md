@@ -3,6 +3,7 @@
 ## Build Setup
 
 ```bash
+# node v14
 # install dependencies
 $ npm install
 
