@@ -22,7 +22,7 @@
 
         <!-- Product Details -->
 
-        <div class="bg-blue-400 bg-opacity-30 mt-5 p-5 rounded-xl relative h-full">
+        <div class="bg-blue-400 bg-opacity-30 my-5 p-5 rounded-xl relative h-full">
             <AdminCreateProductForm />
         </div>
 

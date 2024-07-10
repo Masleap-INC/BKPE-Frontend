@@ -5,7 +5,7 @@
         <!-- Hero Section -->
 
         <div>
-            <HeroSection />
+            <SecondColumnHeaderSection />
         </div>
 
 
@@ -23,11 +23,11 @@
 
 
 <script>
-import HeroSection from "~/components/HomePage/HeroSection.vue";
+import SecondColumnHeaderSection from "~/components/FooterPages/SecondColumn/SecondColumnHeaderSection.vue";
 import LowPriceGuaranteeSection from "~/components/FooterPages/SecondColumn/LowPriceGuarantee/LowPriceGuaranteeSection.vue";
 export default {
     components: {
-    HeroSection,
+    SecondColumnHeaderSection,
     LowPriceGuaranteeSection
 }
 };

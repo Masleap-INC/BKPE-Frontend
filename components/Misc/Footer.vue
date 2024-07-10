@@ -57,7 +57,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">DREAM LIST PROGRAM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarantee">LOW PRICE GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/LowPriceGuarntee">LOW PRICE GUARANTEE</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/NeedCustomerService">NEED CUSTOMER SERVICE?</NuxtLink></span>
 
@@ -65,7 +65,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/">REPORT A PROBLEM</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarantee">SATISFACTION GUARANTEE</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/FooterPages/SecondColumn/SatisfactionGuarntee">SATISFACTION GUARANTEE</NuxtLink></span>
 
                     </h2>
  
@@ -84,7 +84,7 @@
 
                     <h2 class="block text-base font-thin">
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">ADVSERSITING WITH BLACK KNIGHT</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">ADVERTISING WITH BLACK KNIGHT</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">MANUFACTURERS WE CARRY</NuxtLink></span>
 
@@ -113,7 +113,7 @@
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">SALES AND REBATES</NuxtLink></span>
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">SELLING TO BLACK KNIGHT</NuxtLink></span>
+                        <!-- <span class="block mb-2 hover:underline"><NuxtLink to="/">SELLING TO BLACK KNIGHT</NuxtLink></span> -->
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">SPECIAL ORDERS</NuxtLink></span>
 
@@ -154,7 +154,12 @@
 
             <!-- Copyright -->
 
-            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">COPYRIGHT © 2009-2012 BLACK KNIGHT PERFORMANCE PARTS, INC., ALL RIGHTS RESERVED.</div>
+            <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">
+                <div class="mb-10">"Black Knight Performance Engineering, Inc., is the world’s premier low-volume automobile manufacturer, specializing in building resto-mod and pro-touring muscle cars and delivering them to a distinguished international clientele."</div>
+                <div>© 2007-2014 BLACK KNIGHT PERFORMANCE ENGINEERING, INC., ALL RIGHTS RESERVED</div>
+            </div>
+
+            <!-- <div class="block w-2/3 mx-auto border-t-2 border-white mt-10 text-white text-sm text-center pt-5">COPYRIGHT © 2009-2012 BLACK KNIGHT PERFORMANCE PARTS, INC., ALL RIGHTS RESERVED.</div> -->
 
         </div>
 

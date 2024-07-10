@@ -12,7 +12,7 @@
 
             <!-- Cards -->
 
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-10">
+            <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-10">
 
                 <!-- Card 1 -->
 
@@ -20,14 +20,14 @@
 
                     <!-- <img src="../../assets/camaropedia.jpg" alt="" class=""> -->
 
-                    <div class="block bg-[url('~/assets/camaropedia.jpg')] bg-cover bg-no-repeat h-64"></div>
+                    <div class="block bg-[url('~/assets/camaropedia.jpg')] bg-cover bg-no-repeat h-72 bg-center "></div>
 
                     <div class="bg-white px-5 py-10 rounded-xl">
 
                         <h2>
                             <span class="block text-xl font-semibold mb-5">CAMAROPEDIA</span>
 
-                            <span class="block text-lg text-justify">The Camaropedia is the ever-evolving information database for all of your first-generation Camaro needs. If there is information needed on your Camaro, here will be the place for you to find it.</span>
+                            <span class="block text-lg text-justify">The Camaropedia is the ever-evolving information database for all of your 1st-generation Camaro needs. If there is information needed on your Camaro, here will be the place for you to find it.</span>
                         </h2>
 
                     </div>
@@ -42,7 +42,7 @@
 
                     <!-- <img src="../../assets/camaro-matrix.jpg" alt="" class=""> -->
 
-                    <div class="block bg-[url('~/assets/camaro-matrix.jpg')] bg-cover bg-no-repeat h-64"></div>
+                    <div class="block bg-[url('~/assets/camaro-matrix.jpg')] bg-cover bg-no-repeat h-72 bg-center"></div>
 
                     <div class="bg-white px-5 py-10 rounded-xl">
 
@@ -60,9 +60,9 @@
 
                 <!-- Card 3 -->
 
-                <div class="bg-white bg-cover rounded-xl">
+                <!-- <div class="bg-white bg-cover rounded-xl">
 
-                    <!-- <img src="../../assets/D.I.Y-MUSCLE-CAR-KITS.jpg" alt="" class=""> -->
+               
 
                     <div class="block bg-[url('~/assets/D.I.Y-MUSCLE-CAR-KITS.jpg')] bg-cover bg-no-repeat h-64"></div>
 
@@ -76,7 +76,7 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
 

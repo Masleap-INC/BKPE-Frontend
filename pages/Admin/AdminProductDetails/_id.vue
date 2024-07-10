@@ -50,7 +50,7 @@
 
                     <!-- Product Details -->
                     <LoadingData v-if="$fetchState.pending" />
-                    <div v-else class="bg-blue-400 bg-opacity-30 mt-5 p-5 rounded-xl relative h-full">
+                    <div v-else class="bg-blue-400 bg-opacity-30 my-5 p-5 rounded-xl relative h-full">
                         <div>
 
                             <!-- Product Actions -->
