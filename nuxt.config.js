@@ -12,13 +12,23 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      { src: 'https://js.stripe.com/v3' },
+    ],
   },
+
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/style/main.css',],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/chart.js', mode: 'client' },
+    { src: '~/plugins/stripe.js', ssr: false },
+    { src: '~/plugins/asyncDataLoader.js', ssr: false},
+    { src: '~/plugins/axios.js', mode: 'client' },
+    { src: '~/plugins/auth.js', mode: 'client' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,12 +47,15 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    ['nuxt-stripe-module', {
+      publishableKey: 'pk_test_51H4LzxLRh1ikRvHv72d6YU7tPLUU1Xah4ryiaAUQ4UxQ2jWgcaL6Yq5MAJqNWcXMmKAjjDQBSkwxH3Grfn6mGrPY00zYSDv0XI',
+    }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseUrl: 'http://54.146.158.4'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -53,5 +66,17 @@ export default {
         autoprefixer: {},
       },
     },
-  }
+  },
+
+  // Define your routes
+  // routes: [
+  //   {
+  //     name: 'Admin-AdminOrderDetailsPage-AdminOrderDetailsPageSection',
+  //     path: '/admin/order/:id',
+  //     component: '~/components/Admin/AdminOrdersPage/AdminOrderDetailsPage/AdminOrderDetailsPageSection.vue'
+  //   }
+  // ]
+
+
 }
+
