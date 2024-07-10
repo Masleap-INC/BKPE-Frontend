@@ -84,7 +84,7 @@
 
                     <h2 class="block text-base font-thin">
 
-                        <span class="block mb-2 hover:underline"><NuxtLink to="/">ADVSERSITING WITH BLACK KNIGHT</NuxtLink></span>
+                        <span class="block mb-2 hover:underline"><NuxtLink to="/">ADVERTISING WITH BLACK KNIGHT</NuxtLink></span>
 
                         <span class="block mb-2 hover:underline"><NuxtLink to="/">MANUFACTURERS WE CARRY</NuxtLink></span>
 

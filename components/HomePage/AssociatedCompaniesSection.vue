@@ -30,7 +30,7 @@
           <div class="bg-white px-5 py-10 rounded-xl">
             <h2>
               <span class="block text-xl font-semibold mb-5"
-                >BLACK KNIGHT PERFORMANCE ENGINEERING, INC.</span
+                > <p class="h-14">BLACK KNIGHT PERFORMANCE ENGINEERING, INC.</p></span
               >
 
               <span class="block text-lg text-justify"
@@ -54,11 +54,12 @@
           <div class="bg-white px-5 py-10 rounded-xl">
             <h2>
               <span class="block text-xl font-semibold mb-5"
-                >BLACK KNIGHT CUSTOMS, INC.</span
+                > <p class="h-14">BLACK KNIGHT CUSTOMS, INC.</p> </span
               >
 
               <span class="block text-lg text-justify"
-                >We all have a vehicle that means something to us. No matter the
+                >
+                We all have a vehicle that means something to us. No matter the
                 reason for our love-affair with our chosen vehicle, we have a
                 vision for how we want it to look and how we want it to perform.
                 To help make our customer’s vision a reality is why we started
@@ -78,14 +79,15 @@
           <div class="bg-white px-5 py-10 rounded-xl">
             <h2>
               <span class="block text-xl font-semibold mb-5"
-                >D.I.Y. MUSCLE CAR KITS</span
+                ><p class="h-14">D.I.Y. MUSCLE CAR KITS</p></span
               >
 
               <span class="block text-lg text-justify"
-                >Want to build your own 1 st Gen Camaro? Whether you dream of an
-                original- inspired street cruiser or a pro-touring street
+                >
+                Want to build your own 1 stGen Camaro? Whether you dream of an
+                original-inspired street cruiser or a pro-touring street
                 bruiser, Black Knight Performance Parts, Inc., is pleased to
-                provide our customers the only complete 1 st Gen Camaro kits on
+                provide our customers the only complete 1st Gen Camaro kits on
                 the market. Coming in multiple configurations with numerous
                 options, our BKPP D.I.Y. Muscle Car Kits feature virtually every
                 part you need to create your ultimate Camaro….Guaranteed!

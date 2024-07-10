@@ -2,16 +2,18 @@
   <div
     class="py-20 bg-black bg-opacity-50 bg-fixed border-4 border-white mt-20 mx-10"
   >
-    <!-- Heading -->
 
-    <div>
-      <h2 class="text-5xl text-white font-bold text-center">Why Buy From Us</h2>
+  <div class="lg:w-5/6 md:w-2/3 sm:w-5/6 mx-auto pt-20 pb-10">
+
+    <div class="border-white border-b-2">
+      <h2 class="text-5xl text-white font-bold text-center py-5">WHY BUY FROM US?</h2>
     </div>
+
 
     <!-- Boxes -->
 
     <div
-      class="text-white grid grid-flow-row-dense lg:grid-cols-3 lg:gap-y-10 md:grid-cols-2 sm:grid-cols-1 grid-rows-2 gap-5 place-items-center lg:w-5/6 md:w-2/3 sm:w-5/6 mx-auto my-10"
+      class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-10 text-white"
     >
       <!-- Block 1 -->
 
@@ -25,16 +27,15 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           OUR PHILOSOPHY
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          We exist to provide our clients with the most exacting restoration
-          parts on the market from the greatest number of suppliers, allowing
-          you to choose the right quality and price point for your project.
+       
+          We exist to provide our clients with the most comprehensive and exacting catalog of restoration parts on the market from the greatest number of suppliers.  If a restoration part is made for the 1st Gen Camaro, we want it to be in the Camaro Parts Guru store.
         </p>
       </div>
 
@@ -50,20 +51,61 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
+          CRITICAL KNOWLEDGE
+        </h2>
+
+        <!-- Text -->
+
+        <p class="text-justify my-5 mx-auto">
+ 
+          Yesterday’s muscle cars were constantly improving, making it very difficult to know exactly what is a “factory” restoration.  Thus, we set out to become the greatest on-line knowledge database for all things Camaro.   With the help of our clients, we wish to create the most comprehensive social-media based clearinghouse of knowledge and the place for the exchange of information. 
+        </p>
+      </div>
+
+      <div class="w-full h-full border-2 border-white p-5">
+        <!-- icon -->
+
+        <img
+          class="h-16 w-auto mx-auto"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADuUlEQVR4nO3bSagcVRgF4DJqYqIJUcOLilnEIQkIIhFFNDsj4iILh2yEZOHixZGICIoDlEFEEHFAEAPBAVRwAlF0IQ4LyUIcNkoWDhFjFMExRmPM8IXi3aY7j66iuut21+t+dbbdVf895/517q2qU0nSoEGDOoA5uBQXJbMJuACPYJcpHMaVyTgDZ+FefKU7NiXjBkzgVmwPs9wNP+JBzE3GAZiP9XgL/+eQ/hMvYB2OS0YdmBvIvIx/ckjvw6u4GvP6rHMsLsdWvITrcEJ8RiWBC/EEfskhfQgfYzNOrVDnPKTYWXs3aQ/mG/nIjO4unF6hzrIg3BfKY3eYkDWxSS8Lg/msoPj3eBgrK9Q5GRvxXoFplsWOMFHn9juYJbg5tHDeYH7CY1U2MjgR1+PtAtNUsII8iqfxa8H/tofVaKKMg6/DK9ifc7LK11wwszV4Bnt6JP17t/rhnGvDb3/nHHswTOgkFnYOaCGexd6cA//DG7i2iuviEjxZYJp5+CsQuwrHl6iT8dmAdwPpbsi4PodF2QE35jj4+7gBiyuQXokH8HWPpLNl87Ug+vwK9ZfitnC5dMPmJJhFC9lA78AZFYqehtvxSY+kMw94Jxjhon7rd4xjOe7BlwU10+kCpBF2gAd6IN25V1gagfQp4RovMu84AjjaePL8o2ivkNVdHoH0ghLb77gCmDK0n3sslrXifTgnAul5YVudba//7XEcUQR4s2SB7/AQzo9AunUvsA1/VCAdRYAPC06aLZtPhS45JgLxi/F42HjFRjoIASYjkF6FLX0snzNCgFV9kj4Td+Jzw0M6CAFW9LhsbcJHYUkcNtLaBMBq/KZepHUKcL/6kfYrwAcRBOisO3IC3D2rBciQvczAi9MehB4q+/xv5AWYdv+d3cE9nz3dSUpibAToF40Amg5Ia2z9dsdrLgGNB+hsiSGh8QCNB6Q1ml+74zUeoPEAnS3RmOBw0JigxgTTGt2/fclrTFBjgiK+Hh9FE7xpUAGJERDglmwgJ4W8zt6CtMbruCZmMLFmAfaHBMrioYekahbg0xDGmIiR2dvdCib28xZ4iAK0whhnDzIouTMEJVfMEAF+CJOzui/Sw4jKDkCAVoZwbYxcQsyw9GS31FckAfaFbND62r45UC6l2Rpo5isLKgpwMHjTxqMSnzMBppbUDSHvd6CgVbeGgFNZHA7dlOWXlySjAFPhh6rp75aDV06W1QrtlaRM/GXXQHL/MwXaK8m3OQ4+J5lFH05ehivG5quxBg2SkcMRvT+jeEmia8AAAAAASUVORK5CYII="
+        />
+
+        <!-- Heading -->
+
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           MORE PARTS FROM MORE SUPPLIERS
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          At the Camaro Part Guru we carry more restoration parts from more
-          manufacturers, making us the most comprehensive Camaro parts store for
-          all of your restoration needs.
+          At the Camaro Part Guru, we carry more restoration parts from more manufacturers that any other reseller on earth, allowing our clients to choose the right quality and price point for their particular project, making us the most comprehensive Camaro parts store for all of your restoration needs.
         </p>
       </div>
 
       <!-- Block 3 -->
+
+      <div class="w-full h-full border-2 border-white p-5">
+        <!-- icon -->
+
+        <img
+          class="h-16 w-auto mx-auto"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADsUlEQVR4nO2aeajMURTH51myLw8hoSxl5w+JP+xJiESSrMlWimT5QwlJWf6QfV+ypZS1yEOyhkjvH5St5yFLz/bs60dHZ3Lcfm/eb95czeD3rWmaued3zv3es9xz70wsFhJAH+AB6UO+zCHsfBMREUXpRr4PIj+RsqJ02+d/IwI0BI4Dn0KEyieVbZiJRE6UIPZzMpFIoYo2DSHbVGULfdn3SURCJVkcy9QcyUkiR44BDTKOyJ8CEREHkUc8gSi0HESh5QlEoeUgCi1PIAotB1FoZWBo5fOPXD70STOZfC/XQREiRAgGUB4YBuwBbgEvge9AAXAT2AGMAMrFSgCgC7AbyAOeAxeBASXRleiqZqVOPAyeCKEk9LcEzhSh6z0wETgKvNHXTqBuMgR6AoeBb0bxeWA80AyoqnLVgebAGOC0kV1UjP4KwEJzy/IUWAB0AOoDVxIs1gGgNTAP2AUsl89WeRkNj1xnVTbIyoVcgEmG/AogK0CmN3BbZUR2HZCtY7WB/ca+XBP1A6opQcHXAHKyIL1EwSjgrhl4CMwGaoZ246+JjjNkTgFj1XN1NA/ikAXrZJ4bpJ5BQ3mkGaup+RmHyC0VGWCbfnc5pokruK5hUjZZAg6Z4RrTcXw016iCLcYL1bVYxHHSXtYBA4HHOiY6pgEVzbh4UVAgH4YC/YFSqRBwyGQDM4BLRYSD4IOGL/o+NR6O+rwlKN5t5NjIAjbq+BFfc09EqhYwBFiiKy458tYhJUQ6q7zkxSP9/h0wxc03oLIJVVmQZn+cSAKCMpm2wGadkFSrrYbcuaAbfaAHcE9lXv1M9EyAEnK9M90NdZVbbXL6KtDC92QuaTXZB8zUMtsEqJLgmUrqkTWGxEXZmwJku5vKKuV2jmwZXkkYIqlAKtssoHQA2VXGC9eEvHcCjtEW2las1/jOc8qwC0n4O7rptgvQ18144TMwN9WtIb7zd5TKIrU/JWXF26oCrDVeyA0imqxSqdWjnX88SDJuAhp7m/0ve32B+yYX5vvwQiPn98AbwAXTgnzWMKrvgUANYLuxdRloE/OgeLDZtAq0dcky7b30OF/MhiRdaJ0S2hqiRwDBO+0Ifkv6VIhIPyTYW9QEtaXfYzwkxBeHbTblbKHl2rYhTbwQMEYqAq1CyspecNAk52uN7WpFyJfSlv+F2Z0nBLX9aYEejORn6Thkosu02pWVA5keme2Z5xBQL5aJALoCZyn+sm1Q7G8A0F7P/OIB8c4zPaNPlgsN3wZ/AC6GubC5xVaBAAAAAElFTkSuQmCC"
+        />
+
+        <!-- Heading -->
+
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
+          HAVE A FACTORY PART TO SELL?
+        </h2>
+
+        <!-- Text -->
+
+        <p class="text-justify my-5 mx-auto">
+          COMING SOON - With 750,000+ 1st Gen Camaros having been made by GM, there can be little doubt that Camaro Nation has many NOS and used parts that they would love to market to others.  At the Camaro Parts Guru, we have set up a marketplace to allow you to set up your own store of your available parts.
+        </p>
+      </div>
 
       <div class="w-full h-full border-2 border-white p-5">
         <!-- icon -->
@@ -75,16 +117,14 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           GUARANTEED LOWEST PRICES
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          We guarantee that our prices are the lowest… period! Should you find a
-          lower price for the same product anywhere on the internet, we will
-          beat it.
+          We guarantee that our prices are the lowest among all on-line retailers… period! Should you find a lower price for the same product anywhere on the internet, we will match it without hesitation.
         </p>
       </div>
 
@@ -100,16 +140,36 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
+          THE DREAM LIST
+        </h2>
+
+        <!-- Text -->
+
+        <p class="text-justify my-5 mx-auto">
+       
+          COMING SOON - We know that cars are not built overnight.  It takes planning, lots of planning.  Here at the Camaro Parts Guru, we have created tools that allow you to design your car in our system and then have us ship the parts you need in the order you need, when you need them on a flexible payment schedule.  We call it the Dream List.
+        </p>
+      </div>
+
+      <div class="w-full h-full border-2 border-white p-5">
+        <!-- icon -->
+
+        <img
+          class="h-16 w-auto mx-auto"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAr0lEQVR4nO2VQQrDMAwE9Y+e+/f20JeVQOgHNhR66SE4QpKjlpmrYfFoZWwGANAOSVdJD0kv5fPOvEu6VF5+UT3PEonP5GdxqxCoWJs91gqBL34t3xAYQAPRCWWfp/8bDQV8/4b6Chz7N9RbYA0LRPHmy3sfBAbQwIjsRzo6j+YhYDQweYWiePOFQDI0EJ1Q9nk0DwGjgckrFMWbLwSSoQHvhLphCJyM/X0DAAA2kw20DaEksEwDjQAAAABJRU5ErkJggg=="
+        />
+
+        <!-- Heading -->
+
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           MORE INTUITIVE PART ORGANIZATION
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          We organize our parts differently that most resellers, believing our
-          organization is more reflective of how our restoration clients
-          actually search for and buy their parts.
+          We organize our parts differently than every other on-line reseller, believing our system organizes parts in a way that is more reflective of how our clients actually search for and buy their parts.  We hope you agree.
         </p>
       </div>
 
@@ -125,17 +185,15 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           GM PART & AIM NUMBERS
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          To ensure that you are buying the right part for the right
-          application, we have gone to great efforts to make sure most of our
-          parts have the GM part number and the A.I.M. page number in their
-          description.
+        
+          To ensure that you are buying the right part for the right application, we have gone to great efforts to make sure most of our parts have the GM part number and the A.I.M. page number in their description.  If you see information that is missing or not correct, let us know.
         </p>
       </div>
 
@@ -151,19 +209,25 @@
 
         <!-- Heading -->
 
-        <h2 class="text-xl text-center font-bold mt-5 mx-auto">
+        <h2 class="text-xl text-center font-bold mt-5 h-14 mx-auto">
           YOUR INPUT MATTERS
         </h2>
 
         <!-- Text -->
 
         <p class="text-justify my-5 mx-auto">
-          This website is deigned to be a shared resource, causing us to seek
-          our client's input, be it concerning new products or new
-          manufacturers, data corrections or contributing to our community
-          databases.
+       
+          This website is deigned to be a shared resource, causing us to seek input from all of Camaro Nation, be it concerning new products or new manufacturers, data corrections or contributing to our community databases.   Share your knowledge and make Camaro Nation even stronger.
         </p>
       </div>
+
+
+     
     </div>
+
+  </div>
+    <!-- Heading -->
+
+
   </div>
 </template>
