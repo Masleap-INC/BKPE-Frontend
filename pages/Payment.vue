@@ -28,7 +28,7 @@ export default {
     data() {
        
         return {
-            pk: 'pk_test_51H4LzxLRh1ikRvHv72d6YU7tPLUU1Xah4ryiaAUQ4UxQ2jWgcaL6Yq5MAJqNWcXMmKAjjDQBSkwxH3Grfn6mGrPY00zYSDv0XI',
+            pk: 'STRIPE_PK_KEY',
             elementsOptions: {
                 appearance: {}
             },
